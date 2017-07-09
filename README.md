@@ -1,4 +1,4 @@
-ProjetX [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/ProjetX?utm_source=github.com&utm_medium=referral&utm_content=Herklos/ProjetX&utm_campaign=badger) [![Build status](https://ci.appveyor.com/api/projects/status/t7fcbhae048swmdm?svg=true)](https://ci.appveyor.com/project/Herklos/projetx) [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) [![CircleCI](https://circleci.com/gh/Herklos/ProjetX.svg?style=svg)](https://circleci.com/gh/Herklos/ProjetX)
+ProjetX
 ============================
 
 Version
@@ -16,4 +16,10 @@ Current sprint  : [1.0.1](https://zube.io/herklos/projectx/w/workspace-1/sprintb
 
 ### Issues
 Known bugs  :<br>
-Suggestions :<br>
+Code Quality : [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/ProjetX?utm_source=github.com&utm_medium=referral&utm_content=Herklos/ProjetX&utm_campaign=badger)
+
+Testing
+------------
+CircleCI : [![CircleCI](https://circleci.com/gh/Herklos/ProjetX.svg?style=svg)](https://circleci.com/gh/Herklos/ProjetX)
+Travis-CI : [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) 
+AppVeyor : [![Build status](https://ci.appveyor.com/api/projects/status/t7fcbhae048swmdm?svg=true)](https://ci.appveyor.com/project/Herklos/projetx) 
