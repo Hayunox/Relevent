@@ -1,4 +1,4 @@
-package com.t.projetx;
+package com.teamX.projetx;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -88,11 +88,11 @@ class ProjetXServer
 
             // validating email address
             if($user->userMailExists($connection, $email)){
-                $message = UserCreation::USER_MAIL_EXISTED;
+                $message = "USER_MAIL_EXISTED";
 
                 // validating nickname
             }elseif ($user->userNickNameExists($connection, $name)) {
-                $message = UserCreation::USER_NICKNAME_EXISTED;
+                $message = "USER_NICKNAME_EXISTED";
 
                 // User validated
             }else{
@@ -103,9 +103,9 @@ class ProjetXServer
                 ));
 
                 if ($res > -1) {
-                    $message = UserCreation::USER_CREATED_SUCCESSFULLY;
+                    $message = "USER_CREATED_SUCCESSFULLY";
                 } else{
-                    $message = UserCreation::USER_CREATE_FAILED;
+                    $message = "USER_CREATE_FAILED";
                 }
             }
 
@@ -120,11 +120,10 @@ class ProjetXServer
     /**
      * Adding Middle Layer to authenticate every request
      * Checking if the request has valid api key in the 'Authorization' header
-     * @param $app
      * @param $response
      * @internal param Route $route
      */
-    public static function authenticate(App $app, Response $response)
+    public static function authenticate(Response $response)
     {
         // Getting request headers
         $headers = apache_request_headers();
@@ -146,7 +145,7 @@ class ProjetXServer
                 $user_id = $keyExists;
             } else {
                 // user key is not present in users table
-                $message = APIKey::API_KEY_ACESS_DENIED;
+                $message = "API_KEY_ACCESS_DENIED";
                 $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
@@ -154,7 +153,7 @@ class ProjetXServer
             }
         } else {
             // user key is missing in header
-            $message = APIKey::USER_KEY_NOT_FOUND;
+            $message = "USER_KEY_NOT_FOUND";
             $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
@@ -165,11 +164,10 @@ class ProjetXServer
 
     /**
      * Verifying required params posted or not
-     * @param $app
      * @param $required_fields
      * @param $response
      */
-    public static function verifyRequiredParams(Request $app, Response $response, $required_fields)
+    public static function verifyRequiredParams(Response $response, $required_fields)
     {
         $error = false;
         $error_fields = "";

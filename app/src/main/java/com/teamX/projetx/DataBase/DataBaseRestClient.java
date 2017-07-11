@@ -25,4 +25,7 @@ public class DataBaseRestClient {
         return BASE_URL + "/" + relativeUrl;
     }
 
+    public static DataBaseResponses.JSONResponses getResponseError(String error){
+        return DataBaseResponses.JSONResponses.valueOf(error);
+    }
 }

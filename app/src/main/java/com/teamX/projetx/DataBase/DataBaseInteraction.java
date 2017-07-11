@@ -63,7 +63,7 @@ public class DataBaseInteraction {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Toast.makeText();
+                System.out.println(DataBaseRestClient.getResponseError(responseString));
             }
         });
     }
