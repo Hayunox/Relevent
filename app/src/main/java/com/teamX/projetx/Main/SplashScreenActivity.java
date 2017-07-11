@@ -2,6 +2,7 @@ package com.teamX.projetx.Main;
 
 import com.t.projetx.R;
 import com.teamX.projetx.Utils.Localization;
+import com.teamX.projetx.User.LoginActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -37,7 +38,7 @@ public class SplashScreenActivity extends Activity {
 
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
+                Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                 startActivity(i);
 
                 // close this activity

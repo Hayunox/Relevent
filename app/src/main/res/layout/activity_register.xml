@@ -1,16 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context="com.teamX.projetx.User.LoginActivity"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
-
-    <!-- Login progress -->
-
+    tools:context="com.teamX.projetx.User.RegisterActivity">
 
     <FrameLayout
         android:layout_width="368dp"
@@ -42,21 +36,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:allowUndo="true"
-                    android:backgroundTint="@android:color/background_dark"
                     android:ems="10"
                     android:hint="Pseudo"
                     android:inputType="textPersonName"
-                    android:singleLine="false"
-                    android:soundEffectsEnabled="true"
-                    android:textColor="@android:color/black" />
+                    android:singleLine="false" />
 
                 <EditText
                     android:id="@+id/editText3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.12"
-                    android:backgroundTint="@android:color/black"
+                    android:layout_weight="1"
                     android:ems="10"
                     android:hint="Adresse mail"
                     android:inputType="textEmailAddress" />
@@ -66,44 +55,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="@android:color/black"
                     android:ems="10"
                     android:hint="Mot de passe"
                     android:inputType="textPassword" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <Button
-                    android:id="@+id/button5"
-                    style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/button2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Inscription"
+                    android:background="?attr/actionModeSplitBackground"
+                    android:text="S'inscrire"
                     android:textColor="@android:color/background_light"
                     android:textColorHint="@android:color/background_light" />
 
-                <Button
-                    android:id="@+id/button2"
-                    style="@style/Widget.AppCompat.Button.Colored"
+                <TextView
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:elevation="0dp"
-                    android:text="Connexion"
-                    android:textAllCaps="false"
-                    android:textColorHint="@android:color/background_light"
-                    android:textColorLink="@color/colorPrimary" />
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="J'accepte les conditions générales"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
 
             </LinearLayout>
-
         </LinearLayout>
 
     </FrameLayout>
-
 </android.support.constraint.ConstraintLayout>
