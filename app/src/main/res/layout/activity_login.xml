@@ -22,15 +22,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="1">
+            android:weightSum="0.70">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.59"
                 android:scaleType="center"
-                app:srcCompat="@drawable/photo"
-                android:layout_weight="0.59" />
+                app:srcCompat="@drawable/photo" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,7 +47,8 @@
                     android:hint="Pseudo"
                     android:singleLine="false"
                     android:soundEffectsEnabled="true"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:theme="@android:style/Theme.Translucent" />
 
                 <EditText
                     android:id="@+id/editTextPassword"
@@ -57,14 +58,14 @@
                     android:elegantTextHeight="false"
                     android:ems="10"
                     android:hint="Mot de passe"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:theme="@android:style/Theme.Translucent" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
+                android:layout_height="79dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -83,6 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:backgroundTint="@android:color/holo_red_light"
                     android:elevation="0dp"
                     android:text="Connexion"
                     android:textAllCaps="false"
@@ -90,6 +92,15 @@
                     android:textColorLink="@color/colorPrimary" />
 
             </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar4"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                tools:visibility="visible" />
 
         </LinearLayout>
 
