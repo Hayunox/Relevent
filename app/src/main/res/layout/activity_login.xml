@@ -52,16 +52,6 @@
                     android:textColor="@android:color/black" />
 
                 <EditText
-                    android:id="@+id/editTextMail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.12"
-                    android:backgroundTint="@android:color/black"
-                    android:ems="10"
-                    android:hint="Adresse mail"
-                    android:inputType="textEmailAddress" />
-
-                <EditText
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -76,6 +66,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0"
                 android:orientation="horizontal">
 
                 <Button
