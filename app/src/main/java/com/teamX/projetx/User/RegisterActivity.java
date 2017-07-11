@@ -32,9 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
         this.register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("clicked");
                 DataBaseInteraction dbi = new DataBaseInteraction();
-                dbi.userRegister();
+                dbi.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
             }
         });
     }
