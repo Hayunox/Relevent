@@ -8,6 +8,9 @@
 
 require 'vendor/autoload.php';
 
+require 'DBConnection.php';
+require 'SQL/UserDB.php';
+
 use Slim\App;
 use Slim\Slim;
 use Slim\Http\Request;
@@ -78,22 +81,22 @@ class ProjetXServer
             $password   = $request->getParam('password');
 
             $db = new DBConnection();
-            $db->connect();
+            $connection = $db->connect();
 
             // User validation
             $user = new UserDb(null);
 
             // validating email address
-            if(!$user->userMailExists($db, $email)){
-                $message = "Sorry, this mail already existed";
+            if($user->userMailExists($connection, $email)){
+                $message = "Sorry, this mail already exist";
 
                 // validating nickname
-            }elseif (!$user->userNickNameExists($db, $name)) {
-                $message = "Sorry, this nickname already existed";
+            }elseif ($user->userNickNameExists($connection, $name)) {
+                $message = "Sorry, this nickname already exist";
 
                 // User validated
             }else{
-                $res = $user->userCreate($db, array(
+                $res = $user->userCreate($connection, array(
                     'user_nickname'     => $name,
                     'user_mail'         => $email,
                     'user_password'     => $password
@@ -129,7 +132,7 @@ class ProjetXServer
         // Verifying Authorization Header
         if (isset($headers['Authorization'])) {
             $db = new DBConnection();
-            $db->connect();
+            $connection = $db->connect();
 
             $user = new UserDb(null);
 
@@ -137,7 +140,7 @@ class ProjetXServer
             $api_key = $headers['Authorization'];
 
             // validating user key
-            $keyExists = $user->userKeyExists($db, $api_key);
+            $keyExists = $user->userKeyExists($connection, $api_key);
             if ($keyExists) {
                 global $user_id;
                 $user_id = $keyExists;

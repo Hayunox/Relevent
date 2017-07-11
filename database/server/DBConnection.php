@@ -32,7 +32,7 @@ class DBConnection {
 
     /**
      * Establishing database connection
-     * @return database connection handler
+     * @return \Pixie\QueryBuilder\QueryBuilderHandler
      */
     function connect() {
         include_once dirname(__FILE__) . './Config.php';

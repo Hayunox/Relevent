@@ -1,9 +1,5 @@
 package com.teamX.projetx.DataBase;
 
-import android.preference.PreferenceActivity;
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
