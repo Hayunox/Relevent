@@ -1,9 +1,7 @@
 package com.teamX.projetx.DataBase;
 
-import android.preference.PreferenceActivity;
+import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -65,7 +63,7 @@ public class DataBaseInteraction {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                System.out.println(responseString);
+                Toast.makeText();
             }
         });
     }

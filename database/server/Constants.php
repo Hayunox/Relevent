@@ -7,8 +7,13 @@
  */
 
 abstract class UserCreation{
-    const USER_CREATED_SUCCESSFULLY = 0;
-    const USER_CREATE_FAILED = 1;
-    const USER_NICKNAME_EXISTED = 2;
-    const USER_MAIL_EXISTED = 3;
+    const USER_CREATED_SUCCESSFULLY = "OK";
+    const USER_CREATE_FAILED = "KO # ";
+    const USER_NICKNAME_EXISTED = "KO # Nickname";
+    const USER_MAIL_EXISTED = "KO # Mail";
+}
+
+abstract class APIKey{
+    const API_KEY_ACESS_DENIED = "KO # Key";
+    const USER_KEY_NOT_FOUND = "KO # ";
 }
