@@ -26,6 +26,7 @@ class UserDb
         'user_password'         => 'password',
         'user_mail'             => 'mail',
         'user_key'              => 'hashkey',
+        'user_regitration_time' => 'regitration_time'
     );
 
     /**
@@ -104,20 +105,25 @@ class UserDb
      */
     public function userCreate($db, $userArray){
         $data = array(
-            $this->table_row['user_key']            => $userArray['user_key'],
-            $this->table_row['user_nickname']       => $userArray['user_nickname'],
-            $this->table_row['user_name']           => $userArray['user_name'],
-            $this->table_row['user_surname']        => $userArray['user_surname'],
-            $this->table_row['user_password']       => $userArray['user_password'],
-            $this->table_row['user_mail']           => $userArray['user_mail']
+            $this->table_row['user_key']                => generateUserKey(),
+            $this->table_row['user_nickname']           => $this->userPasswordEncrypt($userArray['user_nickname']),
+            $this->table_row['user_name']               => $userArray['user_name'],
+            $this->table_row['user_surname']            => $userArray['user_surname'],
+            $this->table_row['user_password']           => $userArray['user_password'],
+            $this->table_row['user_mail']               => $userArray['user_mail'],
+            $this->table_row['user_regitration_time']   => time(),
         );
 
         // return new user_id
         return $db->table('my_table')->insert($data);
     }
 
-    public function userPasswordEncrypt(){
-
+    /**
+     * @param $password
+     * @return string
+     */
+    public function userPasswordEncrypt($password){
+        return md5($password);
     }
 
     /**

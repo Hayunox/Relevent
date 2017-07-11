@@ -8,10 +8,11 @@
 
 require 'vendor/autoload.php';
 
+use Slim\App;
 use Slim\Route;
 use Slim\Slim;
 
-$app = new Slim\App();
+$app = new App();
 
 
 /**
@@ -54,6 +55,67 @@ function authenticate(Route $route) {
         $app->stop();
     }
 }
+
+/**
+ * ----------- METHODS WITHOUT AUTHENTICATION ---------------------------------
+ */
+/**
+ * User Registration
+ * url - /register
+ * method - POST
+ * params - name, email, password
+ */
+$app->post('/register', function() use ($app) {
+    // check for required params
+    verifyRequiredParams(array('nickname', 'mail', 'password'));
+
+    $response = array();
+
+    // reading post params
+    $name       = $app->request->post('nickname');
+    $email      = $app->request->post('mail');
+    $password   = $app->request->post('password');
+
+    $db = new DBConnection();
+    $db->connect();
+
+    // User validation
+    $user = new UserDb();
+
+    // validating email address
+    if(!$user->userMailExists($email)){
+        $response["error"] = true;
+        $response["message"] = "Sorry, this mail already existed";
+
+    // validating nickname
+    }elseif (!$user->userNickNameExists($name)) {
+        $response["error"] = true;
+        $response["message"] = "Sorry, this nickname already existed";
+
+    // User validated
+    }else{
+        $res = $user->userCreate($db, array(
+            'user_nickname'     => $name,
+            'user_mail'         => $email,
+            'user_password'     => $password
+        ));
+
+        if ($res > -1) {
+            $response["error"] = false;
+            $response["message"] = "You are successfully registered";
+        } else if ($res == UserCreation::USER_CREATE_FAILED) {
+            $response["error"] = true;
+            $response["message"] = "Oops! An error occurred while registereing";
+        }
+    }
+
+    // echo json response
+    echoRespnse(201, $response);
+});
+
+/**
+ * ----------- METHODS WITH AUTHENTICATION ---------------------------------
+ */
 
 /**
  * Verifying required params posted or not
