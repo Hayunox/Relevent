@@ -88,11 +88,11 @@ class ProjetXServer
 
             // validating email address
             if($user->userMailExists($connection, $email)){
-                $message = "Sorry, this mail already exist";
+                $message = UserCreation::USER_MAIL_EXISTED;
 
                 // validating nickname
             }elseif ($user->userNickNameExists($connection, $name)) {
-                $message = "Sorry, this nickname already exist";
+                $message = UserCreation::USER_NICKNAME_EXISTED;
 
                 // User validated
             }else{
@@ -103,9 +103,9 @@ class ProjetXServer
                 ));
 
                 if ($res > -1) {
-                    $message = "You are successfully registered";
-                } else if ($res == UserCreation::USER_CREATE_FAILED) {
-                    $message = "Oops! An error occurred while registereing";
+                    $message = UserCreation::USER_CREATED_SUCCESSFULLY;
+                } else{
+                    $message = UserCreation::USER_CREATE_FAILED;
                 }
             }
 
@@ -146,7 +146,7 @@ class ProjetXServer
                 $user_id = $keyExists;
             } else {
                 // user key is not present in users table
-                $message = "Access Denied. Invalid Api key";
+                $message = APIKey::API_KEY_ACESS_DENIED;
                 $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
@@ -154,7 +154,7 @@ class ProjetXServer
             }
         } else {
             // user key is missing in header
-            $message = "user key is misssing";
+            $message = APIKey::USER_KEY_NOT_FOUND;
             $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
