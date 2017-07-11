@@ -28,7 +28,7 @@
         </activity>
 
         <!-- Main activity -->
-        <activity android:name="com.teamX.projetx.Main.MainActivity">
+       <activity android:name="com.teamX.projetx.Main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
