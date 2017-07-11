@@ -5,6 +5,7 @@ import android.preference.PreferenceActivity;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,51 +23,50 @@ public class DataBaseInteraction {
 
     }
 
-    public void userRegister(){
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get("192.168.2.77/projetX/index.php/register", new AsyncHttpResponseHandler() {
+    public void userRegister(String nickname, String mail, String password){
+        RequestParams params = new RequestParams();
+        params.put("nickname", nickname);
+        params.put("password", password);
+        params.put("mail", mail);
 
+        DataBaseRestClient.post("register", params, new JsonHttpResponseHandler() {
             @Override
-            public void onStart() {
-                // called before request is started
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                System.out.println(responseBody);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                error.printStackTrace();
-            }
-
-            @Override
-            public void onRetry(int retryNo) {
-                // called when request is retried
-            }
-        });
-        /*DataBaseRestClient.post("register", null, new JsonHttpResponseHandler() {
-            @Override
-            public void onFailed(int statusCode, PreferenceActivity.Header[] headers, JSONObject response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
+                System.out.println(statusCode);
+                System.out.println(response);
             }
 
             @Override
-            public void onSuccess(int statusCode, PreferenceActivity.Header[] headers, JSONArray timeline) {
+            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
                 // Pull out the first event on the public timeline
-                JSONObject firstEvent   = null;
-                String registerResponse = null;
+                JSONObject firstEvent = null;
                 try {
                     firstEvent = (JSONObject) timeline.get(0);
-                    registerResponse = firstEvent.getString("text");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                //String tweetText = firstEvent.getString("text");
 
                 // Do something with the response
-                System.out.println(registerResponse);
+                System.out.println(firstEvent);
             }
-        });*/
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                System.out.println(errorResponse);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
+                // If the response is JSONObject instead of expected JSONArray
+                System.out.println(errorResponse);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                System.out.println(responseString);
+            }
+        });
     }
 }
