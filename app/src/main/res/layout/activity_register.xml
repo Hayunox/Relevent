@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/editTextNickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -42,7 +42,7 @@
                     android:singleLine="false" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/editTextMail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -51,7 +51,7 @@
                     android:inputType="textEmailAddress" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -60,7 +60,7 @@
                     android:inputType="textPassword" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/buttonRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -70,7 +70,7 @@
                     android:textColorHint="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/textViewConditions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

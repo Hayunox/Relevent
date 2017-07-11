@@ -38,7 +38,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/editTextNickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -52,7 +52,7 @@
                     android:textColor="@android:color/black" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/editTextMail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.12"
@@ -62,7 +62,7 @@
                     android:inputType="textEmailAddress" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -79,7 +79,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/buttonRegister"
                     style="@style/Widget.AppCompat.Button.Small"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                     android:textColorHint="@android:color/background_light" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/buttonLogin"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
