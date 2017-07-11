@@ -21,32 +21,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/templogo" />
+                android:scaleType="center"
+                app:srcCompat="@drawable/photo"
+                android:layout_weight="0.59" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/editTextNickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:allowUndo="true"
                     android:backgroundTint="@android:color/background_dark"
                     android:ems="10"
                     android:hint="Pseudo"
-                    android:inputType="textPersonName"
                     android:singleLine="false"
                     android:soundEffectsEnabled="true"
                     android:textColor="@android:color/black" />
@@ -55,8 +53,8 @@
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:backgroundTint="@android:color/black"
+                    android:elegantTextHeight="false"
                     android:ems="10"
                     android:hint="Mot de passe"
                     android:inputType="textPassword" />

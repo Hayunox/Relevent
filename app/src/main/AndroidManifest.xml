@@ -36,8 +36,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.teamX.projetx.User.RegisterActivity"></activity>
-        <activity android:name="com.teamX.projetx.User.LoginActivity"></activity>
-</application>
+        <activity android:name="com.teamX.projetx.User.RegisterActivity" />
+        <activity android:name="com.teamX.projetx.User.LoginActivity" />
+    </application>
 
 </manifest>

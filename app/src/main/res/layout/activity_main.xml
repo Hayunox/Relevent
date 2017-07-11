@@ -61,12 +61,4 @@
         </TabHost>
     </LinearLayout>
 
-    <GridLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
-
-    </GridLayout>
-
 </android.support.constraint.ConstraintLayout>
