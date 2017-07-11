@@ -325,7 +325,7 @@ abstract class DispatcherTest extends \PHPUnit_Framework_TestCase {
             $r->addRoute('GET', '/{entity}.json', 'handler1');
         };
 
-        $cases[] = ['GET', '/user.json', $callback, 'handler1', ['entity' => 'user']];
+        $cases[] = ['GET', '/user.json', $callback, 'handler1', ['entity' => 'UserDb']];
 
         // 16 ----
 

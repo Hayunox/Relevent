@@ -4,7 +4,7 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 11/07/2017
- * Time: 17:04
+ * Time: 18:54
  */
 class User
 {
@@ -16,40 +16,43 @@ class User
     private $user_mail;
     private $user_key;
 
+    private $userDb;
+
     /**
      * User constructor.
      * @param $userData
      */
-    function __construct($userData) {
-        $user_id        = $userData['id'];
-        $user_nickname  = $userData['nickname'];
-        $user_name      = $userData['name'];
-        $user_surname   = $userData['surname'];
-        $user_password  = $userData['password'];
-        $user_mail      = $userData['mail'];
-        $user_key       = $userData['hashkey'];
-    }
-
-    public function userPasswordEncrypt(){
-
-    }
-
-    public static function userNickNameExists(){
-
-    }
-
-    public static function userMailExists(){
-
+    function __construct($user_id) {
+        $this->userDb        = new UserDb($user_id);
+        /*$this->user_id      = $userData[$this->table_row['user_id']];
+        $this->user_nickname  = $userData[$this->table_row['user_nickname']];
+        $this->user_name      = $userData[$this->table_row['user_name']];
+        $this->user_surname   = $userData[$this->table_row['user_surname']];
+        $this->user_password  = $userData[$this->table_row['user_password']];
+        $this->user_mail      = $userData[$this->table_row['user_mail']];
+        $this->user_key       = $userData[$this->table_row['user_key']];*/
     }
 
     /**
-     * Generating random Unique MD5 String for user key
+     *
      */
-    private function generateUserKey() {
-        return md5(uniqid(rand(), true));
+    public function userRegister(){
+        $this->user_key     = $this->userDb->generateUserKey();
+        // TODO : registration time
     }
 
-    public function userRegister(){
-
+    /**
+     * @return array
+     */
+    public function userToArray(){
+        return array(
+            'user_id'               => $this->user_id,
+            'user_nickname'         => $this->user_nickname,
+            'user_name'             => $this->user_name,
+            'user_surname'          => $this->user_surname,
+            'user_password'         => $this->user_password,
+            'user_mail'             => $this->user_mail,
+            'user_key'              => $this->user_key,
+        );
     }
 }
