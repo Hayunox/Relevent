@@ -11,12 +11,11 @@
  */
 class testDatabase extends atoum
 {
-    public function testConnection ()
+    public function testConnection()
     {
         $this
             // creation of a new instance of the tested class
             ->given($db = new DBConnection())
-            ->if($db->connect())
-        ;
+            ->if($db->connect());
     }
 }
