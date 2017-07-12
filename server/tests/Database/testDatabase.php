@@ -6,9 +6,9 @@
  * Time: 18:14
  */
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-require_once __DIR__ . '/../atoum.phar';
-require_once __DIR__ . '/../../DBConnection.php';
+require_once __DIR__.'/../../vendor/autoload.php';
+require_once __DIR__.'/../atoum.phar';
+require_once __DIR__.'/../../DBConnection.php';
 
 /*
  * Test class for DatabaseConnection
