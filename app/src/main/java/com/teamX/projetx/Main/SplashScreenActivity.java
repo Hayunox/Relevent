@@ -1,6 +1,6 @@
 package com.teamX.projetx.Main;
 
-import com.t.projetx.R;
+import com.teamX.projetx.R;
 import com.teamX.projetx.Utils.Localization;
 import com.teamX.projetx.User.LoginActivity;
 

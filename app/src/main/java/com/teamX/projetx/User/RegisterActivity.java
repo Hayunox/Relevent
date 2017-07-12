@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.t.projetx.R;
-import com.teamX.projetx.DataBase.DataBaseInteraction;
+import com.teamX.projetx.R;
+import com.teamX.projetx.DataBase.DataBaseUserInteraction;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -32,8 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         this.register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataBaseInteraction dbi = new DataBaseInteraction();
-                dbi.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
+                DataBaseUserInteraction.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
             }
         });
     }
