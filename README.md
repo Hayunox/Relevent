@@ -20,6 +20,4 @@ Code Quality : [![Codacy Badge](https://api.codacy.com/project/badge/Grade/46403
 
 Testing
 ------------
-CircleCI : [![CircleCI](https://circleci.com/gh/Herklos/ProjetX.svg?style=svg)](https://circleci.com/gh/Herklos/ProjetX)<br>
 Travis-CI : [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) <br>
-AppVeyor : [![Build status](https://ci.appveyor.com/api/projects/status/t7fcbhae048swmdm?svg=true)](https://ci.appveyor.com/project/Herklos/projetx) <br>
