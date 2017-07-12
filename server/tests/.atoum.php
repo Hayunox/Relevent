@@ -23,8 +23,7 @@ $coveralls
     })
     ->setServiceName(getenv('TRAVIS') ? 'travis-ci' : null)
     ->setServiceJobId(getenv('TRAVIS_JOB_ID') ?: null)
-    ->addWriter()
-;
+    ->addWriter();
 $runner->addReport($coveralls);
 
 $script->addDefaultReport();
