@@ -31,31 +31,27 @@ public class LoginActivity extends AppCompatActivity {
         this.nickname   = (EditText) findViewById(R.id.editTextNickname);
         this.password   = (EditText) findViewById(R.id.editTextPassword);
 
-        // create listenners
-        this.register.setOnClickListener(this.onClick(new View.OnClickListener()));
-    }
 
-    /**
-     * On click on action button
-     * @param v
-     */
-    public void onClick(View v) {
-        Intent intent = null;
-        switch (v.getId()) {
-            case R.id.buttonRegister:
-                //Toast.makeText(getApplicationContext(), "Stop", Toast.LENGTH_SHORT).show();
-                intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.buttonLogin:
+        /**
+         * create register button listener
+         */
+        this.register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
+
+        /**
+         * create login button listener
+         */
+        this.login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "Switched", Toast.LENGTH_SHORT).show();
                 // DataBaseUserInteraction.userLogin(this.nickname.getText().toString(), this.password.getText().toString());
-                intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            }
+        });
     }
-
 }
