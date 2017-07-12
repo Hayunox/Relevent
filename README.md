@@ -1,4 +1,4 @@
-ProjetX [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/ProjetX?utm_source=github.com&utm_medium=referral&utm_content=Herklos/ProjetX&utm_campaign=badger) [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) [![StyleCI](https://styleci.io/repos/96699711/shield?branch=master)](https://styleci.io/repos/96699711)
+ProjetX [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/ProjetX?utm_source=github.com&utm_medium=referral&utm_content=Herklos/ProjetX&utm_campaign=badger) [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) [![StyleCI](https://styleci.io/repos/96699711/shield?branch=master)](https://styleci.io/repos/96699711) [![Coverage Status](https://coveralls.io/repos/github/Herklos/ProjetX/badge.svg?branch=master)](https://coveralls.io/github/Herklos/ProjetX?branch=master)
 ============================
 
 Version
