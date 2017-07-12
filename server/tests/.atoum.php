@@ -6,13 +6,35 @@
  * Time: 18:45
  */
 
-use mageekguy\atoum\reports;
+
+use
+    mageekguy\atoum\reports,
+    mageekguy\atoum\reports\telemetry,
+    mageekguy\atoum\writers\std;
 
 $runner->addTestsFromDirectory(__DIR__ . '/Database');
 
-$coveralls = new reports\asynchronous\coveralls('src', 'qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy');
-$defaultFinder = $coveralls->getBranchFinder();
-$coveralls
+$script->addDefaultReport();
+
+if (file_exists(__DIR__ . '/vendor/autoload.php') === true)
+{
+    require_once __DIR__ . '/vendor/autoload.php';
+}
+
+if (class_exists('mageekguy\atoum\reports\telemetry') === true)
+{
+    $telemetry = new telemetry();
+    $telemetry->readProjectNameFromComposerJson(__DIR__ . '/composer.json');
+    $telemetry->addWriter(new std\out());
+    $runner->addReport($telemetry);
+}
+
+$sources = 'classes';
+$token = getenv('COVERALLS_REPO_TOKEN') ?: null;
+$coverallsReport = new reports\asynchronous\coveralls($sources, $token);
+
+$defaultFinder = $coverallsReport->getBranchFinder();
+$coverallsReport
     ->setBranchFinder(function() use ($defaultFinder) {
         if (($branch = getenv('TRAVIS_BRANCH')) === false)
         {
@@ -23,7 +45,10 @@ $coveralls
     })
     ->setServiceName(getenv('TRAVIS') ? 'travis-ci' : null)
     ->setServiceJobId(getenv('TRAVIS_JOB_ID') ?: null)
-    ->addWriter();
-$runner->addReport($coveralls);
+    ->addDefaultWriter()
+;
 
-$script->addDefaultReport();
+$runner->addReport($coverallsReport);
+$script->php('php -dxdebug.overload_var_dump=0');
+
+$script->testIt();
