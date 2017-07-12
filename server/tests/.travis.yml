@@ -1,5 +1,9 @@
+before_script: composer require atoum/atoum
+script: vendor/bin/atoum
 language: php
 php:
   - '7.0'
   - hhvm # on Trusty only
   - nightly
+script:
+    - bin/atoum --test-all
