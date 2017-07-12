@@ -3,16 +3,14 @@
  * Created by PhpStorm.
  * UserDb: Paul
  * Date: 11/07/2017
- * Time: 17:22
+ * Time: 17:22.
  */
-
 require 'vendor/autoload.php';
 
 require 'DBConnection.php';
 require 'SQL/UserDB.php';
 
 use Slim\App;
-use Slim\Slim;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -27,19 +25,18 @@ class ProjetXServer
     /**
      * ProjetXServer constructor.
      */
-    function __construct()
+    public function __construct()
     {
         $this->app = new App();
 
-        $this->container =  $this->app->getContainer();
+        $this->container = $this->app->getContainer();
 
-        /**
+        /*
          *
          */
         $this->methodsWithoutAuthentification();
 
-
-        /**
+        /*
          *
          */
         $this->methodsWithAuthentification();
@@ -47,38 +44,31 @@ class ProjetXServer
         $this->app->run();
     }
 
-    /**
-     *
-     */
-    private function methodsWithoutAuthentification(){
+    private function methodsWithoutAuthentification()
+    {
         $this->userRegistration();
     }
 
-    /**
-     *
-     */
-    private function methodsWithAuthentification(){
-
+    private function methodsWithAuthentification()
+    {
     }
 
-    /**
-     *
-     */
-    private function userRegistration(){
-        /**
+    private function userRegistration()
+    {
+        /*
          * User Registration
          * url - /register
          * method - POST
          * params - name, email, password
          */
-        $this->app->post('/register', function(Request $request, Response $response) {
+        $this->app->post('/register', function (Request $request, Response $response) {
             // check for required params
-            ProjetXServer::verifyRequiredParams($request, $response, array('nickname', 'mail', 'password'));
+            ProjetXServer::verifyRequiredParams($request, $response, ['nickname', 'mail', 'password']);
 
             // reading post params
-            $name       = $request->getParam('nickname');
-            $email      = $request->getParam('mail');
-            $password   = $request->getParam('password');
+            $name = $request->getParam('nickname');
+            $email = $request->getParam('mail');
+            $password = $request->getParam('password');
 
             $db = new DBConnection();
             $connection = $db->connect();
@@ -87,25 +77,25 @@ class ProjetXServer
             $user = new UserDb(null);
 
             // validating email address
-            if($user->userMailExists($connection, $email)){
-                $message = "USER_MAIL_EXISTED";
+            if ($user->userMailExists($connection, $email)) {
+                $message = 'USER_MAIL_EXISTED';
 
                 // validating nickname
-            }elseif ($user->userNickNameExists($connection, $name)) {
-                $message = "USER_NICKNAME_EXISTED";
+            } elseif ($user->userNickNameExists($connection, $name)) {
+                $message = 'USER_NICKNAME_EXISTED';
 
                 // User validated
-            }else{
-                $res = $user->userCreate($connection, array(
+            } else {
+                $res = $user->userCreate($connection, [
                     'user_nickname'     => $name,
                     'user_mail'         => $email,
-                    'user_password'     => $password
-                ));
+                    'user_password'     => $password,
+                ]);
 
                 if ($res > -1) {
-                    $message = "USER_CREATED_SUCCESSFULLY";
-                } else{
-                    $message = "USER_CREATE_FAILED";
+                    $message = 'USER_CREATED_SUCCESSFULLY';
+                } else {
+                    $message = 'USER_CREATE_FAILED';
                 }
             }
 
@@ -119,8 +109,10 @@ class ProjetXServer
 
     /**
      * Adding Middle Layer to authenticate every request
-     * Checking if the request has valid api key in the 'Authorization' header
+     * Checking if the request has valid api key in the 'Authorization' header.
+     *
      * @param $response
+     *
      * @internal param Route $route
      */
     public static function authenticate(Response $response)
@@ -145,7 +137,7 @@ class ProjetXServer
                 $user_id = $keyExists;
             } else {
                 // user key is not present in users table
-                $message = "API_KEY_ACCESS_DENIED";
+                $message = 'API_KEY_ACCESS_DENIED';
                 $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
@@ -153,7 +145,7 @@ class ProjetXServer
             }
         } else {
             // user key is missing in header
-            $message = "USER_KEY_NOT_FOUND";
+            $message = 'USER_KEY_NOT_FOUND';
             $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
@@ -161,16 +153,16 @@ class ProjetXServer
         }
     }
 
-
     /**
-     * Verifying required params posted or not
+     * Verifying required params posted or not.
+     *
      * @param $required_fields
      * @param $response
      */
     public static function verifyRequiredParams(Response $response, $required_fields)
     {
         $error = false;
-        $error_fields = "";
+        $error_fields = '';
         $request_params = $_REQUEST;
         // Handling PUT request params
         if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
@@ -179,14 +171,14 @@ class ProjetXServer
         foreach ($required_fields as $field) {
             if (!isset($request_params[$field]) || strlen(trim($request_params[$field])) <= 0) {
                 $error = true;
-                $error_fields .= $field . ', ';
+                $error_fields .= $field.', ';
             }
         }
 
         if ($error) {
             // Required field(s) are missing or empty
             // echo error json and stop the app
-            $message = 'Required field(s) ' . substr($error_fields, 0, -2) . ' is missing or empty';
+            $message = 'Required field(s) '.substr($error_fields, 0, -2).' is missing or empty';
             $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
