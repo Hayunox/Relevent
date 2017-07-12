@@ -4,4 +4,4 @@ language: php
 php:
     - '7.0'
 script:
-    - php server/tests/atoum.phar --test-it
+    - php atoum.phar

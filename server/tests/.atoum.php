@@ -1,54 +1,58 @@
 <?php
+
 /*
- * Created by PhpStorm.
- * User: Paul
- * Date: 12/07/2017
- * Time: 18:45
- */
+This file will automatically be included before EACH run.
+
+Use it to configure atoum or anything that needs to be done before EACH run.
+
+More information on documentation:
+[en] http://docs.atoum.org/en/latest/chapter3.html#configuration-files
+[fr] http://docs.atoum.org/fr/latest/lancement_des_tests.html#fichier-de-configuration
+*/
+
+use \mageekguy\atoum;
+
+$report = $script->addDefaultReport();
 
 
-use
-    mageekguy\atoum\reports,
-    mageekguy\atoum\reports\telemetry,
-    mageekguy\atoum\writers\std;
 
-$runner->addTestsFromDirectory(__DIR__ . '/Database');
+//CODE COVERAGE SETUP
 
-$script->addDefaultReport();
+// Please replace in next line "Project Name" by your project name and "/path/to/destination/directory" by your destination directory path for html files.
+$coverageField = new atoum\report\fields\runner\coverage\html('ProjetX', 'reports');
 
-if (file_exists(__DIR__ . '/vendor/autoload.php') === true)
-{
-    require_once __DIR__ . '/vendor/autoload.php';
-}
+// Please replace in next line http://url/of/web/site by the root url of your code coverage web site.
+$coverageField->setRootUrl('https://coveralls.io/github/Herklos/ProjetX');
 
-if (class_exists('mageekguy\atoum\reports\telemetry') === true)
-{
-    $telemetry = new telemetry();
-    $telemetry->readProjectNameFromComposerJson(__DIR__ . '/composer.json');
-    $telemetry->addWriter(new std\out());
-    $runner->addReport($telemetry);
-}
+$report->addField($coverageField);
 
-$sources = 'classes';
-$token = getenv('COVERALLS_REPO_TOKEN') ?: null;
-$coverallsReport = new reports\asynchronous\coveralls($sources, $token);
 
-$defaultFinder = $coverallsReport->getBranchFinder();
-$coverallsReport
-    ->setBranchFinder(function() use ($defaultFinder) {
-        if (($branch = getenv('TRAVIS_BRANCH')) === false)
-        {
-            $branch = $defaultFinder();
-        }
 
-        return $branch;
-    })
-    ->setServiceName(getenv('TRAVIS') ? 'travis-ci' : null)
-    ->setServiceJobId(getenv('TRAVIS_JOB_ID') ?: null)
-    ->addDefaultWriter()
-;
+//TEST EXECUTION SETUP
 
-$runner->addReport($coverallsReport);
-$script->php('php -dxdebug.overload_var_dump=0');
+// Please replace in next line "/path/to/your/tests/units/classes/directory" by your unit test's directory.
+$runner->addTestsFromDirectory('Database');
 
-$script->testIt();
+
+/*
+TEST GENERATOR SETUP
+
+$testGenerator = new atoum\test\generator();
+
+// Please replace in next line "/path/to/your/tests/units/classes/directory" by your unit test's directory.
+$testGenerator->setTestClassesDirectory('path/to/your/tests/units/classes/directory');
+
+// Please replace in next line "your\project\namespace\tests\units" by your unit test's namespace.
+$testGenerator->setTestClassNamespace('your\project\namespace\tests\units');
+
+// Please replace in next line "/path/to/your/classes/directory" by your classes directory.
+$testGenerator->setTestedClassesDirectory('path/to/your/classes/directory');
+
+// Please replace in next line "your\project\namespace" by your project namespace.
+$testGenerator->setTestedClassNamespace('your\project\namespace');
+
+// Please replace in next line "path/to/your/tests/units/runner.php" by path to your unit test's runner.
+$testGenerator->setRunnerPath('path/to/your/tests/units/runner.php');
+
+$script->getRunner()->setTestGenerator($testGenerator);
+*/
