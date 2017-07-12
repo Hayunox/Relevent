@@ -11,17 +11,32 @@ More information on documentation:
 */
 
 use \mageekguy\atoum;
+use mageekguy\atoum\reports;
 
 $report = $script->addDefaultReport();
 
+/*$coverallsReport = new reports\asynchronous\coveralls('classes', "qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy");
+$defaultFinder = $coverallsReport->getBranchFinder();
+$coverallsReport
+    ->setBranchFinder(function() use ($defaultFinder) {
+        if (($branch = getenv('TRAVIS_BRANCH')) === false)
+        {
+            $branch = $defaultFinder();
+        }
+        return $branch;
+    }
+    )
+    ->setServiceName('travis-ci')
+    ->setServiceJobId(getenv('TRAVIS_JOB_ID'))
+    ->addDefaultWriter()
+;
+$runner->addReport($coverallsReport);*/
 
 
 //CODE COVERAGE SETUP
 
-// Please replace in next line "Project Name" by your project name and "/path/to/destination/directory" by your destination directory path for html files.
 $coverageField = new atoum\report\fields\runner\coverage\html('ProjetX', 'reports');
 
-// Please replace in next line http://url/of/web/site by the root url of your code coverage web site.
 $coverageField->setRootUrl('https://coveralls.io/github/Herklos/ProjetX');
 
 $report->addField($coverageField);
@@ -30,7 +45,6 @@ $report->addField($coverageField);
 
 //TEST EXECUTION SETUP
 
-// Please replace in next line "/path/to/your/tests/units/classes/directory" by your unit test's directory.
 $runner->addTestsFromDirectory('Database');
 
 
