@@ -1,6 +1,0 @@
-{
-    "require": {
-        "slim/slim": "^3.0",
-        "usmanhalalit/pixie": "^2.0"
-    }
-}

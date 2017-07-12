@@ -1,4 +1,4 @@
-ProjetX
+ProjetX [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/ProjetX?utm_source=github.com&utm_medium=referral&utm_content=Herklos/ProjetX&utm_campaign=badger) [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) [![StyleCI](https://styleci.io/repos/96699711/shield?branch=master)](https://styleci.io/repos/96699711) [![Coverage Status](https://coveralls.io/repos/github/Herklos/ProjetX/badge.svg?branch=master)](https://coveralls.io/github/Herklos/ProjetX?branch=master)
 ============================
 
 Version
@@ -16,10 +16,11 @@ Current sprint  : [1.0.1](https://zube.io/herklos/projectx/w/workspace-1/sprintb
 
 ### Issues
 Known bugs  :<br>
-Code Quality : [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/ProjetX?utm_source=github.com&utm_medium=referral&utm_content=Herklos/ProjetX&utm_campaign=badger)
+
+Code Quality
+PHP server : [StyleCI](https://styleci.io/repos/96699711)<br>
+Android APP : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
 
 Testing
 ------------
-CircleCI : [![CircleCI](https://circleci.com/gh/Herklos/ProjetX.svg?style=svg)](https://circleci.com/gh/Herklos/ProjetX)<br>
-Travis-CI : [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) <br>
-AppVeyor : [![Build status](https://ci.appveyor.com/api/projects/status/t7fcbhae048swmdm?svg=true)](https://ci.appveyor.com/project/Herklos/projetx) <br>
+PHP server : [Travis-CI](https://travis-ci.org/Herklos/ProjetX)

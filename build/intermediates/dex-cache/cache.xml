@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jb\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.3.6\526a9f794eab830eae4f23a62c572878b3f491ab\httpclient-4.3.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="C:\Users\Jb\Documents\GitHub\ProjetX\app\build\intermediates\transforms\dex\debug\folders\1000\10\httpclient-4.3.6_f5e7dcda1ed452e92f4d856f089ac9122e3a7dfe\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jb\Documents\GitHub\ProjetX\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\Jb\Documents\GitHub\ProjetX\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_cbd34c52158f3e75ae67f5a483ae37db7b1b44ba\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jb\Documents\GitHub\ProjetX\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a81587ab37e67817c09bfed4e93eeb66b92888eb">
+        <dex dex="C:\Users\Jb\Documents\GitHub\ProjetX\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_aa35530adb226014a6bc7a4b73c4cc67fa579d23\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jb\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.9\386a4339ffe52d5d63e80f9bed8d2b1d1a418249\android-async-http-1.4.9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="C:\Users\Jb\Documents\GitHub\ProjetX\app\build\intermediates\transforms\dex\debug\folders\1000\10\android-async-http-1.4.9_2830bef2d7993ab218f2b574405a11c85fcee388\classes.dex" />
+    </item>
+
+</items>

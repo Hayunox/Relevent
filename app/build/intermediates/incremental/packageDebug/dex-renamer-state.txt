@@ -1,0 +1,7 @@
+#Tue Jul 11 23:46:44 CEST 2017
+base.0=C\:\\Users\\Jb\\Documents\\GitHub\\ProjetX\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_cbd34c52158f3e75ae67f5a483ae37db7b1b44ba
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\Jb\\Documents\\GitHub\\ProjetX\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_aa35530adb226014a6bc7a4b73c4cc67fa579d23\\classes.dex
+base.1=C\:\\Users\\Jb\\Documents\\GitHub\\ProjetX\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_aa35530adb226014a6bc7a4b73c4cc67fa579d23
+file.0=C\:\\Users\\Jb\\Documents\\GitHub\\ProjetX\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_cbd34c52158f3e75ae67f5a483ae37db7b1b44ba\\classes.dex

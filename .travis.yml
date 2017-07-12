@@ -1,0 +1,7 @@
+before_script: composer require atoum/atoum
+script: vendor/bin/atoum
+language: php
+php:
+    - '7.0'
+script:
+    - php server/tests/atoum.phar --test-all
