@@ -143,7 +143,7 @@ return array(
     'mageekguy\\atoum\\report\\field\\decorators\\travis\\fold' => $vendorDir . '/atoum/atoum/classes/report/field/decorators/travis/fold.php',
     'mageekguy\\atoum\\report\\fields\\event' => $vendorDir . '/atoum/atoum/classes/report/fields/event.php',
     'mageekguy\\atoum\\report\\fields\\runner' => $vendorDir . '/atoum/atoum/classes/report/fields/runner.php',
-    'mageekguy\\atoum\\report\\fields\\runner\\atoum' => $vendorDir . '/atoum/atoum/classes/report/fields/runner/atoum.php',
+    'mageekguy\\atoum\\report\\fields\\runner\\atoum' => $vendorDir . '/atoum/atoum/classes/report/fields/runner/.atoum.php',
     'mageekguy\\atoum\\report\\fields\\runner\\atoum\\cli' => $vendorDir . '/atoum/atoum/classes/report/fields/runner/atoum/cli.php',
     'mageekguy\\atoum\\report\\fields\\runner\\atoum\\logo' => $vendorDir . '/atoum/atoum/classes/report/fields/runner/atoum/logo.php',
     'mageekguy\\atoum\\report\\fields\\runner\\atoum\\path' => $vendorDir . '/atoum/atoum/classes/report/fields/runner/atoum/path.php',
