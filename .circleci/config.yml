@@ -1,0 +1,9 @@
+version: 2
+jobs:
+   build:
+     working_directory: ~/
+     docker:
+       - image: circleci/PHP:7.0.10
+     steps:
+       - checkout
+       - run: echo "no tests"
