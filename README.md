@@ -20,3 +20,4 @@ Code Quality : [![Codacy Badge](https://api.codacy.com/project/badge/Grade/46403
 
 Testing
 ------------
+Travis-CI : [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) <br>
