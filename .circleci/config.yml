@@ -3,7 +3,7 @@ jobs:
    build:
      working_directory: ~/
      docker:
-       - image: circleci/PHP:7.0.10
+       - image: circleci/php:7.0
      steps:
        - checkout
        - run: echo "no tests"
