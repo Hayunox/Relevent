@@ -18,8 +18,8 @@ Current sprint  : [1.0.1](https://zube.io/herklos/projectx/w/workspace-1/sprintb
 Known bugs  :<br>
 
 Code Quality
-PHP server : [StyleCI](https://styleci.io/repos/96699711)
-Android APP : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)]
+PHP server : [StyleCI](https://styleci.io/repos/96699711)<br>
+Android APP : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
 
 Testing
 ------------
