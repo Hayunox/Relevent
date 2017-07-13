@@ -1,4 +1,4 @@
-package com.teamX.projetx.User;
+package com.teamX.projetx.user;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.teamX.projetx.R;
-import com.teamX.projetx.Main.MainActivity;
+import com.teamX.projetx.main.MainActivity;
 
 /**
  * A login screen that offers login via email/password.

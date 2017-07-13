@@ -6,11 +6,14 @@
  * Time: 18:14
  */
 
+include_once __DIR__ . '/../../DBConnection.php';
+
 /*
  * Test class for DatabaseConnection
  */
 class testDatabase extends atoum\test
 {
+
     public function testConnection()
     {
         $this

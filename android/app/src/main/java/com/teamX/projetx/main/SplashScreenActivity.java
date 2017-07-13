@@ -1,8 +1,8 @@
-package com.teamX.projetx.Main;
+package com.teamX.projetx.main;
 
 import com.teamX.projetx.R;
-import com.teamX.projetx.Utils.Localization;
-import com.teamX.projetx.User.LoginActivity;
+import com.teamX.projetx.utils.Localization;
+import com.teamX.projetx.user.LoginActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

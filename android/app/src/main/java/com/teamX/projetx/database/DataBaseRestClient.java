@@ -1,4 +1,4 @@
-package com.teamX.projetx.DataBase;
+package com.teamX.projetx.database;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
