@@ -24,8 +24,10 @@ public class SplashScreenActivity extends Activity {
         setContentView(R.layout.activity_splash_screen);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         }
-        LocationManager locationManager = (LocationManager) this.getSystemService(this.getApplicationContext().LOCATION_SERVICE);
-        Localization loc = new Localization(locationManager);
+
+        //LocationManager locationManager = (LocationManager) this.getSystemService(this.getApplicationContext().LOCATION_SERVICE);
+        //Localization loc = new Localization(locationManager);
+
         new Handler().postDelayed(new Runnable() {
 
             /*

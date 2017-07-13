@@ -10,7 +10,7 @@ import android.os.Bundle;
  */
 
 public class Localization {
-    private LocationManager locationManager;
+    /*private LocationManager locationManager;
     private LocationListener locationListener;
 
     public Localization(LocationManager locationManager) {
@@ -43,7 +43,7 @@ public class Localization {
             public void onProviderDisabled(String provider) {
             }
         };
-    }
+    }*/
 
     /**
      * Provide GPS Position (Permission error)

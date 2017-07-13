@@ -1,13 +1,13 @@
 package com.teamX.projetx.database;
 
+import cz.msebera.android.httpclient.Header;
+
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by Paul on 12/07/2017.
