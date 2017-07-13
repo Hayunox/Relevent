@@ -8,14 +8,14 @@
 
 namespace server\test\units\database;
 
-require_once __DIR__ . "/../../../database/DBconnection.php";
+require_once __DIR__.'/../../../database/DBconnection.php';
 
 use mageekguy\atoum\test;
 
 /*
  * Test class for DatabaseConnection
  */
-class DBconnection extends test
+class testDatabase extends test
 {
     public function testConnection()
     {
