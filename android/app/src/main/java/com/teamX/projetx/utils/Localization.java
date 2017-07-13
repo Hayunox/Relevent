@@ -1,49 +1,17 @@
 package com.teamX.projetx.utils;
 
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Bundle;
 
 /**
  * Created by Paul on 09/07/2017.
  */
 
 public class Localization {
-    /*private LocationManager locationManager;
-    private LocationListener locationListener;
+    private LocationManager locationManager;
 
     public Localization(LocationManager locationManager) {
         this.locationManager = locationManager;
     }
-
-    private void update() {
-
-        // Acquire a reference to the system Location Manager
-
-
-        // Define a listener that responds to location updates
-        this.locationListener = new LocationListener() {
-            public void onLocationChanged(Location location) {
-                // Called when a new location is found by the network location provider.
-                makeUseOfNewLocation(location);
-            }
-
-            private void makeUseOfNewLocation(Location location) {
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
-
-            public void onProviderEnabled(String provider) {
-            }
-
-            public void onProviderDisabled(String provider) {
-            }
-        };
-    }*/
 
     /**
      * Provide GPS Position (Permission error)
