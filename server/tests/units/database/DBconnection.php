@@ -6,7 +6,7 @@
  * Time: 18:14
  */
 
-namespace server\test\units\database;
+namespace server\tests\units\database;
 
 require_once __DIR__.'/../../../database/DBconnection.php';
 
@@ -15,7 +15,7 @@ use mageekguy\atoum\test;
 /*
  * Test class for DatabaseConnection
  */
-class testDatabase extends test
+class DBconnection extends test
 {
     public function testConnection()
     {
