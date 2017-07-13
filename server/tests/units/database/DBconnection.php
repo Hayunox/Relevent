@@ -22,6 +22,8 @@ class DBconnection extends test
         $this
             // creation of a new instance of the tested class
             ->given($this->newTestedInstance)
-            ->if($this->newTestedInstance->connect());
+            ->newTestedInstance->connect();
     }
+
+    public function getAutoloaderFile(){}
 }
