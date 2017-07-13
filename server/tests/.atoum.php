@@ -44,8 +44,8 @@ $report->addField($coverageField);
 
 
 //TEST EXECUTION SETUP
-//server/tests/Database
-$runner->addTestsFromDirectory('units/Database');
+///Database
+$runner->addTestsFromDirectory('server/tests/units/database');
 
 
 /*
