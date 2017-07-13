@@ -5,9 +5,10 @@
  * Date: 11/07/2017
  * Time: 17:10.
  */
+
 namespace server\database;
 
-require_once __DIR__."/../vendor/autoload.php";
+require_once __DIR__.'/../vendor/autoload.php';
 
 use PDO;
 use Pixie\Connection;
