@@ -1,15 +1,18 @@
 <?php
 /**
  * Created by PhpStorm.
- * UserDb: Paul
+ * DBuser: Paul
  * Date: 11/07/2017
  * Time: 17:10.
  */
-require 'vendor/autoload.php';
+namespace server\database;
 
+require_once __DIR__."/../vendor/autoload.php";
+
+use PDO;
 use Pixie\Connection;
 
-class DBConnection
+class DBconnection
 {
     private $connection;
 
@@ -39,8 +42,6 @@ class DBConnection
      */
     public function connect()
     {
-        include_once dirname(__FILE__).'./Config.php';
-
         $this->connection = new Connection('mysql', $this->config, 'PX');
 
         return new \Pixie\QueryBuilder\QueryBuilderHandler($this->connection);

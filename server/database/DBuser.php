@@ -4,11 +4,11 @@ use Pixie\QueryBuilder\QueryBuilderHandler;
 
 /**
  * Created by PhpStorm.
- * UserDb: Paul
+ * DBuser: Paul
  * Date: 11/07/2017
  * Time: 17:04.
  */
-class UserDb
+class DBuser
 {
     private $user_id;
     private $user_nickname;
@@ -32,7 +32,7 @@ class UserDb
     ];
 
     /**
-     * UserDb constructor.
+     * DBuser constructor.
      *
      * @param $user_id
      */

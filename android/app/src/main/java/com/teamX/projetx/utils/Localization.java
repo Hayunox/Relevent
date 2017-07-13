@@ -11,6 +11,7 @@ public class Localization {
 
     public Localization(LocationManager locationManager) {
         this.locationManager = locationManager;
+        this.updateGPSPosition();
     }
 
     /**

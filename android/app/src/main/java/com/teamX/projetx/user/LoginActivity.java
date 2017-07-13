@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.teamX.projetx.R;
+import com.teamX.projetx.database.DataBaseUserInteraction;
 import com.teamX.projetx.main.MainActivity;
 
 /**
@@ -49,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "Switched", Toast.LENGTH_SHORT).show();
-                // DataBaseUserInteraction.userLogin(this.nickname.getText().toString(), this.password.getText().toString());
+                DataBaseUserInteraction.userLogin(nickname.getText().toString(), password.getText().toString());
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });

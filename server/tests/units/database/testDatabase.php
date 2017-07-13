@@ -6,18 +6,22 @@
  * Time: 18:14
  */
 
-include_once __DIR__.'/../../DBConnection.php';
+namespace server\test\units\database;
+
+require_once __DIR__ . "/../../../database/DBconnection.php";
+
+use mageekguy\atoum\test;
 
 /*
  * Test class for DatabaseConnection
  */
-class testDatabase extends atoum\test
+class DBconnection extends test
 {
     public function testConnection()
     {
         $this
             // creation of a new instance of the tested class
-            ->given($db = new DBConnection())
-            ->if($db->connect());
+            ->given($this->newTestedInstance)
+            ->if($this->newTestedInstance->connect());
     }
 }

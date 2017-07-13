@@ -145,7 +145,7 @@ class Uri implements UriInterface
 
         $parts = parse_url($uri);
         $scheme = isset($parts['scheme']) ? $parts['scheme'] : '';
-        $user = isset($parts['UserDb']) ? $parts['UserDb'] : '';
+        $user = isset($parts['DBuser']) ? $parts['DBuser'] : '';
         $pass = isset($parts['pass']) ? $parts['pass'] : '';
         $host = isset($parts['host']) ? $parts['host'] : '';
         $port = isset($parts['port']) ? $parts['port'] : null;
