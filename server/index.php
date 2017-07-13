@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * UserDb: Paul
+ * DBuser: Paul
  * Date: 11/07/2017
  * Time: 17:22.
  */
 require 'vendor/autoload.php';
 
-require 'DBConnection.php';
-require 'SQL/UserDB.php';
+require 'database/DBconnection.php';
+require 'database/DBuser.php';
 
 use Slim\App;
 use Slim\Http\Request;
@@ -74,7 +74,7 @@ class ProjetXServer
             $connection = $db->connect();
 
             // User validation
-            $user = new UserDb(null);
+            $user = new DBuser(null);
 
             // validating email address
             if ($user->userMailExists($connection, $email)) {
@@ -125,7 +125,7 @@ class ProjetXServer
             $db = new DBConnection();
             $connection = $db->connect();
 
-            $user = new UserDb(null);
+            $user = new DBuser(null);
 
             // get the user key
             $api_key = $headers['Authorization'];

@@ -1,4 +1,4 @@
-package com.teamX.projetx.User;
+package com.teamX.projetx.user;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.teamX.projetx.R;
-import com.teamX.projetx.DataBase.DataBaseUserInteraction;
+import com.teamX.projetx.database.DataBaseUserInteraction;
 
 public class RegisterActivity extends AppCompatActivity {
 

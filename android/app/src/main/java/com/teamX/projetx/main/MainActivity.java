@@ -1,4 +1,4 @@
-package com.teamX.projetx.Main;
+package com.teamX.projetx.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

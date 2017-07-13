@@ -1,4 +1,4 @@
-package com.teamX.projetx.DataBase;
+package com.teamX.projetx.database;
 
 /**
  * Created by Paul on 11/07/2017.

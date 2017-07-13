@@ -1,4 +1,6 @@
-package com.teamX.projetx.DataBase;
+package com.teamX.projetx.database;
+
+import cz.msebera.android.httpclient.Header;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -7,14 +9,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cz.msebera.android.httpclient.Header;
-
 /**
  * Created by Paul on 12/07/2017.
  */
 
 public class DataBaseUserInteraction {
-    public static void userRegister(String nickname, String mail, String password){
+
+    /**
+     *
+     */
+    private DataBaseUserInteraction(){}
+
+    /**
+     *
+     * @param nickname
+     * @param mail
+     * @param password
+     */
+    public static void userRegister(final String nickname, final String mail, final String password) {
         RequestParams params = new RequestParams();
         params.put("nickname", nickname);
         params.put("password", password);
@@ -61,7 +73,12 @@ public class DataBaseUserInteraction {
         });
     }
 
-    public static void userLogin(String nickname, String password){
+    /**
+     *
+     * @param nickname
+     * @param password
+     */
+    public static void userLogin(final String nickname, final String password) {
         RequestParams params = new RequestParams();
         params.put("nickname", nickname);
         params.put("password", password);

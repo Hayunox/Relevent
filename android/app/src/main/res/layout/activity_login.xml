@@ -5,8 +5,10 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+
     android:padding="5dp"
-    tools:context="com.teamX.projetx.User.LoginActivity"
+    tools:context="com.teamX.projetx.user.LoginActivity"
+
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 

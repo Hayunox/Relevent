@@ -1,8 +1,8 @@
-package com.teamX.projetx.Main;
+package com.teamX.projetx.main;
 
 import com.teamX.projetx.R;
-import com.teamX.projetx.Utils.Localization;
-import com.teamX.projetx.User.LoginActivity;
+import com.teamX.projetx.utils.Localization;
+import com.teamX.projetx.user.LoginActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -24,8 +24,10 @@ public class SplashScreenActivity extends Activity {
         setContentView(R.layout.activity_splash_screen);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         }
-        LocationManager locationManager = (LocationManager) this.getSystemService(this.getApplicationContext().LOCATION_SERVICE);
-        Localization loc = new Localization(locationManager);
+
+        //LocationManager locationManager = (LocationManager) this.getSystemService(this.getApplicationContext().LOCATION_SERVICE);
+        //Localization loc = new Localization(locationManager);
+
         new Handler().postDelayed(new Runnable() {
 
             /*
