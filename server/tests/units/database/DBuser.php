@@ -19,14 +19,14 @@ use mageekguy\atoum\test;
 /**
  * @property  test_user_data
  */
-class DBUser extends test
+class DBuser extends test
 {
     private $test_user_id;
-    private $test_user_nickname = "test_nick";
+    private $test_user_nickname = 'test_nick';
     private $test_user_name;
     private $test_user_surname;
-    private $test_user_password = "test_pwd";
-    private $test_user_mail = "test_mail@us.fr";
+    private $test_user_password = 'test_pwd';
+    private $test_user_mail = 'test_mail@us.fr';
     private $test_user_data;
 
     private $connection;
@@ -51,7 +51,8 @@ class DBUser extends test
             ->isGreaterThan(-1);
     }
 
-    public function testGetUserData(){
+    public function testGetUserData()
+    {
         $this
             ->newTestedInstance->user_id = $this->test_user_id;
 
@@ -71,7 +72,7 @@ class DBUser extends test
             ->newTestedInstance->userKeyExists($this->test_user_data['user_key'])
             ->isTrue();
         $this
-            ->newTestedInstance->userKeyExists("zaeazeazeazddzeczvrevevevfdjn")
+            ->newTestedInstance->userKeyExists('zaeazeazeazddzeczvrevevevfdjn')
             ->isFalse();
     }
 
@@ -82,7 +83,7 @@ class DBUser extends test
             ->isTrue();
 
         $this
-            ->newTestedInstance->userNickNameExists("zadavert@ezrzer.com")
+            ->newTestedInstance->userNickNameExists('zadavert@ezrzer.com')
             ->isFalse();
     }
 
@@ -93,9 +94,11 @@ class DBUser extends test
             ->isTrue();
 
         $this
-            ->newTestedInstance->userNickNameExists("zadaverthrtjeynse")
+            ->newTestedInstance->userNickNameExists('zadaverthrtjeynse')
             ->isFalse();
     }
 
-    public function getAutoloaderFile(){}
+    public function getAutoloaderFile()
+    {
+    }
 }
