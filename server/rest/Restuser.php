@@ -63,6 +63,7 @@ class Restuser
     /**
      * @param $name
      * @param $password
+     *
      * @return string
      */
     public static function userLogin($name, $password)
