@@ -1,3 +1,7 @@
+services:
+  - mysql
+before_install:
+  - mysql -e server/database/SQL/projetx.sql
 before_script: composer require atoum/atoum
 script: vendor/bin/atoum
 language: php
