@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 14/07/2017
- * Time: 20:12
+ * Time: 20:12.
  */
 
 namespace server\rest;
@@ -62,7 +62,6 @@ class ProjetXRestServer
 
         $this->app->run();
     }
-
 
     /**
      * Adding Middle Layer to authenticate every request
