@@ -16,7 +16,6 @@ use Slim\Http\Response;
 
 use server\database\DBconnection;
 use server\database\DBuser;
-use server\ProjetXServer;
 
 class Restuser
 {
@@ -31,7 +30,7 @@ class Restuser
          */
         $app->post('/register', function (Request $request, Response $response) {
             // check for required params
-            ProjetXServer::verifyRequiredParams($request, $response, ['nickname', 'mail', 'password']);
+            ProjetXRestServer::verifyRequiredParams($request, $response, ['nickname', 'mail', 'password']);
 
             // reading post params
             $name = $request->getParam('nickname');

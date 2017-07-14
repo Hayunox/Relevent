@@ -32,7 +32,7 @@ public class DataBaseUserInteraction {
         params.put("password", password);
         params.put("mail", mail);
 
-        DataBaseRestClient.post("register", params, new JsonHttpResponseHandler() {
+        DataBaseRestClient.post("rest/register", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
