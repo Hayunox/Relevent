@@ -35,12 +35,12 @@ $runner->addReport($coverallsReport);*/
 
 //CODE COVERAGE SETUP
 
-/*$coverageField = new atoum\report\fields\runner\coverage\html('ProjetX', 'reports');
+$coverageField = new atoum\report\fields\runner\coverage\html('ProjetX', 'reports');
 
 $coverageField->setRootUrl('https://coveralls.io/github/Herklos/ProjetX');
 
 $report->addField($coverageField);
-*/
+
 
 
 //TEST EXECUTION SETUP
