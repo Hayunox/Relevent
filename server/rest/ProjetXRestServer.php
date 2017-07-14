@@ -10,12 +10,11 @@ namespace server\rest;
 
 require_once __DIR__.'/Restuser.php';
 
+use server\database\DBconnection;
+use server\database\DBuser;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
-
-use server\database\DBconnection;
-use server\database\DBuser;
 
 class ProjetXRestServer
 {

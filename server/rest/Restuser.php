@@ -16,14 +16,13 @@ require_once __DIR__.'/../database/DBuser.php';
 use server\database\DBconnection;
 use server\database\DBuser;
 
-use server\ProjetXServer;
-
 class Restuser
 {
     /**
      * @param $name
      * @param $email
      * @param $password
+     *
      * @return string
      */
     public static function userRegistration($name, $email, $password)
