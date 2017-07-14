@@ -16,36 +16,45 @@ use mageekguy\atoum\reports;
 
 $report = $script->addDefaultReport();
 
-/*$coverallsReport = new reports\asynchronous\coveralls('classes', "qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy");
-$defaultFinder = $coverallsReport->getBranchFinder();
-$coverallsReport
-    ->setBranchFinder(function() use ($defaultFinder) {
-        if (($branch = getenv('TRAVIS_BRANCH')) === false)
-        {
-            $branch = $defaultFinder();
-        }
-        return $branch;
-    }
-    )
-    ->setServiceName('travis-ci')
-    ->setServiceJobId(getenv('TRAVIS_JOB_ID'))
-    ->addDefaultWriter()
-;
-$runner->addReport($coverallsReport);*/
-
+//TEST EXECUTION SETUP
+$runner->addTestsFromDirectory('server/tests/units/database');
 
 //CODE COVERAGE SETUP
 
-/*$coverageField = new atoum\report\fields\runner\coverage\html('ProjetX', 'reports');
+/*
+Publish code coverage report on coveralls.io
+*/
+$sources = '/path/to/sources/directory';
+$token = 'qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy';
+$coverallsReport = new reports\asynchronous\coveralls($sources, $token);
 
-$coverageField->setRootUrl('https://coveralls.io/github/Herklos/ProjetX');
+/*
+If you are using Travis-CI (or any other CI tool), you should customize the report
+* https://coveralls.io/docs/api
+* http://about.travis-ci.org/docs/user/ci-environment/#Environment-variables
+* https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project#Buildingasoftwareproject-JenkinsSetEnvironmentVariables
+*/
+$defaultFinder = $coverallsReport->getBranchFinder();
+$coverallsReport
+    ->setBranchFinder(function () use ($defaultFinder) {
+        if (($branch = getenv('TRAVIS_BRANCH')) === false) {
+            $branch = $defaultFinder();
+        }
 
-$report->addField($coverageField);*/
+        return $branch;
+    })
+    /*
+    https://coveralls.zendesk.com/hc/en-us/articles/201774865-API-Introduction
+    > Setting service_name to "travis-ci" and service_job_id to the Travis Job ID will automatically look up the appropriate build and repository, and assign the job correctly on Coveralls.
+    */
+    ->setServiceName(getenv('TRAVIS') ? 'travis-ci' : null)
+    ->setServiceJobId(getenv('TRAVIS_JOB_ID') ?: null)
+    ->addDefaultWriter()
+;
+
+$runner->addReport($coverallsReport);
 
 
-
-//TEST EXECUTION SETUP
-$runner->addTestsFromDirectory('server/tests/units/database');
 
 /*
 TEST GENERATOR SETUP

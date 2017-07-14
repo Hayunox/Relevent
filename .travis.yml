@@ -8,5 +8,5 @@ language: php
 php:
     - '7.0'
 script:
-    - php server/tests/atoum.phar -ulr
+    - php server/tests/atoum.phar
 repo_token: qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy
