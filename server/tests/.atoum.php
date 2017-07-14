@@ -11,6 +11,7 @@ More information on documentation:
 */
 
 use \mageekguy\atoum;
+use mageekguy\atoum\autoloader;
 use mageekguy\atoum\reports;
 
 $report = $script->addDefaultReport();
@@ -46,6 +47,8 @@ $report->addField($coverageField);
 //TEST EXECUTION SETUP
 $runner->addTestsFromDirectory('server/tests/units/database');
 
+
+autoloader::get()->addDirectory(__NAMESPACE__ . '\units', __DIR__ . '/units');
 
 /*
 TEST GENERATOR SETUP
