@@ -3,18 +3,17 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 14/07/2017
- * Time: 20:12
+ * Time: 20:12.
  */
 
 namespace server\rest;
 
 require_once __DIR__.'/Restuser.php';
 
-use Slim\App;
-use Slim\Http\Response;
-
 use server\database\DBconnection;
 use server\database\DBuser;
+use Slim\App;
+use Slim\Http\Response;
 
 class ProjetXRestServer
 {
@@ -41,7 +40,6 @@ class ProjetXRestServer
 
         $this->app->run();
     }
-
 
     /**
      * Adding Middle Layer to authenticate every request

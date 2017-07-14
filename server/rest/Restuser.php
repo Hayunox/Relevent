@@ -12,8 +12,6 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;
-
-use server\ProjetXServer;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
