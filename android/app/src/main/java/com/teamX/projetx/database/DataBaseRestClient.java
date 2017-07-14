@@ -9,7 +9,7 @@ import com.loopj.android.http.RequestParams;
  */
 
 public class DataBaseRestClient {
-    private static final String BASE_URL = "http://192.168.2.77/projetX/index.php";
+    private static final String BASE_URL = "http://192.168.2.82/projetX/index.php";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

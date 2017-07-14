@@ -12,6 +12,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use PDO;
 use Pixie\Connection;
+use Pixie\QueryBuilder\QueryBuilderHandler;
 
 class DBconnection
 {
@@ -39,12 +40,12 @@ class DBconnection
     /**
      * Establishing database connection.
      *
-     * @return \Pixie\QueryBuilder\QueryBuilderHandler
+     * @return QueryBuilderHandler
      */
     public function connect()
     {
         $this->connection = new Connection('mysql', $this->config, 'PX');
 
-        return new \Pixie\QueryBuilder\QueryBuilderHandler($this->connection);
+        return new QueryBuilderHandler($this->connection);
     }
 }

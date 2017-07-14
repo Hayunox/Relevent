@@ -23,7 +23,7 @@ class DBconnection extends test
             // creation of a new instance of the tested class
             ->given($this->newTestedInstance)
             ->object($this->newTestedInstance->connect())
-            ->hasSize(1);
+            ->hasSize(3);
     }
 
     public function getAutoloaderFile()
