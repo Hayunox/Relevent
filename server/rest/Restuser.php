@@ -59,4 +59,30 @@ class Restuser
         // echo json response
         return $message;
     }
+
+    /**
+     * @param $name
+     * @param $password
+     * @return string
+     */
+    public static function userLogin($name, $password)
+    {
+        $db = new DBConnection();
+        $connection = $db->connect();
+
+        // User validation
+        $user = new DBuser(null);
+
+        // validating email address
+        if ($user->tryLogin($connection, $name, $password)) {
+            $message = 'USER_LOGIN_SUCCESSFULLY';
+
+        // Connection failed
+        } else {
+            $message = 'USER_LOGIN_FAILED';
+        }
+
+        // echo json response
+        return $message;
+    }
 }

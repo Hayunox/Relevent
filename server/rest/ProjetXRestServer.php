@@ -56,6 +56,27 @@ class ProjetXRestServer
         });
 
         /*
+         * User Registration
+         * url - /register
+         * method - POST
+         * params - name, email, password
+         */
+        $this->app->post('/login', function (Request $request, Response $response) {
+            ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'password']);
+
+            // reading post params
+            $name = $request->getParam('nickname');
+            $password = $request->getParam('password');
+
+            $message = Restuser::userLogin($name, $password);
+
+            $response
+                ->withStatus(200)
+                ->withHeader('Content-type', 'application/json')
+                ->write($message);
+        });
+
+        /*
          * Method with authentificatio
          */
 

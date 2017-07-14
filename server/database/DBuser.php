@@ -134,6 +134,21 @@ class DBuser
     }
 
     /**
+     * @param $db
+     * @param $nickanme
+     * @param $password
+     * @return bool
+     */
+    public function tryLogin($db, $nickanme, $password){
+        $query = $db->table($this->user_table)
+            ->where($this->table_row['user_password'], '=', $this->userPasswordEncrypt($password))
+            ->where($this->table_row['user_nickname'], '=', $nickanme);
+        $result = $query->first();
+
+        return ($result == null) ? false : true;
+    }
+
+    /**
      * @param $password
      *
      * @return string
