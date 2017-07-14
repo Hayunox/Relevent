@@ -5,23 +5,23 @@
  * Date: 11/07/2017
  * Time: 17:22.
  */
+
 namespace server;
 
 require_once __DIR__.'/vendor/autoload.php';
 
 require_once __DIR__.'/rest/Restuser.php';
 
-use Slim\App;
-use Slim\Http\Response;
-
 use server\database\DBconnection;
 use server\database\DBuser;
 use server\rest\Restuser;
+use Slim\App;
+use Slim\Http\Response;
 
 // Start Server
 $srv = new ProjetXServer();
 
-class ProjetXServer
+class index
 {
     private $app;
     private $container;
@@ -46,7 +46,6 @@ class ProjetXServer
 
         $this->app->run();
     }
-
 
     /**
      * Adding Middle Layer to authenticate every request
