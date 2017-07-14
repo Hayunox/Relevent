@@ -10,7 +10,7 @@ use Pixie\QueryBuilder\QueryBuilderHandler;
  */
 class DBuser
 {
-    private $user_id;
+    public $user_id;
     private $user_nickname;
     private $user_name;
     private $user_surname;
@@ -37,14 +37,6 @@ class DBuser
      * @param $user_id
      */
     public function __construct($user_id)
-    {
-        $this->user_id = $user_id;
-    }
-
-    /**
-     * @param $user_id
-     */
-    public function setUserId($user_id)
     {
         $this->user_id = $user_id;
     }
