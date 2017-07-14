@@ -11,6 +11,7 @@ namespace server\rest;
 require_once __DIR__.'/Restuser.php';
 
 use Slim\App;
+use Slim\Http\Request;
 use Slim\Http\Response;
 
 use server\database\DBconnection;
@@ -33,7 +34,27 @@ class ProjetXRestServer
         /*
          * Method without authentification
          */
-        Restuser::userRegistration($this->app);
+        /*
+         * User Registration
+         * url - /register
+         * method - POST
+         * params - name, email, password
+         */
+        $this->app->post('/register', function (Request $request, Response $response) {
+            ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'mail', 'password']);
+
+            // reading post params
+            $name = $request->getParam('nickname');
+            $email = $request->getParam('mail');
+            $password = $request->getParam('password');
+
+            $message = Restuser::userRegistration($name, $email, $password);
+
+            $response
+                ->withStatus(200)
+                ->withHeader('Content-type', 'application/json')
+                ->write($message);
+        });
 
         /*
          * Method with authentificatio

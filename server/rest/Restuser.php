@@ -10,67 +10,54 @@ namespace server\rest;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+require_once __DIR__.'/../database/DBconnection.php';
+require_once __DIR__.'/../database/DBuser.php';
+
 use server\database\DBconnection;
 use server\database\DBuser;
 
 use server\ProjetXServer;
-use Slim\App;
-use Slim\Http\Request;
-use Slim\Http\Response;
 
 class Restuser
 {
-    public static function userRegistration(App $app)
+    /**
+     * @param $name
+     * @param $email
+     * @param $password
+     * @return string
+     */
+    public static function userRegistration($name, $email, $password)
     {
-        /*
-         * User Registration
-         * url - /register
-         * method - POST
-         * params - name, email, password
-         */
-        $app->post('/register', function (Request $request, Response $response) {
-            // check for required params
-            ProjetXRestServer::verifyRequiredParams($request, $response, ['nickname', 'mail', 'password']);
+        $db = new DBConnection();
+        $connection = $db->connect();
 
-            // reading post params
-            $name = $request->getParam('nickname');
-            $email = $request->getParam('mail');
-            $password = $request->getParam('password');
+        // User validation
+        $user = new DBuser(null);
 
-            $db = new DBConnection();
-            $connection = $db->connect();
+        // validating email address
+        if ($user->userMailExists($connection, $email)) {
+            $message = 'USER_MAIL_EXISTED';
 
-            // User validation
-            $user = new DBuser(null);
+            // validating nickname
+        } elseif ($user->userNickNameExists($connection, $name)) {
+            $message = 'USER_NICKNAME_EXISTED';
 
-            // validating email address
-            if ($user->userMailExists($connection, $email)) {
-                $message = 'USER_MAIL_EXISTED';
+            // User validated
+        } else {
+            $res = $user->userCreate($connection, [
+                'user_nickname'     => $name,
+                'user_mail'         => $email,
+                'user_password'     => $password,
+            ]);
 
-                // validating nickname
-            } elseif ($user->userNickNameExists($connection, $name)) {
-                $message = 'USER_NICKNAME_EXISTED';
-
-                // User validated
+            if ($res > -1) {
+                $message = 'USER_CREATED_SUCCESSFULLY';
             } else {
-                $res = $user->userCreate($connection, [
-                    'user_nickname'     => $name,
-                    'user_mail'         => $email,
-                    'user_password'     => $password,
-                ]);
-
-                if ($res > -1) {
-                    $message = 'USER_CREATED_SUCCESSFULLY';
-                } else {
-                    $message = 'USER_CREATE_FAILED';
-                }
+                $message = 'USER_CREATE_FAILED';
             }
+        }
 
-            // echo json response
-            $response
-                ->withStatus(200)
-                ->withHeader('Content-type', 'application/json')
-                ->write($message);
-        });
+        // echo json response
+        return $message;
     }
 }
