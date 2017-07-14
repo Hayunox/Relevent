@@ -3,23 +3,23 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 14/07/2017
- * Time: 19:51
+ * Time: 19:51.
  */
 
 namespace server\rest;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use server\database\DBconnection;
+use server\database\DBuser;
+
+use server\ProjetXServer;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-use server\database\DBconnection;
-use server\database\DBuser;
-
 class Restuser
 {
-
     public static function userRegistration(App $app)
     {
         /*
