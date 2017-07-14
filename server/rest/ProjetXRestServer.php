@@ -40,7 +40,7 @@ class ProjetXRestServer
          * params - name, email, password
          */
         $this->app->post('/user/register', function (Request $request, Response $response) {
-            if(ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'mail', 'password'])){
+            if (ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'mail', 'password'])) {
                 // reading post params
                 $name = $request->getParam('nickname');
                 $email = $request->getParam('mail');
@@ -62,7 +62,7 @@ class ProjetXRestServer
          * params - name, email, password
          */
         $this->app->post('/user/login', function (Request $request, Response $response) {
-            if(ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'password'])){
+            if (ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'password'])) {
                 // reading post params
                 $name = $request->getParam('nickname');
                 $password = $request->getParam('password');
@@ -131,8 +131,10 @@ class ProjetXRestServer
 
     /**
      * Verifying required params posted or not.
+     *
      * @param Response $response
      * @param $required_fields
+     *
      * @return bool
      */
     public static function verifyRequiredParams(Response $response, $required_fields)
@@ -159,8 +161,10 @@ class ProjetXRestServer
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
                 ->write($message);
+
             return false;
         }
+
         return true;
     }
 }
