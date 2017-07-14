@@ -25,5 +25,7 @@ class DBconnection extends test
             ->newTestedInstance->connect();
     }
 
-    public function getAutoloaderFile(){}
+    public function getAutoloaderFile()
+    {
+    }
 }

@@ -65,5 +65,7 @@ class DBuser extends test
             ->boolean($this->testedInstance->userNickNameExists($this->test_connection, "zadaverthrtjeynse"))->isFalse();
     }
 
-    public function getAutoloaderFile(){}
+    public function getAutoloaderFile()
+    {
+    }
 }
