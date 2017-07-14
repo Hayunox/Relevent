@@ -28,10 +28,6 @@ class DBuser extends test
     private $test_user_data;
     private $test_connection;
 
-    public function test__construct()
-    {
-    }
-
     public function testUserCreation()
     {
         $this->test_connection = (new ConnectionToDatabase())->connect();
