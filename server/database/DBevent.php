@@ -9,8 +9,6 @@
 
 namespace server\database;
 
-use Pixie\QueryBuilder\QueryBuilderHandler;
-
 class DBevent
 {
 }

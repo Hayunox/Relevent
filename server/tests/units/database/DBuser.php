@@ -20,9 +20,9 @@ use server\database\DBconnection as ConnectionToDatabase;
 
 class DBuser extends test
 {
-    private $test_user_nickname = "test_nick";
-    private $test_user_password = "test_pwd";
-    private $test_user_mail     = "test_mail@us.fr";
+    private $test_user_nickname = 'test_nick';
+    private $test_user_password = 'test_pwd';
+    private $test_user_mail = 'test_mail@us.fr';
 
     private $test_user_id;
     private $test_user_data;
@@ -30,7 +30,6 @@ class DBuser extends test
 
     public function test__construct()
     {
-
     }
 
     public function testUserCreation()
@@ -45,7 +44,7 @@ class DBuser extends test
                 'user_mail'         => $this->test_user_mail,
                 'user_password'     => $this->test_user_password,
             ]))
-            ->integer((int)$test_user_id)
+            ->integer((int) $test_user_id)
                 ->isGreaterThan(-1)
             ->given($this->testedInstance->user_id = $test_user_id)
             ->given($this->test_user_data = $this->testedInstance->getUserData($this->test_connection))
@@ -57,12 +56,12 @@ class DBuser extends test
                 ->contains($this->test_user_mail)
                 ->contains($this->testedInstance->userPasswordEncrypt($this->test_user_password))
 
-            ->integer((int)$this->testedInstance->userKeyExists($this->test_connection, $this->test_user_data['user_key']))->isGreaterThan(-1)
-            ->boolean($this->testedInstance->userKeyExists($this->test_connection, "zaeazeazeazddzeczvrevevevfdjn"))->isFalse()
+            ->integer((int) $this->testedInstance->userKeyExists($this->test_connection, $this->test_user_data['user_key']))->isGreaterThan(-1)
+            ->boolean($this->testedInstance->userKeyExists($this->test_connection, 'zaeazeazeazddzeczvrevevevfdjn'))->isFalse()
             ->boolean($this->testedInstance->userMailExists($this->test_connection, $this->test_user_mail))->isTrue()
-            ->boolean($this->testedInstance->userMailExists($this->test_connection, "zadavert@ezrzer.com"))->isFalse()
+            ->boolean($this->testedInstance->userMailExists($this->test_connection, 'zadavert@ezrzer.com'))->isFalse()
             ->boolean($this->testedInstance->userNickNameExists($this->test_connection, $this->test_user_nickname))->isTrue()
-            ->boolean($this->testedInstance->userNickNameExists($this->test_connection, "zadaverthrtjeynse"))->isFalse();
+            ->boolean($this->testedInstance->userNickNameExists($this->test_connection, 'zadaverthrtjeynse'))->isFalse();
     }
 
     public function getAutoloaderFile()
