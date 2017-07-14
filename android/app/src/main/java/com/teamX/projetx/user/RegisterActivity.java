@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.teamX.projetx.R;
-import com.teamX.projetx.database.DataBaseUserInteraction;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -32,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         this.register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataBaseUserInteraction.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
+                //DataBaseUserInteraction.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
             }
         });
     }
