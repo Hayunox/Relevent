@@ -1,0 +1,8 @@
+machine:
+  php:
+    version: 7.0
+dependencies:
+  post:
+    - sudo cp ~/projetX/circle-server-config /etc/apache2/sites-available
+    - sudo a2ensite circle-server-config
+    - sudo service apache2 restart
