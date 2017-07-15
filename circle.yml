@@ -4,6 +4,6 @@ machine:
 dependencies:
   post:
     - sudo rm /etc/apache2/mods-enabled/php5.load
-    - sudo cp ~/projetX/circle-server-config /etc/apache2/sites-available
+    - sudo cp circle-server-config /etc/apache2/sites-available
     - sudo a2ensite circle-server-config
     - sudo service apache2 restart
