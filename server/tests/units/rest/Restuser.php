@@ -47,6 +47,7 @@ class Restuser extends test
                 ->isIdenticalTo(404)
             ->string((string)$resOut->getBody())
                 ->contains('Not Found');
+            //->function('userRegistration')->wasCalled()->once();
     }
 
     public function testUserLogin(){
@@ -70,9 +71,10 @@ class Restuser extends test
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(404)
+                ->isIdenticalTo(404)
             ->string((string)$resOut->getBody())
-            ->contains('Not Found');
+                ->contains('Not Found');
+            //->function('userLogin')->wasCalled()->once();
     }
 
     public function getAutoloaderFile(){}

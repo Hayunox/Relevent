@@ -3,7 +3,6 @@ package com.teamX.projetx.database;
 import com.teamX.projetx.user.User;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -28,7 +27,7 @@ public interface UserService {
 
     @Multipart
     @POST("user/register")
-    Call<User> userRegister(@Body String nickname, @Body String mail, @Body String password);
+    Call<User> userRegister(@Part("nickname") String nickname, @Part("mail") String mail, @Part("password") String password);
 
     @Multipart
     @POST("user/login")

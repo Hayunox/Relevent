@@ -39,7 +39,7 @@ class ProjetXRestServer
          * method - POST
          * params - name, email, password
          */
-        $this->app->post('/user/register', function (Request $request, Response $response) {
+        $this->app->post('register', function (Request $request, Response $response) {
             if (ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'mail', 'password'])) {
                 // reading post params
                 $name = $request->getParam('nickname');
@@ -51,7 +51,7 @@ class ProjetXRestServer
                 $response
                     ->withStatus(200)
                     ->withHeader('Content-type', 'application/json')
-                    ->write($message);
+                    ->withJson($message);
             }
         });
 
@@ -61,7 +61,7 @@ class ProjetXRestServer
          * method - POST
          * params - name, email, password
          */
-        $this->app->post('/user/login', function (Request $request, Response $response) {
+        $this->app->post('login', function (Request $request, Response $response) {
             if (ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'password'])) {
                 // reading post params
                 $name = $request->getParam('nickname');
@@ -72,7 +72,7 @@ class ProjetXRestServer
                 $response
                     ->withStatus(200)
                     ->withHeader('Content-type', 'application/json')
-                    ->write($message);
+                    ->withJson($message);
             }
         });
 
@@ -117,7 +117,7 @@ class ProjetXRestServer
                 $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
-                    ->write($message);
+                    ->withJson($message);
             }
         } else {
             // user key is missing in header
@@ -125,7 +125,7 @@ class ProjetXRestServer
             $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
-                ->write($message);
+                ->withJson($message);
         }
     }
 
@@ -160,7 +160,7 @@ class ProjetXRestServer
             $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
-                ->write($message);
+                ->withJson($message);
 
             return false;
         }
