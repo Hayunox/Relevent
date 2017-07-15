@@ -50,7 +50,29 @@ class Restuser extends test
     }
 
     public function testUserLogin(){
+        $app = new App();
+        $app->getContainer();
+        // Prepare request and response objects
+        $env = Environment::mock([
+            'SCRIPT_NAME' => '/index.php',
+            'REQUEST_URI' => '/user/login',
+            'REQUEST_METHOD' => 'POST',
+        ]);
+        $uri = Uri::createFromEnvironment($env);
+        $headers = Headers::createFromEnvironment($env);
+        $cookies = [];
+        $serverParams = $env->all();
+        $body = new RequestBody();
+        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+        $res = new Response();
 
+        // Invoke app
+        $this
+            ->given($resOut = $app($req, $res))
+            ->integer($resOut->getStatusCode())
+            ->isIdenticalTo(404)
+            ->string((string)$resOut->getBody())
+            ->contains('Not Found');
     }
 
     public function getAutoloaderFile(){}
