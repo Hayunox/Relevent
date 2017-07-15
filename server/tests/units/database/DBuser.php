@@ -11,7 +11,6 @@ namespace server\tests\units\database;
 require_once __DIR__.'/../../../database/DBconnection.php';
 require_once __DIR__.'/../../../database/DBuser.php';
 
-use mageekguy\atoum\asserters\boolean;
 use mageekguy\atoum\test;
 use server\database\DBconnection as ConnectionToDatabase;
 
@@ -68,7 +67,7 @@ class DBuser extends test
             // Login function
             ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->testedInstance->userPasswordEncrypt($this->test_user_password)))->isTrue()
             ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->testedInstance->userPasswordEncrypt(rand(10))))->isFalse()
-            ->boolean($this->testedInstance->tryLogin($this->test_connection, "zadaverthrtjeynse", $this->testedInstance->userPasswordEncrypt($this->test_user_password)))->isFalse();
+            ->boolean($this->testedInstance->tryLogin($this->test_connection, 'zadaverthrtjeynse', $this->testedInstance->userPasswordEncrypt($this->test_user_password)))->isFalse();
     }
 
     public function getAutoloaderFile()
