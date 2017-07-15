@@ -1,7 +1,7 @@
 Listen 8080
 
 <VirtualHost *:8080>
-  LoadModule php7_module /opt/circleci/php/7/usr/lib/apache2/modules/libphp7.so 
+  LoadModule php5_module /opt/circleci/php/7.0.11/usr/lib/apache2/modules/libphp5.so 
 
   DocumentRoot /home/ubuntu/projetX/server-root
   ServerName localhost
