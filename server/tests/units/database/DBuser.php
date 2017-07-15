@@ -65,9 +65,9 @@ class DBuser extends test
             ->boolean($this->testedInstance->userNickNameExists($this->test_connection, 'zadaverthrtjeynse'))->isFalse()
 
             // Login function
-            ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->testedInstance->userPasswordEncrypt($this->test_user_password)))->isTrue()
-            ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->testedInstance->userPasswordEncrypt(rand(10))))->isFalse()
-            ->boolean($this->testedInstance->tryLogin($this->test_connection, 'zadaverthrtjeynse', $this->testedInstance->userPasswordEncrypt($this->test_user_password)))->isFalse();
+            ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->test_user_password))->isTrue()
+            ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, rand(10,100)))->isFalse()
+            ->boolean($this->testedInstance->tryLogin($this->test_connection, 'zadaverthrtjeynse', $this->test_user_password))->isFalse();
     }
 
     public function getAutoloaderFile()

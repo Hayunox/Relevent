@@ -51,7 +51,7 @@ class DBuser
      */
     public function getUserData(QueryBuilderHandler $db)
     {
-        $query = $db->table($this->user_table)->where($this->table_row['user_id'], '=', $this->user_id);
+        $query = $db->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
         $user_data = $query->first();
         $this->user_nickname = $user_data->{$this->table_row['user_nickname']};
         $this->user_name = $user_data->{$this->table_row['user_name']};
@@ -71,7 +71,7 @@ class DBuser
      */
     public function userNickNameExists(QueryBuilderHandler $db, $nickname)
     {
-        $query = $db->table($this->user_table)->where($this->table_row['user_nickname'], '=', $nickname);
+        $query = $db->table($this->user_table)->where($this->table_row['user_nickname'], $nickname);
 
         return ($query->first() == null) ? false : true;
     }
@@ -84,7 +84,7 @@ class DBuser
      */
     public function userMailExists(QueryBuilderHandler $db, $mail)
     {
-        $query = $db->table($this->user_table)->where($this->table_row['user_mail'], '=', $mail);
+        $query = $db->table($this->user_table)->where($this->table_row['user_mail'], $mail);
 
         return ($query->first() == null) ? false : true;
     }
@@ -97,7 +97,7 @@ class DBuser
      */
     public function userKeyExists(QueryBuilderHandler $db, $key)
     {
-        $query = $db->table($this->user_table)->where($this->table_row['user_key'], '=', $key);
+        $query = $db->table($this->user_table)->where($this->table_row['user_key'], $key);
         $result = $query->first();
 
         return ($result == null) ? false : $result->{$this->table_row['user_id']};
@@ -140,14 +140,13 @@ class DBuser
      *
      * @return bool
      */
-    public function tryLogin($db, $nickanme, $password)
+    public function tryLogin($db, $nickname, $password)
     {
         $query = $db->table($this->user_table)
-            ->where($this->table_row['user_password'], '=', $this->userPasswordEncrypt($password))
-            ->where($this->table_row['user_nickname'], '=', $nickanme);
-        $result = $query->first();
+            ->where($this->table_row['user_password'], $this->userPasswordEncrypt($password))
+            ->where($this->table_row['user_nickname'], $nickname);
 
-        return ($result == null) ? false : true;
+        return ($query->first() == null) ? false : true;
     }
 
     /**
