@@ -1,11 +1,4 @@
 <?php
-use Slim\Http\Body;
-use Slim\Http\Environment;
-use Slim\Http\Headers;
-use Slim\Http\Request;
-use Slim\Http\Response;
-use Slim\Http\Uri;
-use Slim\Route;
 
 /**
  * Created by PhpStorm.
@@ -13,34 +6,52 @@ use Slim\Route;
  * Date: 15/07/2017
  * Time: 10:52
  */
-class Restuser
+
+namespace server\tests\units\rest;
+
+require_once __DIR__.'/../../../rest/Restuser.php';
+
+use mageekguy\atoum\test;
+use Slim\Http\Environment;
+use Slim\Http\Headers;
+use Slim\Http\Request;
+use Slim\Http\RequestBody;
+use Slim\Http\Response;
+use Slim\Http\Uri;
+use Slim\App;
+
+class Restuser extends test
 {
 
     public function testUserRegistration(){
-       /* $scheme = 'http';
-        $user = 'test';
-        $password = '';
-        $host = 'localhost';
-        $path = '/foo/bar';
-        $port = 443;
-        $query = 'abc=123';
-        $fragment = 'section3';
-        $uri = new Uri($scheme, $host, $port, $path, $query, $fragment, $user, $password);
-        $this->assertEquals('josh@example.com', $uri->getAuthority());
+        $app = new App();
+        $app->getContainer();
+        // Prepare request and response objects
+        $env = Environment::mock([
+            'SCRIPT_NAME' => '/index.php',
+            'REQUEST_URI' => '/user/register',
+            'REQUEST_METHOD' => 'POST',
+        ]);
+        $uri = Uri::createFromEnvironment($env);
+        $headers = Headers::createFromEnvironment($env);
+        $cookies = [];
+        $serverParams = $env->all();
+        $body = new RequestBody();
+        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+        $res = new Response();
 
-        $callable = function ($req, $res, $args) {
-            return $res->write('foo');
-        };
-        $route = new Route(['GET'], '/', $callable);
-        $env = Environment::mock();
-        $uri = Uri::createFromString('https://example.com:80');
-
+        // Invoke app
         $this
-            ->given($this->newTestedInstance(null))*/
+            ->given($resOut = $app($req, $res))
+            ->integer($resOut->getStatusCode())
+                ->isIdenticalTo(404)
+            ->string((string)$resOut->getBody())
+                ->contains('Not Found');
     }
 
     public function testUserLogin(){
 
     }
 
+    public function getAutoloaderFile(){}
 }
