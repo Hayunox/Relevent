@@ -18,6 +18,7 @@ $report = $script->addDefaultReport();
 
 //TEST EXECUTION SETUP
 $runner->addTestsFromDirectory('server/tests/units/database');
+$runner->addTestsFromDirectory('server/tests/units/rest');
 
 //CODE COVERAGE SETUP
 
