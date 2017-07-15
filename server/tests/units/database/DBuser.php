@@ -11,6 +11,7 @@ namespace server\tests\units\database;
 require_once __DIR__.'/../../../database/DBconnection.php';
 require_once __DIR__.'/../../../database/DBuser.php';
 
+use mageekguy\atoum\asserters\boolean;
 use mageekguy\atoum\test;
 use server\database\DBconnection as ConnectionToDatabase;
 
@@ -35,6 +36,8 @@ class DBuser extends test
         // creation of a new instance of the tested class
         $this
             ->given($this->newTestedInstance(null))
+
+            // User creation
             ->given($test_user_id = $this->testedInstance->userCreate($this->test_connection, [
                 'user_nickname'     => $this->test_user_nickname,
                 'user_mail'         => $this->test_user_mail,
@@ -42,6 +45,8 @@ class DBuser extends test
             ]))
             ->integer((int) $test_user_id)
                 ->isGreaterThan(-1)
+
+            // User data
             ->given($this->testedInstance->user_id = $test_user_id)
             ->given($this->test_user_data = $this->testedInstance->getUserData($this->test_connection))
             ->array($this->test_user_data)
@@ -52,12 +57,18 @@ class DBuser extends test
                 ->contains($this->test_user_mail)
                 ->contains($this->testedInstance->userPasswordEncrypt($this->test_user_password))
 
+            // Exists functions
             ->integer((int) $this->testedInstance->userKeyExists($this->test_connection, $this->test_user_data['user_key']))->isGreaterThan(-1)
             ->boolean($this->testedInstance->userKeyExists($this->test_connection, 'zaeazeazeazddzeczvrevevevfdjn'))->isFalse()
             ->boolean($this->testedInstance->userMailExists($this->test_connection, $this->test_user_mail))->isTrue()
             ->boolean($this->testedInstance->userMailExists($this->test_connection, 'zadavert@ezrzer.com'))->isFalse()
             ->boolean($this->testedInstance->userNickNameExists($this->test_connection, $this->test_user_nickname))->isTrue()
-            ->boolean($this->testedInstance->userNickNameExists($this->test_connection, 'zadaverthrtjeynse'))->isFalse();
+            ->boolean($this->testedInstance->userNickNameExists($this->test_connection, 'zadaverthrtjeynse'))->isFalse()
+
+            // Login function
+            ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->testedInstance->userPasswordEncrypt($this->test_user_password)))->isTrue()
+            ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->testedInstance->userPasswordEncrypt(rand(10))))->isFalse()
+            ->boolean($this->testedInstance->tryLogin($this->test_connection, "zadaverthrtjeynse", $this->testedInstance->userPasswordEncrypt($this->test_user_password)))->isFalse();
     }
 
     public function getAutoloaderFile()
