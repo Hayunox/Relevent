@@ -31,8 +31,8 @@
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
-            android:layout_height="147dp"
-            app:srcCompat="@android:drawable/star_big_on" />
+            android:layout_height="207dp"
+            app:srcCompat="@drawable/ak47" />
 
         <LinearLayout
             android:layout_width="@dimen/input_text_width"
@@ -46,6 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="4dp"
+                android:backgroundTint="@android:color/black"
+                android:backgroundTintMode="add"
                 android:elevation="1dp"
                 android:ems="10"
                 android:hapticFeedbackEnabled="false"
@@ -62,6 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="4dp"
+                android:backgroundTint="@android:color/black"
+                android:backgroundTintMode="add"
                 android:elegantTextHeight="false"
                 android:elevation="1dp"
                 android:ems="10"
