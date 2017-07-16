@@ -22,7 +22,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:scrollbarAlwaysDrawHorizontalTrack="false"
-        android:weightSum="0.70"
+        android:weightSum="0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints"
@@ -31,13 +31,15 @@
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
-            android:layout_height="207dp"
-            app:srcCompat="@drawable/ak47" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/tt9955" />
 
         <LinearLayout
             android:layout_width="@dimen/input_text_width"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <EditText
@@ -79,7 +81,8 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_weight="0"
                 android:backgroundTint="?android:attr/colorActivatedHighlight"
                 android:elevation="0dp"
                 android:text="Connexion"
@@ -106,6 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
+            android:layout_weight="1.5"
             android:orientation="horizontal">
 
             <TextView
