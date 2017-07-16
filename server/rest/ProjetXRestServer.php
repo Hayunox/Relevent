@@ -25,7 +25,6 @@ class ProjetXRestServer
      */
     public function __construct()
     {
-        error_log("server constructed : http://$_SERVER[HTTP_HOST]|URI=$_SERVER[REQUEST_URI]|SCRIPT=$_SERVER[SCRIPT_NAME]");
         $this->app = new App();
 
         $this->container = $this->app->getContainer();
