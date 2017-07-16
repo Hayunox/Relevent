@@ -7,15 +7,15 @@
     tools:context="com.teamX.projetx.user.RegisterActivity">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,8 +63,9 @@
 
                 <EditText
                     android:id="@+id/editTextNickname"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/black"
                     android:backgroundTintMode="add"
@@ -72,30 +73,35 @@
                     android:hint="Pseudo"
                     android:inputType="textPersonName"
                     android:singleLine="false"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
                     android:theme="@android:style/Theme.Translucent" />
 
                 <EditText
                     android:id="@+id/editTextMail"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/black"
                     android:backgroundTintMode="add"
                     android:ems="10"
                     android:hint="Adresse mail"
                     android:inputType="textEmailAddress"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
                     android:theme="@android:style/Theme.Translucent" />
 
                 <EditText
                     android:id="@+id/editTextPassword"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/black"
                     android:backgroundTintMode="add"
                     android:ems="10"
                     android:hint="Mot de passe"
                     android:inputType="textPassword"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
                     android:theme="@android:style/Theme.Translucent" />
 
                 <Button
