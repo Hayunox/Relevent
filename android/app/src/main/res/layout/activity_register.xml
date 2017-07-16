@@ -7,8 +7,8 @@
     tools:context="com.teamX.projetx.user.RegisterActivity">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -27,44 +27,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="108dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/templogo" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/templogo" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="143dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/templogo" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/editTextNickname"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/black"
                     android:backgroundTintMode="add"
@@ -72,38 +42,44 @@
                     android:hint="Pseudo"
                     android:inputType="textPersonName"
                     android:singleLine="false"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:theme="@android:style/Theme.Translucent" />
 
                 <EditText
                     android:id="@+id/editTextMail"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/black"
                     android:backgroundTintMode="add"
                     android:ems="10"
                     android:hint="Adresse mail"
                     android:inputType="textEmailAddress"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:theme="@android:style/Theme.Translucent" />
 
                 <EditText
                     android:id="@+id/editTextPassword"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/black"
                     android:backgroundTintMode="add"
                     android:ems="10"
-                    android:hint="Mot de passe"
+                    android:hint="Password"
                     android:inputType="textPassword"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:theme="@android:style/Theme.Translucent" />
 
                 <Button
                     android:id="@+id/buttonRegister"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="1"
-                    android:backgroundTint="?android:attr/colorActivatedHighlight"
+                    android:backgroundTint="?android:attr/colorMultiSelectHighlight"
                     android:hapticFeedbackEnabled="false"
                     android:text="S'inscrire"
                     android:textColor="@android:color/background_light"

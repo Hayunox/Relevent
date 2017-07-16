@@ -24,3 +24,7 @@ Android APP : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
 Testing
 ------------
 PHP server : [Travis-CI](https://travis-ci.org/Herklos/ProjetX)
+
+Contact
+------------
+projetxapp@gmail.com
