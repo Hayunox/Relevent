@@ -24,7 +24,7 @@ class DBconnection extends test
             ->given($this->newTestedInstance)
             ->object($this->newTestedInstance->getQueryBuilderHandler())
             ->hasSize(1)
-            ->String($this->newTestedInstance->securizeParam("azeazdaccz"))
+            ->String($this->newTestedInstance->securizeParam('azeazdaccz'))
             ->isNotEmpty();
     }
 

@@ -19,34 +19,37 @@ use server\database\DBuser;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class RestUserCreation {
-
+class RestUserCreation
+{
     /**
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
-     * @param array $args
+     * @param array    $args
+     *
      * @return Response
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
         $verification = ProjetXRestServer::getRequiredParams($response, ['nickname', 'mail', 'password']);
 
-        if ($verification["status"]) {
-            return $this->userRegister($verification["response"], $response);
+        if ($verification['status']) {
+            return $this->userRegister($verification['response'], $response);
         }
 
         return $response
             ->withStatus(400)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($verification["response"]);
+            ->withJson($verification['response']);
     }
 
     /**
      * @param $data
      * @param Response $response
+     *
      * @return Response
      */
-    public function userRegister($data, Response $response){
+    public function userRegister($data, Response $response)
+    {
         // reading post params
         $name = ProjetXRestServer::getSecureParam($data['nickname']);
         $email = ProjetXRestServer::getSecureParam($data['mail']);
@@ -87,35 +90,37 @@ class RestUserCreation {
     }
 }
 
-
-class RestUserLogin {
-
+class RestUserLogin
+{
     /**
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
-     * @param array $args
+     * @param array    $args
+     *
      * @return RestUserLogin|Response
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
         $verification = ProjetXRestServer::getRequiredParams($response, ['nickname', 'password']);
 
-        if ($verification["status"]) {
-            return $this->userLogin($verification["response"], $response);
+        if ($verification['status']) {
+            return $this->userLogin($verification['response'], $response);
         }
 
         return $response
             ->withStatus(400)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($verification["response"]);
+            ->withJson($verification['response']);
     }
 
     /**
      * @param $data
      * @param Response $response
+     *
      * @return Response
      */
-    public function userLogin($data, Response $response){
+    public function userLogin($data, Response $response)
+    {
         // reading post params
         $name = ProjetXRestServer::getSecureParam($data['nickname']);
         $password = ProjetXRestServer::getSecureParam($data['password']);
