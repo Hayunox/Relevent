@@ -49,9 +49,9 @@ class DBuser
      *
      * @return array
      */
-    public function getUserData(QueryBuilderHandler $db)
+    public function getUserData(DBconnection $db)
     {
-        $query = $db->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
+        $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
         $user_data = $query->first();
         $this->user_nickname = $user_data->{$this->table_row['user_nickname']};
         $this->user_name = $user_data->{$this->table_row['user_name']};
@@ -69,9 +69,9 @@ class DBuser
      *
      * @return bool
      */
-    public function userNickNameExists(QueryBuilderHandler $db, $nickname)
+    public function userNickNameExists(DBconnection $db, $nickname)
     {
-        $query = $db->table($this->user_table)->where($this->table_row['user_nickname'], $nickname);
+        $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_nickname'], $nickname);
 
         return ($query->first() == null) ? false : true;
     }
@@ -82,9 +82,9 @@ class DBuser
      *
      * @return bool
      */
-    public function userMailExists(QueryBuilderHandler $db, $mail)
+    public function userMailExists(DBconnection $db, $mail)
     {
-        $query = $db->table($this->user_table)->where($this->table_row['user_mail'], $mail);
+        $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_mail'], $mail);
 
         return ($query->first() == null) ? false : true;
     }
@@ -95,9 +95,9 @@ class DBuser
      *
      * @return bool
      */
-    public function userKeyExists(QueryBuilderHandler $db, $key)
+    public function userKeyExists(DBconnection $db, $key)
     {
-        $query = $db->table($this->user_table)->where($this->table_row['user_key'], $key);
+        $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_key'], $key);
         $result = $query->first();
 
         return ($result == null) ? false : $result->{$this->table_row['user_id']};
@@ -117,34 +117,33 @@ class DBuser
      *
      * @return int user_id
      */
-    public function userCreate(QueryBuilderHandler $db, $userArray)
+    public function userCreate(DBconnection $db, $userArray)
     {
         $data = [
             $this->table_row['user_key']                => $this->generateUserKey(),
-            $this->table_row['user_nickname']           => $userArray['user_nickname'],
+            $this->table_row['user_nickname']           => $db->securizeParam($userArray['user_nickname']),
             $this->table_row['user_name']               => '',
             $this->table_row['user_surname']            => '',
-            $this->table_row['user_password']           => $this->userPasswordEncrypt($userArray['user_password']),
+            $this->table_row['user_password']           => $db->securizeParam($this->userPasswordEncrypt($userArray['user_password'])),
             $this->table_row['user_mail']               => $userArray['user_mail'],
             $this->table_row['user_regitration_time']   => time(),
         ];
 
         // return new user_id
-        return $db->table($this->user_table)->insert($data);
+        return $db->getQueryBuilderHandler()->table($this->user_table)->insert($data);
     }
 
     /**
      * @param $db
-     * @param $nickanme
+     * @param $nickname
      * @param $password
-     *
      * @return bool
      */
-    public function tryLogin($db, $nickname, $password)
+    public function tryLogin(DBconnection $db, $nickname, $password)
     {
-        $query = $db->table($this->user_table)
-            ->where($this->table_row['user_password'], $this->userPasswordEncrypt($password))
-            ->where($this->table_row['user_nickname'], $nickname);
+        $query = $db->getQueryBuilderHandler()->table($this->user_table)
+            ->where($this->table_row['user_password'], $this->userPasswordEncrypt($db->securizeParam($password)))
+            ->where($this->table_row['user_nickname'], $db->securizeParam($nickname));
 
         return ($query->first() == null) ? false : true;
     }

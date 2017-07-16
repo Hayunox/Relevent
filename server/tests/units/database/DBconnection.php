@@ -22,8 +22,10 @@ class DBconnection extends test
         $this
             // creation of a new instance of the tested class
             ->given($this->newTestedInstance)
-            ->object($this->newTestedInstance->connect())
-            ->hasSize(1);
+            ->object($this->newTestedInstance->getQueryBuilderHandler())
+            ->hasSize(1)
+            ->String($this->newTestedInstance->securizeParam("azeazdaccz"))
+            ->isNotEmpty();
     }
 
     public function getAutoloaderFile()
