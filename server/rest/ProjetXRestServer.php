@@ -38,7 +38,7 @@ class ProjetXRestServer
          * method - POST
          * params - name, email, password
          */
-        $this->app->post('/user/register', new RestUserLogin());
+        $this->app->post('/user/register', new RestUserRegister());
 
         /*
          * User Registration
@@ -46,7 +46,7 @@ class ProjetXRestServer
          * method - POST
          * params - name, email, password
          */
-        $this->app->post('/user/login', new RestUserRegister());
+        $this->app->post('/user/login', new RestUserLogin());
 
         /*
          * Method with authentificatio
@@ -89,7 +89,7 @@ class ProjetXRestServer
                 $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
-                    ->withJson($message);
+                    ->withJson(json_encode($message));
             }
         } else {
             // user key is missing in header
@@ -97,7 +97,7 @@ class ProjetXRestServer
             $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
-                ->withJson($message);
+                ->withJson(json_encode($message));
         }
     }
 
@@ -114,6 +114,7 @@ class ProjetXRestServer
         $error_fields = '';
         $request_params = $_REQUEST;
         error_log(json_encode($request_params));
+
         // Handling PUT request params
         if(array_key_exists("REQUEST_METHOD",$_SERVER) && $_SERVER['REQUEST_METHOD'] == 'PUT'){
             parse_str($response->getBody(), $request_params);
@@ -129,7 +130,6 @@ class ProjetXRestServer
             // Required field(s) are missing or empty
             // echo error json and stop the app
             $message = 'Required field(s) '.substr($error_fields, 0, -2).' is missing or empty';
-
             return array(
                 "status"    => false,
                 "response"  => $message,
@@ -140,5 +140,15 @@ class ProjetXRestServer
             "status"    => true,
             "response"  => "",
         );
+    }
+
+    /**
+     * @param $param
+     * @return mixed
+     */
+    public static function getSecureParam($param){
+        // preg_replace("/&#?[a-z0-9]+;/i","",
+        error_log($param);
+        return $param;
     }
 }

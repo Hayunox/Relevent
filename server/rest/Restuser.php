@@ -48,23 +48,23 @@ class RestUserRegister {
      */
     public function userRegister(Request $request, Response $response){
         // reading post params
-        $name = $request->getParam('nickname');
-        $email = $request->getParam('mail');
-        $password = $request->getParam('password');
+        $name = ProjetXRestServer::getSecureParam($request->getParam('nickname'));
+        $email = ProjetXRestServer::getSecureParam($request->getParam('mail'));
+        $password = ProjetXRestServer::getSecureParam($request->getParam('password'));
 
         $db = new DBConnection();
         $connection = $db->connect();
 
         // User validation
         $user = new DBuser(null);
-        error_log("inscr");
+
         // validating email address
         if ($user->userMailExists($connection, $email)) {
-            $message = 'USER_MAIL_EXISTED';
+            $message = 'USER_MAIL_EXISTS';
 
             // validating nickname
         } elseif ($user->userNickNameExists($connection, $name)) {
-            $message = 'USER_NICKNAME_EXISTED';
+            $message = 'USER_NICKNAME_EXISTS';
 
             // User validated
         } else {
@@ -118,8 +118,8 @@ class RestUserLogin {
      */
     public function userLogin(Request $request, Response $response){
         // reading post params
-        $name = $request->getParam('nickname');
-        $password = $request->getParam('password');
+        $name = ProjetXRestServer::getSecureParam($request->getParam('nickname'));
+        $password = ProjetXRestServer::getSecureParam($request->getParam('password'));
 
         $db = new DBConnection();
         $connection = $db->connect();

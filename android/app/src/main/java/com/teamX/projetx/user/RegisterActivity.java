@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        System.out.println("error " + t.toString());
+                        t.printStackTrace();
                         Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
                     }
                 });
