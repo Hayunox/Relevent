@@ -27,12 +27,5 @@ before_script: composer require atoum/atoum
 script: vendor/bin/atoum
 
 script:
-    - php server/tests/atoum.phar -d server/tests/units/database/
-    - php server/tests/atoum.phar -d server/tests/units/rest/ProjetXRestServer.php
-    - php server/tests/atoum.phar -m server/tests/units/rest/RestUserCreation::testUserRegisterWithoutCredentials
-    - php server/tests/atoum.phar -m server/tests/units/rest/RestUserCreation::testUserRegisterWithValidCredentials
-    - php server/tests/atoum.phar -m server/tests/units/rest/RestUserCreation::testUserRegisterWithInvalidMail
-    - php server/tests/atoum.phar -m server/tests/units/rest/RestUserLogin::testUserLoginWithoutCredentials
-    - php server/tests/atoum.phar -m server/tests/units/rest/RestUserLogin::testUserLoginWithInvalidCredentials
-    - php server/tests/atoum.phar -m server/tests/units/rest/RestUserLogin::testUserLoginWithValidCredentials 
+    - php server/tests/atoum.phar
 repo_token: qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy
