@@ -45,15 +45,18 @@ class DBconnection
     /**
      * @return QueryBuilderHandler
      */
-    public function getQueryBuilderHandler(){
+    public function getQueryBuilderHandler()
+    {
         return $this->queryBuilder;
     }
 
     /**
      * @param $param
+     *
      * @return string
      */
-    public function securizeParam($param){
+    public function securizeParam($param)
+    {
         // mysqli_real_escape_string($this->connection->getPdoInstance()
         return $param;
     }
