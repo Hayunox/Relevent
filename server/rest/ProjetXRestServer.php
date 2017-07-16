@@ -13,7 +13,6 @@ require_once __DIR__.'/Restuser.php';
 use server\database\DBconnection;
 use server\database\DBuser;
 use Slim\App;
-use Slim\Http\Request;
 use Slim\Http\Response;
 
 class ProjetXRestServer
@@ -26,6 +25,7 @@ class ProjetXRestServer
      */
     public function __construct()
     {
+        error_log("server constructed : http://$_SERVER[HTTP_HOST]|URI=$_SERVER[REQUEST_URI]|SCRIPT=$_SERVER[SCRIPT_NAME]");
         $this->app = new App();
 
         $this->container = $this->app->getContainer();
@@ -39,21 +39,7 @@ class ProjetXRestServer
          * method - POST
          * params - name, email, password
          */
-        $this->app->post('register', function (Request $request, Response $response) {
-            if (ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'mail', 'password'])) {
-                // reading post params
-                $name = $request->getParam('nickname');
-                $email = $request->getParam('mail');
-                $password = $request->getParam('password');
-
-                $message = Restuser::userRegistration($name, $email, $password);
-
-                $response
-                    ->withStatus(200)
-                    ->withHeader('Content-type', 'application/json')
-                    ->withJson($message);
-            }
-        });
+        $this->app->post('/user/register', new RestUserLogin());
 
         /*
          * User Registration
@@ -61,20 +47,7 @@ class ProjetXRestServer
          * method - POST
          * params - name, email, password
          */
-        $this->app->post('login', function (Request $request, Response $response) {
-            if (ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'password'])) {
-                // reading post params
-                $name = $request->getParam('nickname');
-                $password = $request->getParam('password');
-
-                $message = Restuser::userLogin($name, $password);
-
-                $response
-                    ->withStatus(200)
-                    ->withHeader('Content-type', 'application/json')
-                    ->withJson($message);
-            }
-        });
+        $this->app->post('/user/login', new RestUserRegister());
 
         /*
          * Method with authentificatio
@@ -134,16 +107,16 @@ class ProjetXRestServer
      *
      * @param Response $response
      * @param $required_fields
-     *
-     * @return bool
+     * @return array
      */
     public static function verifyRequiredParams(Response $response, $required_fields)
     {
         $error = false;
         $error_fields = '';
         $request_params = $_REQUEST;
+        error_log(json_encode($request_params));
         // Handling PUT request params
-        if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+        if(array_key_exists("REQUEST_METHOD",$_SERVER) && $_SERVER['REQUEST_METHOD'] == 'PUT'){
             parse_str($response->getBody(), $request_params);
         }
         foreach ($required_fields as $field) {
@@ -157,14 +130,16 @@ class ProjetXRestServer
             // Required field(s) are missing or empty
             // echo error json and stop the app
             $message = 'Required field(s) '.substr($error_fields, 0, -2).' is missing or empty';
-            $response
-                ->withStatus(400)
-                ->withHeader('Content-type', 'application/json')
-                ->withJson($message);
 
-            return false;
+            return array(
+                "status"    => false,
+                "response"  => $message,
+            );
         }
 
-        return true;
+        return array(
+            "status"    => true,
+            "response"  => "",
+        );
     }
 }

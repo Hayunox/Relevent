@@ -12,62 +12,112 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 require_once __DIR__.'/../database/DBconnection.php';
 require_once __DIR__.'/../database/DBuser.php';
+require_once __DIR__.'/ProjetXRestServer.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
-class Restuser
-{
+class RestUserRegister {
+
     /**
-     * @param $name
-     * @param $email
-     * @param $password
-     *
-     * @return string
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return Response
      */
-    public static function userRegistration($name, $email, $password)
+    public function __invoke(Request $request, Response $response, $args = [])
     {
-        $db = new DBConnection();
-        $connection = $db->connect();
+        error_log("register called");
+        $verification = ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'mail', 'password']);
 
-        // User validation
-        $user = new DBuser(null);
+        if ($verification["status"]) {
+            error_log("register good parameters");
 
-        // validating email address
-        if ($user->userMailExists($connection, $email)) {
-            $message = 'USER_MAIL_EXISTED';
+            // reading post params
+            $name = $request->getParam('nickname');
+            $email = $request->getParam('mail');
+            $password = $request->getParam('password');
 
-            // validating nickname
-        } elseif ($user->userNickNameExists($connection, $name)) {
-            $message = 'USER_NICKNAME_EXISTED';
+            $db = new DBConnection();
+            $connection = $db->connect();
 
-            // User validated
-        } else {
-            $res = $user->userCreate($connection, [
-                'user_nickname'     => $name,
-                'user_mail'         => $email,
-                'user_password'     => $password,
-            ]);
+            // User validation
+            $user = new DBuser(null);
 
-            if ($res > -1) {
-                $message = 'USER_CREATED_SUCCESSFULLY';
+            // validating email address
+            if ($user->userMailExists($connection, $email)) {
+                $message = 'USER_MAIL_EXISTED';
+
+                // validating nickname
+            } elseif ($user->userNickNameExists($connection, $name)) {
+                $message = 'USER_NICKNAME_EXISTED';
+
+                // User validated
             } else {
-                $message = 'USER_CREATE_FAILED';
-            }
-        }
+                $res = $user->userCreate($connection, [
+                    'user_nickname'     => $name,
+                    'user_mail'         => $email,
+                    'user_password'     => $password,
+                ]);
 
-        // echo json response
-        return $message;
+                if ($res > -1) {
+                    $message = 'USER_CREATED_SUCCESSFULLY';
+                } else {
+                    $message = 'USER_CREATE_FAILED';
+                }
+            }
+
+            return $response
+                ->withStatus(200)
+                ->withHeader('Content-type', 'application/json')
+                ->withJson($message);
+        }
+        error_log(json_encode($verification));
+        return $response
+            ->withStatus(400)
+            ->withHeader('Content-type', 'application/json')
+            ->withJson($verification["response"]);
+    }
+}
+
+
+class RestUserLogin {
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return RestUserLogin|Response
+     */
+    public function __invoke(Request $request, Response $response, $args = [])
+    {
+        error_log("login called");
+        $verification = ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'password']);
+
+        if ($verification["status"]) {
+            return $this->userLogin($request, $response);
+        }
+        error_log(json_encode($verification));
+        return $response
+            ->withStatus(400)
+            ->withHeader('Content-type', 'application/json')
+            ->withJson($verification["response"]);
     }
 
     /**
-     * @param $name
-     * @param $password
-     *
-     * @return string
+     * @param Request $request
+     * @param Response $response
+     * @return Response
      */
-    public static function userLogin($name, $password)
-    {
+    public function userLogin(Request $request, Response $response){
+        error_log("login good parameters");
+
+        // reading post params
+        $name = $request->getParam('nickname');
+        $password = $request->getParam('password');
+
         $db = new DBConnection();
         $connection = $db->connect();
 
@@ -78,12 +128,14 @@ class Restuser
         if ($user->tryLogin($connection, $name, $password)) {
             $message = 'USER_LOGIN_SUCCESSFULLY';
 
-        // Connection failed
+            // Connection failed
         } else {
             $message = 'USER_LOGIN_FAILED';
         }
 
-        // echo json response
-        return $message;
+        return $response
+            ->withStatus(200)
+            ->withHeader('Content-type', 'application/json')
+            ->withJson($message);
     }
 }
