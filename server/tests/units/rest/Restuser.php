@@ -20,9 +20,15 @@ use Slim\Http\RequestBody;
 use Slim\Http\Response;
 use Slim\Http\Uri;
 
+/**
+ * Class RestUserRegister
+ * @package server\tests\units\rest
+ */
 class RestUserRegister extends test
 {
-
+    /**
+     *
+     */
     public function testUserRegisterWithoutCredentials()
     {
         $app = $this->newTestedInstance();
@@ -47,7 +53,10 @@ class RestUserRegister extends test
             ->string((string)$resOut->getBody())
             ->contains('is missing or empty');
     }
-    
+
+    /**
+     *
+     */
     public function testUserRegisterWithValidCredentials()
     {
         $app = $this->newTestedInstance();
@@ -55,7 +64,7 @@ class RestUserRegister extends test
         // valid credentials
         $_REQUEST['nickname'] = 'test';
         $_REQUEST['mail'] = 'test@test.fr';
-        $_REQUEST['password'] = 'zaecezfezddqs';
+        $_REQUEST['password'] = 'testpwd';
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -74,11 +83,14 @@ class RestUserRegister extends test
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(400)
+            ->isIdenticalTo(200)
             ->string((string)$resOut->getBody())
-            ->contains('is missing or empty');
+            ->contains('USER_CREATED_SUCCESSFULLY');
     }
 
+    /**
+     *
+     */
     public function testUserRegisterWithInvalidMail()
     {
         $app = $this->newTestedInstance();
@@ -105,11 +117,14 @@ class RestUserRegister extends test
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(400)
+            ->isIdenticalTo(200)
             ->string((string)$resOut->getBody())
-            ->contains('is missing or empty');
+            ->contains('USER_MAIL_EXISTS');
     }
 
+    /**
+     *
+     */
     public function testUserRegisterWithInvalidNickname()
     {
         $app = $this->newTestedInstance();
@@ -136,16 +151,23 @@ class RestUserRegister extends test
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(400)
+            ->isIdenticalTo(200)
             ->string((string)$resOut->getBody())
-            ->contains('is missing or empty');
+            ->contains('USER_NICKNAME_EXISTS');
     }
 
     public function getAutoloaderFile(){}
 }
 
+/**
+ * Class RestUserLogin
+ * @package server\tests\units\rest
+ */
 class RestUserLogin extends test
 {
+    /**
+     *
+     */
     public function testUserLoginWithoutCredentials()
     {
         $app = $this->newTestedInstance();
@@ -171,12 +193,15 @@ class RestUserLogin extends test
             ->contains('is missing or empty');
     }
 
+    /**
+     *
+     */
     public function testUserLoginWithIncorrectCredentials()
     {
         $app = $this->newTestedInstance();
 
         // Incorrect credentials
-        $_REQUEST['nickname'] = 'zaeaezd';
+        $_REQUEST['nickname'] = 'eéeazdnuhuijnezczecn';
         $_REQUEST['password'] = 'zaecezfezddqs';
 
         // Prepare request and response objects
@@ -198,18 +223,21 @@ class RestUserLogin extends test
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
             ->string((string)$resOut->getBody())
-            ->contains('is missing or empty');
+            ->contains('USER_LOGIN_FAILED');
         error_log($resOut);
         unset($_REQUEST);
     }
 
+    /**
+     *
+     */
     public function testUserLoginWithValidCredentials()
     {
         $app = $this->newTestedInstance();
 
         // Incorrect credentials
         $_REQUEST['nickname'] = 'test';
-        $_REQUEST['password'] = 'test';
+        $_REQUEST['password'] = 'testpwd';
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -230,7 +258,7 @@ class RestUserLogin extends test
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
             ->string((string)$resOut->getBody())
-            ->contains('is missing or empty');
+            ->contains('USER_LOGIN_SUCCESSFULLY');
         error_log($resOut);
         unset($_REQUEST);
     }

@@ -29,7 +29,6 @@ class RestUserRegister {
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        error_log("register");
         $verification = ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'mail', 'password']);
 
         if ($verification["status"]) {
@@ -49,9 +48,9 @@ class RestUserRegister {
      */
     public function userRegister(Request $request, Response $response){
         // reading post params
-        $name = ProjetXRestServer::getSecureParam($request, 'nickname');
-        $email =ProjetXRestServer::getSecureParam($request, 'mail');
-        $password = ProjetXRestServer::getSecureParam($request, 'password');
+        $name = ProjetXRestServer::getSecureParam($request->getParam('nickname'));
+        $email = ProjetXRestServer::getSecureParam($request->getParam('mail'));
+        $password = ProjetXRestServer::getSecureParam($request->getParam('password'));
 
         $db = new DBConnection();
         $connection = $db->connect();
@@ -61,11 +60,11 @@ class RestUserRegister {
 
         // validating email address
         if ($user->userMailExists($connection, $email)) {
-            $message = 'USER_MAIL_EXISTED';
+            $message = 'USER_MAIL_EXISTS';
 
             // validating nickname
         } elseif ($user->userNickNameExists($connection, $name)) {
-            $message = 'USER_NICKNAME_EXISTED';
+            $message = 'USER_NICKNAME_EXISTS';
 
             // User validated
         } else {
@@ -100,7 +99,6 @@ class RestUserLogin {
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        error_log("login");
         $verification = ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'password']);
 
         if ($verification["status"]) {
@@ -120,8 +118,8 @@ class RestUserLogin {
      */
     public function userLogin(Request $request, Response $response){
         // reading post params
-        $name = ProjetXRestServer::getSecureParam($request, 'nickname');
-        $password = ProjetXRestServer::getSecureParam($request, 'password');
+        $name = ProjetXRestServer::getSecureParam($request->getParam('nickname'));
+        $password = ProjetXRestServer::getSecureParam($request->getParam('password'));
 
         $db = new DBConnection();
         $connection = $db->connect();

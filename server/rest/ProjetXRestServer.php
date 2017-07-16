@@ -143,11 +143,12 @@ class ProjetXRestServer
     }
 
     /**
-     * @param $request
      * @param $param
      * @return mixed
      */
-    public static function getSecureParam($request, $param){
-        return preg_replace("/&#?[a-z0-9]+;/i","",$request->getParam($param));
+    public static function getSecureParam($param){
+        // preg_replace("/&#?[a-z0-9]+;/i","",
+        error_log($param);
+        return $param;
     }
 }
