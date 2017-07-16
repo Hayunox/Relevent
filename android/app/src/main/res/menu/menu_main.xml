@@ -1,6 +1,19 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="good"
-        android:orderInCategory="100" app:showAsAction="never" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/pref_header_general"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/show_notif"
+        android:orderInCategory="300"
+        android:title="User"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        app:showAsAction="ifRoom"></item>
+
 </menu>

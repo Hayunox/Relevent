@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
 
         // set up the interfacte
@@ -54,7 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         this.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Retrofit restService = DataBase.getRetrofitService();
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+           /* Retrofit restService = DataBase.getRetrofitService();
             UserService service = restService.create(UserService.class);
             Call<User> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
 
@@ -77,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                     t.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
                 }
-            });
+            });*/
             }
         });
     }
