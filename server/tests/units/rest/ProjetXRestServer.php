@@ -40,8 +40,7 @@ class ProjetXRestServer extends test
         $this
             ->given($resOut = $app($req, $res))
             ->array($this->newTestedInstance->getRequiredParams($resOut, ['nickname']))
-            ->contains(false)
-            ->contains('Required field');
+            ->contains(false);
     }
 
     public function testGetRequiredParamsPresent()
