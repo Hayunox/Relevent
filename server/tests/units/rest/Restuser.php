@@ -5,6 +5,7 @@
  * User: Paul
  * Date: 15/07/2017
  * Time: 10:52
+ * 'QUERY_STRING'=>'nickname=ezr&password=ezr',
  */
 
 namespace server\tests\units\rest;
@@ -18,18 +19,16 @@ use Slim\Http\Request;
 use Slim\Http\RequestBody;
 use Slim\Http\Response;
 use Slim\Http\Uri;
-use Slim\App;
 
-class Restuser extends test
+class RestUserRegister extends test
 {
 
-    public function testUserRegistration(){
-        $app = new App();
-        $app->getContainer();
+    public function testUserRegisterWithoutCredentials()
+    {
+        $app = $this->newTestedInstance();
         // Prepare request and response objects
         $env = Environment::mock([
-            'SCRIPT_NAME' => '/index.php',
-            'REQUEST_URI' => '/user/register',
+            'REQUEST_URI' => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -44,37 +43,98 @@ class Restuser extends test
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-                ->isIdenticalTo(404)
+            ->isIdenticalTo(400)
             ->string((string)$resOut->getBody())
-                ->contains('Not Found');
-            //->function('userRegistration')->wasCalled()->once();
+            ->contains('is missing or empty');
+    }
+    public function testUserRegisterWithIncorrectCredentials()
+    {
+        $app = $this->newTestedInstance();
+        // Prepare request and response objects
+        $env = Environment::mock([
+            'REQUEST_URI' => '/projetX/index.php/user/register',
+            'REQUEST_METHOD' => 'POST',
+        ]);
+        $uri = Uri::createFromEnvironment($env);
+        $headers = Headers::createFromEnvironment($env);
+        $cookies = [];
+        $serverParams = $env->all();
+        $body = new RequestBody();
+        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+        $res = new Response();
+
+        // Invoke app
+        $this
+            ->given($resOut = $app($req, $res))
+            ->integer($resOut->getStatusCode())
+            ->isIdenticalTo(400)
+            ->string((string)$resOut->getBody())
+            ->contains('is missing or empty');
+    }
+    public function getAutoloaderFile(){}
+}
+
+class RestUserLogin extends test
+{
+    public function testUserLoginWithoutCredentials()
+    {
+        $app = $this->newTestedInstance();
+        // Prepare request and response objects
+        $env = Environment::mock([
+            'REQUEST_URI' => '/projetX/index.php/user/login',
+            'REQUEST_METHOD' => 'POST',
+        ]);
+        $uri = Uri::createFromEnvironment($env);
+        $headers = Headers::createFromEnvironment($env);
+        $cookies = [];
+        $serverParams = $env->all();
+        $body = new RequestBody();
+        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+        $res = new Response();
+
+        // Invoke app
+        $this
+            ->given($resOut = $app($req, $res))
+            ->integer($resOut->getStatusCode())
+            ->isIdenticalTo(400)
+            ->string((string)$resOut->getBody())
+            ->contains('is missing or empty');
     }
 
-    public function testUserLogin(){
-        $app = new App();
-        $app->getContainer();
+    public function testUserLoginWithIncorrectCredentials()
+    {
+        $app = $this->newTestedInstance();
         // Prepare request and response objects
+        $post = array(
+            'nickname'  => 'zaeaezd',
+            'password'  => 'zaecezfezddqs',
+        );
         $env = Environment::mock([
-            'SCRIPT_NAME' => '/index.php',
-            'REQUEST_URI' => '/user/login',
+            'REQUEST_URI' => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
         $headers = Headers::createFromEnvironment($env);
+        $headers->set('nickname', 'zaeaezd');
+        $headers->set('password', 'zaecezfezddqs');
         $cookies = [];
         $serverParams = $env->all();
-        $body = new RequestBody();
+        $body = new RequestBody($post);
         $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
         $res = new Response();
+        $req->registerMediaTypeParser('application/x-www-form-urlencoded', function ($input) {
+            parse_str($input, $body);
+            return $body; // <-- Array
+        });
+
 
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-                ->isIdenticalTo(404)
+            ->isIdenticalTo(400)
             ->string((string)$resOut->getBody())
-                ->contains('Not Found');
-            //->function('userLogin')->wasCalled()->once();
+            ->contains('is missing or empty');
     }
 
     public function getAutoloaderFile(){}

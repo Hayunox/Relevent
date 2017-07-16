@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // set up the interfacte
+        // set up the interface
         this.register   = (Button) findViewById(R.id.buttonRegister);
         this.nickname   = (EditText) findViewById(R.id.editTextNickname);
         this.mail       = (EditText) findViewById(R.id.editTextMail);
