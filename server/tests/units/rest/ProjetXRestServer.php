@@ -3,8 +3,9 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 15/07/2017
- * Time: 10:52
+ * Time: 10:52.
  */
+
 namespace server\tests\units\rest;
 
 require_once __DIR__.'/../../../rest/ProjetXRestServer.php';
@@ -19,15 +20,12 @@ use Slim\Http\Uri;
 
 class ProjetXRestServer extends test
 {
-
-    /**
-     *
-     */
-    public function testGetRequiredParamsNoPresence(){
+    public function testGetRequiredParamsNoPresence()
+    {
         $app = new testCallable();
         // Prepare request and response objects
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/login',
+            'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -43,19 +41,17 @@ class ProjetXRestServer extends test
             ->given($resOut = $app($req, $res))
             ->array($this->newTestedInstance->getRequiredParams($resOut, ['nickname']))
             ->contains(false)
-            ->contains("Required field");
+            ->contains('Required field');
     }
 
-    /**
-     *
-     */
-    public function testGetRequiredParamsPresent(){
+    public function testGetRequiredParamsPresent()
+    {
         $app = new testCallable();
         // Prepare request and response objects
         $_REQUEST['test'] = json_encode('test');
         $_REQUEST['nickname'] = json_encode('test2');
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/login',
+            'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -70,29 +66,30 @@ class ProjetXRestServer extends test
         $this
             ->given($resOut = $app($req, $res))
             ->array($this->newTestedInstance->getRequiredParams($resOut, ['nickname', 'test']))
-            ->contains("test")
-            ->contains("test2");
+            ->contains('test')
+            ->contains('test2');
     }
 
-    /**
-     *
-     */
-    public function testGetSecureParam(){
+    public function testGetSecureParam()
+    {
         $this
             ->given($this->newTestedInstance())
             ->string($this->testedInstance->getSecureParam('test{"&et'))
             ->isEqualTo('testet');
     }
 
-    public function getAutoloaderFile(){}
+    public function getAutoloaderFile()
+    {
+    }
 }
 
 class testCallable
 {
     /**
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
-     * @param array $args
+     * @param array    $args
+     *
      * @return Response
      */
     public function __invoke(Request $request, Response $response, $args = [])

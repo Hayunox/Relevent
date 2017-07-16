@@ -9,8 +9,6 @@
 
 namespace server\database;
 
-use Pixie\QueryBuilder\QueryBuilderHandler;
-
 class DBuser
 {
     public $user_id;
@@ -137,6 +135,7 @@ class DBuser
      * @param $db
      * @param $nickname
      * @param $password
+     *
      * @return bool
      */
     public function tryLogin(DBconnection $db, $nickname, $password)
@@ -144,6 +143,7 @@ class DBuser
         $query = $db->getQueryBuilderHandler()->table($this->user_table)
             ->where($this->table_row['user_password'], $this->userPasswordEncrypt($db->securizeParam($password)))
             ->where($this->table_row['user_nickname'], $db->securizeParam($nickname));
+
         return ($query->first() == null) ? false : true;
     }
 

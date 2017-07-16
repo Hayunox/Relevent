@@ -106,6 +106,7 @@ class ProjetXRestServer
      *
      * @param Response $response
      * @param $required_fields
+     *
      * @return array
      */
     public static function getRequiredParams(Response $response, $required_fields)
@@ -113,17 +114,17 @@ class ProjetXRestServer
         $error = false;
         $error_fields = '';
         $request_params = $_REQUEST;
-        $params = array();
+        $params = [];
 
         // Handling PUT request params
-        if(array_key_exists("REQUEST_METHOD",$_SERVER) && $_SERVER['REQUEST_METHOD'] == 'PUT'){
+        if (array_key_exists('REQUEST_METHOD', $_SERVER) && $_SERVER['REQUEST_METHOD'] == 'PUT') {
             parse_str($response->getBody(), $request_params);
         }
         foreach ($required_fields as $field) {
             if (!isset($request_params[$field]) || strlen(trim($request_params[$field])) <= 0) {
                 $error = true;
                 $error_fields .= $field.', ';
-            }else{
+            } else {
                 $params[$field] = $request_params[$field];
             }
         }
@@ -132,27 +133,30 @@ class ProjetXRestServer
             // Required field(s) are missing or empty
             // echo error json and stop the app
             $message = 'Required field(s) '.substr($error_fields, 0, -2).' is missing or empty';
-            return array(
-                "status"    => false,
-                "response"  => $message,
-            );
+
+            return [
+                'status'    => false,
+                'response'  => $message,
+            ];
         }
 
-        return array(
-            "status"    => true,
-            "response"  => $params,
-        );
+        return [
+            'status'    => true,
+            'response'  => $params,
+        ];
     }
 
     /**
      * @param $param
+     *
      * @return string
      */
-    public static function getSecureParam($param){;
+    public static function getSecureParam($param)
+    {
         return preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $param);
     }
 
-    /**
+    /*
      * @param $param
      * @return mixed
      */

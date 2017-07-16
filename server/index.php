@@ -9,7 +9,6 @@
 namespace server;
 
 use server\rest\ProjetXRestServer;
-use Slim\App;
 
 require_once __DIR__.'/rest/ProjetXRestServer.php';
 

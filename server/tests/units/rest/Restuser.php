@@ -5,7 +5,7 @@
  * User: Paul
  * Date: 15/07/2017
  * Time: 10:52
- * 'QUERY_STRING'=>'nickname=ezr&password=ezr',
+ * 'QUERY_STRING'=>'nickname=ezr&password=ezr',.
  */
 
 namespace server\tests\units\rest;
@@ -21,20 +21,16 @@ use Slim\Http\Response;
 use Slim\Http\Uri;
 
 /**
- * Class RestUserRegister
- * @package server\tests\units\rest
+ * Class RestUserRegister.
  */
 class RestUserCreation extends test
 {
-    /**
-     *
-     */
     public function testUserRegisterWithoutCredentials()
     {
         $app = $this->newTestedInstance();
         // Prepare request and response objects
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/register',
+            'REQUEST_URI'    => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -50,13 +46,10 @@ class RestUserCreation extends test
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(400)
-            ->string((string)$resOut->getBody())
+            ->string((string) $resOut->getBody())
             ->contains('is missing or empty');
     }
 
-    /**
-     *
-     */
     public function testUserRegisterWithValidCredentials()
     {
         $app = $this->newTestedInstance();
@@ -68,7 +61,7 @@ class RestUserCreation extends test
 
         // Prepare request and response objects
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/register',
+            'REQUEST_URI'    => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -84,13 +77,10 @@ class RestUserCreation extends test
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
-            ->string((string)$resOut->getBody())
+            ->string((string) $resOut->getBody())
             ->contains('USER_CREATED_SUCCESSFULLY');
     }
 
-    /**
-     *
-     */
     public function testUserRegisterWithInvalidMail()
     {
         $app = $this->newTestedInstance();
@@ -102,7 +92,7 @@ class RestUserCreation extends test
 
         // Prepare request and response objects
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/register',
+            'REQUEST_URI'    => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -118,13 +108,10 @@ class RestUserCreation extends test
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
-            ->string((string)$resOut->getBody())
+            ->string((string) $resOut->getBody())
             ->contains('USER_MAIL_EXISTS');
     }
 
-    /**
-     *
-     */
     public function testUserRegisterWithInvalidNickname()
     {
         $app = $this->newTestedInstance();
@@ -136,7 +123,7 @@ class RestUserCreation extends test
 
         // Prepare request and response objects
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/register',
+            'REQUEST_URI'    => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -152,28 +139,26 @@ class RestUserCreation extends test
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
-            ->string((string)$resOut->getBody())
+            ->string((string) $resOut->getBody())
             ->contains('USER_NICKNAME_EXISTS');
     }
 
-    public function getAutoloaderFile(){}
+    public function getAutoloaderFile()
+    {
+    }
 }
 
 /**
- * Class RestUserLogin
- * @package server\tests\units\rest
+ * Class RestUserLogin.
  */
 class RestUserLogin extends test
 {
-    /**
-     *
-     */
     public function testUserLoginWithoutCredentials()
     {
         $app = $this->newTestedInstance();
         // Prepare request and response objects
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/login',
+            'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -189,13 +174,10 @@ class RestUserLogin extends test
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(400)
-            ->string((string)$resOut->getBody())
+            ->string((string) $resOut->getBody())
             ->contains('is missing or empty');
     }
 
-    /**
-     *
-     */
     public function testUserLoginWithInvalidCredentials()
     {
         $app = $this->newTestedInstance();
@@ -206,7 +188,7 @@ class RestUserLogin extends test
 
         // Prepare request and response objects
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/login',
+            'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -222,13 +204,10 @@ class RestUserLogin extends test
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
-            ->string((string)$resOut->getBody())
+            ->string((string) $resOut->getBody())
             ->contains('USER_LOGIN_FAILED');
     }
 
-    /**
-     *
-     */
     public function testUserLoginWithValidCredentials()
     {
         $app = $this->newTestedInstance();
@@ -239,7 +218,7 @@ class RestUserLogin extends test
 
         // Prepare request and response objects
         $env = Environment::mock([
-            'REQUEST_URI' => '/projetX/index.php/user/login',
+            'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
         $uri = Uri::createFromEnvironment($env);
@@ -255,9 +234,11 @@ class RestUserLogin extends test
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
-            ->string((string)$resOut->getBody())
+            ->string((string) $resOut->getBody())
             ->contains('USER_LOGIN_SUCCESSFULLY');
     }
 
-    public function getAutoloaderFile(){}
+    public function getAutoloaderFile()
+    {
+    }
 }
