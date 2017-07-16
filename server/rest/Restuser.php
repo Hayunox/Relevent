@@ -19,7 +19,7 @@ use server\database\DBuser;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class RestUserRegister {
+class RestUserCreation {
 
     /**
      * @param Request $request
@@ -29,10 +29,10 @@ class RestUserRegister {
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        $verification = ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'mail', 'password']);
+        $verification = ProjetXRestServer::getRequiredParams($response, ['nickname', 'mail', 'password']);
 
         if ($verification["status"]) {
-            return $this->userRegister($request, $response);
+            return $this->userRegister($verification["response"], $response);
         }
 
         return $response
@@ -42,18 +42,17 @@ class RestUserRegister {
     }
 
     /**
-     * @param Request $request
+     * @param $data
      * @param Response $response
      * @return Response
      */
-    public function userRegister(Request $request, Response $response){
+    public function userRegister($data, Response $response){
         // reading post params
-        $name = ProjetXRestServer::getSecureParam($request->getParam('nickname'));
-        $email = ProjetXRestServer::getSecureParam($request->getParam('mail'));
-        $password = ProjetXRestServer::getSecureParam($request->getParam('password'));
+        $name = ProjetXRestServer::getSecureParam($data['nickname']);
+        $email = ProjetXRestServer::getSecureParam($data['mail']);
+        $password = ProjetXRestServer::getSecureParam($data['password']);
 
-        $db = new DBConnection();
-        $connection = $db->connect();
+        $connection = new DBConnection();
 
         // User validation
         $user = new DBuser(null);
@@ -99,10 +98,10 @@ class RestUserLogin {
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        $verification = ProjetXRestServer::verifyRequiredParams($response, ['nickname', 'password']);
+        $verification = ProjetXRestServer::getRequiredParams($response, ['nickname', 'password']);
 
         if ($verification["status"]) {
-            return $this->userLogin($request, $response);
+            return $this->userLogin($verification["response"], $response);
         }
 
         return $response
@@ -112,17 +111,16 @@ class RestUserLogin {
     }
 
     /**
-     * @param Request $request
+     * @param $data
      * @param Response $response
      * @return Response
      */
-    public function userLogin(Request $request, Response $response){
+    public function userLogin($data, Response $response){
         // reading post params
-        $name = ProjetXRestServer::getSecureParam($request->getParam('nickname'));
-        $password = ProjetXRestServer::getSecureParam($request->getParam('password'));
+        $name = ProjetXRestServer::getSecureParam($data['nickname']);
+        $password = ProjetXRestServer::getSecureParam($data['password']);
 
-        $db = new DBConnection();
-        $connection = $db->connect();
+        $connection = new DBConnection();
 
         // User validation
         $user = new DBuser(null);

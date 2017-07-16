@@ -33,19 +33,28 @@ class DBconnection
         ],
     ];
 
+    /**
+     * DBconnection constructor.
+     */
     public function __construct()
     {
+        $this->connection = new Connection('mysql', $this->config, '');
+        $this->queryBuilder = new QueryBuilderHandler($this->connection);
     }
 
     /**
-     * Establishing database connection.
-     *
      * @return QueryBuilderHandler
      */
-    public function connect()
-    {
-        $this->connection = new Connection('mysql', $this->config, 'PX');
+    public function getQueryBuilderHandler(){
+        return $this->queryBuilder;
+    }
 
-        return new QueryBuilderHandler($this->connection);
+    /**
+     * @param $param
+     * @return string
+     */
+    public function securizeParam($param){
+        // mysqli_real_escape_string($this->connection->getPdoInstance()
+        return $param;
     }
 }

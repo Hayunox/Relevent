@@ -30,7 +30,7 @@ class DBuser extends test
 
     public function testUserCreationLogin()
     {
-        $this->test_connection = (new ConnectionToDatabase())->connect();
+        $this->test_connection = new ConnectionToDatabase();
 
         // creation of a new instance of the tested class
         $this

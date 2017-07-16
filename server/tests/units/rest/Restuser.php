@@ -24,7 +24,7 @@ use Slim\Http\Uri;
  * Class RestUserRegister
  * @package server\tests\units\rest
  */
-class RestUserRegister extends test
+class RestUserCreation extends test
 {
     /**
      *
@@ -62,9 +62,9 @@ class RestUserRegister extends test
         $app = $this->newTestedInstance();
 
         // valid credentials
-        $_REQUEST['nickname'] = 'test';
-        $_REQUEST['mail'] = 'test@test.fr';
-        $_REQUEST['password'] = 'testpwd';
+        $_REQUEST['nickname'] = json_encode('test');
+        $_REQUEST['mail'] = json_encode('test@test.fr');
+        $_REQUEST['password'] = json_encode('testpwd');
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -96,9 +96,9 @@ class RestUserRegister extends test
         $app = $this->newTestedInstance();
 
         // invalid mail
-        $_REQUEST['nickname'] = 'zaeacrrztheqczzdz';
-        $_REQUEST['mail'] = 'test@test.fr';
-        $_REQUEST['password'] = 'zaecezfezddqs';
+        $_REQUEST['nickname'] = json_encode('zaeacrrztheqczzdz');
+        $_REQUEST['mail'] = json_encode('test@test.fr');
+        $_REQUEST['password'] = json_encode('zaecezfezddqs');
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -130,9 +130,9 @@ class RestUserRegister extends test
         $app = $this->newTestedInstance();
 
         // invalid nickname
-        $_REQUEST['nickname'] = 'test';
-        $_REQUEST['mail'] = 'zaeceddqs@fr.fr';
-        $_REQUEST['password'] = 'zaecezfezddqs';
+        $_REQUEST['nickname'] = json_encode('test');
+        $_REQUEST['mail'] = json_encode('zaeceddqs@test.fr');
+        $_REQUEST['password'] = json_encode('zaecezfezddqs');
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -196,13 +196,13 @@ class RestUserLogin extends test
     /**
      *
      */
-    public function testUserLoginWithIncorrectCredentials()
+    public function testUserLoginWithInvalidCredentials()
     {
         $app = $this->newTestedInstance();
 
         // Incorrect credentials
-        $_REQUEST['nickname'] = 'eéeazdnuhuijnezczecn';
-        $_REQUEST['password'] = 'zaecezfezddqs';
+        $_REQUEST['nickname'] = json_encode('eéeazdnuhuijnezczecn');
+        $_REQUEST['password'] = json_encode('zaecezfezddqs');
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -225,7 +225,6 @@ class RestUserLogin extends test
             ->string((string)$resOut->getBody())
             ->contains('USER_LOGIN_FAILED');
         error_log($resOut);
-        unset($_REQUEST);
     }
 
     /**
@@ -235,9 +234,9 @@ class RestUserLogin extends test
     {
         $app = $this->newTestedInstance();
 
-        // Incorrect credentials
-        $_REQUEST['nickname'] = 'test';
-        $_REQUEST['password'] = 'testpwd';
+        // Valid credentials
+        $_REQUEST['nickname'] = json_encode('test');
+        $_REQUEST['password'] = json_encode('testpwd');
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -260,7 +259,6 @@ class RestUserLogin extends test
             ->string((string)$resOut->getBody())
             ->contains('USER_LOGIN_SUCCESSFULLY');
         error_log($resOut);
-        unset($_REQUEST);
     }
 
     public function getAutoloaderFile(){}

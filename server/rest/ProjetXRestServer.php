@@ -108,12 +108,12 @@ class ProjetXRestServer
      * @param $required_fields
      * @return array
      */
-    public static function verifyRequiredParams(Response $response, $required_fields)
+    public static function getRequiredParams(Response $response, $required_fields)
     {
         $error = false;
         $error_fields = '';
         $request_params = $_REQUEST;
-        error_log(json_encode($request_params));
+        $params = array();
 
         // Handling PUT request params
         if(array_key_exists("REQUEST_METHOD",$_SERVER) && $_SERVER['REQUEST_METHOD'] == 'PUT'){
@@ -123,6 +123,8 @@ class ProjetXRestServer
             if (!isset($request_params[$field]) || strlen(trim($request_params[$field])) <= 0) {
                 $error = true;
                 $error_fields .= $field.', ';
+            }else{
+                $params[$field] = $request_params[$field];
             }
         }
 
@@ -138,17 +140,23 @@ class ProjetXRestServer
 
         return array(
             "status"    => true,
-            "response"  => "",
+            "response"  => $params,
         );
+    }
+
+    /**
+     * @param $param
+     * @return string
+     */
+    public static function getSecureParam($param){;
+        return preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $param);
     }
 
     /**
      * @param $param
      * @return mixed
      */
-    public static function getSecureParam($param){
-        // preg_replace("/&#?[a-z0-9]+;/i","",
-        error_log($param);
-        return $param;
-    }
+    /*public static function getSecureXSSParam($param){
+
+    }*/
 }
