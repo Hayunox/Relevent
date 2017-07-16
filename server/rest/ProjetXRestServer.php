@@ -148,10 +148,8 @@ class ProjetXRestServer
      * @param $param
      * @return string
      */
-    public static function getSecureParam($param){
-        //return preg_replace("/&#?[a-z0-9]+;/i","",$param);
-        $param = addcslashes($param, '%_');
-        return htmlspecialchars($param);
+    public static function getSecureParam($param){;
+        return preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $param);
     }
 
     /**

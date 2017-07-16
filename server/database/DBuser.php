@@ -144,7 +144,6 @@ class DBuser
         $query = $db->getQueryBuilderHandler()->table($this->user_table)
             ->where($this->table_row['user_password'], $this->userPasswordEncrypt($db->securizeParam($password)))
             ->where($this->table_row['user_nickname'], $db->securizeParam($nickname));
-
         return ($query->first() == null) ? false : true;
     }
 

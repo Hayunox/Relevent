@@ -24,7 +24,7 @@ use Slim\Http\Uri;
  * Class RestUserRegister
  * @package server\tests\units\rest
  */
-class RestUserRegister extends test
+class RestUserCreation extends test
 {
     /**
      *

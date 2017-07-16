@@ -19,7 +19,7 @@ use server\database\DBuser;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class RestUserRegister {
+class RestUserCreation {
 
     /**
      * @param Request $request
