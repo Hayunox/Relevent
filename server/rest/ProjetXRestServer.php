@@ -38,7 +38,7 @@ class ProjetXRestServer
          * method - POST
          * params - name, email, password
          */
-        $this->app->post('/user/register', new RestUserRegister());
+        $this->app->post('/user/register', new RestUserCreation());
 
         /*
          * User Registration

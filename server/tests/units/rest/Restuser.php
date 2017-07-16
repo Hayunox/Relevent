@@ -224,7 +224,6 @@ class RestUserLogin extends test
             ->isIdenticalTo(200)
             ->string((string)$resOut->getBody())
             ->contains('USER_LOGIN_FAILED');
-        error_log($resOut);
     }
 
     /**
@@ -258,7 +257,6 @@ class RestUserLogin extends test
             ->isIdenticalTo(200)
             ->string((string)$resOut->getBody())
             ->contains('USER_LOGIN_SUCCESSFULLY');
-        error_log($resOut);
     }
 
     public function getAutoloaderFile(){}
