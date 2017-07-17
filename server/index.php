@@ -8,9 +8,9 @@
 
 namespace server;
 
-use server\rest\XRestServer;
+use server\rest\RestServer;
 
-require_once __DIR__ . '/rest/XRestServer.php';
+require_once __DIR__ . '/rest/RestServer.php';
 
 // Start Server
-new XRestServer();
+new RestServer();

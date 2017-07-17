@@ -8,7 +8,7 @@
 
 namespace server\tests\units\rest;
 
-require_once __DIR__ . '/../../../rest/XRestServer.php';
+require_once __DIR__ . '/../../../rest/RestServer.php';
 
 use mageekguy\atoum\test;
 use server\database\DBconnection;
@@ -20,7 +20,7 @@ use Slim\Http\RequestBody;
 use Slim\Http\Response;
 use Slim\Http\Uri;
 
-class XRestServer extends test
+class RestServer extends test
 {
     public function testGetRequiredParamsNoPresence()
     {

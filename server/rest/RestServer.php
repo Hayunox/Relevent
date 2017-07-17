@@ -15,7 +15,7 @@ use server\database\DBuser;
 use Slim\App;
 use Slim\Http\Response;
 
-class XRestServer
+class RestServer
 {
     private $app;
     private $container;

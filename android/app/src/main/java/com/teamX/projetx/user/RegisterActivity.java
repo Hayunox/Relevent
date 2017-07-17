@@ -1,8 +1,8 @@
 package com.teamX.projetx.user;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.teamX.projetx.R;
 import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.UserService;
-import com.teamX.projetx.main.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -48,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onResponse(Call<User> call, retrofit2.Response<User> response) {
                         try {
                             System.out.println("response = " + response.body());
-                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 
                         } catch (Exception e) {
                             System.out.println("error " + response);

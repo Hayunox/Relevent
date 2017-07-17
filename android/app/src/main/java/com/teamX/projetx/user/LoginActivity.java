@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
-           /* Retrofit restService = DataBase.getRetrofitService();
+            Retrofit restService = DataBase.getRetrofitService();
             UserService service = restService.create(UserService.class);
             Call<User> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
 
@@ -76,11 +76,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
-                    //System.out.println("error " + t.toString());
                     t.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
                 }
-            });*/
+            });
             }
         });
     }

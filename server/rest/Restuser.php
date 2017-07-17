@@ -12,7 +12,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 require_once __DIR__.'/../database/DBconnection.php';
 require_once __DIR__.'/../database/DBuser.php';
-require_once __DIR__ . '/XRestServer.php';
+require_once __DIR__ . '/RestServer.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;
@@ -30,7 +30,7 @@ class RestUserCreation
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        $verification = XRestServer::getRequiredParams($response, ['nickname', 'mail', 'password']);
+        $verification = RestServer::getRequiredParams($response, ['nickname', 'mail', 'password']);
 
         if ($verification['status']) {
             return $this->userRegister($verification['response'], $response);
@@ -51,9 +51,9 @@ class RestUserCreation
     public function userRegister($data, Response $response)
     {
         // reading post params
-        $name = XRestServer::getSecureParam($data['nickname']);
-        $email = XRestServer::getSecureParam($data['mail']);
-        $password = XRestServer::getSecureParam($data['password']);
+        $name = RestServer::getSecureParam($data['nickname']);
+        $email = RestServer::getSecureParam($data['mail']);
+        $password = RestServer::getSecureParam($data['password']);
 
         $connection = new DBConnection();
 
@@ -101,7 +101,7 @@ class RestUserLogin
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        $verification = XRestServer::getRequiredParams($response, ['nickname', 'password']);
+        $verification = RestServer::getRequiredParams($response, ['nickname', 'password']);
 
         if ($verification['status']) {
             return $this->userLogin($verification['response'], $response);
@@ -122,8 +122,8 @@ class RestUserLogin
     public function userLogin($data, Response $response)
     {
         // reading post params
-        $name = XRestServer::getSecureParam($data['nickname']);
-        $password = XRestServer::getSecureParam($data['password']);
+        $name = RestServer::getSecureParam($data['nickname']);
+        $password = RestServer::getSecureParam($data['password']);
 
         $connection = new DBConnection();
 
