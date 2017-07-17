@@ -51,14 +51,18 @@ class DBuser
     {
         $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
         $user_data = $query->first();
-        $this->user_nickname = $user_data->{$this->table_row['user_nickname']};
-        $this->user_name = $user_data->{$this->table_row['user_name']};
-        $this->user_surname = $user_data->{$this->table_row['user_surname']};
-        $this->user_password = $user_data->{$this->table_row['user_password']};
-        $this->user_mail = $user_data->{$this->table_row['user_mail']};
-        $this->user_key = $user_data->{$this->table_row['user_key']};
+        if($user_data != null){
+            $this->user_nickname = $user_data->{$this->table_row['user_nickname']};
+            $this->user_name = $user_data->{$this->table_row['user_name']};
+            $this->user_surname = $user_data->{$this->table_row['user_surname']};
+            $this->user_password = $user_data->{$this->table_row['user_password']};
+            $this->user_mail = $user_data->{$this->table_row['user_mail']};
+            $this->user_key = $user_data->{$this->table_row['user_key']};
 
-        return $this->userDbToArray();
+            return $this->userDbToArray();
+        }
+        return null;
+
     }
 
     /**

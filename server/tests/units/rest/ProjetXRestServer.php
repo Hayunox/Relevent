@@ -11,6 +11,8 @@ namespace server\tests\units\rest;
 require_once __DIR__.'/../../../rest/ProjetXRestServer.php';
 
 use mageekguy\atoum\test;
+use server\database\DBconnection;
+use server\database\DBuser;
 use Slim\Http\Environment;
 use Slim\Http\Headers;
 use Slim\Http\Request;
@@ -80,8 +82,14 @@ class ProjetXRestServer extends test
     public function testAuthenticatePresent()
     {
         $app = new testCallable();
-        // Prepare request and response objects
-        $_SERVER['HTTP_AUTHORIZATION'] = "azeczankzadazaz";
+        // Prepare request and response
+
+        /* Get real key */
+        $user = new DBuser(1);
+        $connection = new DBConnection();
+        $user_key = $user->getUserData($connection)['user_key'];
+
+        $_SERVER['HTTP_AUTHORIZATION'] = $user_key;
         $env = Environment::mock([
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
@@ -97,7 +105,8 @@ class ProjetXRestServer extends test
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->string(json_decode($this->newTestedInstance->authenticate($resOut)->getBody()));
+            ->integer((int)json_decode($this->newTestedInstance->authenticate($resOut)->getBody()))
+            ->isGreaterThan('-1');
         /* COMPLETE TEST*/
     }
 

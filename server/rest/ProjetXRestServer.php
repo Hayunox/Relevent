@@ -82,8 +82,11 @@ class ProjetXRestServer
             // validating user key
             $keyExists = $user->userKeyExists($connection, $api_key);
             if ($keyExists) {
-                global $user_id;
-                $user_id = $keyExists;
+                // user_id
+                return $response
+                    ->withStatus(200)
+                    ->withHeader('Content-type', 'application/json')
+                    ->withJson(json_encode($keyExists));
             } else {
                 // user key is not present in users table
                 $message = 'API_KEY_ACCESS_DENIED';
