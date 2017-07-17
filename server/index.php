@@ -10,7 +10,7 @@ namespace server;
 
 use server\rest\RestServer;
 
-require_once __DIR__ . '/rest/RestServer.php';
+require_once __DIR__.'/rest/RestServer.php';
 
 // Start Server
 new RestServer();

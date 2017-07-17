@@ -122,10 +122,10 @@ class RestServer
         $request_params = $_REQUEST;
         $params = [];
 
-        // Handling PUT request params
+        /*// Handling PUT request params
         if (array_key_exists('REQUEST_METHOD', $_SERVER) && $_SERVER['REQUEST_METHOD'] == 'PUT') {
             parse_str($response->getBody(), $request_params);
-        }
+        }*/
         foreach ($required_fields as $field) {
             if (!isset($request_params[$field]) || strlen(trim($request_params[$field])) <= 0) {
                 $error = true;
