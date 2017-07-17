@@ -105,7 +105,7 @@ class ProjetXRestServer extends test
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->integer((int)json_decode($this->newTestedInstance->authenticate($resOut)->getBody()))
+            ->integer((int) json_decode($this->newTestedInstance->authenticate($resOut)->getBody()))
             ->isGreaterThan('-1');
         /* COMPLETE TEST*/
     }
@@ -138,7 +138,7 @@ class ProjetXRestServer extends test
     {
         $app = new testCallable();
         // Prepare request and response objects
-        $_SERVER['HTTP_AUTHORIZATION'] = "azeczankzadazaz";
+        $_SERVER['HTTP_AUTHORIZATION'] = 'azeczankzadazaz';
         $env = Environment::mock([
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',

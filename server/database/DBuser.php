@@ -51,7 +51,7 @@ class DBuser
     {
         $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
         $user_data = $query->first();
-        if($user_data != null){
+        if ($user_data != null) {
             $this->user_nickname = $user_data->{$this->table_row['user_nickname']};
             $this->user_name = $user_data->{$this->table_row['user_name']};
             $this->user_surname = $user_data->{$this->table_row['user_surname']};
@@ -61,8 +61,6 @@ class DBuser
 
             return $this->userDbToArray();
         }
-        return null;
-
     }
 
     /**
