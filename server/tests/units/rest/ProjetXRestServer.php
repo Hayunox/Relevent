@@ -77,6 +77,53 @@ class ProjetXRestServer extends test
             ->isEqualTo('testet');
     }
 
+    public function testAuthenticatePresent()
+    {
+        $app = new testCallable();
+        // Prepare request and response objects
+        $env = Environment::mock([
+            'REQUEST_URI'    => '/projetX/index.php/user/data',
+            'REQUEST_METHOD' => 'GET',
+        ]);
+        $uri = Uri::createFromEnvironment($env);
+        $headers = Headers::createFromEnvironment($env);
+        $cookies = [];
+        $serverParams = $env->all();
+        $body = new RequestBody();
+        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+        $res = new Response();
+
+        // Invoke app
+        $this
+            ->given($resOut = $app($req, $res))
+            ->string($this->newTestedInstance->authenticate($resOut))
+            ->contains('USER_KEY_NOT_FOUND');
+    }
+
+    public function testAuthenticateInvadlid()
+    {
+        $app = new testCallable();
+        // Prepare request and response objects
+        $headers['Authorization'] = "azeczankzadazaz";
+        $env = Environment::mock([
+            'REQUEST_URI'    => '/projetX/index.php/user/data',
+            'REQUEST_METHOD' => 'GET',
+        ]);
+        $uri = Uri::createFromEnvironment($env);
+        $headers = Headers::createFromEnvironment($env);
+        $cookies = [];
+        $serverParams = $env->all();
+        $body = new RequestBody();
+        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+        $res = new Response();
+
+        // Invoke app
+        $this
+            ->given($resOut = $app($req, $res))
+            ->string($this->newTestedInstance->authenticate($resOut))
+            ->contains('USER_KEY_NOT_FOUND');
+    }
+
     public function getAutoloaderFile()
     {
     }

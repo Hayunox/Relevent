@@ -49,7 +49,7 @@ class ProjetXRestServer
         $this->app->post('/user/login', new RestUserLogin());
 
         /*
-         * Method with authentificatio
+         * Method with authentification
          */
 
         $this->app->run();
