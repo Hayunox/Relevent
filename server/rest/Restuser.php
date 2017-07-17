@@ -12,7 +12,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 require_once __DIR__.'/../database/DBconnection.php';
 require_once __DIR__.'/../database/DBuser.php';
-require_once __DIR__ . '/RestServer.php';
+require_once __DIR__.'/RestServer.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;

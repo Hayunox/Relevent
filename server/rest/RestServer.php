@@ -28,7 +28,7 @@ class RestServer
         $this->app = new App();
 
         $this->container = $this->app->getContainer();
-        
+
         /*
          * Method without authentification
          */
