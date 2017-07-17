@@ -46,7 +46,7 @@ class DBuser extends test
                 ->isGreaterThan(-1)
 
             // User data
-            ->integer((int)$this->testedInstance->getUserData($this->test_connection))
+            ->integer((int) $this->testedInstance->getUserData($this->test_connection))
             ->isZero()
             ->given($this->testedInstance->user_id = $test_user_id)
             ->given($this->test_user_data = $this->testedInstance->getUserData($this->test_connection))
