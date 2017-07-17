@@ -100,8 +100,7 @@
                 android:indeterminate="true"
                 android:indeterminateTint="?android:attr/colorActivatedHighlight"
                 android:paddingTop="7dp"
-                android:visibility="visible"
-                tools:visibility="visible" />
+                android:visibility="invisible" />
 
         </LinearLayout>
 
