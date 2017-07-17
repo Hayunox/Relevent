@@ -12,7 +12,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 require_once __DIR__.'/../database/DBconnection.php';
 require_once __DIR__.'/../database/DBuser.php';
-require_once __DIR__.'/ProjetXRestServer.php';
+require_once __DIR__ . '/XRestServer.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;
@@ -30,7 +30,7 @@ class RestUserCreation
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        $verification = ProjetXRestServer::getRequiredParams($response, ['nickname', 'mail', 'password']);
+        $verification = XRestServer::getRequiredParams($response, ['nickname', 'mail', 'password']);
 
         if ($verification['status']) {
             return $this->userRegister($verification['response'], $response);
@@ -51,9 +51,9 @@ class RestUserCreation
     public function userRegister($data, Response $response)
     {
         // reading post params
-        $name = ProjetXRestServer::getSecureParam($data['nickname']);
-        $email = ProjetXRestServer::getSecureParam($data['mail']);
-        $password = ProjetXRestServer::getSecureParam($data['password']);
+        $name = XRestServer::getSecureParam($data['nickname']);
+        $email = XRestServer::getSecureParam($data['mail']);
+        $password = XRestServer::getSecureParam($data['password']);
 
         $connection = new DBConnection();
 
@@ -101,7 +101,7 @@ class RestUserLogin
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        $verification = ProjetXRestServer::getRequiredParams($response, ['nickname', 'password']);
+        $verification = XRestServer::getRequiredParams($response, ['nickname', 'password']);
 
         if ($verification['status']) {
             return $this->userLogin($verification['response'], $response);
@@ -122,8 +122,8 @@ class RestUserLogin
     public function userLogin($data, Response $response)
     {
         // reading post params
-        $name = ProjetXRestServer::getSecureParam($data['nickname']);
-        $password = ProjetXRestServer::getSecureParam($data['password']);
+        $name = XRestServer::getSecureParam($data['nickname']);
+        $password = XRestServer::getSecureParam($data['password']);
 
         $connection = new DBConnection();
 

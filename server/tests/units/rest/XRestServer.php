@@ -8,7 +8,7 @@
 
 namespace server\tests\units\rest;
 
-require_once __DIR__.'/../../../rest/ProjetXRestServer.php';
+require_once __DIR__ . '/../../../rest/XRestServer.php';
 
 use mageekguy\atoum\test;
 use server\database\DBconnection;
