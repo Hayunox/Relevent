@@ -20,7 +20,7 @@ use Slim\Http\RequestBody;
 use Slim\Http\Response;
 use Slim\Http\Uri;
 
-class ProjetXRestServer extends test
+class XRestServer extends test
 {
     public function testGetRequiredParamsNoPresence()
     {
