@@ -9,7 +9,6 @@
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -113,7 +112,7 @@
                     android:indeterminate="true"
                     android:indeterminateTint="?android:attr/colorActivatedHighlight"
                     android:progressTint="?android:attr/colorFocusedHighlight"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
             </LinearLayout>
         </LinearLayout>
