@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DataBase {
     // http://192.168.2.82/projetX/index.php/
     // http://projetx.rf.gd//index.php/
-    private static final String serverUrl = "http://projetx.rf.gd//index.php/";
+    private static final String serverUrl = "http://192.168.2.82/projetX/index.php/";
 
     public static Retrofit getRetrofitService(){
         return new Retrofit.Builder()
