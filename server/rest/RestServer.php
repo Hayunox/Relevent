@@ -28,7 +28,7 @@ class RestServer
         $this->app = new App();
 
         $this->container = $this->app->getContainer();
-
+        error_log("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         /*
          * Method without authentification
          */
