@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 14 Juillet 2017 à 14:36
+-- Généré le :  Lun 17 Juillet 2017 à 15:28
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -29,12 +29,11 @@ USE `projetx`;
 --
 
 DROP TABLE IF EXISTS `event`;
-CREATE TABLE IF NOT EXISTS `event` (
-  `id` int(12) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `event` (
+  `id` int(12) NOT NULL,
   `user_id` int(12) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `creation_time` int(12) NOT NULL,
-  PRIMARY KEY (`id`)
+  `creation_time` int(12) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -44,13 +43,12 @@ CREATE TABLE IF NOT EXISTS `event` (
 --
 
 DROP TABLE IF EXISTS `event_acceptation`;
-CREATE TABLE IF NOT EXISTS `event_acceptation` (
-  `id` int(12) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `event_acceptation` (
+  `id` int(12) NOT NULL,
   `event_id` int(12) NOT NULL,
   `user_id` int(12) NOT NULL,
   `acceptation_time` int(12) NOT NULL,
-  `accepted` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  `accepted` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -60,12 +58,11 @@ CREATE TABLE IF NOT EXISTS `event_acceptation` (
 --
 
 DROP TABLE IF EXISTS `event_invit`;
-CREATE TABLE IF NOT EXISTS `event_invit` (
-  `id` int(12) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `event_invit` (
+  `id` int(12) NOT NULL,
   `send_user_id` int(12) NOT NULL,
   `receive_user_id` int(12) NOT NULL,
-  `event_id` int(12) NOT NULL,
-  PRIMARY KEY (`id`)
+  `event_id` int(12) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -75,17 +72,16 @@ CREATE TABLE IF NOT EXISTS `event_invit` (
 --
 
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(12) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(12) NOT NULL,
   `nickname` varchar(255) NOT NULL,
   `name` varchar(125) NOT NULL,
   `surname` varchar(125) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `regitration_time` int(12) NOT NULL,
-  `hashkey` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `hashkey` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -94,12 +90,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 DROP TABLE IF EXISTS `user_contact`;
-CREATE TABLE IF NOT EXISTS `user_contact` (
-  `id` int(12) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_contact` (
+  `id` int(12) NOT NULL,
   `ask_user_id` int(12) NOT NULL,
   `accept_user_id` int(12) NOT NULL,
-  `contact_time` int(12) NOT NULL,
-  PRIMARY KEY (`id`)
+  `contact_time` int(12) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -109,12 +104,85 @@ CREATE TABLE IF NOT EXISTS `user_contact` (
 --
 
 DROP TABLE IF EXISTS `user_settings`;
-CREATE TABLE IF NOT EXISTS `user_settings` (
-  `id` int(12) NOT NULL AUTO_INCREMENT,
-  `user_notification` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `user_settings` (
+  `id` int(12) NOT NULL,
+  `user_notification` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `event_acceptation`
+--
+ALTER TABLE `event_acceptation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `event_invit`
+--
+ALTER TABLE `event_invit`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `user_contact`
+--
+ALTER TABLE `user_contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `user_settings`
+--
+ALTER TABLE `user_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `event_acceptation`
+--
+ALTER TABLE `event_acceptation`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `event_invit`
+--
+ALTER TABLE `event_invit`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT pour la table `user_contact`
+--
+ALTER TABLE `user_contact`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `user_settings`
+--
+ALTER TABLE `user_settings`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
