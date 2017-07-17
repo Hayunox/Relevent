@@ -62,21 +62,22 @@ class ProjetXRestServer
      * @param $response
      *
      * @internal param Route $route
+     *
+     * @return Response
      */
     public static function authenticate(Response $response)
     {
         // Getting request headers
-        $headers = apache_request_headers();
+        $authorization = $_SERVER["HTTP_AUTHORIZATION"];
 
         // Verifying Authorization Header
-        if (isset($headers['Authorization'])) {
-            $db = new DBConnection();
-            $connection = $db->connect();
+        if (isset($authorization)) {
+            $connection = new DBConnection();
 
             $user = new DBuser(null);
 
             // get the user key
-            $api_key = $headers['Authorization'];
+            $api_key = $authorization;
 
             // validating user key
             $keyExists = $user->userKeyExists($connection, $api_key);
@@ -86,7 +87,7 @@ class ProjetXRestServer
             } else {
                 // user key is not present in users table
                 $message = 'API_KEY_ACCESS_DENIED';
-                $response
+                return $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
                     ->withJson(json_encode($message));
@@ -94,7 +95,7 @@ class ProjetXRestServer
         } else {
             // user key is missing in header
             $message = 'USER_KEY_NOT_FOUND';
-            $response
+            return $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
                 ->withJson(json_encode($message));

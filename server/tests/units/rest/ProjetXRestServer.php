@@ -81,6 +81,7 @@ class ProjetXRestServer extends test
     {
         $app = new testCallable();
         // Prepare request and response objects
+        $_SERVER['HTTP_AUTHORIZATION'] = "azeczankzadazaz";
         $env = Environment::mock([
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
@@ -96,7 +97,31 @@ class ProjetXRestServer extends test
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->string($this->newTestedInstance->authenticate($resOut))
+            ->string(json_decode($this->newTestedInstance->authenticate($resOut)->getBody()));
+        /* COMPLETE TEST*/
+    }
+
+    public function testAuthenticateWithout()
+    {
+        $app = new testCallable();
+        // Prepare request and response objects
+        $_SERVER['HTTP_AUTHORIZATION'] = null;
+        $env = Environment::mock([
+            'REQUEST_URI'    => '/projetX/index.php/user/data',
+            'REQUEST_METHOD' => 'GET',
+        ]);
+        $uri = Uri::createFromEnvironment($env);
+        $headers = Headers::createFromEnvironment($env);
+        $cookies = [];
+        $serverParams = $env->all();
+        $body = new RequestBody();
+        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+        $res = new Response();
+
+        // Invoke app
+        $this
+            ->given($resOut = $app($req, $res))
+            ->string(json_decode($this->newTestedInstance->authenticate($resOut)->getBody()))
             ->contains('USER_KEY_NOT_FOUND');
     }
 
@@ -104,7 +129,7 @@ class ProjetXRestServer extends test
     {
         $app = new testCallable();
         // Prepare request and response objects
-        $headers['Authorization'] = "azeczankzadazaz";
+        $_SERVER['HTTP_AUTHORIZATION'] = "azeczankzadazaz";
         $env = Environment::mock([
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
@@ -120,8 +145,8 @@ class ProjetXRestServer extends test
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->string($this->newTestedInstance->authenticate($resOut))
-            ->contains('USER_KEY_NOT_FOUND');
+            ->string(json_decode($this->newTestedInstance->authenticate($resOut)->getBody()))
+            ->contains('API_KEY_ACCESS_DENIED');
     }
 
     public function getAutoloaderFile()
