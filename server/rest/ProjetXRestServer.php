@@ -68,7 +68,7 @@ class ProjetXRestServer
     public static function authenticate(Response $response)
     {
         // Getting request headers
-        $authorization = $_SERVER["HTTP_AUTHORIZATION"];
+        $authorization = $_SERVER['HTTP_AUTHORIZATION'];
 
         // Verifying Authorization Header
         if (isset($authorization)) {
@@ -90,6 +90,7 @@ class ProjetXRestServer
             } else {
                 // user key is not present in users table
                 $message = 'API_KEY_ACCESS_DENIED';
+
                 return $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
@@ -98,6 +99,7 @@ class ProjetXRestServer
         } else {
             // user key is missing in header
             $message = 'USER_KEY_NOT_FOUND';
+
             return $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
