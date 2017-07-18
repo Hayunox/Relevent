@@ -25,7 +25,7 @@ before_install:
   
 before_script: 
     - cd server/
-    - composer install
+    - composer update
 script:
     - php tests/atoum.phar
 repo_token: qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy
