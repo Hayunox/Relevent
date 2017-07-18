@@ -14,7 +14,10 @@ import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.UserService;
 import com.teamX.projetx.main.MainActivity;
 
+import java.io.IOException;
+
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
@@ -59,23 +62,27 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             Retrofit restService = DataBase.getRetrofitService();
             UserService service = restService.create(UserService.class);
-            Call<User> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
+            Call<String> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
 
-            call.enqueue(new retrofit2.Callback<User>() {
+            call.enqueue(new retrofit2.Callback<String>() {
                 @Override
-                public void onResponse(Call<User> call, retrofit2.Response<User> response) {
-                    try {
-                        System.out.println("response = " + response.body());
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if(response.isSuccessful()){
+                        System.out.println("response body = " + response.body());
+                        Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
-                    } catch (Exception e) {
-                        System.out.println("error " + response);
-                        e.printStackTrace();
+                    }else{
+                        try {
+                            System.out.println("response = " + response.errorBody().string());
+                            Toast.makeText(getApplicationContext(), response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 
                 @Override
-                public void onFailure(Call<User> call, Throwable t) {
+                public void onFailure(Call<String> call, Throwable t) {
                     t.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
                 }

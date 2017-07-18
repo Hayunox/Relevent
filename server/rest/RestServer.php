@@ -28,7 +28,7 @@ class RestServer
         $this->app = new App();
 
         $this->container = $this->app->getContainer();
-        error_log("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+
         /*
          * Method without authentification
          */
@@ -86,7 +86,7 @@ class RestServer
                 return $response
                     ->withStatus(200)
                     ->withHeader('Content-type', 'application/json')
-                    ->withJson(json_encode($keyExists));
+                    ->withJson(RestServer::createJSONResponse($keyExists));
             } else {
                 // user key is not present in users table
                 $message = 'API_KEY_ACCESS_DENIED';
@@ -94,7 +94,7 @@ class RestServer
                 return $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
-                    ->withJson(json_encode($message));
+                    ->withJson(RestServer::createJSONResponse($message));
             }
         } else {
             // user key is missing in header
@@ -103,7 +103,7 @@ class RestServer
             return $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
-                ->withJson(json_encode($message));
+                ->withJson(RestServer::createJSONResponse($message));
         }
     }
 
@@ -169,4 +169,16 @@ class RestServer
     /*public static function getSecureXSSParam($param){
 
     }*/
+
+    /**
+     * @param $data
+     * @return array
+     */
+    public static function createJSONResponse($data){
+        if(is_array($data)){
+            return $data;
+        }else{
+            return $data;
+        }
+    }
 }

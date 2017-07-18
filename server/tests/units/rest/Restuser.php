@@ -203,7 +203,7 @@ class RestUserLogin extends test
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(200)
+            ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
             ->contains('USER_LOGIN_FAILED');
     }

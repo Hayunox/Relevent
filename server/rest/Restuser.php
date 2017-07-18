@@ -16,7 +16,9 @@ require_once __DIR__.'/RestServer.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;
+use Slim\Http\Body;
 use Slim\Http\Request;
+use Slim\Http\RequestBody;
 use Slim\Http\Response;
 
 class RestUserCreation
@@ -39,7 +41,7 @@ class RestUserCreation
         return $response
             ->withStatus(400)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($verification['response']);
+            ->withJson(RestServer::createJSONResponse($verification['response']));
     }
 
     /**
@@ -86,7 +88,7 @@ class RestUserCreation
         return $response
             ->withStatus(200)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($message);
+            ->withJson(RestServer::createJSONResponse($message));
     }
 }
 
@@ -110,7 +112,7 @@ class RestUserLogin
         return $response
             ->withStatus(400)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($verification['response']);
+            ->withJson(RestServer::createJSONResponse($verification['response']));
     }
 
     /**
@@ -133,15 +135,17 @@ class RestUserLogin
         // validating email address
         if ($user->tryLogin($connection, $name, $password)) {
             $message = 'USER_LOGIN_SUCCESSFULLY';
+            $status  = 200;
 
             // Connection failed
         } else {
             $message = 'USER_LOGIN_FAILED';
+            $status  = 400;
         }
 
         return $response
-            ->withStatus(200)
+            ->withStatus($status)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($message);
+            ->withJson(RestServer::createJSONResponse($message));
     }
 }

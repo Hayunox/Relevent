@@ -31,5 +31,5 @@ public interface UserService {
 
     @Multipart
     @POST("user/login")
-    Call<User> userLogin(@Part("nickname") String nickname, @Part("password") String password);
+    Call<String> userLogin(@Part("nickname") String nickname, @Part("password") String password);
 }
