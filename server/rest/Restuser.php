@@ -16,9 +16,7 @@ require_once __DIR__.'/RestServer.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;
-use Slim\Http\Body;
 use Slim\Http\Request;
-use Slim\Http\RequestBody;
 use Slim\Http\Response;
 
 class RestUserCreation
@@ -135,12 +133,12 @@ class RestUserLogin
         // validating email address
         if ($user->tryLogin($connection, $name, $password)) {
             $message = 'USER_LOGIN_SUCCESSFULLY';
-            $status  = 200;
+            $status = 200;
 
             // Connection failed
         } else {
             $message = 'USER_LOGIN_FAILED';
-            $status  = 400;
+            $status = 400;
         }
 
         return $response

@@ -160,22 +160,22 @@ class RestServer extends test
 
     public function testCreateJSONResponseArray()
     {
-        $data = array(
-            "test" => "test2",
-            "test5" => "test5",
-        );
+        $data = [
+            'test'  => 'test2',
+            'test5' => 'test5',
+        ];
 
         $this
             ->array($this->newTestedInstance->createJSONResponse($data))
-            ->hasKey("test")
-            ->hasKey("test5")
-            ->contains("test2")
-            ->contains("test5");
+            ->hasKey('test')
+            ->hasKey('test5')
+            ->contains('test2')
+            ->contains('test5');
     }
 
     public function testCreateJSONResponseRaw()
     {
-        $data = "FAILED";
+        $data = 'FAILED';
 
         $this
             ->string($this->newTestedInstance->createJSONResponse($data))
