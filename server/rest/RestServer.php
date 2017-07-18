@@ -86,7 +86,7 @@ class RestServer
                 return $response
                     ->withStatus(200)
                     ->withHeader('Content-type', 'application/json')
-                    ->withJson(RestServer::createJSONResponse($keyExists));
+                    ->withJson(self::createJSONResponse($keyExists));
             } else {
                 // user key is not present in users table
                 $message = 'API_KEY_ACCESS_DENIED';
@@ -94,7 +94,7 @@ class RestServer
                 return $response
                     ->withStatus(401)
                     ->withHeader('Content-type', 'application/json')
-                    ->withJson(RestServer::createJSONResponse($message));
+                    ->withJson(self::createJSONResponse($message));
             }
         } else {
             // user key is missing in header
@@ -103,7 +103,7 @@ class RestServer
             return $response
                 ->withStatus(400)
                 ->withHeader('Content-type', 'application/json')
-                ->withJson(RestServer::createJSONResponse($message));
+                ->withJson(self::createJSONResponse($message));
         }
     }
 
@@ -172,12 +172,14 @@ class RestServer
 
     /**
      * @param $data
+     *
      * @return array
      */
-    public static function createJSONResponse($data){
-        if(is_array($data)){
+    public static function createJSONResponse($data)
+    {
+        if (is_array($data)) {
             return $data;
-        }else{
+        } else {
             return $data;
         }
     }
