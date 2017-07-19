@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teamX.projetx.R;
@@ -24,6 +26,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText nickname;
     private EditText mail;
     private EditText password;
+    private ProgressBar progressBar;
+    private TextView errorText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +35,20 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // set up the interface
-        this.register   = (Button) findViewById(R.id.buttonRegister);
-        this.nickname   = (EditText) findViewById(R.id.editTextNickname);
-        this.mail       = (EditText) findViewById(R.id.editTextMail);
-        this.password   = (EditText) findViewById(R.id.editTextPassword);
+        this.register       = (Button) findViewById(R.id.buttonRegister);
+        this.nickname       = (EditText) findViewById(R.id.editTextNickname);
+        this.mail           = (EditText) findViewById(R.id.editTextMail);
+        this.password       = (EditText) findViewById(R.id.editTextPassword);
+        this.errorText      = (TextView) findViewById(R.id.textViewErrorRegister);
+        this.progressBar    = (ProgressBar) findViewById(R.id.progressBarRegister);
 
 
         // On register click
         this.register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+
                 Retrofit restService = DataBase.getRetrofitService();
                 UserService service = restService.create(UserService.class);
                 Call<String> call = service.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
@@ -56,11 +64,14 @@ public class RegisterActivity extends AppCompatActivity {
                                 // TODO : refactor
                                 switch (response.errorBody().string()) {
                                     case "\"USER_CREATE_FAILED\"":
-                                        Toast.makeText(getApplicationContext(), "Registration failed", Toast.LENGTH_SHORT).show();
+                                        errorText.setText(R.string.rest_register_failed);
+                                        break;
                                     case "\"USER_NICKNAME_EXISTS\"":
-                                        Toast.makeText(getApplicationContext(), "Email address already exists", Toast.LENGTH_SHORT).show();
+                                        errorText.setText(R.string.rest_register_nickname_exists);
+                                        break;
                                     case "\"USER_MAIL_EXISTS\"":
-                                        Toast.makeText(getApplicationContext(), "Nickname already exists", Toast.LENGTH_SHORT).show();
+                                        errorText.setText(R.string.rest_register_mail_exists);
+                                        break;
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -74,6 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
                     }
                 });
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
     }

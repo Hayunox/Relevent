@@ -94,6 +94,13 @@
                     android:textColor="@android:color/background_light"
                     android:textColorHint="@android:color/background_light" />
 
+                <TextView
+                    android:id="@+id/textViewErrorRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_red_light" />
+
                 <CheckBox
                     android:id="@+id/checkBox"
                     style="@style/Widget.AppCompat.CompoundButton.CheckBox"
@@ -105,7 +112,7 @@
                     app:buttonTint="?android:attr/colorActivatedHighlight" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBarRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

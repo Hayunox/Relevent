@@ -62,10 +62,12 @@ class RestUserCreation
 
         // validating email address
         if ($user->userMailExists($connection, $email)) {
+            $status  = 400;
             $message = 'USER_MAIL_EXISTS';
 
             // validating nickname
         } elseif ($user->userNickNameExists($connection, $name)) {
+            $status  = 400;
             $message = 'USER_NICKNAME_EXISTS';
 
             // User validated
@@ -77,14 +79,16 @@ class RestUserCreation
             ]);
 
             if ($res > -1) {
+                $status  = 200;
                 $message = 'USER_CREATED_SUCCESSFULLY';
             } else {
+                $status  = 400;
                 $message = 'USER_CREATE_FAILED';
             }
         }
 
         return $response
-            ->withStatus(200)
+            ->withStatus($status)
             ->withHeader('Content-type', 'application/json')
             ->withJson(RestServer::createJSONResponse($message));
     }

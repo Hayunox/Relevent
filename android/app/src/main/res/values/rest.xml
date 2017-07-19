@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rest_login_failed">Incorrect nickname or password</string>
+
+    <string name="rest_register_failed">Registration failed</string>
+    <string name="rest_register_nickname_exists">This nickname already exists</string>
+    <string name="rest_register_mail_exists">This mail address already exists</string>
+</resources>

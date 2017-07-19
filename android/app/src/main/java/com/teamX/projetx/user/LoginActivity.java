@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teamX.projetx.R;
@@ -29,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button login;
     private EditText nickname;
     private EditText password;
+    private ProgressBar progressBar;
+    private TextView errorText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // set up the interfacte
-        this.register   = (Button) findViewById(R.id.buttonRegister);
-        this.login      = (Button) findViewById(R.id.buttonLogin);
-        this.nickname   = (EditText) findViewById(R.id.editTextNickname);
-        this.password   = (EditText) findViewById(R.id.editTextPassword);
+        this.register       = (Button) findViewById(R.id.buttonRegister);
+        this.login          = (Button) findViewById(R.id.buttonLogin);
+        this.nickname       = (EditText) findViewById(R.id.editTextNickname);
+        this.password       = (EditText) findViewById(R.id.editTextPassword);
+        this.errorText      = (TextView) findViewById(R.id.textViewErrorLogin);
+        this.progressBar    = (ProgressBar) findViewById(R.id.progressBarLogin);
 
 
         /**
@@ -59,36 +65,41 @@ public class LoginActivity extends AppCompatActivity {
         this.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Retrofit restService = DataBase.getRetrofitService();
-            UserService service = restService.create(UserService.class);
-            Call<String> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
+                progressBar.setVisibility(View.VISIBLE);
 
-            call.enqueue(new retrofit2.Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    if(response.isSuccessful()){
-                        System.out.println("response body = " + response.body());
-                        Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    }else{
-                        try {
-                            // TODO : refactor
-                            switch(response.errorBody().string()){
-                                case "\"USER_LOGIN_FAILED\"": Toast.makeText(getApplicationContext(), "Incorrect nickname or password", Toast.LENGTH_SHORT).show();
+                Retrofit restService = DataBase.getRetrofitService();
+                UserService service = restService.create(UserService.class);
+                Call<String> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
+
+                call.enqueue(new retrofit2.Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if(response.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        }else{
+                            try {
+                                // TODO : refactor
+                                switch(response.errorBody().string()){
+                                    case "\"USER_LOGIN_FAILED\"":
+                                        errorText.setText(R.string.rest_login_failed);
+                                        break;
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    t.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        t.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
+
     }
 }
