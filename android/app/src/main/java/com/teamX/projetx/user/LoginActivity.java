@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     private boolean checkUserLoginField(){
         // Todo : more security check
-        if(this.nickname.getText().toString().isEmpty() || this.password.getText().toString().isEmpty()){
+        if(!this.nickname.getText().toString().isEmpty() || !this.password.getText().toString().isEmpty()){
             this.errorText.setText(R.string.rest_login_field_empty);
             return false;
         }

@@ -96,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean checkUserRegistrationField(){
         // Todo : more security check
-        if(this.nickname.getText().toString().isEmpty() || this.mail.getText().toString().isEmpty() || this.password.getText().toString().isEmpty() || !this.checkBoxRules.isChecked()){
+        if(!this.nickname.getText().toString().isEmpty() || !this.mail.getText().toString().isEmpty() || !this.password.getText().toString().isEmpty() || !this.checkBoxRules.isChecked()){
             this.errorText.setText(R.string.rest_register_field_empty);
             return false;
         }
