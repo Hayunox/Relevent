@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Viocon' => array($vendorDir . '/usmanhalalit/viocon/src'),
+    'Raven_' => array($vendorDir . '/sentry/sentry/lib'),
     'Pixie' => array($vendorDir . '/usmanhalalit/pixie/src'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
 );
