@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         this.nickname       = (EditText) findViewById(R.id.editTextUserLoginNickname);
         this.password       = (EditText) findViewById(R.id.editTextUserLoginPassword);
         this.errorText      = (TextView) findViewById(R.id.textViewUserLoginError);
-        this.progressBar    = (ProgressBar) findViewById(R.id.progressBarLogin);
+        this.progressBar    = (ProgressBar) findViewById(R.id.progressBarUserLogin);
 
 
         /**

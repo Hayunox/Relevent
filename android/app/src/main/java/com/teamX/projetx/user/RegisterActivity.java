@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         this.nickname       = (EditText) findViewById(R.id.editTextUserRegistrationNickname);
         this.mail           = (EditText) findViewById(R.id.editTextUserRegistrationMail);
         this.password       = (EditText) findViewById(R.id.editTextUserRegistrationPassword);
-        this.errorText      = (TextView) findViewById(R.id.textViewErrorRegister);
+        this.errorText      = (TextView) findViewById(R.id.textViewUserRegistrationError);
         this.progressBar    = (ProgressBar) findViewById(R.id.progressBarUserRegistration);
         this.checkBoxRules  = (CheckBox) findViewById(R.id.checkBoxUserRegistrationRules);
 
