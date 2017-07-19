@@ -44,7 +44,7 @@ class DBevent extends test
                 'event_address'         => $this->test_event_address,
                 'event_description'     => $this->test_event_description,
                 'event_date'            => $this->test_event_date,
-                'event_theme'           => "",
+                'event_theme'           => '',
                 'event_secret'          => 0,
             ]))
             ->integer((int) $test_event_id)
