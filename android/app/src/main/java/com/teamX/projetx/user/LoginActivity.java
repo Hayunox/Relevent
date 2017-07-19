@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         this.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
             Retrofit restService = DataBase.getRetrofitService();
             UserService service = restService.create(UserService.class);
             Call<String> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
@@ -73,8 +72,10 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }else{
                         try {
-                            System.out.println("response = " + response.errorBody().string());
-                            Toast.makeText(getApplicationContext(), response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                            // TODO : refactor
+                            switch(response.errorBody().string()){
+                                case "\"USER_LOGIN_FAILED\"": Toast.makeText(getApplicationContext(), "Incorrect nickname or password", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

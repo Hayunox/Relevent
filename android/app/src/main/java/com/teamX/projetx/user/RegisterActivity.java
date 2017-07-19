@@ -12,7 +12,10 @@ import com.teamX.projetx.R;
 import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.UserService;
 
+import java.io.IOException;
+
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -40,23 +43,33 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Retrofit restService = DataBase.getRetrofitService();
                 UserService service = restService.create(UserService.class);
-                Call<User> call = service.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
+                Call<String> call = service.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
 
-                call.enqueue(new retrofit2.Callback<User>() {
+                call.enqueue(new retrofit2.Callback<String>() {
                     @Override
-                    public void onResponse(Call<User> call, retrofit2.Response<User> response) {
-                        try {
-                            System.out.println("response = " + response.body());
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Registred", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-
-                        } catch (Exception e) {
-                            System.out.println("error " + response);
-                            e.printStackTrace();
+                        } else {
+                            try {
+                                // TODO : refactor
+                                switch (response.errorBody().string()) {
+                                    case "\"USER_CREATE_FAILED\"":
+                                        Toast.makeText(getApplicationContext(), "Registration failed", Toast.LENGTH_SHORT).show();
+                                    case "\"USER_NICKNAME_EXISTS\"":
+                                        Toast.makeText(getApplicationContext(), "Email address already exists", Toast.LENGTH_SHORT).show();
+                                    case "\"USER_MAIL_EXISTS\"":
+                                        Toast.makeText(getApplicationContext(), "Nickname already exists", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<User> call, Throwable t) {
+                    public void onFailure(Call<String> call, Throwable t) {
                         t.printStackTrace();
                         Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
                     }
