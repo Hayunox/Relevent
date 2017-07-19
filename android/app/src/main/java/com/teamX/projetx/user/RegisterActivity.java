@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
 
-                if(!checkUserRegistrationField()){
+                if(checkUserRegistrationField()){
                     Retrofit restService = DataBase.getRetrofitService();
                     UserService service = restService.create(UserService.class);
                     Call<String> call = service.userRegister(nickname.getText().toString(), mail.getText().toString(), password.getText().toString());
@@ -96,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean checkUserRegistrationField(){
         // Todo : more security check
-        if(!this.nickname.getText().toString().isEmpty() || !this.mail.getText().toString().isEmpty() || !this.password.getText().toString().isEmpty() || !this.checkBoxRules.isChecked()){
+        if(this.nickname.getText().toString().isEmpty() || this.mail.getText().toString().isEmpty() || this.password.getText().toString().isEmpty() || !this.checkBoxRules.isChecked()){
             this.errorText.setText(R.string.rest_register_field_empty);
             return false;
         }
