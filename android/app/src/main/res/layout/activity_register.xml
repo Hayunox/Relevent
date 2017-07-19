@@ -40,7 +40,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editTextNickname"
+                    android:id="@+id/editTextUserRegistrationNickname"
                     android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -55,7 +55,7 @@
                     android:theme="@android:style/Theme.Translucent" />
 
                 <EditText
-                    android:id="@+id/editTextMail"
+                    android:id="@+id/editTextUserRegistrationMail"
                     android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -69,7 +69,7 @@
                     android:theme="@android:style/Theme.Translucent" />
 
                 <EditText
-                    android:id="@+id/editTextPassword"
+                    android:id="@+id/editTextUserRegistrationPassword"
                     android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -83,7 +83,7 @@
                     android:theme="@android:style/Theme.Translucent" />
 
                 <Button
-                    android:id="@+id/buttonRegister"
+                    android:id="@+id/buttonUserRegistrationRegister"
                     android:layout_width="@dimen/input_text_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|center_horizontal"
@@ -95,14 +95,14 @@
                     android:textColorHint="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textViewErrorRegister"
+                    android:id="@+id/textViewUserRegistrationError"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:textAlignment="center"
                     android:textColor="@android:color/holo_red_light" />
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/checkBoxUserRegistrationRules"
                     style="@style/Widget.AppCompat.CompoundButton.CheckBox"
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
@@ -112,7 +112,7 @@
                     app:buttonTint="?android:attr/colorActivatedHighlight" />
 
                 <ProgressBar
-                    android:id="@+id/progressBarRegister"
+                    android:id="@+id/progressBarUserRegistration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
