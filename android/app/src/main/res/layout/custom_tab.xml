@@ -3,6 +3,7 @@
     android:id="@+id/tab"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:elevation="5dp"
     android:textAlignment="center"
     android:textColor="@color/colorAccent"
     android:textSize="10sp" />
