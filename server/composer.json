@@ -4,6 +4,5 @@
         "usmanhalalit/pixie": "^2.0",
 		"atoum/atoum": "^3.1.0",
 		"atoum/stubs": "*",
-		"sentry/sentry": "*"
     }
 }

@@ -9,15 +9,6 @@ $runner->addTestsFromDirectory('tests/units/database');
 $runner->addTestsFromDirectory('tests/units/rest');
 
 /*
-Publish errors on sentry.io
-*/
-$client = new Raven_Client('https://97d0881376544234aa54b3d4157e2a44:daa853fe91a2457bafb3783f11a16a49@sentry.io/193436');
-$error_handler = new Raven_ErrorHandler($client);
-$error_handler->registerExceptionHandler();
-$error_handler->registerErrorHandler();
-$error_handler->registerShutdownFunction();
-
-/*
 Publish code coverage report on coveralls.io
 */
 $sources = '';
