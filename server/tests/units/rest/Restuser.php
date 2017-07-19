@@ -107,7 +107,7 @@ class RestUserCreation extends test
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(200)
+            ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
             ->contains('USER_MAIL_EXISTS');
     }
@@ -138,7 +138,7 @@ class RestUserCreation extends test
         $this
             ->given($resOut = $app($req, $res))
             ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(200)
+            ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
             ->contains('USER_NICKNAME_EXISTS');
     }

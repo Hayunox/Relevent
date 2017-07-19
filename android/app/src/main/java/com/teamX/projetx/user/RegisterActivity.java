@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         this.password       = (EditText) findViewById(R.id.editTextUserRegistrationPassword);
         this.errorText      = (TextView) findViewById(R.id.textViewErrorRegister);
         this.progressBar    = (ProgressBar) findViewById(R.id.progressBarUserRegistration);
-        this.checkBoxRules  = (CheckBox) findViewById(R.id.checkBoxUserRegistrationRules)
+        this.checkBoxRules  = (CheckBox) findViewById(R.id.checkBoxUserRegistrationRules);
 
         // On register click
         this.register.setOnClickListener(new View.OnClickListener() {
