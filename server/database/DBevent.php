@@ -92,7 +92,6 @@ class DBevent
         return $db->getQueryBuilderHandler()->table($this->event_table)->insert($data);
     }
 
-
     /**
      * @return array
      */

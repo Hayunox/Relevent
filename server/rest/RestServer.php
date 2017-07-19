@@ -83,14 +83,14 @@ class RestServer
             $keyExists = $user->userKeyExists($connection, $api_key);
             if ($keyExists) {
                 // user_id
-                $response = RestServer::createJSONResponse($response, 200, $keyExists);
+                $response = self::createJSONResponse($response, 200, $keyExists);
             } else {
                 // user key is not present in users table
-                $response = RestServer::createJSONResponse($response, 400, "API_KEY_ACCESS_DENIED");
+                $response = self::createJSONResponse($response, 400, 'API_KEY_ACCESS_DENIED');
             }
         } else {
             // user key is missing in header
-            $response = RestServer::createJSONResponse($response, 400, "USER_KEY_NOT_FOUND");
+            $response = self::createJSONResponse($response, 400, 'USER_KEY_NOT_FOUND');
         }
 
         return $response;
@@ -163,11 +163,12 @@ class RestServer
      * @param Response $response
      * @param $status
      * @param $data
+     *
      * @return Response
      */
     public static function createJSONResponse(Response $response, $status, $data)
     {
-        if(is_array($data)){
+        if (is_array($data)) {
             $data = json_encode($data);
         }
 
