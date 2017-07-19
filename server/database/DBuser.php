@@ -47,10 +47,13 @@ class DBuser
      *
      * @return array
      */
-    public function getUserData(DBconnection $db)
+    public function getUserData(DBconnection $db, $user_data = null)
     {
-        $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
-        $user_data = $query->first();
+        if($user_data == null){
+            $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
+            $user_data = $query->first();
+        }
+
         if ($user_data != null) {
             $this->user_nickname = $user_data->{$this->table_row['user_nickname']};
             $this->user_name = $user_data->{$this->table_row['user_name']};
@@ -134,11 +137,10 @@ class DBuser
     }
 
     /**
-     * @param $db
+     * @param DBconnection $db
      * @param $nickname
      * @param $password
-     *
-     * @return bool
+     * @return array|bool
      */
     public function tryLogin(DBconnection $db, $nickname, $password)
     {
@@ -146,7 +148,8 @@ class DBuser
             ->where($this->table_row['user_password'], $this->userPasswordEncrypt($db->securizeParam($password)))
             ->where($this->table_row['user_nickname'], $db->securizeParam($nickname));
 
-        return ($query->first() == null) ? false : true;
+        $data = $query->first();
+        return ($data == null) ? false : $this->getUserData($db, $data);
     }
 
     /**
@@ -165,13 +168,11 @@ class DBuser
     public function userDbToArray()
     {
         return [
-            'user_id'               => $this->user_id,
-            'user_nickname'         => $this->user_nickname,
-            'user_name'             => $this->user_name,
-            'user_surname'          => $this->user_surname,
-            'user_password'         => $this->user_password,
-            'user_mail'             => $this->user_mail,
-            'user_key'              => $this->user_key,
+            'nickname'         => $this->user_nickname,
+            'name'             => $this->user_name,
+            'surname'          => $this->user_surname,
+            'mail'             => $this->user_mail,
+            'key'              => $this->user_key,
         ];
     }
 }

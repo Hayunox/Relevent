@@ -70,19 +70,22 @@ public class LoginActivity extends AppCompatActivity {
                 if(checkUserLoginField()){
                     Retrofit restService = DataBase.getRetrofitService();
                     UserService service = restService.create(UserService.class);
-                    Call<String> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
+                    Call<User> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
 
-                    call.enqueue(new retrofit2.Callback<String>() {
+                    call.enqueue(new retrofit2.Callback<User>() {
                         @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
+                        public void onResponse(Call<User> call, Response<User> response) {
                             if(response.isSuccessful()){
+                                User connectedUser = response.body();
+
+                                System.out.println("Username = " + connectedUser.getNickname());
                                 Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             }else{
                                 try {
                                     // TODO : refactor
                                     switch(response.errorBody().string().replace("\"", "")){
-                                        case "\"USER_LOGIN_FAILED\"":
+                                        case "USER_LOGIN_FAILED":
                                             errorText.setText(R.string.rest_login_failed);
                                             break;
                                     }
@@ -93,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<String> call, Throwable t) {
+                        public void onFailure(Call<User> call, Throwable t) {
                             t.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
                         }

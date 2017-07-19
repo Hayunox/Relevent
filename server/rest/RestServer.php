@@ -83,28 +83,17 @@ class RestServer
             $keyExists = $user->userKeyExists($connection, $api_key);
             if ($keyExists) {
                 // user_id
-                return $response
-                    ->withStatus(200)
-                    ->withHeader('Content-type', 'application/json')
-                    ->withJson(self::createJSONResponse($keyExists));
+                $response = RestServer::createJSONResponse($response, 200, $keyExists);
             } else {
                 // user key is not present in users table
-                $message = 'API_KEY_ACCESS_DENIED';
-
-                return $response
-                    ->withStatus(401)
-                    ->withHeader('Content-type', 'application/json')
-                    ->withJson(self::createJSONResponse($message));
+                $response = RestServer::createJSONResponse($response, 400, "API_KEY_ACCESS_DENIED");
             }
         } else {
             // user key is missing in header
-            $message = 'USER_KEY_NOT_FOUND';
-
-            return $response
-                ->withStatus(400)
-                ->withHeader('Content-type', 'application/json')
-                ->withJson(self::createJSONResponse($message));
+            $response = RestServer::createJSONResponse($response, 400, "USER_KEY_NOT_FOUND");
         }
+
+        return $response;
     }
 
     /**
@@ -171,16 +160,18 @@ class RestServer
     }*/
 
     /**
+     * @param $response
+     * @param $status
      * @param $data
-     *
-     * @return array
+     * @return mixed
      */
-    public static function createJSONResponse($data)
+    public static function createJSONResponse(Response $response, $status, $data)
     {
-        if (is_array($data)) {
-            return $data;
-        } else {
-            return $data;
-        }
+        if(is_array($data)){$data = json_encode($data);}
+
+        return $response
+            ->withStatus($status)
+            ->withHeader('Content-type', 'application/json')
+            ->write(json_encode($data));
     }
 }

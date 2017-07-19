@@ -36,10 +36,7 @@ class RestUserCreation
             return $this->userRegister($verification['response'], $response);
         }
 
-        return $response
-            ->withStatus(400)
-            ->withHeader('Content-type', 'application/json')
-            ->withJson(RestServer::createJSONResponse($verification['response']));
+        return RestServer::createJSONResponse($response, 400, $verification['response']);
     }
 
     /**
@@ -62,13 +59,11 @@ class RestUserCreation
 
         // validating email address
         if ($user->userMailExists($connection, $email)) {
-            $status  = 400;
-            $message = 'USER_MAIL_EXISTS';
+            $response = RestServer::createJSONResponse($response, 400, "USER_MAIL_EXISTS");
 
             // validating nickname
         } elseif ($user->userNickNameExists($connection, $name)) {
-            $status  = 400;
-            $message = 'USER_NICKNAME_EXISTS';
+            $response = RestServer::createJSONResponse($response, 400, "USER_NICKNAME_EXISTS");
 
             // User validated
         } else {
@@ -79,18 +74,13 @@ class RestUserCreation
             ]);
 
             if ($res > -1) {
-                $status  = 200;
-                $message = 'USER_CREATED_SUCCESSFULLY';
+                $response = RestServer::createJSONResponse($response, 200, "USER_CREATED_SUCCESSFULLY");
             } else {
-                $status  = 400;
-                $message = 'USER_CREATE_FAILED';
+                $response = RestServer::createJSONResponse($response, 400, "USER_CREATE_FAILED");
             }
         }
 
-        return $response
-            ->withStatus($status)
-            ->withHeader('Content-type', 'application/json')
-            ->withJson(RestServer::createJSONResponse($message));
+        return $response;
     }
 }
 
@@ -111,10 +101,7 @@ class RestUserLogin
             return $this->userLogin($verification['response'], $response);
         }
 
-        return $response
-            ->withStatus(400)
-            ->withHeader('Content-type', 'application/json')
-            ->withJson(RestServer::createJSONResponse($verification['response']));
+        return RestServer::createJSONResponse($response, 400, $verification['response']);
     }
 
     /**
@@ -135,19 +122,14 @@ class RestUserLogin
         $user = new DBuser(null);
 
         // validating email address
-        if ($user->tryLogin($connection, $name, $password)) {
-            $message = 'USER_LOGIN_SUCCESSFULLY';
-            $status = 200;
+        if (is_array($user_data = $user->tryLogin($connection, $name, $password))) {
+            $response = RestServer::createJSONResponse($response, 200, $user_data);
 
-            // Connection failed
+        // Connection failed
         } else {
-            $message = 'USER_LOGIN_FAILED';
-            $status = 400;
+            $response = RestServer::createJSONResponse($response, 400, "USER_LOGIN_FAILED");
         }
 
-        return $response
-            ->withStatus($status)
-            ->withHeader('Content-type', 'application/json')
-            ->withJson(RestServer::createJSONResponse($message));
+        return $response;
     }
 }
