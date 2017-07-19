@@ -160,18 +160,20 @@ class RestServer
     }*/
 
     /**
-     * @param $response
+     * @param Response $response
      * @param $status
      * @param $data
-     * @return mixed
+     * @return Response
      */
     public static function createJSONResponse(Response $response, $status, $data)
     {
-        if(is_array($data)){$data = json_encode($data);}
+        if(is_array($data)){
+            $data = json_encode($data);
+        }
 
         return $response
             ->withStatus($status)
             ->withHeader('Content-type', 'application/json')
-            ->write(json_encode($data));
+            ->write($data);
     }
 }

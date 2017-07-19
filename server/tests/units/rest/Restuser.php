@@ -235,7 +235,8 @@ class RestUserLogin extends test
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
             ->string((string) $resOut->getBody())
-            ->contains('USER_LOGIN_SUCCESSFULLY');
+            ->contains('nickname')
+            ->contains('test');
     }
 
     public function getAutoloaderFile()

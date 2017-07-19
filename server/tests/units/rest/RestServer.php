@@ -87,7 +87,7 @@ class RestServer extends test
         /* Get real key */
         $user = new DBuser(1);
         $connection = new DBConnection();
-        $user_key = $user->getUserData($connection)['user_key'];
+        $user_key = $user->getUserData($connection)['key'];
 
         $_SERVER['HTTP_AUTHORIZATION'] = $user_key;
         $env = Environment::mock([
@@ -130,7 +130,7 @@ class RestServer extends test
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->string(json_decode($this->newTestedInstance->authenticate($resOut)->getBody()))
+            ->string($this->newTestedInstance->authenticate($resOut)->getBody()->getContents())
             ->contains('USER_KEY_NOT_FOUND');
     }
 
@@ -154,7 +154,7 @@ class RestServer extends test
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->string(json_decode($this->newTestedInstance->authenticate($resOut)->getBody()))
+            ->string($this->newTestedInstance->authenticate($resOut)->getBody()->getContents())
             ->contains('API_KEY_ACCESS_DENIED');
     }
 
@@ -166,9 +166,7 @@ class RestServer extends test
         ];
 
         $this
-            ->array($this->newTestedInstance->createJSONResponse($data))
-            ->hasKey('test')
-            ->hasKey('test5')
+            ->string($this->newTestedInstance->createJSONResponse(new Response(), 200, $data)->getBody()->getContents())
             ->contains('test2')
             ->contains('test5');
     }
@@ -178,7 +176,7 @@ class RestServer extends test
         $data = 'FAILED';
 
         $this
-            ->string($this->newTestedInstance->createJSONResponse($data))
+            ->string($this->newTestedInstance->createJSONResponse(new Response(), 200, $data)->getBody()->getContents())
             ->contains($data);
     }
 

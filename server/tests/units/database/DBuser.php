@@ -51,15 +51,14 @@ class DBuser extends test
             ->given($this->testedInstance->user_id = $test_user_id)
             ->given($this->test_user_data = $this->testedInstance->getUserData($this->test_connection))
             ->array($this->test_user_data)
-                ->hasKey('user_id')
-                ->hasKey('user_key')
-                ->hasKey('user_surname')
+                ->hasKey('mail')
+                ->hasKey('key')
+                ->hasKey('surname')
                 ->contains($this->test_user_nickname)
                 ->contains($this->test_user_mail)
-                ->contains($this->testedInstance->userPasswordEncrypt($this->test_user_password))
 
             // Exists functions
-            ->integer((int) $this->testedInstance->userKeyExists($this->test_connection, $this->test_user_data['user_key']))->isGreaterThan(-1)
+            ->integer((int) $this->testedInstance->userKeyExists($this->test_connection, $this->test_user_data['key']))->isGreaterThan(-1)
             ->boolean($this->testedInstance->userKeyExists($this->test_connection, 'zaeazeazeazddzeczvrevevevfdjn'))->isFalse()
             ->boolean($this->testedInstance->userMailExists($this->test_connection, $this->test_user_mail))->isTrue()
             ->boolean($this->testedInstance->userMailExists($this->test_connection, 'zadavert@ezrzer.com'))->isFalse()
@@ -67,7 +66,9 @@ class DBuser extends test
             ->boolean($this->testedInstance->userNickNameExists($this->test_connection, 'zadaverthrtjeynse'))->isFalse()
 
             // Login function
-            ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->test_user_password))->isTrue()
+            ->array($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, $this->test_user_password))
+                ->hasKey('mail')
+                ->contains($this->test_user_nickname)
             ->boolean($this->testedInstance->tryLogin($this->test_connection, $this->test_user_nickname, 'zaeazeazeazddzeczvrevevevfdjn'))->isFalse()
             ->boolean($this->testedInstance->tryLogin($this->test_connection, 'zadaverthrtjeynse', $this->test_user_password))->isFalse();
     }
