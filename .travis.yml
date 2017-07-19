@@ -23,9 +23,9 @@ before_install:
   - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
   - sudo service apache2 restart
   
-before_script: composer require atoum/atoum
-script: vendor/bin/atoum
-
+before_script: 
+    - cd server/
+    - composer update
 script:
-    - php server/tests/atoum.phar
+    - php tests/atoum.phar
 repo_token: qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy

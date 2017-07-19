@@ -5,9 +5,8 @@ use mageekguy\atoum\reports;
 $report = $script->addDefaultReport();
 
 //TEST EXECUTION SETUP
-$runner->addTestsFromDirectory('server/tests/units/database');
-$runner->addTestsFromDirectory('server/tests/units/rest');
-
+$runner->addTestsFromDirectory('tests/units/database');
+$runner->addTestsFromDirectory('tests/units/rest');
 
 /*
 Publish code coverage report on coveralls.io

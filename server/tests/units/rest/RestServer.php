@@ -158,6 +158,30 @@ class RestServer extends test
             ->contains('API_KEY_ACCESS_DENIED');
     }
 
+    public function testCreateJSONResponseArray()
+    {
+        $data = [
+            'test'  => 'test2',
+            'test5' => 'test5',
+        ];
+
+        $this
+            ->array($this->newTestedInstance->createJSONResponse($data))
+            ->hasKey('test')
+            ->hasKey('test5')
+            ->contains('test2')
+            ->contains('test5');
+    }
+
+    public function testCreateJSONResponseRaw()
+    {
+        $data = 'FAILED';
+
+        $this
+            ->string($this->newTestedInstance->createJSONResponse($data))
+            ->contains($data);
+    }
+
     public function getAutoloaderFile()
     {
     }

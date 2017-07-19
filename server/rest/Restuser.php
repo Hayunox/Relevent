@@ -39,7 +39,7 @@ class RestUserCreation
         return $response
             ->withStatus(400)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($verification['response']);
+            ->withJson(RestServer::createJSONResponse($verification['response']));
     }
 
     /**
@@ -62,10 +62,12 @@ class RestUserCreation
 
         // validating email address
         if ($user->userMailExists($connection, $email)) {
+            $status  = 400;
             $message = 'USER_MAIL_EXISTS';
 
             // validating nickname
         } elseif ($user->userNickNameExists($connection, $name)) {
+            $status  = 400;
             $message = 'USER_NICKNAME_EXISTS';
 
             // User validated
@@ -77,16 +79,18 @@ class RestUserCreation
             ]);
 
             if ($res > -1) {
+                $status  = 200;
                 $message = 'USER_CREATED_SUCCESSFULLY';
             } else {
+                $status  = 400;
                 $message = 'USER_CREATE_FAILED';
             }
         }
 
         return $response
-            ->withStatus(200)
+            ->withStatus($status)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($message);
+            ->withJson(RestServer::createJSONResponse($message));
     }
 }
 
@@ -110,7 +114,7 @@ class RestUserLogin
         return $response
             ->withStatus(400)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($verification['response']);
+            ->withJson(RestServer::createJSONResponse($verification['response']));
     }
 
     /**
@@ -133,15 +137,17 @@ class RestUserLogin
         // validating email address
         if ($user->tryLogin($connection, $name, $password)) {
             $message = 'USER_LOGIN_SUCCESSFULLY';
+            $status = 200;
 
             // Connection failed
         } else {
             $message = 'USER_LOGIN_FAILED';
+            $status = 400;
         }
 
         return $response
-            ->withStatus(200)
+            ->withStatus($status)
             ->withHeader('Content-type', 'application/json')
-            ->withJson($message);
+            ->withJson(RestServer::createJSONResponse($message));
     }
 }

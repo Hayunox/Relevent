@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teamX.projetx.R;
@@ -14,7 +16,10 @@ import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.UserService;
 import com.teamX.projetx.main.MainActivity;
 
+import java.io.IOException;
+
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
@@ -26,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button login;
     private EditText nickname;
     private EditText password;
+    private ProgressBar progressBar;
+    private TextView errorText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // set up the interfacte
-        this.register   = (Button) findViewById(R.id.buttonRegister);
-        this.login      = (Button) findViewById(R.id.buttonLogin);
-        this.nickname   = (EditText) findViewById(R.id.editTextNickname);
-        this.password   = (EditText) findViewById(R.id.editTextPassword);
+        this.register       = (Button) findViewById(R.id.buttonUserLoginRegister);
+        this.login          = (Button) findViewById(R.id.buttonUserLogin);
+        this.nickname       = (EditText) findViewById(R.id.editTextUserLoginNickname);
+        this.password       = (EditText) findViewById(R.id.editTextUserLoginPassword);
+        this.errorText      = (TextView) findViewById(R.id.textViewUserLoginError);
+        this.progressBar    = (ProgressBar) findViewById(R.id.progressBarLogin);
 
 
         /**
@@ -56,31 +65,55 @@ public class LoginActivity extends AppCompatActivity {
         this.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            Retrofit restService = DataBase.getRetrofitService();
-            UserService service = restService.create(UserService.class);
-            Call<User> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
+                progressBar.setVisibility(View.VISIBLE);
 
-            call.enqueue(new retrofit2.Callback<User>() {
-                @Override
-                public void onResponse(Call<User> call, retrofit2.Response<User> response) {
-                    try {
-                        System.out.println("response = " + response.body());
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                if(!checkUserLoginField()){
+                    Retrofit restService = DataBase.getRetrofitService();
+                    UserService service = restService.create(UserService.class);
+                    Call<String> call = service.userLogin(nickname.getText().toString(), password.getText().toString());
 
-                    } catch (Exception e) {
-                        System.out.println("error " + response);
-                        e.printStackTrace();
-                    }
+                    call.enqueue(new retrofit2.Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            if(response.isSuccessful()){
+                                Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            }else{
+                                try {
+                                    // TODO : refactor
+                                    switch(response.errorBody().string().replace("\"", "")){
+                                        case "\"USER_LOGIN_FAILED\"":
+                                            errorText.setText(R.string.rest_login_failed);
+                                            break;
+                                    }
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            t.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    t.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
-                }
-            });
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
+    }
+
+    /**
+     *
+     * @return
+     */
+    private boolean checkUserLoginField(){
+        // Todo : more security check
+        if(this.nickname.getText().toString().isEmpty() || this.password.getText().toString().isEmpty()){
+            this.errorText.setText(R.string.rest_login_field_empty);
+            return false;
+        }
+        return true;
     }
 }
