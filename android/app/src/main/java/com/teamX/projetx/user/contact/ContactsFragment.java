@@ -1,4 +1,4 @@
-package com.teamX.projetx.fragments;
+package com.teamX.projetx.user.contact;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
