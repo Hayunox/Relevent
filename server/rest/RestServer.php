@@ -19,6 +19,7 @@ class RestServer
 {
     private $app;
     private $container;
+    private $user_id;
 
     /**
      * ProjetXServer constructor.
@@ -51,6 +52,7 @@ class RestServer
         /*
          * Method with authentification
          */
+        $this->app->post('/event/create', 'authenticate', new RestEventCreation($this->user_id));
 
         $this->app->run();
     }
@@ -65,7 +67,7 @@ class RestServer
      *
      * @return Response
      */
-    public static function authenticate(Response $response)
+    public function authenticate(Response $response)
     {
         // Getting request headers
         $authorization = $_SERVER['HTTP_AUTHORIZATION'];
@@ -83,7 +85,8 @@ class RestServer
             $keyExists = $user->userKeyExists($connection, $api_key);
             if ($keyExists) {
                 // user_id
-                $response = self::createJSONResponse($response, 200, $keyExists);
+                $this->user_id = $keyExists;
+                $response = self::createJSONResponse($response, 200, "");
             } else {
                 // user key is not present in users table
                 $response = self::createJSONResponse($response, 400, 'API_KEY_ACCESS_DENIED');
