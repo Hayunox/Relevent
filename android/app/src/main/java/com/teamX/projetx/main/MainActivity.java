@@ -29,12 +29,25 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private String userKey;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // get Extra
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                this.userKey = null;
+            } else {
+                this.userKey = extras.getString("USER_KEY");
+            }
+        } else {
+            this.userKey = (String) savedInstanceState.getSerializable("USER_KEY");
+        }
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -49,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_activity_floating_add_event);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { startActivity(new Intent(MainActivity.this, EventCreationActivity.class));}
+            public void onClick(View view) { startActivity((new Intent(MainActivity.this, EventCreationActivity.class)).putExtra("USER_KEY", userKey));}
         });
     }
 

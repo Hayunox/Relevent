@@ -77,10 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(Call<User> call, Response<User> response) {
                             if(response.isSuccessful()){
                                 User connectedUser = response.body();
-
-                                System.out.println("Username = " + connectedUser.getNickname());
                                 Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                startActivity((new Intent(LoginActivity.this, MainActivity.class)).putExtra("USER_KEY", connectedUser.getKey()));
                             }else{
                                 try {
                                     // TODO : refactor

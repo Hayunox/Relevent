@@ -162,9 +162,7 @@ class RestServer
      */
     public static function createJSONResponse(Response $response, $status, $data)
     {
-        if (is_array($data)) {
-            $data = json_encode($data);
-        }
+        $data = json_encode($data);
 
         return $response
             ->withStatus($status)

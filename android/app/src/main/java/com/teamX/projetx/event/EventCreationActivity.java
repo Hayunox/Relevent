@@ -29,12 +29,25 @@ public class EventCreationActivity extends AppCompatActivity {
     private Button buttonCreate;
     private ProgressBar progressBar;
     private TextView errorText;
+    private String userKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_creation);
 
+        // get Extra
+        //if (savedInstanceState == null) {
+        Bundle extras = getIntent().getExtras();
+        if(extras == null) {
+            this.userKey = null;
+        } else {
+            this.userKey = extras.getString("USER_KEY");
+        }
+       /* } else {
+            this.userKey = (String) savedInstanceState.getSerializable("USER_KEY");
+        }*/
+        
         // set up the interface
         this.name               = (EditText) findViewById(R.id.editTextEventCreationName);
         this.description        = (EditText) findViewById(R.id.editTextEventCreationDescription);
@@ -52,7 +65,7 @@ public class EventCreationActivity extends AppCompatActivity {
                 if(checkUserRegistrationField()){
                     Retrofit restService = DataBase.getRetrofitService();
                     EventService service = restService.create(EventService.class);
-                    Call<String> call = service.eventCreation(name.getText().toString(), description.getText().toString(), date.getText().toString());
+                    Call<String> call = service.eventCreation(userKey, name.getText().toString(), description.getText().toString(), date.getText().toString());
 
                     call.enqueue(new retrofit2.Callback<String>() {
                         @Override
@@ -62,9 +75,10 @@ public class EventCreationActivity extends AppCompatActivity {
                                 startActivity(new Intent(EventCreationActivity.this, MainActivity.class));
                             } else {
                                 try {
+                                    System.out.println("ERROR = " + response.errorBody().string());
                                     // TODO : refactor
                                     switch (response.errorBody().string().replace("\"", "")) {
-                                        case "EVENT_CREATE_FAILED":
+                                       default:
                                             errorText.setText(R.string.rest_event_creation_failed);
                                             break;
                                     }

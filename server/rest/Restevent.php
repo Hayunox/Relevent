@@ -72,8 +72,8 @@ class RestEventCreation
             'event_name'                => $name,
             'event_description'         => $description,
             'event_date'                => $date,
-            'event_address'             => " ",
-            'event_theme'               => " ",
+            'event_address'             => "",
+            'event_theme'               => "",
             'event_secret'              => 0,
         ]);
 
