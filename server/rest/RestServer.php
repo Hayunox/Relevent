@@ -9,6 +9,7 @@
 namespace server\rest;
 
 require_once __DIR__.'/Restuser.php';
+require_once __DIR__.'/Restevent.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;
@@ -19,7 +20,6 @@ class RestServer
 {
     private $app;
     private $container;
-    private $user_id;
 
     /**
      * ProjetXServer constructor.
@@ -52,22 +52,16 @@ class RestServer
         /*
          * Method with authentification
          */
-        $this->app->post('/event/create', 'authenticate', new RestEventCreation($this->user_id));
+        $this->app->post('/event/create', new RestEventCreation());
 
+        // Run server app
         $this->app->run();
     }
 
     /**
-     * Adding Middle Layer to authenticate every request
-     * Checking if the request has valid api key in the 'Authorization' header.
-     *
-     * @param $response
-     *
-     * @internal param Route $route
-     *
-     * @return Response
+     * @return string|integer
      */
-    public function authenticate(Response $response)
+    public static function authenticate()
     {
         // Getting request headers
         $authorization = $_SERVER['HTTP_AUTHORIZATION'];
@@ -85,18 +79,15 @@ class RestServer
             $keyExists = $user->userKeyExists($connection, $api_key);
             if ($keyExists) {
                 // user_id
-                $this->user_id = $keyExists;
-                $response = self::createJSONResponse($response, 200, "");
+                return $keyExists;
             } else {
                 // user key is not present in users table
-                $response = self::createJSONResponse($response, 400, 'API_KEY_ACCESS_DENIED');
+                return 'API_KEY_ACCESS_DENIED';
             }
         } else {
             // user key is missing in header
-            $response = self::createJSONResponse($response, 400, 'USER_KEY_NOT_FOUND');
+            return'USER_KEY_NOT_FOUND';
         }
-
-        return $response;
     }
 
     /**

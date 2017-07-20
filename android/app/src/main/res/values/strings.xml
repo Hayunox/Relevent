@@ -96,4 +96,5 @@
     <string name="terms_condions"><![CDATA[Terms & Condions]]></string>
     <string name="adresse_mail">Adresse mail</string>
     <string name="title_activity_event_creation">EventCreationActivity</string>
+    <string name="title_activity_event_edition">EventEdition</string>
 </resources>

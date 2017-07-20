@@ -96,7 +96,7 @@ class DBuser
      * @param $db
      * @param $key
      *
-     * @return bool
+     * @return bool|integer
      */
     public function userKeyExists(DBconnection $db, $key)
     {

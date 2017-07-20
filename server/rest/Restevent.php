@@ -21,13 +21,6 @@ use Slim\Http\Response;
 
 class RestEventCreation
 {
-
-    private $user_id;
-
-    public function __construct($user_id){
-        $this->user_id = $user_id;
-    }
-
     /**
      * @param Request  $request
      * @param Response $response
@@ -39,8 +32,17 @@ class RestEventCreation
     {
         $verification = RestServer::getRequiredParams($response, ['name', 'date', 'description']);
 
+        // Parameters corresponds
         if ($verification['status']) {
-            return $this->eventCreation($verification['response'], $response);
+
+            $authentication = RestServer::authenticate();
+
+            // Authentication success
+            if(is_int($authentication)){
+                return $this->eventCreation($verification['response'], $response, $authentication);
+            }
+
+            return RestServer::createJSONResponse($response, 400, $authentication);
         }
 
         return RestServer::createJSONResponse($response, 400, $verification['response']);
@@ -50,9 +52,10 @@ class RestEventCreation
      * @param $data
      * @param Response $response
      *
+     * @param $user_id
      * @return Response
      */
-    public function eventCreation($data, Response $response)
+    public function eventCreation($data, Response $response, $user_id)
     {
         // reading post params
         $name           = RestServer::getSecureParam($data['name']);
@@ -65,7 +68,7 @@ class RestEventCreation
         $event = new DBevent(null);
 
         $res = $event->eventCreate($connection, [
-            'event_user_id'             => $this->user_id,
+            'event_user_id'             => $user_id,
             'event_name'                => $name,
             'event_description'         => $description,
             'event_date'                => $date,

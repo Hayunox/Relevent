@@ -1,6 +1,8 @@
 package com.teamX.projetx.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,9 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 
 import com.teamX.projetx.R;
+import com.teamX.projetx.event.EventCreationActivity;
 import com.teamX.projetx.event.EventsFragment;
 import com.teamX.projetx.event.InvitationFragment;
 import com.teamX.projetx.user.contact.ContactsFragment;
@@ -41,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_activity_floating_add_event);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { startActivity(new Intent(MainActivity.this, EventCreationActivity.class));}
+        });
     }
 
 
