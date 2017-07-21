@@ -77,16 +77,14 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(Call<User> call, Response<User> response) {
                             if(response.isSuccessful()){
                                 User connectedUser = response.body();
-
-                                System.out.println("Username = " + connectedUser.getNickname());
                                 Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                startActivity((new Intent(LoginActivity.this, MainActivity.class)).putExtra("USER_KEY", connectedUser.getKey()));
                             }else{
                                 try {
                                     // TODO : refactor
                                     switch(response.errorBody().string().replace("\"", "")){
                                         case "USER_LOGIN_FAILED":
-                                            errorText.setText(R.string.rest_login_failed);
+                                            errorText.setText(R.string.rest_user_login_failed);
                                             break;
                                     }
                                 } catch (IOException e) {
@@ -114,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checkUserLoginField(){
         // Todo : more security check
         if(this.nickname.getText().toString().isEmpty() || this.password.getText().toString().isEmpty()){
-            this.errorText.setText(R.string.rest_login_field_empty);
+            this.errorText.setText(R.string.rest_user_login_field_empty);
             return false;
         }
         return true;

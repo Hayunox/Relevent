@@ -17,7 +17,7 @@
 
         <!-- Splash screen -->
         <activity
-            android:name="com.teamX.projetx.main.SplashScreenActivity"
+            android:name=".main.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar">
@@ -29,15 +29,23 @@
         </activity>
 
         <!-- Main activity -->
-        <activity android:name="com.teamX.projetx.main.MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.teamX.projetx.user.RegisterActivity" />
-        <activity android:name="com.teamX.projetx.user.LoginActivity" />
+        <activity android:name=".user.RegisterActivity" />
+        <activity android:name=".user.LoginActivity" />
+        <activity
+            android:name=".event.EventCreationActivity"
+            android:label="@string/title_activity_event_creation"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".event.EventEdition"
+            android:label="@string/title_activity_event_edition"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>

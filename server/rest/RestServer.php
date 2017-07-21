@@ -9,6 +9,7 @@
 namespace server\rest;
 
 require_once __DIR__.'/Restuser.php';
+require_once __DIR__.'/Restevent.php';
 
 use server\database\DBconnection;
 use server\database\DBuser;
@@ -51,21 +52,16 @@ class RestServer
         /*
          * Method with authentification
          */
+        $this->app->post('/event/create', new RestEventCreation());
 
+        // Run server app
         $this->app->run();
     }
 
     /**
-     * Adding Middle Layer to authenticate every request
-     * Checking if the request has valid api key in the 'Authorization' header.
-     *
-     * @param $response
-     *
-     * @internal param Route $route
-     *
-     * @return Response
+     * @return string|integer
      */
-    public static function authenticate(Response $response)
+    public static function authenticate()
     {
         // Getting request headers
         $authorization = $_SERVER['HTTP_AUTHORIZATION'];
@@ -83,17 +79,15 @@ class RestServer
             $keyExists = $user->userKeyExists($connection, $api_key);
             if ($keyExists) {
                 // user_id
-                $response = RestServer::createJSONResponse($response, 200, $keyExists);
+                return $keyExists;
             } else {
                 // user key is not present in users table
-                $response = RestServer::createJSONResponse($response, 400, "API_KEY_ACCESS_DENIED");
+                return 'API_KEY_ACCESS_DENIED';
             }
         } else {
             // user key is missing in header
-            $response = RestServer::createJSONResponse($response, 400, "USER_KEY_NOT_FOUND");
+            return'USER_KEY_NOT_FOUND';
         }
-
-        return $response;
     }
 
     /**
@@ -163,13 +157,12 @@ class RestServer
      * @param Response $response
      * @param $status
      * @param $data
+     *
      * @return Response
      */
     public static function createJSONResponse(Response $response, $status, $data)
     {
-        if(is_array($data)){
-            $data = json_encode($data);
-        }
+        $data = json_encode($data);
 
         return $response
             ->withStatus($status)

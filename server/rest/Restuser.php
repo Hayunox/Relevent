@@ -59,11 +59,11 @@ class RestUserCreation
 
         // validating email address
         if ($user->userMailExists($connection, $email)) {
-            $response = RestServer::createJSONResponse($response, 400, "USER_MAIL_EXISTS");
+            $response = RestServer::createJSONResponse($response, 400, 'USER_MAIL_EXISTS');
 
             // validating nickname
         } elseif ($user->userNickNameExists($connection, $name)) {
-            $response = RestServer::createJSONResponse($response, 400, "USER_NICKNAME_EXISTS");
+            $response = RestServer::createJSONResponse($response, 400, 'USER_NICKNAME_EXISTS');
 
             // User validated
         } else {
@@ -74,9 +74,9 @@ class RestUserCreation
             ]);
 
             if ($res > -1) {
-                $response = RestServer::createJSONResponse($response, 200, "USER_CREATED_SUCCESSFULLY");
+                $response = RestServer::createJSONResponse($response, 200, 'USER_CREATED_SUCCESSFULLY');
             } else {
-                $response = RestServer::createJSONResponse($response, 400, "USER_CREATE_FAILED");
+                $response = RestServer::createJSONResponse($response, 400, 'USER_CREATE_FAILED');
             }
         }
 
@@ -127,7 +127,7 @@ class RestUserLogin
 
         // Connection failed
         } else {
-            $response = RestServer::createJSONResponse($response, 400, "USER_LOGIN_FAILED");
+            $response = RestServer::createJSONResponse($response, 400, 'USER_LOGIN_FAILED');
         }
 
         return $response;

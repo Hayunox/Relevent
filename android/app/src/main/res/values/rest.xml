@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- User Login -->
-    <string name="rest_login_failed">Incorrect nickname or password</string>
-    <string name="rest_login_field_empty">Please complete all the fields</string>
+    <string name="rest_user_login_failed">Incorrect nickname or password</string>
+    <string name="rest_user_login_field_empty">Please complete all the fields</string>
 
     <!-- User Registration -->
-    <string name="rest_register_failed">Registration failed</string>
-    <string name="rest_register_nickname_exists">This nickname already exists</string>
-    <string name="rest_register_mail_exists">This mail address already exists</string>
-    <string name="rest_register_field_empty">Please complete all the fields</string>
+    <string name="rest_user_registration_failed">Registration failed</string>
+    <string name="rest_user_registration_nickname_exists">This nickname already exists</string>
+    <string name="rest_user_registration_mail_exists">This mail address already exists</string>
+    <string name="rest_user_registration_field_empty">Please complete all the fields</string>
+
+    <!-- Event Creation -->
+    <string name="rest_event_creation_failed">Creation failed</string>
+    <string name="rest_event_creation_field_empty">Please complete all the fields</string>
+
 </resources>

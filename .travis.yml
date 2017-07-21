@@ -1,6 +1,8 @@
 services:
   - mysql
 language: php
+env:
+  CODECLIMATE_REPO_TOKEN: f5f012a16b4dabfeff9f2e1484baac76ac38b80e3f1c053fbf5517d1da8d246e
 php:
     - '7.0'
 before_install:

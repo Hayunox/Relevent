@@ -67,13 +67,13 @@ public class RegisterActivity extends AppCompatActivity {
                                     // TODO : refactor
                                     switch (response.errorBody().string().replace("\"", "")) {
                                         case "USER_CREATE_FAILED":
-                                            errorText.setText(R.string.rest_register_failed);
+                                            errorText.setText(R.string.rest_user_registration_failed);
                                             break;
                                         case "USER_NICKNAME_EXISTS":
-                                            errorText.setText(R.string.rest_register_nickname_exists);
+                                            errorText.setText(R.string.rest_user_registration_nickname_exists);
                                             break;
                                         case "USER_MAIL_EXISTS":
-                                            errorText.setText(R.string.rest_register_mail_exists);
+                                            errorText.setText(R.string.rest_user_registration_mail_exists);
                                             break;
                                     }
                                 } catch (IOException e) {
@@ -97,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean checkUserRegistrationField(){
         // Todo : more security check
         if(this.nickname.getText().toString().isEmpty() || this.mail.getText().toString().isEmpty() || this.password.getText().toString().isEmpty() || !this.checkBoxRules.isChecked()){
-            this.errorText.setText(R.string.rest_register_field_empty);
+            this.errorText.setText(R.string.rest_user_registration_field_empty);
             return false;
         }
         return true;

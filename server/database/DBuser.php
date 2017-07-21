@@ -49,7 +49,7 @@ class DBuser
      */
     public function getUserData(DBconnection $db, $user_data = null)
     {
-        if($user_data == null){
+        if ($user_data == null) {
             $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
             $user_data = $query->first();
         }
@@ -96,7 +96,7 @@ class DBuser
      * @param $db
      * @param $key
      *
-     * @return bool
+     * @return bool|integer
      */
     public function userKeyExists(DBconnection $db, $key)
     {
@@ -140,6 +140,7 @@ class DBuser
      * @param DBconnection $db
      * @param $nickname
      * @param $password
+     *
      * @return array|bool
      */
     public function tryLogin(DBconnection $db, $nickname, $password)
@@ -149,6 +150,7 @@ class DBuser
             ->where($this->table_row['user_nickname'], $db->securizeParam($nickname));
 
         $data = $query->first();
+
         return ($data == null) ? false : $this->getUserData($db, $data);
     }
 
