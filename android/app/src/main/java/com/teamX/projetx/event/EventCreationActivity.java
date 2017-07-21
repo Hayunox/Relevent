@@ -14,6 +14,7 @@ import com.teamX.projetx.R;
 import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.EventService;
 import com.teamX.projetx.main.MainActivity;
+import com.teamX.projetx.utils.IntentBundle;
 
 import java.io.IOException;
 
@@ -36,18 +37,9 @@ public class EventCreationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_creation);
 
-        // get Extra
-        //if (savedInstanceState == null) {
-        Bundle extras = getIntent().getExtras();
-        if(extras == null) {
-            this.userKey = null;
-        } else {
-            this.userKey = extras.getString("USER_KEY");
-        }
-       /* } else {
-            this.userKey = (String) savedInstanceState.getSerializable("USER_KEY");
-        }*/
-        
+        // get Key
+        this.userKey = IntentBundle.getExtraParam(savedInstanceState, getIntent(), "USER_KEY");
+
         // set up the interface
         this.name               = (EditText) findViewById(R.id.editTextEventCreationName);
         this.description        = (EditText) findViewById(R.id.editTextEventCreationDescription);

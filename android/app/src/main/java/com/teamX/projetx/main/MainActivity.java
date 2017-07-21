@@ -20,6 +20,7 @@ import com.teamX.projetx.event.EventCreationActivity;
 import com.teamX.projetx.event.EventsFragment;
 import com.teamX.projetx.event.InvitationFragment;
 import com.teamX.projetx.user.contact.ContactsFragment;
+import com.teamX.projetx.utils.IntentBundle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +38,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // get Extra
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-                this.userKey = null;
-            } else {
-                this.userKey = extras.getString("USER_KEY");
-            }
-        } else {
-            this.userKey = (String) savedInstanceState.getSerializable("USER_KEY");
-        }
+        this.userKey = IntentBundle.getExtraParam(savedInstanceState, getIntent(), "USER_KEY");
+
+        System.out.println("Key = " + this.userKey);
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
