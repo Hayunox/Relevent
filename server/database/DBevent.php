@@ -93,6 +93,19 @@ class DBevent
     }
 
     /**
+     * @param DBconnection $connection
+     * @param $user_id
+     * @return null|\stdClass
+     */
+    public function eventUserList(DBconnection $connection, $user_id)
+    {
+        $query = $connection->getQueryBuilderHandler()->table($this->event_table)
+            ->where($this->table_row['event_user_id'], $user_id);
+
+        return $query->get();
+    }
+
+    /**
      * @return array
      */
     public function eventDbToArray()

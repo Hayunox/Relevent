@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.teamX.projetx.event.EventCreationActivity"
-    tools:showIn="@layout/activity_event_creation">
+    tools:context="com.teamX.projetx.event.EventCreationActivity">
 
     <FrameLayout
         android:layout_width="0dp"
@@ -66,6 +65,30 @@
                     android:ems="10"
                     android:hint=" "
                     android:inputType="date"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:theme="@android:style/Theme.Translucent" />
+
+                <EditText
+                    android:id="@+id/editTextEventCreationAddress"
+                    android:layout_width="201dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@android:color/black"
+                    android:backgroundTintMode="add"
+                    android:ems="10"
+                    android:inputType="textLongMessage"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:theme="@android:style/Theme.Translucent" />
+
+                <EditText
+                    android:id="@+id/editTextEventCreationTheme"
+                    android:layout_width="206dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@android:color/black"
+                    android:backgroundTintMode="add"
+                    android:ems="10"
+                    android:inputType="textLongMessage"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:theme="@android:style/Theme.Translucent" />
 

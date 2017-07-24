@@ -30,7 +30,7 @@ class RestEventCreation
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        $verification = RestServer::getRequiredParams($response, ['name', 'date', 'description']);
+        $verification = RestServer::getRequiredParams($response, ['name', 'date', 'description', 'address', 'theme']);
 
         // Parameters corresponds
         if ($verification['status']) {
@@ -61,6 +61,8 @@ class RestEventCreation
         $name           = RestServer::getSecureParam($data['name']);
         $date           = RestServer::getSecureParam($data['date']);
         $description    = RestServer::getSecureParam($data['description']);
+        $address        = RestServer::getSecureParam($data['address']);
+        $theme          = RestServer::getSecureParam($data['theme']);
 
         $connection = new DBConnection();
 
@@ -72,8 +74,8 @@ class RestEventCreation
             'event_name'                => $name,
             'event_description'         => $description,
             'event_date'                => $date,
-            'event_address'             => "",
-            'event_theme'               => "",
+            'event_address'             => $address,
+            'event_theme'               => $theme,
             'event_secret'              => 0,
         ]);
 
@@ -84,5 +86,48 @@ class RestEventCreation
         }
 
         return $response;
+    }
+}
+
+class RestEventEdit
+{
+
+}
+
+
+class RestEventUserListOwn
+{
+    /**
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     *
+     * @return Response
+     */
+    public function __invoke(Request $request, Response $response, $args = [])
+    {
+        $authentication = RestServer::authenticate();
+
+        // Authentication success
+        if(is_int($authentication)){
+            return $this->eventUserList($response, $authentication);
+        }
+
+        return RestServer::createJSONResponse($response, 400, $authentication);
+    }
+
+    /**
+     * @param Response $response
+     * @param $user_id
+     * @return Response
+     */
+    public function eventUserList(Response $response, $user_id)
+    {
+        $connection = new DBConnection();
+
+        // event validation
+        $event = new DBevent(null);
+
+        return RestServer::createJSONResponse($response, 200, json_encode($event->eventUserList($connection, $user_id)));
     }
 }

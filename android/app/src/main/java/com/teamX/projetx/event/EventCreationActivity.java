@@ -14,7 +14,8 @@ import com.teamX.projetx.R;
 import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.EventService;
 import com.teamX.projetx.main.MainActivity;
-import com.teamX.projetx.utils.IntentBundle;
+import com.teamX.projetx.user.User;
+import com.teamX.projetx.utils.AppPreferences;
 
 import java.io.IOException;
 
@@ -27,23 +28,31 @@ public class EventCreationActivity extends AppCompatActivity {
     private EditText description;
     private EditText name;
     private EditText date;
+    private EditText address;
+    private EditText theme;
     private Button buttonCreate;
     private ProgressBar progressBar;
     private TextView errorText;
-    private String userKey;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_creation);
 
-        // get Key
-        this.userKey = IntentBundle.getExtraParam(savedInstanceState, getIntent(), "USER_KEY");
+        /**
+         * Data
+         */
+        // user data
+        AppPreferences appPreferences = new AppPreferences(getBaseContext());
+        this.user = appPreferences.getUserData();
 
         // set up the interface
         this.name               = (EditText) findViewById(R.id.editTextEventCreationName);
         this.description        = (EditText) findViewById(R.id.editTextEventCreationDescription);
         this.date               = (EditText) findViewById(R.id.editTextEventCreationDate);
+        this.address            = (EditText) findViewById(R.id.editTextEventCreationAddress);
+        this.theme              = (EditText) findViewById(R.id.editTextEventCreationTheme);
         this.buttonCreate       = (Button) findViewById(R.id.buttonEventCreationCreate);
         this.progressBar        = (ProgressBar) findViewById(R.id.progressBarEventCreation);
         this.errorText          = (TextView) findViewById(R.id.textViewEventCreationError);
@@ -57,7 +66,7 @@ public class EventCreationActivity extends AppCompatActivity {
                 if(checkUserRegistrationField()){
                     Retrofit restService = DataBase.getRetrofitService();
                     EventService service = restService.create(EventService.class);
-                    Call<String> call = service.eventCreation(userKey, name.getText().toString(), description.getText().toString(), date.getText().toString());
+                    Call<String> call = service.eventCreation(user.getKey(), name.getText().toString(), description.getText().toString(), date.getText().toString(), address.getText().toString(), theme.getText().toString());
 
                     call.enqueue(new retrofit2.Callback<String>() {
                         @Override

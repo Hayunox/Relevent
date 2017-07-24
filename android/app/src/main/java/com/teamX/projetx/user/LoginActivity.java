@@ -15,6 +15,7 @@ import com.teamX.projetx.R;
 import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.UserService;
 import com.teamX.projetx.main.MainActivity;
+import com.teamX.projetx.utils.AppPreferences;
 
 import java.io.IOException;
 
@@ -77,8 +78,13 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(Call<User> call, Response<User> response) {
                             if(response.isSuccessful()){
                                 User connectedUser = response.body();
+
+                                // set user session data
+                                AppPreferences appPreferences = new AppPreferences(getBaseContext());
+                                appPreferences.saveUserData(connectedUser);
+
                                 Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
-                                startActivity((new Intent(LoginActivity.this, MainActivity.class)).putExtra("USER_KEY", connectedUser.getKey()));
+                                startActivity((new Intent(LoginActivity.this, MainActivity.class)));
                             }else{
                                 try {
                                     // TODO : refactor
