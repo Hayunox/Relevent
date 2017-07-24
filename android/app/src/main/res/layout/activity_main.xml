@@ -28,6 +28,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_background_normal"
+                android:backgroundTint="?android:attr/windowBackground"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:contextClickable="false">
@@ -35,9 +37,8 @@
                 <ImageButton
                     android:id="@+id/imageButtonUserProfilePic"
                     style="@android:style/Widget.DeviceDefault.ImageButton"
-                    android:layout_width="@android:dimen/app_icon_size"
-                    android:layout_height="@android:dimen/app_icon_size"
-                    android:layout_weight="1"
+                    android:layout_width="33dp"
+                    android:layout_height="35dp"
                     android:adjustViewBounds="false"
                     android:background="@color/cardview_shadow_end_color"
                     android:baselineAlignBottom="false"
@@ -54,16 +55,11 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:text="Jean-R0ger78"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
             </LinearLayout>
 
         </android.support.v7.widget.Toolbar>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"></LinearLayout>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
