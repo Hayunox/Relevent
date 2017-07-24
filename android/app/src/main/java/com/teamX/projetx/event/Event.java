@@ -53,7 +53,7 @@ public class Event {
         return address;
     }
 
-    public Integer getCreation_time() {
+    public Integer getCreationTime() {
         return creation_time;
     }
 }

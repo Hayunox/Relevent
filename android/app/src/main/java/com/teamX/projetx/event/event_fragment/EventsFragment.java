@@ -1,5 +1,6 @@
 package com.teamX.projetx.event.event_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -17,6 +18,7 @@ import com.teamX.projetx.R;
 import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.EventService;
 import com.teamX.projetx.event.Event;
+import com.teamX.projetx.event.EventDescriptionActivity;
 import com.teamX.projetx.user.User;
 import com.teamX.projetx.utils.AppPreferences;
 
@@ -83,8 +85,9 @@ public class EventsFragment extends Fragment {
         recyclerViewUserOwnEvents.addOnItemTouchListener(new EventRecyclerTouchListener(getContext(), recyclerViewUserOwnEvents, new EventClickListener() {
             @Override
             public void onClick(View view, int position) {
-                System.out.println("Clicked = " + position);
-                //Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
+                Intent descriptionActivity = new Intent(getActivity(), EventDescriptionActivity.class);
+                descriptionActivity.putExtra("event", (new Gson()).toJson(userOwnEventList.get(position)));
+                startActivity(descriptionActivity);
             }
 
             @Override
