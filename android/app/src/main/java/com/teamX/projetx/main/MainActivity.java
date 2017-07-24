@@ -19,8 +19,9 @@ import com.teamX.projetx.R;
 import com.teamX.projetx.event.EventCreationActivity;
 import com.teamX.projetx.event.EventsFragment;
 import com.teamX.projetx.event.InvitationFragment;
+import com.teamX.projetx.user.User;
 import com.teamX.projetx.user.contact.ContactsFragment;
-import com.teamX.projetx.utils.IntentBundle;
+import com.teamX.projetx.utils.AppPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private String userKey;
+    private User user;
 
 
     @Override
@@ -38,10 +39,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.userKey = IntentBundle.getExtraParam(savedInstanceState, getIntent(), "USER_KEY");
+        /**
+         * Data
+         */
+        // user data
+        AppPreferences appPreferences = new AppPreferences(getBaseContext());
+        this.user = appPreferences.getUserData();
 
-        System.out.println("Key = " + this.userKey);
-
+        /**
+         * Interface
+         */
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
@@ -55,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_activity_floating_add_event);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { startActivity((new Intent(MainActivity.this, EventCreationActivity.class)).putExtra("USER_KEY", userKey));}
+            public void onClick(View view) { startActivity((new Intent(MainActivity.this, EventCreationActivity.class)));}
         });
     }
 
