@@ -18,5 +18,5 @@ public interface EventService {
 
     @Multipart
     @POST("event/create")
-    Call<String> eventCreation(@Header("Authorization") String userKey, @Part("name") String name, @Part("description") String description, @Part("date") String date);
+    Call<String> eventCreation(@Header("Authorization") String userKey, @Part("name") String name, @Part("description") String description, @Part("date") String date, @Part("address") String address, @Part("theme") String theme);
 }

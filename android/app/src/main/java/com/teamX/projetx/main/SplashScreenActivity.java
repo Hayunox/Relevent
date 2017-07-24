@@ -1,17 +1,16 @@
 package com.teamX.projetx.main;
 
-import com.teamX.projetx.R;
-import com.teamX.projetx.utils.Localization;
-import com.teamX.projetx.user.LoginActivity;
-
 import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.LocationManager;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
+
+import com.teamX.projetx.R;
+import com.teamX.projetx.user.LoginActivity;
+import com.teamX.projetx.utils.AppPreferences;
 
 public class SplashScreenActivity extends Activity {
 
@@ -38,10 +37,18 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void run() {
 
-                // This method will be executed once the timer is over
-                // Start your app main activity
-                Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                startActivity(i);
+                /**
+                 * User already connected
+                 */
+                try{
+                    AppPreferences appPreferences = new AppPreferences(getBaseContext());
+                    appPreferences.getUserData();
+                    Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(i);
+                }catch (Exception e){
+                    Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                    startActivity(i);
+                }
 
                 // close this activity
                 finish();

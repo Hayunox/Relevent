@@ -30,7 +30,7 @@ class RestEventCreation
      */
     public function __invoke(Request $request, Response $response, $args = [])
     {
-        $verification = RestServer::getRequiredParams($response, ['name', 'date', 'description']);
+        $verification = RestServer::getRequiredParams($response, ['name', 'date', 'description', 'address', 'theme']);
 
         // Parameters corresponds
         if ($verification['status']) {
@@ -61,6 +61,8 @@ class RestEventCreation
         $name           = RestServer::getSecureParam($data['name']);
         $date           = RestServer::getSecureParam($data['date']);
         $description    = RestServer::getSecureParam($data['description']);
+        $address        = RestServer::getSecureParam($data['address']);
+        $theme          = RestServer::getSecureParam($data['theme']);
 
         $connection = new DBConnection();
 
@@ -72,8 +74,8 @@ class RestEventCreation
             'event_name'                => $name,
             'event_description'         => $description,
             'event_date'                => $date,
-            'event_address'             => "",
-            'event_theme'               => "",
+            'event_address'             => $address,
+            'event_theme'               => $theme,
             'event_secret'              => 0,
         ]);
 

@@ -28,6 +28,8 @@ public class EventCreationActivity extends AppCompatActivity {
     private EditText description;
     private EditText name;
     private EditText date;
+    private EditText address;
+    private EditText theme;
     private Button buttonCreate;
     private ProgressBar progressBar;
     private TextView errorText;
@@ -49,6 +51,8 @@ public class EventCreationActivity extends AppCompatActivity {
         this.name               = (EditText) findViewById(R.id.editTextEventCreationName);
         this.description        = (EditText) findViewById(R.id.editTextEventCreationDescription);
         this.date               = (EditText) findViewById(R.id.editTextEventCreationDate);
+        this.address            = (EditText) findViewById(R.id.editTextEventCreationAddress);
+        this.theme              = (EditText) findViewById(R.id.editTextEventCreationTheme);
         this.buttonCreate       = (Button) findViewById(R.id.buttonEventCreationCreate);
         this.progressBar        = (ProgressBar) findViewById(R.id.progressBarEventCreation);
         this.errorText          = (TextView) findViewById(R.id.textViewEventCreationError);
@@ -62,7 +66,7 @@ public class EventCreationActivity extends AppCompatActivity {
                 if(checkUserRegistrationField()){
                     Retrofit restService = DataBase.getRetrofitService();
                     EventService service = restService.create(EventService.class);
-                    Call<String> call = service.eventCreation(user.getKey(), name.getText().toString(), description.getText().toString(), date.getText().toString());
+                    Call<String> call = service.eventCreation(user.getKey(), name.getText().toString(), description.getText().toString(), date.getText().toString(), address.getText().toString(), theme.getText().toString());
 
                     call.enqueue(new retrofit2.Callback<String>() {
                         @Override
