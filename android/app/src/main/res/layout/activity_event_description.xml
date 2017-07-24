@@ -45,35 +45,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.06"
-            android:text="Event date" />
+            android:text="Event date " />
 
         <TextView
             android:id="@+id/event_description_textView_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.06"
-            android:text="Event location" />
+            android:text="Event location " />
 
         <TextView
             android:id="@+id/event_description_textView_theme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.06"
-            android:text="Event theme" />
+            android:text="Event theme " />
 
         <TextView
             android:id="@+id/event_description_textView_owner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.06"
-            android:text="Event organizer" />
+            android:text="Event organizer " />
 
         <TextView
             android:id="@+id/event_description_textView_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.27"
-            android:text="Description" />
+            android:text="Description " />
     </LinearLayout>
 
 </android.support.v7.widget.LinearLayoutCompat>
