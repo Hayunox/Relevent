@@ -5,5 +5,5 @@
     android:layout_height="wrap_content"
     android:elevation="5dp"
     android:textAlignment="center"
-    android:textColor="@color/colorAccent"
+    android:textColor="?android:attr/colorActivatedHighlight"
     android:textSize="10sp" />
