@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private User user;
+    private TextView textViewUserNickname;
 
 
     @Override
@@ -49,15 +50,18 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Interface
          */
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
+        this.toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(this.toolbar);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
+        this.viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(this.viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        this.tabLayout = (TabLayout) findViewById(R.id.tabs);
+        this.tabLayout.setupWithViewPager(this.viewPager);
         setupTabIcons();
+
+        this.textViewUserNickname = (TextView) findViewById(R.id.main_activity_user_nickname);
+        this.textViewUserNickname.setText(this.user.getNickname());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_activity_floating_add_event);
         fab.setOnClickListener(new View.OnClickListener() {

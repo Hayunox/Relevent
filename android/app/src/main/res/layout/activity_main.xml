@@ -48,7 +48,7 @@
                     app:srcCompat="@mipmap/ic_launcher_round" />
 
                 <TextView
-                    android:id="@+id/textViewNickmane"
+                    android:id="@+id/main_activity_user_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
