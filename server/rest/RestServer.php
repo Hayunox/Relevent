@@ -52,7 +52,11 @@ class RestServer
         /*
          * Method with authentification
          */
+        /**
+         * EVENT
+         */
         $this->app->post('/event/create', new RestEventCreation());
+        $this->app->get('/event/listOwn', new RestEventUserListOwn());
 
         // Run server app
         $this->app->run();

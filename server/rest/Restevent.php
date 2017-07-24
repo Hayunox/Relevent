@@ -88,3 +88,46 @@ class RestEventCreation
         return $response;
     }
 }
+
+class RestEventEdit
+{
+
+}
+
+
+class RestEventUserListOwn
+{
+    /**
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     *
+     * @return Response
+     */
+    public function __invoke(Request $request, Response $response, $args = [])
+    {
+        $authentication = RestServer::authenticate();
+
+        // Authentication success
+        if(is_int($authentication)){
+            return $this->eventUserList($response, $authentication);
+        }
+
+        return RestServer::createJSONResponse($response, 400, $authentication);
+    }
+
+    /**
+     * @param Response $response
+     * @param $user_id
+     * @return Response
+     */
+    public function eventUserList(Response $response, $user_id)
+    {
+        $connection = new DBConnection();
+
+        // event validation
+        $event = new DBevent(null);
+
+        return RestServer::createJSONResponse($response, 200, json_encode($event->eventUserList($connection, $user_id)));
+    }
+}

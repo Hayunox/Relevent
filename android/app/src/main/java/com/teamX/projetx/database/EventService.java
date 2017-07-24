@@ -1,6 +1,7 @@
 package com.teamX.projetx.database;
 
 import retrofit2.Call;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -19,4 +20,7 @@ public interface EventService {
     @Multipart
     @POST("event/create")
     Call<String> eventCreation(@Header("Authorization") String userKey, @Part("name") String name, @Part("description") String description, @Part("date") String date, @Part("address") String address, @Part("theme") String theme);
+
+    @GET("event/listOwn")
+    Call<String> eventListUserOwn(@Header("Authorization") String userKey);
 }

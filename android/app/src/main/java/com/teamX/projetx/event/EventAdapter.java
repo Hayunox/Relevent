@@ -8,16 +8,16 @@ import android.widget.TextView;
 
 import com.teamX.projetx.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
- * Created by Paul on 19/07/2017.
+ *
  */
+class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
+    private ArrayList<Event> eventList;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
-    private List<Event> eventList;
-
-    public EventAdapter(List<Event> eventList) {
+    EventAdapter(ArrayList<Event> eventList) {
+        System.out.println("EVENTLIST = " + eventList.size());
         this.eventList = eventList;
     }
 
@@ -29,8 +29,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(EventViewHolder contactViewHolder, int i) {
         Event ci = eventList.get(i);
-        contactViewHolder.title.setText(ci.getTitle());
-        contactViewHolder.content.setText(ci.getContent());
+        contactViewHolder.title.setText(ci.getName());
+        contactViewHolder.content.setText(ci.getDescription());
     }
 
     @Override
@@ -43,13 +43,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     }
 
     class EventViewHolder extends RecyclerView.ViewHolder {
-        protected TextView title;
-        protected TextView content;
+        private TextView title;
+        private TextView content;
 
-        public EventViewHolder(View v) {
+        EventViewHolder(View v) {
             super(v);
-            title =  (TextView) v.findViewById(R.id.fragment_event_card_title);
-            content = (TextView)  v.findViewById(R.id.fragment_event_card_content);
+            title =  (TextView) v.findViewById(R.id.fragment_event_card_name);
+            content = (TextView)  v.findViewById(R.id.fragment_event_card_description);
         }
     }
 }
