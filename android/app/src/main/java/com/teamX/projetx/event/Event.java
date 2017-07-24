@@ -13,8 +13,9 @@ public class Event {
     private final Integer creation_time;
     private final String name;
     private final String description;
+    private final Integer user_id;
 
-    public Event(Integer id, String name, String description, Integer creation_time, String address, Integer date, String theme, Integer secret){
+    public Event(Integer id, String name, String description, Integer creation_time, String address, Integer date, String theme, Integer secret, Integer user_id){
         this.id = id;
         this.name = name;
         this.description = description;
@@ -23,6 +24,7 @@ public class Event {
         this.date = date;
         this.theme = theme;
         this.secret = secret;
+        this.user_id = user_id;
     }
 
     public Integer getId(){
@@ -55,5 +57,9 @@ public class Event {
 
     public Integer getCreationTime() {
         return creation_time;
+    }
+
+    public Integer getOwner() {
+        return user_id;
     }
 }

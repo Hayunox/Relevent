@@ -58,6 +58,11 @@ class RestServer
         $this->app->post('/event/create', new RestEventCreation());
         $this->app->get('/event/listOwn', new RestEventUserListOwn());
 
+        /**
+         * User
+         */
+        $this->app->get('/user/getDataById/{id}', new RestUserGetDataById());
+
         // Run server app
         $this->app->run();
     }

@@ -14,6 +14,7 @@ require_once __DIR__.'/../database/DBconnection.php';
 require_once __DIR__.'/../database/DBuser.php';
 require_once __DIR__.'/RestServer.php';
 
+use mageekguy\atoum\asserters\error;
 use server\database\DBconnection;
 use server\database\DBuser;
 use Slim\Http\Request;
@@ -133,3 +134,45 @@ class RestUserLogin
         return $response;
     }
 }
+
+
+class RestUserGetDataById
+{
+    /**
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     *
+     * @return Response
+     */
+    public function __invoke(Request $request, Response $response, $args = [])
+    {
+        $authentication = RestServer::authenticate();
+
+        // Authentication success
+        if(is_int($authentication)){
+            return $this->userDataById($response, $request);
+        }
+
+        return RestServer::createJSONResponse($response, 400, $authentication);
+    }
+
+    /**
+     * @param Response $response
+     * @param Request $request
+     * @return Response
+     */
+    public function userDataById(Response $response, Request $request)
+    {
+        $connection = new DBConnection();
+
+        $route = $request->getAttribute('route');
+        $user_id = RestServer::getSecureParam($route->getArgument('id'));
+
+        // User validation
+        $user = new DBuser($user_id);
+
+        return RestServer::createJSONResponse($response, 200, $user->getUserData($connection));
+    }
+}
+

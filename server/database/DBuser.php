@@ -43,8 +43,8 @@ class DBuser
     }
 
     /**
-     * @param $db
-     *
+     * @param DBconnection $db
+     * @param null $user_data
      * @return array
      */
     public function getUserData(DBconnection $db, $user_data = null)
