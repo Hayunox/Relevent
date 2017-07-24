@@ -97,4 +97,11 @@
     <string name="adresse_mail">Adresse mail</string>
     <string name="title_activity_event_creation">EventCreationActivity</string>
     <string name="title_activity_event_edition">EventEdition</string>
+    <string name="new_event">New Event</string>
+    <string name="create">Create</string>
+    <string name="choose_a_theme">Choose a theme</string>
+    <string name="hours">Hours</string>
+    <string name="name_of_the_event">Name of the event</string>
+    <string name="date">date</string>
+    <string name="place">Place</string>
 </resources>

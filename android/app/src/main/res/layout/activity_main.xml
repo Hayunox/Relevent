@@ -8,8 +8,10 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="false"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        app:expanded="false">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/tool_bar"
@@ -17,10 +19,47 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
-            android:elevation="5dp"
+            android:elevation="0dp"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            android:theme="?attr/actionBarTheme">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_background_normal"
+                android:backgroundTint="?android:attr/windowBackground"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:contextClickable="false">
+
+                <ImageButton
+                    android:id="@+id/imageButtonUserProfilePic"
+                    style="@android:style/Widget.DeviceDefault.ImageButton"
+                    android:layout_width="33dp"
+                    android:layout_height="35dp"
+                    android:adjustViewBounds="false"
+                    android:background="@color/cardview_shadow_end_color"
+                    android:baselineAlignBottom="false"
+                    android:cropToPadding="true"
+                    android:filterTouchesWhenObscured="false"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@mipmap/ic_launcher_round" />
+
+                <TextView
+                    android:id="@+id/textViewNickmane"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="Jean-R0ger78"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -28,7 +67,7 @@
             android:layout_height="wrap_content"
             android:elevation="0dp"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorAccent" />
+            app:tabIndicatorColor="?android:attr/colorActivatedHighlight" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
