@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.teamX.projetx.R;
 
-public class EventEdition extends AppCompatActivity {
+public class EventEditionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.teamX.projetx.event;
+package com.teamX.projetx.event.event_fragment;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.teamX.projetx.R;
+import com.teamX.projetx.event.Event;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,6 @@ class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
         View itemView = LayoutInflater.
                 from(viewGroup.getContext()).
                 inflate(R.layout.fragment_events_card, viewGroup, false);
-
         return new EventViewHolder(itemView);
     }
 
@@ -47,6 +47,10 @@ class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
         EventViewHolder(View v) {
             super(v);
+
+            /**
+             * Interface
+             */
             title =  (TextView) v.findViewById(R.id.fragment_event_card_name);
             content = (TextView)  v.findViewById(R.id.fragment_event_card_description);
         }

@@ -1,0 +1,79 @@
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+
+    android:padding="5dp"
+    tools:context="com.teamX.projetx.event.EventDescriptionActivity"
+
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:weightSum="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="13dp">
+
+        <TextView
+            android:id="@+id/event_description_textView_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.11"
+            android:text="Event name :" />
+
+        <TextView
+            android:id="@+id/event_description_textView_creation_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.11"
+            android:text="Created " />
+
+        <TextView
+            android:id="@+id/event_description_textView_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            android:text="Event date " />
+
+        <TextView
+            android:id="@+id/event_description_textView_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            android:text="Event location " />
+
+        <TextView
+            android:id="@+id/event_description_textView_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            android:text="Event theme " />
+
+        <TextView
+            android:id="@+id/event_description_textView_owner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            android:text="Event organizer " />
+
+        <TextView
+            android:id="@+id/event_description_textView_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.27"
+            android:text="Description " />
+    </LinearLayout>
+
+</android.support.v7.widget.LinearLayoutCompat>

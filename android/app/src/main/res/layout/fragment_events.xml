@@ -31,9 +31,10 @@
         android:id="@+id/fragment_events_user_participate_events_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fragment_events_text_view_user_participate"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp" />
+        android:layout_below="@+id/fragment_events_text_view_user_participate"
+        android:layout_marginTop="13dp"
+        android:clipChildren="false" />
 
     <TextView
         android:id="@+id/fragment_events_text_view_user_participate"
