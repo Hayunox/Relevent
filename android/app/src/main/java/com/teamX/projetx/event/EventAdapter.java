@@ -17,7 +17,6 @@ class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
     private ArrayList<Event> eventList;
 
     EventAdapter(ArrayList<Event> eventList) {
-        System.out.println("EVENTLIST = " + eventList.size());
         this.eventList = eventList;
     }
 
