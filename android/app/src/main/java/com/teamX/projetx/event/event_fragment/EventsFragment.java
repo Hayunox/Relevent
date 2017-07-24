@@ -1,4 +1,4 @@
-package com.teamX.projetx.event;
+package com.teamX.projetx.event.event_fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import com.teamX.projetx.R;
 import com.teamX.projetx.database.DataBase;
 import com.teamX.projetx.database.EventService;
+import com.teamX.projetx.event.Event;
 import com.teamX.projetx.user.User;
 import com.teamX.projetx.utils.AppPreferences;
 
@@ -75,7 +76,22 @@ public class EventsFragment extends Fragment {
          * Swipe to refresh
          */
         // TODO
-        
+
+        /**
+         * Listeners
+         */
+        recyclerViewUserOwnEvents.addOnItemTouchListener(new EventRecyclerTouchListener(getContext(), recyclerViewUserOwnEvents, new EventClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                System.out.println("Clicked = " + position);
+                //Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         return rootView;
     }

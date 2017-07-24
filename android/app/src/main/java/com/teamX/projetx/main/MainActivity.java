@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.teamX.projetx.R;
 import com.teamX.projetx.event.EventCreationActivity;
-import com.teamX.projetx.event.EventsFragment;
+import com.teamX.projetx.event.event_fragment.EventsFragment;
 import com.teamX.projetx.event.InvitationFragment;
 import com.teamX.projetx.user.User;
 import com.teamX.projetx.user.contact.ContactsFragment;

@@ -5,15 +5,17 @@ package com.teamX.projetx.event;
  */
 
 public class Event {
+    private final Integer id;
     private final Integer secret;
     private final String theme;
     private final Integer date;
     private final String address;
     private final Integer creation_time;
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
 
-    public Event(String name, String description, Integer creation_time, String address, Integer date, String theme, Integer secret){
+    public Event(Integer id, String name, String description, Integer creation_time, String address, Integer date, String theme, Integer secret){
+        this.id = id;
         this.name = name;
         this.description = description;
         this.creation_time = creation_time;
@@ -21,6 +23,10 @@ public class Event {
         this.date = date;
         this.theme = theme;
         this.secret = secret;
+    }
+
+    public Integer getId(){
+        return this.id;
     }
 
     public String getDescription() {
