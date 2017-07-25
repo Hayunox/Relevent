@@ -8,8 +8,8 @@
 
 namespace server\rest;
 
-require_once __DIR__ . '/RestUser.php';
-require_once __DIR__ . '/RestEvent.php';
+require_once __DIR__.'/RestUser.php';
+require_once __DIR__.'/RestEvent.php';
 
 use server\database\DBConnection;
 use server\database\DBUser;
@@ -52,13 +52,13 @@ class RestServer
         /*
          * Method with authentification
          */
-        /**
+        /*
          * EVENT
          */
         $this->app->post('/event/create', new RestEventCreation());
         $this->app->get('/event/listOwn', new RestEventUserListOwn());
 
-        /**
+        /*
          * User
          */
         $this->app->get('/user/getDataById/{id}', new RestUserGetDataById());
@@ -68,7 +68,7 @@ class RestServer
     }
 
     /**
-     * @return string|integer
+     * @return string|int
      */
     public static function authenticate()
     {

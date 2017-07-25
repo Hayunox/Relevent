@@ -95,6 +95,7 @@ class DBEvent
     /**
      * @param DBConnection $connection
      * @param $user_id
+     *
      * @return null|\stdClass
      */
     public function eventUserList(DBConnection $connection, $user_id)

@@ -44,7 +44,8 @@ class DBUser
 
     /**
      * @param DBConnection $db
-     * @param null $user_data
+     * @param null         $user_data
+     *
      * @return array
      */
     public function getUserData(DBConnection $db, $user_data = null)
@@ -96,7 +97,7 @@ class DBUser
      * @param $db
      * @param $key
      *
-     * @return bool|integer
+     * @return bool|int
      */
     public function userKeyExists(DBConnection $db, $key)
     {
