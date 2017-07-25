@@ -10,8 +10,8 @@ namespace server\rest;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-require_once __DIR__ . '/../database/DBConnection.php';
-require_once __DIR__ . '/../database/DBEvent.php';
+require_once __DIR__.'/../database/DBConnection.php';
+require_once __DIR__.'/../database/DBEvent.php';
 require_once __DIR__.'/RestServer.php';
 
 use server\database\DBConnection;
@@ -34,11 +34,10 @@ class RestEventCreation
 
         // Parameters corresponds
         if ($verification['status']) {
-
             $authentication = RestServer::authenticate();
 
             // Authentication success
-            if(is_int($authentication)){
+            if (is_int($authentication)) {
                 return $this->eventCreation($verification['response'], $response, $authentication);
             }
 
@@ -51,18 +50,18 @@ class RestEventCreation
     /**
      * @param $data
      * @param Response $response
-     *
      * @param $user_id
+     *
      * @return Response
      */
     public function eventCreation($data, Response $response, $user_id)
     {
         // reading post params
-        $name           = RestServer::getSecureParam($data['name']);
-        $date           = RestServer::getSecureParam($data['date']);
-        $description    = RestServer::getSecureParam($data['description']);
-        $address        = RestServer::getSecureParam($data['address']);
-        $theme          = RestServer::getSecureParam($data['theme']);
+        $name = RestServer::getSecureParam($data['name']);
+        $date = RestServer::getSecureParam($data['date']);
+        $description = RestServer::getSecureParam($data['description']);
+        $address = RestServer::getSecureParam($data['address']);
+        $theme = RestServer::getSecureParam($data['theme']);
 
         $connection = new DBConnection();
 
@@ -91,9 +90,7 @@ class RestEventCreation
 
 class RestEventEdit
 {
-
 }
-
 
 class RestEventUserListOwn
 {
@@ -109,7 +106,7 @@ class RestEventUserListOwn
         $authentication = RestServer::authenticate();
 
         // Authentication success
-        if(is_int($authentication)){
+        if (is_int($authentication)) {
             return $this->eventUserList($response, $authentication);
         }
 
@@ -119,6 +116,7 @@ class RestEventUserListOwn
     /**
      * @param Response $response
      * @param $user_id
+     *
      * @return Response
      */
     public function eventUserList(Response $response, $user_id)

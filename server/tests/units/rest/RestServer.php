@@ -160,12 +160,14 @@ class RestServer extends test
             ->contains($data);
     }
 
-    public static function createEnvironment($env){
+    public static function createEnvironment($env)
+    {
         $uri = Uri::createFromEnvironment($env);
         $headers = Headers::createFromEnvironment($env);
         $cookies = [];
         $serverParams = $env->all();
         $body = new RequestBody();
+
         return new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
     }
 

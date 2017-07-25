@@ -8,8 +8,8 @@
 
 namespace server\tests\units\database;
 
-require_once __DIR__ . '/../../../database/DBConnection.php';
-require_once __DIR__ . '/../../../database/DBUser.php';
+require_once __DIR__.'/../../../database/DBConnection.php';
+require_once __DIR__.'/../../../database/DBUser.php';
 
 use mageekguy\atoum\test;
 use server\database\DBConnection as ConnectionToDatabase;

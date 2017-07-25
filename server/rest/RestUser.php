@@ -10,11 +10,10 @@ namespace server\rest;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-require_once __DIR__ . '/../database/DBConnection.php';
-require_once __DIR__ . '/../database/DBUser.php';
+require_once __DIR__.'/../database/DBConnection.php';
+require_once __DIR__.'/../database/DBUser.php';
 require_once __DIR__.'/RestServer.php';
 
-use mageekguy\atoum\asserters\error;
 use server\database\DBConnection;
 use server\database\DBUser;
 use Slim\Http\Request;
@@ -135,7 +134,6 @@ class RestUserLogin
     }
 }
 
-
 class RestUserGetDataById
 {
     /**
@@ -150,7 +148,7 @@ class RestUserGetDataById
         $authentication = RestServer::authenticate();
 
         // Authentication success
-        if(is_int($authentication)){
+        if (is_int($authentication)) {
             return $this->userDataById($response, $request);
         }
 
@@ -159,7 +157,8 @@ class RestUserGetDataById
 
     /**
      * @param Response $response
-     * @param Request $request
+     * @param Request  $request
+     *
      * @return Response
      */
     public function userDataById(Response $response, Request $request)
@@ -175,4 +174,3 @@ class RestUserGetDataById
         return RestServer::createJSONResponse($response, 200, $user->getUserData($connection));
     }
 }
-

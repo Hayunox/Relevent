@@ -10,7 +10,7 @@
 
 namespace server\tests\units\rest;
 
-require_once __DIR__ . '/../../../rest/RestUser.php';
+require_once __DIR__.'/../../../rest/RestUser.php';
 
 use mageekguy\atoum\test;
 use Slim\Http\Environment;
