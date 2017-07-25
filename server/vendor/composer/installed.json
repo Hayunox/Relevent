@@ -361,18 +361,123 @@
         ]
     },
     {
-        "name": "atoum/atoum",
-        "version": "3.1.0",
-        "version_normalized": "3.1.0.0",
+        "name": "atoum/stubs",
+        "version": "2.5.0",
+        "version_normalized": "2.5.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/atoum/atoum.git",
-            "reference": "b0d20cc3de4ffa53f87ac306a84607e4061dd3de"
+            "url": "https://github.com/atoum/stubs.git",
+            "reference": "45babf1aa5042a99c68fe8a17e1229d7c21407cb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/atoum/atoum/zipball/b0d20cc3de4ffa53f87ac306a84607e4061dd3de",
-            "reference": "b0d20cc3de4ffa53f87ac306a84607e4061dd3de",
+            "url": "https://api.github.com/repos/atoum/stubs/zipball/45babf1aa5042a99c68fe8a17e1229d7c21407cb",
+            "reference": "45babf1aa5042a99c68fe8a17e1229d7c21407cb",
+            "shasum": ""
+        },
+        "suggest": {
+            "atoum/atoum": "Include atoum in your projet dependencies"
+        },
+        "time": "2016-01-07T19:57:29+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD"
+        ],
+        "authors": [
+            {
+                "name": "Julien Bianchi",
+                "email": "julien.bianchi@atoum.org"
+            },
+            {
+                "name": "Ludovic Fleury",
+                "email": "ludovic.fleury@atoum.org"
+            }
+        ],
+        "description": "Stubs for atoum, the simple modern and intuitive unit testing framework for PHP 5.3+",
+        "homepage": "http://www.atoum.org",
+        "keywords": [
+            "TDD",
+            "atoum",
+            "test",
+            "unit testing"
+        ]
+    },
+    {
+        "name": "compwright/codeigniter-installers",
+        "version": "1.1.4",
+        "version_normalized": "1.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/compwright/codeigniter-installers.git",
+            "reference": "adbbd5ae2cbf5a24a39931235b1ac7dab56abb4f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/compwright/codeigniter-installers/zipball/adbbd5ae2cbf5a24a39931235b1ac7dab56abb4f",
+            "reference": "adbbd5ae2cbf5a24a39931235b1ac7dab56abb4f",
+            "shasum": ""
+        },
+        "require-dev": {
+            "composer/composer": "1.0.*@dev"
+        },
+        "time": "2012-11-12T16:11:38+00:00",
+        "type": "composer-installer",
+        "extra": {
+            "class": "Composer\\Installer\\CodeigniterInstaller"
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Composer\\Installer": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathon Hill",
+                "email": "jhill9693@gmail.com",
+                "homepage": "http://jonathonhill.net",
+                "role": "Developer"
+            }
+        ],
+        "description": "Composer installers for CodeIgniter",
+        "homepage": "https://github.com/compwright/codeigniter-installers",
+        "keywords": [
+            "MX",
+            "codeigniter",
+            "composer",
+            "core",
+            "hmvc",
+            "installer",
+            "library",
+            "module",
+            "spark",
+            "sparks"
+        ]
+    },
+    {
+        "name": "atoum/atoum",
+        "version": "3.1.1",
+        "version_normalized": "3.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/atoum/atoum.git",
+            "reference": "6af6b609a108fd2e63f2f42efbb4f0b799e6c710"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/atoum/atoum/zipball/6af6b609a108fd2e63f2f42efbb4f0b799e6c710",
+            "reference": "6af6b609a108fd2e63f2f42efbb4f0b799e6c710",
             "shasum": ""
         },
         "require": {
@@ -394,7 +499,7 @@
             "ext-mbstring": "Provides support for UTF-8 strings",
             "ext-xdebug": "Provides code coverage report (>= 2.3)"
         },
-        "time": "2017-07-11T17:41:39+00:00",
+        "time": "2017-07-19T19:59:03+00:00",
         "bin": [
             "bin/atoum"
         ],
@@ -447,67 +552,18 @@
         ]
     },
     {
-        "name": "atoum/stubs",
-        "version": "2.5.0",
-        "version_normalized": "2.5.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/atoum/stubs.git",
-            "reference": "45babf1aa5042a99c68fe8a17e1229d7c21407cb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/atoum/stubs/zipball/45babf1aa5042a99c68fe8a17e1229d7c21407cb",
-            "reference": "45babf1aa5042a99c68fe8a17e1229d7c21407cb",
-            "shasum": ""
-        },
-        "suggest": {
-            "atoum/atoum": "Include atoum in your projet dependencies"
-        },
-        "time": "2016-01-07T19:57:29+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD"
-        ],
-        "authors": [
-            {
-                "name": "Julien Bianchi",
-                "email": "julien.bianchi@atoum.org"
-            },
-            {
-                "name": "Ludovic Fleury",
-                "email": "ludovic.fleury@atoum.org"
-            }
-        ],
-        "description": "Stubs for atoum, the simple modern and intuitive unit testing framework for PHP 5.3+",
-        "homepage": "http://www.atoum.org",
-        "keywords": [
-            "TDD",
-            "atoum",
-            "test",
-            "unit testing"
-        ]
-    },
-    {
         "name": "pimple/pimple",
-        "version": "v3.2.0",
-        "version_normalized": "3.2.0.0",
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/silexphp/Pimple.git",
-            "reference": "729436408ef52f9845f9b60d60b2563f314bf1a9"
+            "reference": "4d45fb62d96418396ec58ba76e6f065bca16e10a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/silexphp/Pimple/zipball/729436408ef52f9845f9b60d60b2563f314bf1a9",
-            "reference": "729436408ef52f9845f9b60d60b2563f314bf1a9",
+            "url": "https://api.github.com/repos/silexphp/Pimple/zipball/4d45fb62d96418396ec58ba76e6f065bca16e10a",
+            "reference": "4d45fb62d96418396ec58ba76e6f065bca16e10a",
             "shasum": ""
         },
         "require": {
@@ -517,7 +573,7 @@
         "require-dev": {
             "symfony/phpunit-bridge": "^3.2"
         },
-        "time": "2017-07-17T17:05:21+00:00",
+        "time": "2017-07-23T07:32:15+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -548,70 +604,44 @@
         ]
     },
     {
-        "name": "sentry/sentry",
-        "version": "1.7.0",
-        "version_normalized": "1.7.0.0",
+        "name": "lonnieezell/codeigniter-forensics",
+        "version": "v1.1",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/getsentry/sentry-php.git",
-            "reference": "f92d30467d9696606352aa06afeac0a60c4458ef"
+            "url": "https://github.com/lonnieezell/codeigniter-forensics.git",
+            "reference": "2a680ed0fc7587c70cbb07b4b6cb0505903692b4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/f92d30467d9696606352aa06afeac0a60c4458ef",
-            "reference": "f92d30467d9696606352aa06afeac0a60c4458ef",
+            "url": "https://api.github.com/repos/lonnieezell/codeigniter-forensics/zipball/2a680ed0fc7587c70cbb07b4b6cb0505903692b4",
+            "reference": "2a680ed0fc7587c70cbb07b4b6cb0505903692b4",
             "shasum": ""
         },
         "require": {
-            "ext-curl": "*",
-            "php": "^5.3|^7.0"
+            "compwright/codeigniter-installers": "*"
         },
-        "conflict": {
-            "raven/raven": "*"
-        },
-        "require-dev": {
-            "friendsofphp/php-cs-fixer": "^1.8.0",
-            "monolog/monolog": "*",
-            "phpunit/phpunit": "^4.8 || ^5.0"
-        },
-        "suggest": {
-            "ext-hash": "*",
-            "ext-json": "*",
-            "ext-mbstring": "*",
-            "immobiliare/sentry-php": "Fork that fixes support for PHP 5.2",
-            "monolog/monolog": "Automatically capture Monolog events as breadcrumbs"
-        },
-        "time": "2017-06-07T18:13:17+00:00",
-        "bin": [
-            "bin/sentry"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.7.x-dev"
-            }
-        },
+        "time": "2016-08-03T13:08:54+00:00",
+        "type": "codeigniter-third-party",
         "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Raven_": "lib/"
-            }
-        },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "BSD-3-Clause"
+            "MIT"
         ],
         "authors": [
             {
-                "name": "David Cramer",
-                "email": "dcramer@gmail.com"
+                "name": "Lonnie Ezell",
+                "email": "lonnieezell@gmail.com",
+                "role": "Developer"
             }
         ],
-        "description": "A PHP client for Sentry (http://getsentry.com)",
-        "homepage": "http://getsentry.com",
+        "description": "A high-powered, customizable Profiler replacement for CodeIgniter.",
+        "homepage": "http://lonnieezell.github.io/codeigniter-forensics/",
         "keywords": [
-            "log",
-            "logging"
+            "codeigniter",
+            "debug",
+            "profiler",
+            "spark"
         ]
     }
 ]

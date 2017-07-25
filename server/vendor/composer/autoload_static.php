@@ -61,13 +61,6 @@ class ComposerStaticInitb05c52e6080d43f5670bd82da326030f
                 0 => __DIR__ . '/..' . '/usmanhalalit/viocon/src',
             ),
         ),
-        'R' => 
-        array (
-            'Raven_' => 
-            array (
-                0 => __DIR__ . '/..' . '/sentry/sentry/lib',
-            ),
-        ),
         'P' => 
         array (
             'Pixie' => 
@@ -77,6 +70,13 @@ class ComposerStaticInitb05c52e6080d43f5670bd82da326030f
             'Pimple' => 
             array (
                 0 => __DIR__ . '/..' . '/pimple/pimple/src',
+            ),
+        ),
+        'C' => 
+        array (
+            'Composer\\Installer' => 
+            array (
+                0 => __DIR__ . '/..' . '/compwright/codeigniter-installers/src',
             ),
         ),
     );

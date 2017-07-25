@@ -8,11 +8,11 @@
 
 namespace server\rest;
 
-require_once __DIR__.'/Restuser.php';
-require_once __DIR__.'/Restevent.php';
+require_once __DIR__ . '/RestUser.php';
+require_once __DIR__ . '/RestEvent.php';
 
-use server\database\DBconnection;
-use server\database\DBuser;
+use server\database\DBConnection;
+use server\database\DBUser;
 use Slim\App;
 use Slim\Http\Response;
 
@@ -79,7 +79,7 @@ class RestServer
         if (isset($authorization)) {
             $connection = new DBConnection();
 
-            $user = new DBuser(null);
+            $user = new DBUser(null);
 
             // get the user key
             $api_key = $authorization;

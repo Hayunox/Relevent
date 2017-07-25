@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * DBuser: Paul
+ * DBUser: Paul
  * Date: 11/07/2017
  * Time: 17:22.
  */

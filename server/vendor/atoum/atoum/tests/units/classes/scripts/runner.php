@@ -21,8 +21,8 @@ class runner extends atoum\test
     public function testClassConstants()
     {
         $this
-            ->string(testedClass::defaultConfigFile)->isEqualTo('..atoum.php')
-            ->string(testedClass::defaultBootstrapFile)->isEqualTo('.bootstrap..atoum.php')
+            ->string(testedClass::defaultConfigFile)->isEqualTo('.atoum.php')
+            ->string(testedClass::defaultBootstrapFile)->isEqualTo('.bootstrap.atoum.php')
         ;
     }
 
@@ -810,7 +810,7 @@ class runner extends atoum\test
                         ->withArguments('Default bootstrap file \'' . testedClass::defaultBootstrapFile . '\' was successfully created in ' . $runner->getDirectory())->once()
                 ->adapter($adapter)
                     ->call('copy')
-                        ->withArguments(atoum\directory . '/resources/configurations/runner/.atoum.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->once()
+                        ->withArguments(atoum\directory . '/resources/configurations/runner/atoum.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->once()
                         ->withArguments(atoum\directory . '/resources/configurations/runner/bootstrap.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultBootstrapFile)->once()
             ->if($this->resetAdapter($adapter))
             ->and($this->resetMock($outputWriter))
@@ -825,7 +825,7 @@ class runner extends atoum\test
                         ->withArguments('Default bootstrap file \'' . testedClass::defaultBootstrapFile . '\' was successfully created in ' . $directory . DIRECTORY_SEPARATOR)->once()
                 ->adapter($adapter)
                     ->call('copy')
-                        ->withArguments(atoum\directory . '/resources/configurations/runner/.atoum.php.dist', $directory . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->once()
+                        ->withArguments(atoum\directory . '/resources/configurations/runner/atoum.php.dist', $directory . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->once()
                         ->withArguments(atoum\directory . '/resources/configurations/runner/bootstrap.php.dist', $directory . DIRECTORY_SEPARATOR . testedClass::defaultBootstrapFile)->once()
             ->if($this->resetAdapter($adapter))
             ->and($this->resetMock($outputWriter))
@@ -843,7 +843,7 @@ class runner extends atoum\test
                         ->withArguments('Default bootstrap file \'' . testedClass::defaultBootstrapFile . '\' was successfully created in ' . $runner->getDirectory())->once()
                 ->adapter($adapter)
                     ->call('copy')
-                        ->withArguments(atoum\directory . '/resources/configurations/runner/.atoum.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->once()
+                        ->withArguments(atoum\directory . '/resources/configurations/runner/atoum.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->once()
                         ->withArguments(atoum\directory . '/resources/configurations/runner/bootstrap.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultBootstrapFile)->once()
             ->if($this->resetAdapter($adapter))
             ->and($this->resetMock($outputWriter))
@@ -862,7 +862,7 @@ class runner extends atoum\test
                         ->withArguments('Default bootstrap file \'' . testedClass::defaultBootstrapFile . '\' was successfully created in ' . $runner->getDirectory())->never()
                 ->adapter($adapter)
                     ->call('copy')
-                        ->withArguments(atoum\directory . '/resources/configurations/runner/.atoum.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->never()
+                        ->withArguments(atoum\directory . '/resources/configurations/runner/atoum.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->never()
                         ->withArguments(atoum\directory . '/resources/configurations/runner/bootstrap.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultBootstrapFile)->never()
             ->if($this->resetAdapter($adapter))
             ->and($this->resetMock($outputWriter))
@@ -881,7 +881,7 @@ class runner extends atoum\test
                         ->withArguments('Default bootstrap file \'' . testedClass::defaultBootstrapFile . '\' was successfully created in ' . $runner->getDirectory() . PHP_EOL)->never()
                 ->adapter($adapter)
                     ->call('copy')
-                        ->withArguments(atoum\directory . '/resources/configurations/runner/.atoum.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->never()
+                        ->withArguments(atoum\directory . '/resources/configurations/runner/atoum.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile)->never()
                         ->withArguments(atoum\directory . '/resources/configurations/runner/bootstrap.php.dist', __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultBootstrapFile)->never()
             ->if($this->calling($prompt)->ask = 'Y')
             ->and($adapter->copy = false)
@@ -890,7 +890,7 @@ class runner extends atoum\test
                     $runner->init();
                 })
                     ->isInstanceOf(atoum\exceptions\runtime::class)
-                    ->hasMessage('Unable to write \'' . atoum\directory . '/resources/configurations/runner/.atoum.php.dist\' to \'' . __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile . '\'')
+                    ->hasMessage('Unable to write \'' . atoum\directory . '/resources/configurations/runner/atoum.php.dist\' to \'' . __DIR__ . DIRECTORY_SEPARATOR . testedClass::defaultConfigFile . '\'')
         ;
     }
 

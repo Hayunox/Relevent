@@ -11,8 +11,8 @@ namespace server\tests\units\rest;
 require_once __DIR__.'/../../../rest/RestServer.php';
 
 use mageekguy\atoum\test;
-use server\database\DBconnection;
-use server\database\DBuser;
+use server\database\DBConnection;
+use server\database\DBUser;
 use Slim\Http\Environment;
 use Slim\Http\Headers;
 use Slim\Http\Request;
@@ -30,12 +30,8 @@ class RestServer extends test
             'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = self::createEnvironment($env);
         $res = new Response();
 
         // Invoke app
@@ -55,12 +51,8 @@ class RestServer extends test
             'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = self::createEnvironment($env);
         $res = new Response();
 
         // Invoke app
@@ -85,7 +77,7 @@ class RestServer extends test
         // Prepare request and response
 
         /* Get real key */
-        $user = new DBuser(1);
+        $user = new DBUser(1);
         $connection = new DBConnection();
         $user_key = $user->getUserData($connection)['key'];
 
@@ -94,18 +86,14 @@ class RestServer extends test
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = self::createEnvironment($env);
         $res = new Response();
 
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->integer((int) json_decode($this->newTestedInstance->authenticate($resOut)->getBody()))
+            ->integer($this->newTestedInstance->authenticate($resOut))
             ->isGreaterThan('-1');
         /* COMPLETE TEST*/
     }
@@ -119,18 +107,14 @@ class RestServer extends test
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = self::createEnvironment($env);
         $res = new Response();
 
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->string($this->newTestedInstance->authenticate($resOut)->getBody()->getContents())
+            ->string($this->newTestedInstance->authenticate($resOut))
             ->contains('USER_KEY_NOT_FOUND');
     }
 
@@ -143,18 +127,14 @@ class RestServer extends test
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = self::createEnvironment($env);
         $res = new Response();
 
         // Invoke app
         $this
             ->given($resOut = $app($req, $res))
-            ->string($this->newTestedInstance->authenticate($resOut)->getBody()->getContents())
+            ->string($this->newTestedInstance->authenticate($resOut))
             ->contains('API_KEY_ACCESS_DENIED');
     }
 
@@ -166,7 +146,7 @@ class RestServer extends test
         ];
 
         $this
-            ->string($this->newTestedInstance->createJSONResponse(new Response(), 200, $data)->getBody()->getContents())
+            ->string((string) $this->newTestedInstance->createJSONResponse(new Response(), 200, $data)->getBody())
             ->contains('test2')
             ->contains('test5');
     }
@@ -176,8 +156,17 @@ class RestServer extends test
         $data = 'FAILED';
 
         $this
-            ->string($this->newTestedInstance->createJSONResponse(new Response(), 200, $data)->getBody()->getContents())
+            ->string((string) $this->newTestedInstance->createJSONResponse(new Response(), 200, $data)->getBody())
             ->contains($data);
+    }
+
+    public static function createEnvironment($env){
+        $uri = Uri::createFromEnvironment($env);
+        $headers = Headers::createFromEnvironment($env);
+        $cookies = [];
+        $serverParams = $env->all();
+        $body = new RequestBody();
+        return new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
     }
 
     public function getAutoloaderFile()

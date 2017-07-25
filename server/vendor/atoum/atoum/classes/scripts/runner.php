@@ -12,9 +12,9 @@ use mageekguy\atoum\writers;
 
 class runner extends atoum\script\configurable
 {
-    const defaultConfigFile = '..atoum.php';
-    const defaultBootstrapFile = '.bootstrap..atoum.php';
-    const defaultAutoloaderFile = '.autoloader..atoum.php';
+    const defaultConfigFile = '.atoum.php';
+    const defaultBootstrapFile = '.bootstrap.atoum.php';
+    const defaultAutoloaderFile = '.autoloader.atoum.php';
     const defaultComposerAutoloaderFile = 'vendor/autoload.php';
 
     protected $runner = null;
@@ -569,7 +569,7 @@ class runner extends atoum\script\configurable
 
         if ($this->adapter->file_exists($defaultConfigFile) === false || $this->prompt($this->locale->_('Default configuration file \'' . static::defaultConfigFile . '\' already exists in ' . $currentDirectory . ', type \'Y\' to overwrite it...')) === 'Y') {
             $this
-                ->copy($resourceDirectory . '/configurations/runner/.atoum.php.dist', $defaultConfigFile)
+                ->copy($resourceDirectory . '/configurations/runner/atoum.php.dist', $defaultConfigFile)
                 ->writeInfo($this->locale->_('Default configuration file \'' . static::defaultConfigFile . '\' was successfully created in ' . $currentDirectory))
             ;
         }

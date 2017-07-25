@@ -13,7 +13,7 @@
       <path value="$PROJECT_DIR$/vendor/atoum/atoum" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/atoum/stubs" />
-      <path value="$PROJECT_DIR$/vendor/sentry/sentry" />
+      <path value="$PROJECT_DIR$/vendor/compwright/codeigniter-installers" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7" />
