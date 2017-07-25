@@ -8,19 +8,16 @@
 
 namespace server\tests\units\rest;
 
+require_once __DIR__.'/../UnitTestRestServerUtil.php';
 require_once __DIR__.'/../../../rest/RestServer.php';
 
-use mageekguy\atoum\test;
-use server\database\DBConnection;
-use server\database\DBUser;
+use server\tests\units\UnitTestRestServerSlimTest;
+use server\tests\units\UnitTestRestServerUtil;
 use Slim\Http\Environment;
-use Slim\Http\Headers;
 use Slim\Http\Request;
-use Slim\Http\RequestBody;
 use Slim\Http\Response;
-use Slim\Http\Uri;
 
-class RestServer extends test
+class RestServer extends UnitTestRestServerSlimTest
 {
     public function testGetRequiredParamsNoPresence()
     {
@@ -31,7 +28,7 @@ class RestServer extends test
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = self::createEnvironment($env);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
@@ -52,7 +49,7 @@ class RestServer extends test
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = self::createEnvironment($env);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
@@ -75,19 +72,12 @@ class RestServer extends test
     {
         $app = new testCallable();
         // Prepare request and response
-
-        /* Get real key */
-        $user = new DBUser(1);
-        $connection = new DBConnection();
-        $user_key = $user->getUserData($connection)['key'];
-
-        $_SERVER['HTTP_AUTHORIZATION'] = $user_key;
         $env = Environment::mock([
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
         ]);
 
-        $req = self::createEnvironment($env);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "GET", 1);
         $res = new Response();
 
         // Invoke app
@@ -102,13 +92,12 @@ class RestServer extends test
     {
         $app = new testCallable();
         // Prepare request and response objects
-        $_SERVER['HTTP_AUTHORIZATION'] = null;
         $env = Environment::mock([
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
         ]);
 
-        $req = self::createEnvironment($env);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "GET");
         $res = new Response();
 
         // Invoke app
@@ -122,13 +111,13 @@ class RestServer extends test
     {
         $app = new testCallable();
         // Prepare request and response objects
-        $_SERVER['HTTP_AUTHORIZATION'] = 'azeczankzadazaz';
         $env = Environment::mock([
             'REQUEST_URI'    => '/projetX/index.php/user/data',
             'REQUEST_METHOD' => 'GET',
         ]);
 
-        $req = self::createEnvironment($env);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "GET");
+        $_SERVER['HTTP_AUTHORIZATION'] = 'azeczankzadazaz';
         $res = new Response();
 
         // Invoke app
@@ -158,21 +147,6 @@ class RestServer extends test
         $this
             ->string((string) $this->newTestedInstance->createJSONResponse(new Response(), 200, $data)->getBody())
             ->contains($data);
-    }
-
-    public static function createEnvironment($env)
-    {
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-
-        return new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
-    }
-
-    public function getAutoloaderFile()
-    {
     }
 }
 

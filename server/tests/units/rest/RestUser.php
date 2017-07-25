@@ -1,49 +1,37 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: Paul
- * Date: 15/07/2017
- * Time: 10:52
- * 'QUERY_STRING'=>'nickname=ezr&password=ezr',.
- */
-
 namespace server\tests\units\rest;
 
+require_once __DIR__.'/../UnitTestRestServerUtil.php';
 require_once __DIR__.'/../../../rest/RestUser.php';
 
-use mageekguy\atoum\test;
+use server\tests\units\UnitTestRestServerSlimTest;
+use server\tests\units\UnitTestRestServerUtil;
 use Slim\Http\Environment;
-use Slim\Http\Headers;
-use Slim\Http\Request;
-use Slim\Http\RequestBody;
 use Slim\Http\Response;
-use Slim\Http\Uri;
+use Slim\Route;
+use Slim\Router;
 
 /**
  * Class RestUserRegister.
  */
-class RestUserCreation extends test
+class RestUserCreation extends UnitTestRestServerSlimTest
 {
     public function testUserRegisterWithoutCredentials()
     {
         $app = $this->newTestedInstance();
+
         // Prepare request and response objects
         $env = Environment::mock([
             'REQUEST_URI'    => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
         $this
-            ->given($resOut = $app($req, $res))
+            ->given($resOut = $app->__invoke($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
@@ -64,17 +52,13 @@ class RestUserCreation extends test
             'REQUEST_URI'    => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
         $this
-            ->given($resOut = $app($req, $res))
+            ->given($resOut = $app->__invoke($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
             ->string((string) $resOut->getBody())
@@ -95,17 +79,13 @@ class RestUserCreation extends test
             'REQUEST_URI'    => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
         $this
-            ->given($resOut = $app($req, $res))
+            ->given($resOut = $app->__invoke($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
@@ -126,32 +106,24 @@ class RestUserCreation extends test
             'REQUEST_URI'    => '/projetX/index.php/user/register',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
         $this
-            ->given($resOut = $app($req, $res))
+            ->given($resOut = $app->__invoke($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
             ->contains('USER_NICKNAME_EXISTS');
-    }
-
-    public function getAutoloaderFile()
-    {
     }
 }
 
 /**
  * Class RestUserLogin.
  */
-class RestUserLogin extends test
+class RestUserLogin extends UnitTestRestServerSlimTest
 {
     public function testUserLoginWithoutCredentials()
     {
@@ -161,17 +133,13 @@ class RestUserLogin extends test
             'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
         $this
-            ->given($resOut = $app($req, $res))
+            ->given($resOut = $app->__invoke($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
@@ -191,17 +159,13 @@ class RestUserLogin extends test
             'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
         $this
-            ->given($resOut = $app($req, $res))
+            ->given($resOut = $app->__invoke($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
@@ -221,25 +185,47 @@ class RestUserLogin extends test
             'REQUEST_URI'    => '/projetX/index.php/user/login',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $uri = Uri::createFromEnvironment($env);
-        $headers = Headers::createFromEnvironment($env);
-        $cookies = [];
-        $serverParams = $env->all();
-        $body = new RequestBody();
-        $req = new Request('POST', $uri, $headers, $cookies, $serverParams, $body);
+
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
         $res = new Response();
 
         // Invoke app
         $this
-            ->given($resOut = $app($req, $res))
+            ->given($resOut = $app->__invoke($req, $res))
             ->integer($resOut->getStatusCode())
             ->isIdenticalTo(200)
             ->string((string) $resOut->getBody())
             ->contains('nickname')
             ->contains('test');
     }
-
-    public function getAutoloaderFile()
-    {
-    }
 }
+
+/**
+ * Class RestEventUserListOwn.
+ */
+/*class RestUserGetDataById extends UnitTestRestServerSlimTest
+{
+
+    public function testUserGetDataByIdValidParams()
+    {
+        $app = $this->newTestedInstance();
+
+        // Prepare request and response objects
+        $env = Environment::mock([
+            'REQUEST_URI'    => '/projetX/index.php/user/getDataById/1',
+            'REQUEST_METHOD' => 'GET',
+        ]);
+
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, "GET", 1);
+        $res = new Response();
+
+        // Invoke app
+        $this
+            ->given($resOut = $app->__invoke($req, $res))
+            ->integer($resOut->getStatusCode())
+            ->isIdenticalTo(200)
+            ->string((string) $resOut->getBody())
+            ->contains('nickname')
+            ->contains('test');
+    }
+}*/
