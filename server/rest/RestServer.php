@@ -101,13 +101,10 @@ class RestServer
 
     /**
      * Verifying required params posted or not.
-     *
-     * @param Response $response
      * @param $required_fields
-     *
      * @return array
      */
-    public static function getRequiredParams(Response $response, $required_fields)
+    public static function getRequiredParams($required_fields)
     {
         $error = false;
         $error_fields = '';

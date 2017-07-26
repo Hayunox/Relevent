@@ -22,13 +22,11 @@ use Slim\Http\Response;
 class RestEventCreation
 {
     /**
-     * @param Request  $request
      * @param Response $response
-     * @param array    $args
-     *
+     * @param array $args
      * @return Response
      */
-    public function __invoke(Request $request, Response $response, $args = [])
+    public function __invoke(Response $response, $args = [])
     {
         $verification = RestServer::getRequiredParams($response, ['name', 'date', 'description', 'address', 'theme']);
 

@@ -45,10 +45,11 @@ public class EventRecyclerTouchListener implements RecyclerView.OnItemTouchListe
 
     @Override
     public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        // VOID
     }
 
     @Override
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
+        // VOID
     }
 }

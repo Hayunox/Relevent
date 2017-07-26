@@ -92,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                                         case "USER_LOGIN_FAILED":
                                             errorText.setText(R.string.rest_user_login_failed);
                                             break;
+                                        default: break;
                                     }
                                 } catch (IOException e) {
                                     e.printStackTrace();

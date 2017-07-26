@@ -75,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         case "USER_MAIL_EXISTS":
                                             errorText.setText(R.string.rest_user_registration_mail_exists);
                                             break;
+                                        default: break;
                                     }
                                 } catch (IOException e) {
                                     e.printStackTrace();

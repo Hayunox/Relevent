@@ -92,7 +92,7 @@ public class EventsFragment extends Fragment {
 
             @Override
             public void onLongClick(View view, int position) {
-
+                // VOID
             }
         }));
 
