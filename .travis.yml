@@ -29,5 +29,10 @@ before_script:
     - cd server/
     - composer update
 script:
-    - php tests/atoum.phar
+    - php tests/atoum.phar -f tests/units/database/DBConnection.php
+    - php tests/atoum.phar -f tests/units/database/DBEvent.php
+    - php tests/atoum.phar -f tests/units/database/DBUser.php
+    - php tests/atoum.phar -f tests/units/rest/RestUser.php
+    - php tests/atoum.phar -f tests/units/rest/RestServerphp
+    - php tests/atoum.phar -f tests/units/rest/RestEvent.php
 repo_token: qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy
