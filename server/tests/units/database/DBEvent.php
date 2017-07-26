@@ -63,15 +63,7 @@ class DBEvent extends test
                 ->contains($this->test_event_description)
             ->array($this->testedInstance->eventUserList($this->test_connection, 1))
                 ->hasSize(1)
-                ->child[0](function($child)
-                {
-                    $child
-                        ->hasKey('address')
-                        ->hasKey('name')
-                        ->hasKey('user_id')
-                        ->contains($this->test_event_date)
-                        ->contains($this->test_event_description);
-                });
+                ->hasKey(0);
     }
 
     public function getAutoloaderFile()
