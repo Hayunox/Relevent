@@ -1,4 +1,5 @@
 <?php
+
 namespace server\rest;
 
 require_once __DIR__.'/RestUser.php';
@@ -94,8 +95,10 @@ class RestServer
 
     /**
      * Verifying required params posted or not.
+     *
      * @param Response $response
      * @param $required_fields
+     *
      * @return array
      */
     public static function getRequiredParams(Response $response, $required_fields)
@@ -137,6 +140,7 @@ class RestServer
 
     /**
      * @param $param
+     *
      * @return string
      */
     public static function getSecureParam($param)
@@ -156,6 +160,7 @@ class RestServer
      * @param Response $response
      * @param $status
      * @param $data
+     *
      * @return Response
      */
     public static function createJSONResponse(Response $response, $status, $data)

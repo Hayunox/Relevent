@@ -4,5 +4,4 @@ namespace server\database;
 
 class DBEventInvitation
 {
-
 }
