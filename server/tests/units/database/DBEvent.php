@@ -29,7 +29,7 @@ class DBEvent extends test
     private $test_event_data;
     private $test_connection;
 
-    public function testeventCreationLogin()
+    public function testEventCreation()
     {
         $this->test_connection = new ConnectionToDatabase();
 
@@ -59,6 +59,13 @@ class DBEvent extends test
                 ->hasKey('address')
                 ->hasKey('name')
                 ->hasKey('user_id')
+                ->contains($this->test_event_date)
+                ->contains($this->test_event_description)
+            ->array($this->testedInstance->getEventData($this->test_connection))
+                ->hasKey('address')
+                ->hasKey('name')
+                ->hasKey('user_id')
+                ->hasSize(1)
                 ->contains($this->test_event_date)
                 ->contains($this->test_event_description);
     }

@@ -111,10 +111,10 @@ class RestUserCreation extends UnitTestRestServerSlimTest
         $res = new Response();
 
         // Invoke app
-        /*            ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(400)*/
         $this
             ->given($resOut = $app->__invoke($req, $res))
+            ->integer($resOut->getStatusCode())
+            ->isIdenticalTo(400)
             ->string((string) $resOut->getBody())
             ->contains('USER_NICKNAME_EXISTS');
     }
