@@ -5,8 +5,13 @@ use mageekguy\atoum\reports;
 $report = $script->addDefaultReport();
 
 //TEST EXECUTION SETUP
-$runner->addTestsFromDirectory('tests/units/database');
-$runner->addTestsFromDirectory('tests/units/rest');
+//$runner = new Runner;
+$runner->addTest('tests/units/database/DBConnection.php');
+$runner->addTest('tests/units/database/DBUser.php');
+$runner->addTest('tests/units/database/DBEvent.php');
+$runner->addTest('tests/units/rest/RestUser.php');
+$runner->addTest('tests/units/rest/RestServer.php');
+$runner->addTest('tests/units/rest/RestEvent.php');
 
 /*
 Publish code coverage report on coveralls.io
