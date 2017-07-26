@@ -28,7 +28,7 @@ class RestServer extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -49,7 +49,7 @@ class RestServer extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -77,7 +77,7 @@ class RestServer extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'GET',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "GET", 1);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'GET', 1);
         $res = new Response();
 
         // Invoke app
@@ -97,7 +97,7 @@ class RestServer extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'GET',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "GET");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'GET');
         $res = new Response();
 
         // Invoke app
@@ -116,7 +116,7 @@ class RestServer extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'GET',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "GET");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'GET');
         $_SERVER['HTTP_AUTHORIZATION'] = 'azeczankzadazaz';
         $res = new Response();
 

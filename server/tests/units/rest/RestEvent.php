@@ -1,4 +1,5 @@
 <?php
+
 namespace server\tests\units\rest;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
@@ -22,7 +23,7 @@ class RestEventCreation extends UnitTestRestServerSlimTest
             'REQUEST_URI'    => '/projetX/index.php/event/create',
             'REQUEST_METHOD' => 'POST',
         ]);
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST", 1);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST', 1);
         $res = new Response();
 
         $this
@@ -50,7 +51,7 @@ class RestEventCreation extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST", 1);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST', 1);
         $res = new Response();
 
         // Invoke app
@@ -68,7 +69,6 @@ class RestEventCreation extends UnitTestRestServerSlimTest
  */
 class RestEventUserListOwn extends UnitTestRestServerSlimTest
 {
-
     public function testEventListOwnValidParams()
     {
         $app = $this->newTestedInstance();
@@ -79,7 +79,7 @@ class RestEventUserListOwn extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'GET',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "GET", 1);
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'GET', 1);
         $res = new Response();
 
         // Invoke app

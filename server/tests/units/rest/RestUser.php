@@ -1,4 +1,5 @@
 <?php
+
 namespace server\tests\units\rest;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
@@ -8,8 +9,6 @@ use server\tests\units\UnitTestRestServerSlimTest;
 use server\tests\units\UnitTestRestServerUtil;
 use Slim\Http\Environment;
 use Slim\Http\Response;
-use Slim\Route;
-use Slim\Router;
 
 /**
  * Class RestUserRegister.
@@ -26,7 +25,7 @@ class RestUserCreation extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -53,7 +52,7 @@ class RestUserCreation extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -80,7 +79,7 @@ class RestUserCreation extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -107,7 +106,7 @@ class RestUserCreation extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -134,7 +133,7 @@ class RestUserLogin extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -160,7 +159,7 @@ class RestUserLogin extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -186,7 +185,7 @@ class RestUserLogin extends UnitTestRestServerSlimTest
             'REQUEST_METHOD' => 'POST',
         ]);
 
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, "POST");
+        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST');
         $res = new Response();
 
         // Invoke app
@@ -200,7 +199,7 @@ class RestUserLogin extends UnitTestRestServerSlimTest
     }
 }
 
-/**
+/*
  * Class RestEventUserListOwn.
  */
 /*class RestUserGetDataById extends UnitTestRestServerSlimTest
