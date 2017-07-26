@@ -63,7 +63,7 @@ class DBEvent extends test
                 ->contains($this->test_event_description)
             ->array($this->testedInstance->eventUserList($this->test_connection, 1))
                 ->hasSize(1)
-                ->child[1](function($child)
+                ->child[0](function($child)
                 {
                     $child
                         ->hasKey('address')
