@@ -1,4 +1,5 @@
 <?php
+
 namespace server\tests\units\database;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
@@ -28,7 +29,7 @@ class DBUserContact extends UnitTestRestServerSlimTest
 
             // test contact not exists
             ->given($this->test_contact_result = $this->testedInstance->isContact($this->test_connection, $this->test_new_contact_user_id))
-                ->boolean((bool)$this->test_contact_result)
+                ->boolean((bool) $this->test_contact_result)
                 ->isFalse()
 
             // contact creation
@@ -38,7 +39,7 @@ class DBUserContact extends UnitTestRestServerSlimTest
 
             // test contact exists
             ->given($this->test_contact_result = $this->testedInstance->isContact($this->test_connection, $this->test_new_contact_user_id))
-                ->integer((int)$this->test_contact_result)
+                ->integer((int) $this->test_contact_result)
                 ->isEqualTo(UserContactAcceptation::Pending)
 
             // set invitation accepted
@@ -46,7 +47,7 @@ class DBUserContact extends UnitTestRestServerSlimTest
 
             // test contact status
             ->given($this->test_contact_result = $this->testedInstance->isContact($this->test_connection, $this->test_new_contact_user_id))
-                ->integer((int)$this->test_contact_result)
+                ->integer((int) $this->test_contact_result)
                 ->isEqualTo(UserContactAcceptation::Accepted)
 
             // get user contacts
@@ -59,7 +60,7 @@ class DBUserContact extends UnitTestRestServerSlimTest
 
             // test contact status
             ->given($this->test_contact_result = $this->testedInstance->isContact($this->test_connection, $this->test_new_contact_user_id))
-                ->integer((int)$this->test_contact_result)
+                ->integer((int) $this->test_contact_result)
                 ->isEqualTo(UserContactAcceptation::Refused);
     }
 }

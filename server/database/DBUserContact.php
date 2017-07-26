@@ -26,6 +26,7 @@ class DBUserContact
 
     /**
      * DBUserContact constructor.
+     *
      * @param $user_id
      */
     public function __construct($user_id)
@@ -36,6 +37,7 @@ class DBUserContact
     /**
      * @param DBConnection $db
      * @param $new_contact_user_id
+     *
      * @return array|string
      */
     public function createContact(DBConnection $db, $new_contact_user_id)
@@ -55,9 +57,11 @@ class DBUserContact
     /**
      * @param DBConnection $db
      * @param $user_id
+     *
      * @return bool
      */
-    public function isContact(DBConnection $db, $user_id){
+    public function isContact(DBConnection $db, $user_id)
+    {
         $this->test_contact_user_id = $user_id;
         $query = $db->getQueryBuilderHandler()->table($this->user_contact_table)
             ->select($this->table_row['contact_status'])
@@ -71,18 +75,22 @@ class DBUserContact
             });
 
         $result = $query->first();
+
         return ($result == null) ? false : $result->{$this->table_row['contact_status']};
     }
 
     /**
      * @param DBConnection $db
+     *
      * @return null|\stdClass
      */
-    public function getUserContacts(DBConnection $db){
+    public function getUserContacts(DBConnection $db)
+    {
         $query = $db->getQueryBuilderHandler()->table($this->user_contact_table)
             ->where($this->table_row['contact_status'], UserContactAcceptation::Accepted)
             ->where($this->table_row['contact_ask_user_id'], $this->user_id)
             ->orWhere($this->table_row['contact_accept_user_id'], $this->user_id);
+
         return $query->get();
     }
 
@@ -103,16 +111,16 @@ class DBUserContact
                 $q->where($this->table_row['contact_accept_user_id'], $this->test_contact_user_id);
                 $q->where($this->table_row['contact_ask_user_id'], $this->user_id);
             })
-            ->update(array(
-                $this->table_row['contact_status'] => $status,
+            ->update([
+                $this->table_row['contact_status']      => $status,
                 $this->table_row['contact_accept_time'] => time(),
-            ));
+            ]);
     }
 }
 
 abstract class UserContactAcceptation
 {
-    const Pending   = 0;
-    const Accepted  = 1;
-    const Refused   = 2;
+    const Pending = 0;
+    const Accepted = 1;
+    const Refused = 2;
 }

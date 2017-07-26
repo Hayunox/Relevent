@@ -22,8 +22,9 @@ use Slim\Http\Response;
 class RestEventCreation
 {
     /**
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
+     *
      * @return Response
      */
     public function __invoke(Request $request, Response $response)
@@ -95,6 +96,7 @@ class RestEventUserListOwn
     /**
      * @param Request  $request
      * @param Response $response
+     *
      * @return Response
      */
     public function __invoke(Request $request, Response $response)
