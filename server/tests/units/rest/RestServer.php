@@ -35,6 +35,8 @@ class RestServer extends UnitTestRestServerSlimTest
         $this
             ->given($resOut = $app($req, $res))
             ->array($this->newTestedInstance->getRequiredParams($resOut, ['nickname']))
+            ->hasKey('status')
+            ->hasKey('response')
             ->contains(false);
     }
 
@@ -56,6 +58,9 @@ class RestServer extends UnitTestRestServerSlimTest
         $this
             ->given($resOut = $app($req, $res))
             ->array($this->newTestedInstance->getRequiredParams($resOut, ['nickname', 'test']))
+            ->hasKey('status')
+            ->hasKey('response')
+            ->contains(true)
             ->contains('test')
             ->contains('test2');
     }

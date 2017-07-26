@@ -1,24 +1,18 @@
 <?php
-/*
- * Created by PhpStorm.
- * User: Paul
- * Date: 14/07/2017
- * Time: 16:51
- */
-
 namespace server\tests\units\database;
 
+require_once __DIR__.'/../UnitTestRestServerUtil.php';
 require_once __DIR__.'/../../../database/DBConnection.php';
 require_once __DIR__.'/../../../database/DBUser.php';
 
-use mageekguy\atoum\test;
 use server\database\DBConnection as ConnectionToDatabase;
+use server\tests\units\UnitTestRestServerSlimTest;
 
 /*
  * Test class for BDuser
  */
 
-class DBUser extends test
+class DBUser extends UnitTestRestServerSlimTest
 {
     private $test_user_nickname = 'test_nick';
     private $test_user_password = 'test_pwd';

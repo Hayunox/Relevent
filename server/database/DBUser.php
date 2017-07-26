@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * DBUser: Paul
- * Date: 11/07/2017
- * Time: 17:04.
- */
-
 namespace server\database;
 
 class DBUser

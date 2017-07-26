@@ -1,15 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Paul
- * Date: 26/07/2017
- * Time: 20:51
- */
-
 namespace server\tests\units\database;
 
+require_once __DIR__.'/../UnitTestRestServerUtil.php';
 
-class DBEventInvitation
+use server\tests\units\UnitTestRestServerSlimTest;
+
+class DBEventInvitation extends UnitTestRestServerSlimTest
 {
 
 }

@@ -1,24 +1,19 @@
 <?php
-/*
- * Created by PhpStorm.
- * event: Paul
- * Date: 14/07/2017
- * Time: 16:51
- */
 
 namespace server\tests\units\database;
 
+require_once __DIR__.'/../UnitTestRestServerUtil.php';
 require_once __DIR__.'/../../../database/DBConnection.php';
 require_once __DIR__.'/../../../database/DBEvent.php';
 
-use mageekguy\atoum\test;
 use server\database\DBConnection as ConnectionToDatabase;
+use server\tests\units\UnitTestRestServerSlimTest;
 
 /*
  * Test class for DBEvent
  */
 
-class DBEvent extends test
+class DBEvent extends UnitTestRestServerSlimTest
 {
     private $test_event_name = 'test event';
     private $test_event_date = 1457896211;
@@ -64,9 +59,5 @@ class DBEvent extends test
             ->array($this->testedInstance->eventUserList($this->test_connection, 1))
                 ->hasSize(1)
                 ->hasKey(0);
-    }
-
-    public function getAutoloaderFile()
-    {
     }
 }

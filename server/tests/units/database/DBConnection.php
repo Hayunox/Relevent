@@ -1,21 +1,16 @@
 <?php
-/*
- * Created by PhpStorm.
- * User: Paul
- * Date: 12/07/2017
- * Time: 18:14
- */
 
 namespace server\tests\units\database;
 
+require_once __DIR__.'/../UnitTestRestServerUtil.php';
 require_once __DIR__.'/../../../database/DBConnection.php';
 
-use mageekguy\atoum\test;
+use server\tests\units\UnitTestRestServerSlimTest;
 
 /*
  * Test class for DatabaseConnection
  */
-class DBConnection extends test
+class DBConnection extends UnitTestRestServerSlimTest
 {
     public function testConnection()
     {

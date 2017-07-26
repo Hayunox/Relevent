@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Paul
- * Date: 14/07/2017
- * Time: 20:12.
- */
-
 namespace server\rest;
 
 require_once __DIR__.'/RestUser.php';
@@ -101,10 +94,11 @@ class RestServer
 
     /**
      * Verifying required params posted or not.
+     * @param Response $response
      * @param $required_fields
      * @return array
      */
-    public static function getRequiredParams($required_fields)
+    public static function getRequiredParams(Response $response, $required_fields)
     {
         $error = false;
         $error_fields = '';
@@ -112,9 +106,9 @@ class RestServer
         $params = [];
 
         /*// Handling PUT request params
-        if (array_key_exists('REQUEST_METHOD', $_SERVER) && $_SERVER['REQUEST_METHOD'] == 'PUT') {
-            parse_str($response->getBody(), $request_params);
-        }*/
+        if (array_key_exists('REQUEST_METHOD', $_SERVER) && $_SERVER['REQUEST_METHOD'] == 'PUT') {*/
+        //    parse_str($response->getBody(), $request_params);
+        //}
         foreach ($required_fields as $field) {
             if (!isset($request_params[$field]) || strlen(trim($request_params[$field])) <= 0) {
                 $error = true;
@@ -143,7 +137,6 @@ class RestServer
 
     /**
      * @param $param
-     *
      * @return string
      */
     public static function getSecureParam($param)
@@ -163,7 +156,6 @@ class RestServer
      * @param Response $response
      * @param $status
      * @param $data
-     *
      * @return Response
      */
     public static function createJSONResponse(Response $response, $status, $data)

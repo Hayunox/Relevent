@@ -8,6 +8,7 @@ $report = $script->addDefaultReport();
 //$runner = new Runner;
 $runner->addTest('tests/units/database/DBConnection.php');
 $runner->addTest('tests/units/database/DBUser.php');
+$runner->addTest('tests/units/database/DBUserContact.php');
 $runner->addTest('tests/units/database/DBEvent.php');
 $runner->addTest('tests/units/rest/RestUser.php');
 $runner->addTest('tests/units/rest/RestServer.php');
