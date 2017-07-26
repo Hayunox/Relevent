@@ -65,7 +65,7 @@ class DBEvent extends test
                 ->hasKey('address')
                 ->hasKey('name')
                 ->hasKey('user_id')
-                ->hasSize(1)
+                ->hasSize(8)
                 ->contains($this->test_event_date)
                 ->contains($this->test_event_description);
     }
