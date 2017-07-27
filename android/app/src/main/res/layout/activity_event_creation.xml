@@ -206,13 +206,12 @@
                 <EditText
                     android:id="@+id/editTextEventCreationDescription"
                     android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="5.11"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:backgroundTint="@android:color/black"
                     android:backgroundTintMode="add"
-                    android:ems="10"
                     android:inputType="textLongMessage"
+                    android:paddingBottom="100dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:theme="@android:style/Theme.Translucent" />
 
