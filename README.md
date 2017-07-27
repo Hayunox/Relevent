@@ -3,7 +3,7 @@ ProjetX [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb0
 
 Version
 ------------
-Version : 0.0.0
+Version : 0.1.0
 
 ### Changelog
 
@@ -11,7 +11,7 @@ Agility
 ------------
 
 ### Sprint
-Current sprint  : [1.0.1](https://zube.io/herklos/projectx/w/workspace-1/sprintboard?where%5Bsprint_id%5D=17108)<br>
+Current sprint  : [1.0.2](https://zube.io/herklos/projectx/w/workspace-1/sprintboard?where%5Bsprint_id%5D=17485)<br>
 
 
 ### Issues
