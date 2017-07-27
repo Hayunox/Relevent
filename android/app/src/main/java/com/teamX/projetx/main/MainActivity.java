@@ -17,14 +17,20 @@ import android.widget.TextView;
 
 import com.teamX.projetx.R;
 import com.teamX.projetx.event.EventCreationActivity;
+import com.teamX.projetx.event.invitation.EventInvitationActivity;
+import com.teamX.projetx.event.invitation.InvitationFragment;
 import com.teamX.projetx.event.event_fragment.EventsFragment;
-import com.teamX.projetx.event.InvitationFragment;
 import com.teamX.projetx.user.User;
+import com.teamX.projetx.user.contact.ContactInvitationActivity;
 import com.teamX.projetx.user.contact.ContactsFragment;
 import com.teamX.projetx.utils.AppPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.teamX.projetx.main.MainActivity.MainFragmentsList.CONTACT_LIST;
+import static com.teamX.projetx.main.MainActivity.MainFragmentsList.EVENT_LIST;
+import static com.teamX.projetx.main.MainActivity.MainFragmentsList.INVITATION_LIST;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +39,20 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private User user;
     private TextView textViewUserNickname;
+    private Intent eventFragmentIntent;
+    private Intent contactFragmentIntent;
+    private Intent invitationFragmentIntent;
+    private ViewPagerAdapter adapter;
 
+    enum MainFragmentsList{
+        EVENT_LIST(0),
+        INVITATION_LIST(1),
+        CONTACT_LIST(2);
+
+        private int fragmentId;
+        MainFragmentsList(int fragmentId){this.fragmentId = fragmentId;}
+        public int getFragmentId(){return this.fragmentId;}
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +82,25 @@ public class MainActivity extends AppCompatActivity {
         this.textViewUserNickname = (TextView) findViewById(R.id.main_activity_user_nickname);
         this.textViewUserNickname.setText(this.user.getNickname());
 
+        /**
+         * Bottom floating action button
+         */
+        this.eventFragmentIntent = new Intent(MainActivity.this, EventCreationActivity.class);
+        this.contactFragmentIntent = new Intent(MainActivity.this, ContactInvitationActivity.class);
+        this.invitationFragmentIntent = new Intent(MainActivity.this, EventInvitationActivity.class);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_activity_floating_add_event);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { startActivity((new Intent(MainActivity.this, EventCreationActivity.class)));}
+            public void onClick(View view) {
+                if(viewPager.getCurrentItem() == EVENT_LIST.getFragmentId()){
+                    startActivity((eventFragmentIntent));
+                }else if(viewPager.getCurrentItem() == INVITATION_LIST.getFragmentId()){
+                    startActivity((invitationFragmentIntent));
+                }else if(viewPager.getCurrentItem() == CONTACT_LIST.getFragmentId()){
+                    startActivity((contactFragmentIntent));
+                }
+            }
         });
     }
 
@@ -92,20 +126,20 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setupTabIcons() {
 
-        TextView tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        TextView tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.main_viewpager_tab, null);
         tabOne.setText("News");
         tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_notifications_black_24dp, 0, 0);
-        tabLayout.getTabAt(0).setCustomView(tabOne);
+        tabLayout.getTabAt(EVENT_LIST.getFragmentId()).setCustomView(tabOne);
 
-        TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.main_viewpager_tab, null);
         tabTwo.setText("Invitations");
         tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_home_black_24dp, 0, 0);
-        tabLayout.getTabAt(1).setCustomView(tabTwo);
+        tabLayout.getTabAt(INVITATION_LIST.getFragmentId()).setCustomView(tabTwo);
 
-        TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.main_viewpager_tab, null);
         tabThree.setText("Contacts");
         tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_info_black_24dp, 0, 0);
-        tabLayout.getTabAt(2).setCustomView(tabThree);
+        tabLayout.getTabAt(CONTACT_LIST.getFragmentId()).setCustomView(tabThree);
     }
 
     /**
@@ -113,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
      * @param viewPager
      */
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        this.adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new EventsFragment(), "News");
         adapter.addFrag(new InvitationFragment(), "Invitations");
         adapter.addFrag(new ContactsFragment(), "Contacts");

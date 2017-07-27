@@ -46,7 +46,9 @@
             android:name=".event.EventEdition"
             android:label="@string/title_activity_event_edition"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".event.EventDescriptionActivity"></activity>
+        <activity android:name=".event.EventDescriptionActivity" />
+        <activity android:name=".event.invitation.EventInvitationActivity" />
+        <activity android:name=".user.contact.ContactInvitationActivity"></activity>
     </application>
 
 </manifest>

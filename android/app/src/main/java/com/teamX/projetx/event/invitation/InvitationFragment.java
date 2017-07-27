@@ -1,4 +1,4 @@
-package com.teamX.projetx.event;
+package com.teamX.projetx.event.invitation;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
