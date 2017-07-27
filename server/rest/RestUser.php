@@ -22,8 +22,9 @@ use Slim\Http\Response;
 class RestUserCreation
 {
     /**
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
+     *
      * @return Response
      */
     public function __invoke(Request $request, Response $response)
@@ -40,6 +41,7 @@ class RestUserCreation
     /**
      * @param $data
      * @param Response $response
+     *
      * @return Response
      */
     public function userRegister($data, Response $response)
@@ -87,6 +89,7 @@ class RestUserLogin
      * @param Request  $request
      * @param Response $response
      * @param array    $args
+     *
      * @return RestUserLogin|Response
      */
     public function __invoke(Request $request, Response $response, $args = [])
@@ -103,6 +106,7 @@ class RestUserLogin
     /**
      * @param $data
      * @param Response $response
+     *
      * @return Response
      */
     public function userLogin($data, Response $response)
@@ -135,6 +139,7 @@ class RestUserGetDataById
      * @param Request  $request
      * @param Response $response
      * @param array    $args
+     *
      * @return Response
      */
     public function __invoke(Request $request, Response $response, $args = [])
@@ -152,6 +157,7 @@ class RestUserGetDataById
     /**
      * @param Response $response
      * @param Request  $request
+     *
      * @return Response
      */
     public function userDataById(Response $response, Request $request)

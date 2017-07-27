@@ -23,6 +23,7 @@ class DBUserContact
 
     /**
      * DBUserContact constructor.
+     *
      * @param $user_id
      */
     public function __construct($user_id)
@@ -33,6 +34,7 @@ class DBUserContact
     /**
      * @param DBConnection $db
      * @param $new_contact_user_id
+     *
      * @return array|string
      */
     public function createContact(DBConnection $db, $new_contact_user_id)
@@ -52,6 +54,7 @@ class DBUserContact
     /**
      * @param DBConnection $db
      * @param $user_id
+     *
      * @return bool
      */
     public function isContact(DBConnection $db, $user_id){
@@ -68,14 +71,17 @@ class DBUserContact
             });
 
         $result = $query->first();
+
         return ($result == null) ? false : $result->{$this->table_row['contact_status']};
     }
 
     /**
      * @param DBConnection $db
+     *
      * @return null|\stdClass
      */
-    public function getUserContacts(DBConnection $db){
+    public function getUserContacts(DBConnection $db)
+    {
         $query = $db->getQueryBuilderHandler()->table($this->user_contact_table)
             ->where($this->table_row['contact_status'], UserContactAcceptation::Accepted)
             ->where($this->table_row['contact_user_id'], $this->user_id)
@@ -109,7 +115,7 @@ class DBUserContact
 
 abstract class UserContactAcceptation
 {
-    const Pending   = 0;
-    const Accepted  = 1;
-    const Refused   = 2;
+    const Pending = 0;
+    const Accepted = 1;
+    const Refused = 2;
 }

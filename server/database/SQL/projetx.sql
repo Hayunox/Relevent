@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 26 Juillet 2017 à 17:24
+-- Généré le :  Jeu 27 Juillet 2017 à 18:00
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `projetx`
 --
-DROP DATABASE IF EXISTS `projetx`;
 CREATE DATABASE IF NOT EXISTS `projetx` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `projetx`;
 
@@ -45,30 +44,18 @@ CREATE TABLE `event` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `event_acceptation`
---
-
-DROP TABLE IF EXISTS `event_acceptation`;
-CREATE TABLE `event_acceptation` (
-  `id` int(12) NOT NULL,
-  `event_id` int(12) NOT NULL,
-  `user_id` int(12) NOT NULL,
-  `acceptation_time` int(12) NOT NULL,
-  `accepted` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `event_invit`
 --
 
 DROP TABLE IF EXISTS `event_invit`;
 CREATE TABLE `event_invit` (
   `id` int(12) NOT NULL,
-  `send_user_id` int(12) NOT NULL,
-  `receive_user_id` int(12) NOT NULL,
-  `event_id` int(12) NOT NULL
+  `user_id` int(12) NOT NULL,
+  `guest_user_id` int(12) NOT NULL,
+  `event_id` int(12) NOT NULL,
+  `time` int(12) NOT NULL,
+  `status` int(2) NOT NULL,
+  `status_time` int(12) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -93,8 +80,7 @@ CREATE TABLE `user` (
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `nickname`, `name`, `surname`, `mail`, `password`, `regitration_time`, `hashkey`) VALUES(1, 'e', 'e', 'e', 'e', 'e', 1, '2adb244920e24f591708aa893ccb3db7');
-
+INSERT INTO `user` (`id`, `nickname`, `name`, `surname`, `mail`, `password`, `regitration_time`, `hashkey`) VALUES(1, 'e', 'e', 'e', 'e', 'e', 1, '2adb244920e24f591708aa893ccb3db7'),
 -- --------------------------------------------------------
 
 --
@@ -104,9 +90,11 @@ INSERT INTO `user` (`id`, `nickname`, `name`, `surname`, `mail`, `password`, `re
 DROP TABLE IF EXISTS `user_contact`;
 CREATE TABLE `user_contact` (
   `id` int(12) NOT NULL,
-  `ask_user_id` int(12) NOT NULL,
-  `accept_user_id` int(12) NOT NULL,
-  `contact_time` int(12) NOT NULL
+  `user_id` int(12) NOT NULL,
+  `new_contact_user_id` int(12) NOT NULL,
+  `time` int(12) NOT NULL,
+  `status_time` int(12) NOT NULL,
+  `status` int(2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -129,12 +117,6 @@ CREATE TABLE `user_settings` (
 -- Index pour la table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `event_acceptation`
---
-ALTER TABLE `event_acceptation`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -169,27 +151,22 @@ ALTER TABLE `user_settings`
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `event_acceptation`
---
-ALTER TABLE `event_acceptation`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT pour la table `event_invit`
 --
 ALTER TABLE `event_invit`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT pour la table `user_contact`
 --
 ALTER TABLE `user_contact`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `user_settings`
 --
