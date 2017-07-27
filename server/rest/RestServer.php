@@ -26,7 +26,7 @@ class RestServer
 
         $this->container = $this->app->getContainer();
 
-        /**
+        /*
          * Method without authentification
          */
         /*
@@ -45,28 +45,28 @@ class RestServer
          */
         $this->app->post('/user/login', new RestUserLogin());
 
-        /**
+        /*
          * Methods with authentification
          */
-        /**
+        /*
          * Event
          */
         $this->app->post('/event/create', new RestEventCreation());
         $this->app->get('/event/listOwn', new RestEventUserListOwn());
 
-        /**
+        /*
          * Event Invitation
          */
         $this->app->post('/event/invit/create', new RestEventInvitationCreation());
         $this->app->post('/event/invit/change', new RestUserContactChange());
         $this->app->get('/event/getInvit/{id}', new RestUserGetContacts());
 
-        /**
+        /*
          * User
          */
         $this->app->get('/user/getDataById/{id}', new RestUserGetDataById());
 
-        /**
+        /*
          * User Contact
          */
         $this->app->post('/user/contact/create', new RestUserContactCreation());

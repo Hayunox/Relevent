@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 27/07/2017
- * Time: 21:13
+ * Time: 21:13.
  */
 
 namespace server\tests\units\rest;
@@ -17,7 +17,7 @@ use server\tests\units\UnitTestRestServerUtil;
 use Slim\Http\Environment;
 use Slim\Http\Response;
 
-class RestUserContactCreation  extends UnitTestRestServerSlimTest
+class RestUserContactCreation extends UnitTestRestServerSlimTest
 {
     public function testUserContactCreationWithoutParams()
     {
@@ -75,7 +75,7 @@ class RestUserContactCreation  extends UnitTestRestServerSlimTest
     }
 }
 
-class RestUserContactChange  extends UnitTestRestServerSlimTest
+class RestUserContactChange extends UnitTestRestServerSlimTest
 {
     public function testUserContactChangeWithoutParams()
     {
@@ -135,7 +135,7 @@ class RestUserContactChange  extends UnitTestRestServerSlimTest
     }
 }
 
-/**
+/*
  * Class RestEventUserListOwn.
  */
 /*class RestUserGetContacts extends UnitTestRestServerSlimTest

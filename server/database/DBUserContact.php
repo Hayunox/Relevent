@@ -54,6 +54,7 @@ class DBUserContact
     /**
      * @param DBConnection $db
      * @param $user_id
+     *
      * @return bool
      */
     public function isContact(DBConnection $db, $user_id)

@@ -5,7 +5,6 @@ namespace server\tests\units;
 use atoum\test;
 use server\database\DBConnection;
 use server\database\DBUser;
-use server\rest\RestServer;
 use Slim\Http\Environment;
 use Slim\Http\Headers;
 use Slim\Http\Request;
@@ -49,13 +48,14 @@ class UnitTestRestServerUtil
      * @param $url
      * @param UnitTestRestServerSlimTest $test
      */
-    public static function basicPostTestWithoutParams($app, $url, UnitTestRestServerSlimTest $test){
+    public static function basicPostTestWithoutParams($app, $url, UnitTestRestServerSlimTest $test)
+    {
         // Prepare request and response objects
         $env = Environment::mock([
             'REQUEST_URI'    => $url,
             'REQUEST_METHOD' => 'POST',
         ]);
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST', 1);
+        $req = self::createTestEnvironment($env, 'POST', 1);
         $res = new Response();
 
         $test

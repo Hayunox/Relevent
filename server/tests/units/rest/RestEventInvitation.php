@@ -1,4 +1,5 @@
 <?php
+
 namespace server\tests\units\rest;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
@@ -11,7 +12,7 @@ use server\tests\units\UnitTestRestServerUtil;
 use Slim\Http\Environment;
 use Slim\Http\Response;
 
-class RestEventInvitationCreation  extends UnitTestRestServerSlimTest
+class RestEventInvitationCreation extends UnitTestRestServerSlimTest
 {
     public function testEventInvitationCreationWithoutParams()
     {
@@ -23,8 +24,8 @@ class RestEventInvitationCreation  extends UnitTestRestServerSlimTest
         $app = $this->newTestedInstance();
 
         // valid params
-        $_REQUEST['new_guest_user_id']  = json_encode(2);
-        $_REQUEST['event_id']           = json_encode(1);
+        $_REQUEST['new_guest_user_id'] = json_encode(2);
+        $_REQUEST['event_id'] = json_encode(1);
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -49,8 +50,8 @@ class RestEventInvitationCreation  extends UnitTestRestServerSlimTest
         $app = $this->newTestedInstance();
 
         // valid params
-        $_REQUEST['new_guest_user_id']  = json_encode(2);
-        $_REQUEST['event_id']           = json_encode(1);
+        $_REQUEST['new_guest_user_id'] = json_encode(2);
+        $_REQUEST['event_id'] = json_encode(1);
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -71,7 +72,7 @@ class RestEventInvitationCreation  extends UnitTestRestServerSlimTest
     }
 }
 
-class RestEventInvitationChange  extends UnitTestRestServerSlimTest
+class RestEventInvitationChange extends UnitTestRestServerSlimTest
 {
     public function testEventInvitationChangeWithoutParams()
     {
@@ -83,8 +84,8 @@ class RestEventInvitationChange  extends UnitTestRestServerSlimTest
         $app = $this->newTestedInstance();
 
         // valid params
-        $_REQUEST['event_id']   = json_encode(1);
-        $_REQUEST['status']     = json_encode(EventInvitationAcceptation::Accepted);
+        $_REQUEST['event_id'] = json_encode(1);
+        $_REQUEST['status'] = json_encode(EventInvitationAcceptation::Accepted);
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -109,8 +110,8 @@ class RestEventInvitationChange  extends UnitTestRestServerSlimTest
         $app = $this->newTestedInstance();
 
         // valid params
-        $_REQUEST['event_id']   = json_encode(1);
-        $_REQUEST['status']     = json_encode(UserContactAcceptation::Refused);
+        $_REQUEST['event_id'] = json_encode(1);
+        $_REQUEST['status'] = json_encode(UserContactAcceptation::Refused);
 
         // Prepare request and response objects
         $env = Environment::mock([
@@ -131,7 +132,7 @@ class RestEventInvitationChange  extends UnitTestRestServerSlimTest
     }
 }
 
-/**
+/*
  * Class RestEventUserGetInvitation.
  */
 /*class RestEventUserGetInvitation extends UnitTestRestServerSlimTest
