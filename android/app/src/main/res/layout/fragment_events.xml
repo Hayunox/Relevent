@@ -44,18 +44,21 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/fragment_events_user_own_events_list"
         android:layout_marginTop="17dp"
+        android:background="@android:drawable/title_bar"
         android:text="I participate to"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
         android:id="@+id/fragment_events_text_view_user_own_events"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:background="@android:drawable/title_bar"
         android:text="My events"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
         android:id="@+id/fragment_events_user_no_participate_events"
@@ -63,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/fragment_events_user_participate_events_list"
         android:layout_centerHorizontal="true"
-        android:text="No event participation found"
+        android:text="No event participation found :("
         android:visibility="invisible" />
 
 </RelativeLayout>
