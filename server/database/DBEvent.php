@@ -30,7 +30,7 @@ class DBEvent
         'event_description'     => 'description',
         'event_creation_time'   => 'creation_time',
         'event_address'         => 'address',
-        'event_date'            => 'date',
+        'event_date'            => 'event_date',
         'event_theme'           => 'theme',
         'event_secret'          => 'secret',
     ];

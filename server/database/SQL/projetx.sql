@@ -36,7 +36,7 @@ CREATE TABLE `event` (
   `description` varchar(125) NOT NULL,
   `creation_time` int(12) NOT NULL,
   `address` varchar(125) NOT NULL,
-  `date` int(12) NOT NULL,
+  `event_date` int(12) NOT NULL,
   `theme` varchar(125) NOT NULL,
   `secret` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -80,7 +80,7 @@ CREATE TABLE `user` (
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `nickname`, `name`, `surname`, `mail`, `password`, `regitration_time`, `hashkey`) VALUES(1, 'e', 'e', 'e', 'e', 'e', 1, '2adb244920e24f591708aa893ccb3db7'),
+INSERT INTO `user` (`id`, `nickname`, `name`, `surname`, `mail`, `password`, `regitration_time`, `hashkey`) VALUES (1, 'e', 'e', 'e', 'e', 'e', 1, '2adb244920e24f591708aa893ccb3db7');
 -- --------------------------------------------------------
 
 --
