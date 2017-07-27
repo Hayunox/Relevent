@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 27/07/2017
- * Time: 20:34
+ * Time: 20:34.
  */
 
 namespace server\rest;
@@ -50,6 +50,7 @@ class RestUserContactCreation
      * @param $data
      * @param Response $response
      * @param $user_id
+     *
      * @return Response
      */
     public function contactCreation($data, Response $response, $user_id)
@@ -112,6 +113,7 @@ class RestUserContactChange
      * @param $data
      * @param Response $response
      * @param $user_id
+     *
      * @return Response
      */
     public function contactChange($data, Response $response, $user_id)
@@ -128,7 +130,6 @@ class RestUserContactChange
         $contact->setContactAcceptation($connection, $contact_id, $status);
 
         $response = RestServer::createJSONResponse($response, 200, 'USER_CONTACT_CHANGED_SUCCESSFULLY');
-
 
         return $response;
     }

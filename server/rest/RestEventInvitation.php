@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 27/07/2017
- * Time: 20:34
+ * Time: 20:34.
  */
 
 namespace server\rest;
@@ -18,7 +18,6 @@ use server\database\DBConnection;
 use server\database\DBEventInvitation;
 use Slim\Http\Request;
 use Slim\Http\Response;
-
 
 class RestEventInvitationCreation
 {
@@ -51,6 +50,7 @@ class RestEventInvitationCreation
      * @param $data
      * @param Response $response
      * @param $user_id
+     *
      * @return Response
      */
     public function invitationCreation($data, Response $response, $user_id)
@@ -114,6 +114,7 @@ class RestEventInvitationChange
      * @param $data
      * @param Response $response
      * @param $user_id
+     *
      * @return Response
      */
     public function invitationChange($data, Response $response, $user_id)
@@ -130,7 +131,6 @@ class RestEventInvitationChange
         $contact->setInvitationAcceptation($connection, $status);
 
         $response = RestServer::createJSONResponse($response, 200, 'EVENT_INVIT_USER_CHANGED_SUCCESSFULLY');
-
 
         return $response;
     }
