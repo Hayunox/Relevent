@@ -10,6 +10,7 @@ $runner->addTest('tests/units/database/DBConnection.php');
 $runner->addTest('tests/units/database/DBUser.php');
 $runner->addTest('tests/units/database/DBUserContact.php');
 $runner->addTest('tests/units/database/DBEvent.php');
+$runner->addTest('tests/units/database/DBEventInvitation.php');
 $runner->addTest('tests/units/rest/RestUser.php');
 $runner->addTest('tests/units/rest/RestServer.php');
 $runner->addTest('tests/units/rest/RestEvent.php');

@@ -11,15 +11,18 @@ use server\tests\units\UnitTestRestServerSlimTest;
 
 class DBUserContact extends UnitTestRestServerSlimTest
 {
-    private $test_contact_user_id = 1;
-    private $test_new_contact_user_id = 2;
+    private $test_contact_user_id;
+    private $test_new_contact_user_id;
     private $test_contact_id;
     private $test_contact_result;
 
     private $test_connection;
 
-    public function testEventCreation()
+    public function testContactCreation()
     {
+        $this->test_contact_user_id     = 1;
+        $this->test_new_contact_user_id = 2;
+
         $this->test_connection = new ConnectionToDatabase();
 
         // creation of a new instance of the tested class
