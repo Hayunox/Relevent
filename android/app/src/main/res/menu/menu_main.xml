@@ -20,8 +20,9 @@
         android:title="@string/title_logout"
         app:showAsAction="never" />
 
-    <item android:id="@+id/add_item"
-        android:title="Add"
+    <item
+        android:id="@+id/add_item"
+        android:icon="@drawable/tt9955"
         android:orderInCategory="100"
         app:showAsAction="always"/>
 
