@@ -53,7 +53,7 @@ CREATE TABLE `event_invit` (
   `user_id` int(12) NOT NULL,
   `guest_user_id` int(12) NOT NULL,
   `event_id` int(12) NOT NULL,
-  `time` int(12) NOT NULL,
+  `invit_time` int(12) NOT NULL,
   `status` int(2) NOT NULL,
   `status_time` int(12) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -92,7 +92,7 @@ CREATE TABLE `user_contact` (
   `id` int(12) NOT NULL,
   `user_id` int(12) NOT NULL,
   `new_contact_user_id` int(12) NOT NULL,
-  `time` int(12) NOT NULL,
+  `contact_time` int(12) NOT NULL,
   `status_time` int(12) NOT NULL,
   `status` int(2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
