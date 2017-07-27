@@ -17,21 +17,7 @@ class RestEventCreation extends UnitTestRestServerSlimTest
 {
     public function testEventCreationWithoutParams()
     {
-        $app = $this->newTestedInstance();
-        // Prepare request and response objects
-        $env = Environment::mock([
-            'REQUEST_URI'    => '/projetX/index.php/event/create',
-            'REQUEST_METHOD' => 'POST',
-        ]);
-        $req = UnitTestRestServerUtil::createTestEnvironment($env, 'POST', 1);
-        $res = new Response();
-
-        $this
-            ->given($resOut = $app->__invoke($req, $res))
-            ->integer($resOut->getStatusCode())
-            ->isIdenticalTo(400)
-            ->string((string) $resOut->getBody())
-            ->contains('is missing or empty');
+        UnitTestRestServerUtil::basicPostTestWithoutParams($this->newTestedInstance(), '/projetX/index.php/event/create', $this);
     }
 
     public function testEventCreationWithValidParams()

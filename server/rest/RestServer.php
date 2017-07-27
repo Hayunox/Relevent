@@ -3,7 +3,9 @@
 namespace server\rest;
 
 require_once __DIR__.'/RestUser.php';
+require_once __DIR__.'/RestUserContact.php';
 require_once __DIR__.'/RestEvent.php';
+require_once __DIR__.'/RestEventInvitation.php';
 
 use server\database\DBConnection;
 use server\database\DBUser;
@@ -24,7 +26,7 @@ class RestServer
 
         $this->container = $this->app->getContainer();
 
-        /*
+        /**
          * Method without authentification
          */
         /*
@@ -43,19 +45,33 @@ class RestServer
          */
         $this->app->post('/user/login', new RestUserLogin());
 
-        /*
-         * Method with authentification
+        /**
+         * Methods with authentification
          */
-        /*
-         * EVENT
+        /**
+         * Event
          */
         $this->app->post('/event/create', new RestEventCreation());
         $this->app->get('/event/listOwn', new RestEventUserListOwn());
 
-        /*
+        /**
+         * Event Invitation
+         */
+        $this->app->post('/event/invit/create', new RestEventInvitationCreation());
+        $this->app->post('/event/invit/change', new RestUserContactChange());
+        $this->app->get('/event/getInvit/{id}', new RestUserGetContacts());
+
+        /**
          * User
          */
         $this->app->get('/user/getDataById/{id}', new RestUserGetDataById());
+
+        /**
+         * User Contact
+         */
+        $this->app->post('/user/contact/create', new RestUserContactCreation());
+        $this->app->post('/user/contact/change', new RestUserContactChange());
+        $this->app->get('/user/getContact/{id}', new RestUserGetContacts());
 
         // Run server app
         $this->app->run();

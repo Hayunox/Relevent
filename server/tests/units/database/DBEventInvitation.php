@@ -48,7 +48,7 @@ class DBEventInvitation extends UnitTestRestServerSlimTest
             ->isEqualTo(EventInvitationAcceptation::Pending)
 
             // set invitation accepted
-            ->given($this->testedInstance->setInvitationAcceptation($this->test_connection, $this->test_guest_user_id, $this->invit_id, EventInvitationAcceptation::Accepted))
+            ->given($this->testedInstance->setInvitationAcceptation($this->test_connection, EventInvitationAcceptation::Accepted))
 
             // test contact status
             ->given($this->test_invit_result = $this->testedInstance->isInvited($this->test_connection, $this->test_guest_user_id))
@@ -60,7 +60,7 @@ class DBEventInvitation extends UnitTestRestServerSlimTest
             ->hasSize(0)
 
             // set invitation refused
-            ->given($this->testedInstance->setInvitationAcceptation($this->test_connection, $this->test_guest_user_id, $this->invit_id, EventInvitationAcceptation::Refused))
+            ->given($this->testedInstance->setInvitationAcceptation($this->test_connection, EventInvitationAcceptation::Refused))
 
             // test invited status
             ->given($this->test_invit_result = $this->testedInstance->isInvited($this->test_connection, $this->test_guest_user_id))

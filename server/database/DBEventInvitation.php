@@ -66,7 +66,6 @@ class DBEventInvitation
     {
         $this->guest_user_id = $user_id;
         $query = $db->getQueryBuilderHandler()->table($this->event_invitation_table)
-            ->select($this->table_row['invit_status'])
             ->where($this->table_row['invit_guest_user_id'], $this->guest_user_id)
             ->where($this->table_row['invit_event_id'], $this->event_id);
 
@@ -91,17 +90,12 @@ class DBEventInvitation
 
     /**
      * @param DBConnection $db
-     * @param $guest_user_id
-     * @param $event_id
      * @param $status
      */
-    public function setInvitationAcceptation(DBConnection $db, $guest_user_id, $event_id, $status)
+    public function setInvitationAcceptation(DBConnection $db, $status)
     {
-        $this->guest_user_id = $guest_user_id;
-        $this->event_id = $event_id;
         $db->getQueryBuilderHandler()->table($this->event_invitation_table)
             ->where($this->table_row['invit_event_id'], $this->event_id)
-            ->where($this->table_row['invit_guest_user_id'], $this->guest_user_id)
             ->update([
                 $this->table_row['invit_status']      => $status,
                 $this->table_row['invit_status_time'] => time(),
@@ -111,7 +105,7 @@ class DBEventInvitation
 
 abstract class EventInvitationAcceptation
 {
-    const Pending = 0;
-    const Accepted = 1;
-    const Refused = 2;
+    const Pending = 2;
+    const Accepted = 3;
+    const Refused = 4;
 }

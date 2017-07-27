@@ -13,7 +13,9 @@ $runner->addTest('tests/units/database/DBEvent.php');
 $runner->addTest('tests/units/database/DBEventInvitation.php');
 $runner->addTest('tests/units/rest/RestUser.php');
 $runner->addTest('tests/units/rest/RestServer.php');
+$runner->addTest('tests/units/rest/RestUserContact.php');
 $runner->addTest('tests/units/rest/RestEvent.php');
+$runner->addTest('tests/units/rest/RestEventInvitation.php');
 
 /*
 Publish code coverage report on coveralls.io

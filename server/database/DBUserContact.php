@@ -54,14 +54,12 @@ class DBUserContact
     /**
      * @param DBConnection $db
      * @param $user_id
-     *
      * @return bool
      */
     public function isContact(DBConnection $db, $user_id)
     {
         $this->new_contact_user_id = $user_id;
         $query = $db->getQueryBuilderHandler()->table($this->user_contact_table)
-            ->select($this->table_row['contact_status'])
             ->where(function ($q) {
                 $q->where($this->table_row['contact_user_id'], $this->new_contact_user_id);
                 $q->where($this->table_row['contact_new_contact_user_id'], $this->user_id);
@@ -117,7 +115,7 @@ class DBUserContact
 
 abstract class UserContactAcceptation
 {
-    const Pending = 0;
-    const Accepted = 1;
-    const Refused = 2;
+    const Pending = 2;
+    const Accepted = 3;
+    const Refused = 4;
 }
