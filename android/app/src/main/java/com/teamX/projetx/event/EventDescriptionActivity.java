@@ -66,7 +66,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
         this.name.append(this.eventData.getName());
         this.address.append(this.eventData.getAddress());
         this.creationTime.append(this.eventData.getCreationTime().toString());
-        this.date.append(this.eventData.getDate().toString());
+        this.date.append(String.valueOf(this.eventData.getDate()));
         this.description.append(this.eventData.getDescription());
         this.theme.append(this.eventData.getTheme());
     }
