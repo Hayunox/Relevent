@@ -25,18 +25,20 @@ class DBEventInvitation
 
     /**
      * DBEventInvitation constructor.
+     *
      * @param $user_id
      * @param $event_id
      */
     public function __construct($user_id, $event_id)
     {
-        $this->user_id  = $user_id;
+        $this->user_id = $user_id;
         $this->event_id = $event_id;
     }
 
     /**
      * @param DBConnection $db
      * @param $guest_user_id
+     *
      * @return array|string
      */
     public function createInvitation(DBConnection $db, $guest_user_id)
@@ -57,9 +59,11 @@ class DBEventInvitation
     /**
      * @param DBConnection $db
      * @param $user_id
+     *
      * @return bool
      */
-    public function isInvited(DBConnection $db, $user_id){
+    public function isInvited(DBConnection $db, $user_id)
+    {
         $this->guest_user_id = $user_id;
         $query = $db->getQueryBuilderHandler()->table($this->event_invitation_table)
             ->select($this->table_row['invit_status'])
@@ -67,17 +71,21 @@ class DBEventInvitation
             ->where($this->table_row['invit_event_id'], $this->event_id);
 
         $result = $query->first();
+
         return ($result == null) ? false : $result->{$this->table_row['invit_status']};
     }
 
     /**
      * @param DBConnection $db
+     *
      * @return null|\stdClass
      */
-    public function getUserInvited(DBConnection $db){
+    public function getUserInvited(DBConnection $db)
+    {
         $query = $db->getQueryBuilderHandler()->table($this->event_invitation_table)
             ->where($this->table_row['invit_status'], EventInvitationAcceptation::Accepted)
             ->where($this->table_row['invit_guest_user_id'], $this->user_id);
+
         return $query->get();
     }
 
@@ -89,21 +97,21 @@ class DBEventInvitation
      */
     public function setInvitationAcceptation(DBConnection $db, $guest_user_id, $event_id, $status)
     {
-        $this->guest_user_id    = $guest_user_id;
-        $this->event_id         = $event_id;
+        $this->guest_user_id = $guest_user_id;
+        $this->event_id = $event_id;
         $db->getQueryBuilderHandler()->table($this->event_invitation_table)
             ->where($this->table_row['invit_event_id'], $this->event_id)
             ->where($this->table_row['invit_guest_user_id'], $this->guest_user_id)
-            ->update(array(
-                $this->table_row['invit_status'] => $status,
+            ->update([
+                $this->table_row['invit_status']      => $status,
                 $this->table_row['invit_status_time'] => time(),
-            ));
+            ]);
     }
 }
 
 abstract class EventInvitationAcceptation
 {
-    const Pending   = 0;
-    const Accepted  = 1;
-    const Refused   = 2;
+    const Pending = 0;
+    const Accepted = 1;
+    const Refused = 2;
 }
