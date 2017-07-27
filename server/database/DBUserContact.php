@@ -57,7 +57,8 @@ class DBUserContact
      *
      * @return bool
      */
-    public function isContact(DBConnection $db, $user_id){
+    public function isContact(DBConnection $db, $user_id)
+    {
         $this->new_contact_user_id = $user_id;
         $query = $db->getQueryBuilderHandler()->table($this->user_contact_table)
             ->select($this->table_row['contact_status'])
@@ -86,6 +87,7 @@ class DBUserContact
             ->where($this->table_row['contact_status'], UserContactAcceptation::Accepted)
             ->where($this->table_row['contact_user_id'], $this->user_id)
             ->orWhere($this->table_row['contact_new_contact_user_id'], $this->user_id);
+
         return $query->get();
     }
 
@@ -106,10 +108,10 @@ class DBUserContact
                 $q->where($this->table_row['contact_new_contact_user_id'], $this->new_contact_user_id);
                 $q->where($this->table_row['contact_user_id'], $this->user_id);
             })
-            ->update(array(
-                $this->table_row['contact_status'] => $status,
+            ->update([
+                $this->table_row['contact_status']      => $status,
                 $this->table_row['contact_status_time'] => time(),
-            ));
+            ]);
     }
 }
 

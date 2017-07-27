@@ -22,9 +22,9 @@ class DBEventInvitation extends UnitTestRestServerSlimTest
 
     public function testEventInvitation()
     {
-        $this->test_guest_user_id   = 1;
-        $this->test_sender_user_id  = 2;
-        $this->test_invit_id        = 1;
+        $this->test_guest_user_id = 1;
+        $this->test_sender_user_id = 2;
+        $this->test_invit_id = 1;
 
         $this->test_connection = new ConnectionToDatabase();
 
@@ -34,7 +34,7 @@ class DBEventInvitation extends UnitTestRestServerSlimTest
 
             // test invited not exists
             ->given($this->test_invit_result = $this->testedInstance->isInvited($this->test_connection, $this->test_guest_user_id))
-            ->boolean((bool)$this->test_invit_result)
+            ->boolean((bool) $this->test_invit_result)
             ->isFalse()
 
             // contact creation
@@ -44,7 +44,7 @@ class DBEventInvitation extends UnitTestRestServerSlimTest
 
             // test invited exists
             ->given($this->test_invit_result = $this->testedInstance->isInvited($this->test_connection, $this->test_guest_user_id))
-            ->integer((int)$this->test_invit_result)
+            ->integer((int) $this->test_invit_result)
             ->isEqualTo(EventInvitationAcceptation::Pending)
 
             // set invitation accepted
@@ -52,7 +52,7 @@ class DBEventInvitation extends UnitTestRestServerSlimTest
 
             // test contact status
             ->given($this->test_invit_result = $this->testedInstance->isInvited($this->test_connection, $this->test_guest_user_id))
-            ->integer((int)$this->test_invit_result)
+            ->integer((int) $this->test_invit_result)
             ->isEqualTo(EventInvitationAcceptation::Accepted)
 
             // get user invitations
@@ -64,7 +64,7 @@ class DBEventInvitation extends UnitTestRestServerSlimTest
 
             // test invited status
             ->given($this->test_invit_result = $this->testedInstance->isInvited($this->test_connection, $this->test_guest_user_id))
-            ->integer((int)$this->test_invit_result)
+            ->integer((int) $this->test_invit_result)
             ->isEqualTo(EventInvitationAcceptation::Refused);
     }
 }
