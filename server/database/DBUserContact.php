@@ -16,7 +16,7 @@ class DBUserContact
         'contact_id'                    => 'id',
         'contact_user_id'               => 'user_id',
         'contact_new_contact_user_id'   => 'new_contact_user_id',
-        'contact_time'                  => 'time',
+        'contact_time'                  => 'contact_time',
         'contact_status_time'           => 'status_time',
         'contact_status'                => 'status',
     ];

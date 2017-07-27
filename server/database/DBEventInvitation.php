@@ -18,7 +18,7 @@ class DBEventInvitation
         'invit_user_id'           => 'user_id',
         'invit_event_id'          => 'event_id',
         'invit_guest_user_id'     => 'guest_user_id',
-        'invit_time'              => 'time',
+        'invit_time'              => 'invit_time',
         'invit_status_time'       => 'status_time',
         'invit_status'            => 'status',
     ];
