@@ -10,7 +10,6 @@ import android.support.v4.app.ActivityCompat;
 
 import com.teamX.projetx.R;
 import com.teamX.projetx.user.LoginActivity;
-import com.teamX.projetx.utils.AppPreferences;
 
 public class SplashScreenActivity extends Activity {
 
@@ -40,15 +39,15 @@ public class SplashScreenActivity extends Activity {
                 /**
                  * User already connected
                  */
-                try{
+                /*try{
                     AppPreferences appPreferences = new AppPreferences(getBaseContext());
                     appPreferences.getUserData();
                     Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(i);
-                }catch (Exception e){
+                }catch (Exception e){*/
                     Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(i);
-                }
+                //}
 
                 // close this activity
                 finish();

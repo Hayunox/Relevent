@@ -2,6 +2,7 @@
 
 namespace App\Database;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -109,14 +110,14 @@ class DBUser
      */
     public function userCreate($userArray)
     {
-        $key = $this->generateUserKey($userArray['nickname'], $userArray['mail']);
+        $key = $this->generateUserKey($userArray['nickname']);
         // return new user_id
         DB::table($this->user_table)->insert([
             $this->table_row['user_key']                => $key,
             $this->table_row['user_nickname']           => $userArray['nickname'],
             $this->table_row['user_name']               => '',
             $this->table_row['user_surname']            => '',
-            $this->table_row['user_password']           => Hash::make($userArray['password']),
+            $this->table_row['user_password']           => encrypt($userArray['password']),
             $this->table_row['user_mail']               => $userArray['mail'],
             $this->table_row['user_regitration_time']   => time(),
         ]);
@@ -125,12 +126,11 @@ class DBUser
 
     /**
      * @param $user
-     * @param $mail
      * @return mixed
      * TODO : check if unique
      */
-    private function generateUserKey($user, $mail){
-        return Hash::make($user + $mail);
+    private function generateUserKey($user){
+        return Hash::make($user.time());
     }
 
     /**
@@ -143,13 +143,11 @@ class DBUser
     {
         $data = DB::table($this->user_table)
             ->where($this->table_row['user_nickname'], $nickname)
-            ->get();
+            ->first();
 
-        foreach ($data as $user){
-            if (Hash::check($user->{$this->table_row['user_password']}, $password))
-            {
-                return $this->getUserData($user);
-            }
+        echo decrypt($data->{$this->table_row['user_password']})." and ".$password;
+        if(decrypt($data->{$this->table_row['user_password']}) == $password){
+            return $this->getUserData($data);
         }
 
         return false;
