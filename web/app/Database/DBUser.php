@@ -1,6 +1,8 @@
 <?php
 
-namespace server\database;
+namespace App\Database;
+
+use Illuminate\Support\Facades\DB;
 
 class DBUser
 {
@@ -36,16 +38,16 @@ class DBUser
     }
 
     /**
-     * @param DBConnection $db
      * @param null         $user_data
      *
      * @return array
      */
-    public function getUserData(DBConnection $db, $user_data = null)
+    public function getUserData($user_data = null)
     {
         if ($user_data == null) {
-            $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_id'], $this->user_id);
-            $user_data = $query->first();
+            $user_data = DB::table($this->user_table)
+                ->where($this->table_row['user_id'], $this->user_id)
+                ->first();
         }
 
         if ($user_data != null) {
@@ -61,101 +63,79 @@ class DBUser
     }
 
     /**
-     * @param $db
      * @param $nickname
      *
      * @return bool
      */
-    public function userNickNameExists(DBConnection $db, $nickname)
+    public function userNickNameExists($nickname)
     {
-        $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_nickname'], $nickname);
+        $query = DB::table($this->user_table)
+            ->where($this->table_row['user_nickname'], $nickname);
 
         return ($query->first() == null) ? false : true;
     }
 
     /**
-     * @param $db
      * @param $mail
      *
      * @return bool
      */
-    public function userMailExists(DBConnection $db, $mail)
+    public function userMailExists($mail)
     {
-        $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_mail'], $mail);
+        $query = DB::table($this->user_table)
+            ->where($this->table_row['user_mail'], $mail);
 
         return ($query->first() == null) ? false : true;
     }
 
     /**
-     * @param $db
      * @param $key
      *
      * @return bool|int
      */
-    public function userKeyExists(DBConnection $db, $key)
+    public function userKeyExists($key)
     {
-        $query = $db->getQueryBuilderHandler()->table($this->user_table)->where($this->table_row['user_key'], $key);
-        $result = $query->first();
+        $result = DB::table($this->user_table)
+            ->where($this->table_row['user_key'], $key)
+            ->first();
 
         return ($result == null) ? false : $result->{$this->table_row['user_id']};
     }
 
     /**
-     * Generating random Unique MD5 String for user key.
-     */
-    public function generateUserKey()
-    {
-        return md5(uniqid(rand(), true));
-    }
-
-    /**
-     * @param $db
      * @param $userArray
-     *
-     * @return int user_id
+     * @return string
      */
-    public function userCreate(DBConnection $db, $userArray)
+    public function userCreate($userArray)
     {
-        $data = [
-            $this->table_row['user_key']                => $this->generateUserKey(),
-            $this->table_row['user_nickname']           => $db->securizeParam($userArray['user_nickname']),
+        $key = $user->generateToken();;
+        // return new user_id
+        DB::table($this->user_table)->insert([
+            $this->table_row['user_key']                => $key,
+            $this->table_row['user_nickname']           => $userArray['nickname'],
             $this->table_row['user_name']               => '',
             $this->table_row['user_surname']            => '',
-            $this->table_row['user_password']           => $db->securizeParam($this->userPasswordEncrypt($userArray['user_password'])),
-            $this->table_row['user_mail']               => $userArray['user_mail'],
+            $this->table_row['user_password']           => $userArray['password'],
+            $this->table_row['user_mail']               => $userArray['mail'],
             $this->table_row['user_regitration_time']   => time(),
-        ];
-
-        // return new user_id
-        return $db->getQueryBuilderHandler()->table($this->user_table)->insert($data);
+        ]);
+        return $key;
     }
 
     /**
-     * @param DBConnection $db
      * @param $nickname
      * @param $password
      *
      * @return array|bool
      */
-    public function tryLogin(DBConnection $db, $nickname, $password)
+    public function tryLogin($nickname, $password)
     {
-        $query = $db->getQueryBuilderHandler()->table($this->user_table)
-            ->where($this->table_row['user_password'], $this->userPasswordEncrypt($db->securizeParam($password)))
-            ->where($this->table_row['user_nickname'], $db->securizeParam($nickname));
+        $data = DB::table($this->user_table)
+            ->where($this->table_row['user_password'], $password)
+            ->where($this->table_row['user_nickname'], $nickname)
+            ->first();
 
-        $data = $query->first();
-
-        return ($data == null) ? false : $this->getUserData($db, $data);
-    }
-
-    /**
-     * @param $password
-     *
-     * @return string
-     */
-    public function userPasswordEncrypt($password)
-    {
-        return md5($password);
+        return ($data == null) ? false : $this->getUserData($data);
     }
 
     /**

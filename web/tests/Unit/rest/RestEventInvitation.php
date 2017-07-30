@@ -3,7 +3,7 @@
 namespace server\tests\units\rest;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
-require_once __DIR__.'/../../../rest/RestEventInvitation.php';
+require_once __DIR__.'/../../../rest/EventInvitationController.php';
 
 use server\database\EventInvitationAcceptation;
 use server\database\UserContactAcceptation;

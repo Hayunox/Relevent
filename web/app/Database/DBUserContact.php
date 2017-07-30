@@ -1,6 +1,8 @@
 <?php
 
-namespace server\database;
+namespace App\Database;
+
+use Illuminate\Support\Facades\DB;
 
 class DBUserContact
 {
@@ -32,12 +34,11 @@ class DBUserContact
     }
 
     /**
-     * @param DBConnection $db
      * @param $new_contact_user_id
      *
      * @return array|string
      */
-    public function createContact(DBConnection $db, $new_contact_user_id)
+    public function createContact($new_contact_user_id)
     {
         $data = [
             $this->table_row['contact_user_id']               => $this->user_id,
@@ -48,19 +49,18 @@ class DBUserContact
         ];
 
         // return new contact id
-        return $db->getQueryBuilderHandler()->table($this->user_contact_table)->insert($data);
+        return DB::table($this->user_contact_table)->insert($data);
     }
 
     /**
-     * @param DBConnection $db
      * @param $user_id
      *
      * @return bool
      */
-    public function isContact(DBConnection $db, $user_id)
+    public function isContact($user_id)
     {
         $this->new_contact_user_id = $user_id;
-        $query = $db->getQueryBuilderHandler()->table($this->user_contact_table)
+        $result = DB::table($this->user_contact_table)
             ->where(function ($q) {
                 $q->where($this->table_row['contact_user_id'], $this->new_contact_user_id);
                 $q->where($this->table_row['contact_new_contact_user_id'], $this->user_id);
@@ -68,37 +68,32 @@ class DBUserContact
             ->orWhere(function ($q) {
                 $q->where($this->table_row['contact_new_contact_user_id'], $this->new_contact_user_id);
                 $q->where($this->table_row['contact_user_id'], $this->user_id);
-            });
-
-        $result = $query->first();
+            })
+            ->first();
 
         return ($result == null) ? false : $result->{$this->table_row['contact_status']};
     }
 
     /**
-     * @param DBConnection $db
-     *
      * @return null|\stdClass
      */
-    public function getUserContacts(DBConnection $db)
+    public function getUserContacts()
     {
-        $query = $db->getQueryBuilderHandler()->table($this->user_contact_table)
+        return DB::table($this->user_contact_table)
             ->where($this->table_row['contact_status'], UserContactAcceptation::Accepted)
             ->where($this->table_row['contact_user_id'], $this->user_id)
-            ->orWhere($this->table_row['contact_new_contact_user_id'], $this->user_id);
-
-        return $query->get();
+            ->orWhere($this->table_row['contact_new_contact_user_id'], $this->user_id)
+            ->get();
     }
 
     /**
-     * @param DBConnection $db
      * @param $user_new_contact_id
      * @param $status
      */
-    public function setContactAcceptation(DBConnection $db, $user_new_contact_id, $status)
+    public function setContactAcceptation($user_new_contact_id, $status)
     {
         $this->new_contact_user_id = $user_new_contact_id;
-        $db->getQueryBuilderHandler()->table($this->user_contact_table)
+        DB::table($this->user_contact_table)
             ->where(function ($q) {
                 $q->where($this->table_row['contact_user_id'], $this->new_contact_user_id);
                 $q->where($this->table_row['contact_new_contact_user_id'], $this->user_id);

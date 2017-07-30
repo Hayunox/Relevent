@@ -66,10 +66,3 @@ class UnitTestRestServerUtil
             ->contains('is missing or empty');
     }
 }
-
-class UnitTestRestServerSlimTest extends test
-{
-    public function getAutoloaderFile()
-    {
-    }
-}

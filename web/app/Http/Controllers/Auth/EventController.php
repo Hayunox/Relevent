@@ -1,32 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * event: Paul
- * Date: 14/07/2017
- * Time: 19:51.
- */
+namespace App\Api\Controllers;
 
-namespace server\rest;
+use App\Http\Controllers\Controller;
 
-require_once __DIR__.'/../vendor/autoload.php';
-
-require_once __DIR__.'/../database/DBConnection.php';
-require_once __DIR__.'/../database/DBEvent.php';
-require_once __DIR__.'/RestServer.php';
-
-use server\database\DBConnection;
-use server\database\DBEvent;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-class RestEventCreation
+class EventController extends Controller
 {
     /**
-     * @param Request  $request
-     * @param Response $response
-     *
-     * @return Response
-     */
     public function __invoke(Request $request, Response $response)
     {
         $verification = RestServer::getRequiredParams($response, ['name', 'date', 'description', 'address', 'theme']);
@@ -46,13 +25,6 @@ class RestEventCreation
         return RestServer::createJSONResponse($response, 400, $verification['response']);
     }
 
-    /**
-     * @param $data
-     * @param Response $response
-     * @param $user_id
-     *
-     * @return Response
-     */
     public function eventCreation($data, Response $response, $user_id)
     {
         // reading post params
@@ -93,12 +65,6 @@ class RestEventEdit
 
 class RestEventUserListOwn
 {
-    /**
-     * @param Request  $request
-     * @param Response $response
-     *
-     * @return Response
-     */
     public function __invoke(Request $request, Response $response)
     {
         $authentication = RestServer::authenticate();
@@ -111,12 +77,6 @@ class RestEventUserListOwn
         return RestServer::createJSONResponse($response, 400, $authentication);
     }
 
-    /**
-     * @param Response $response
-     * @param $user_id
-     *
-     * @return Response
-     */
     public function eventUserList(Response $response, $user_id)
     {
         $connection = new DBConnection();
@@ -125,5 +85,5 @@ class RestEventUserListOwn
         $event = new DBEvent(null);
 
         return RestServer::createJSONResponse($response, 200, json_encode($event->eventUserList($connection, $user_id)));
-    }
+    }*/
 }

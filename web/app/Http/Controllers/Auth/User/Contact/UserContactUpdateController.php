@@ -1,32 +1,59 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Paul
- * Date: 27/07/2017
- * Time: 20:34.
- */
+namespace App\Api\Controllers;
 
-namespace server\rest;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Validation\Validator;
+use web\app\Database\DBUserContact;
 
-require_once __DIR__.'/../vendor/autoload.php';
-
-require_once __DIR__.'/../database/DBConnection.php';
-require_once __DIR__.'/../database/DBUserContact.php';
-require_once __DIR__.'/RestServer.php';
-
-use server\database\DBConnection;
-use server\database\DBUserContact;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-class RestUserContactCreation
+class UserContactUpdateController extends Controller
 {
     /**
-     * @param Request  $request
-     * @param Response $response
-     *
-     * @return Response
+     * Create a new controller instance.
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'contact_id'    => 'required|integer|max:12',
+            'status'        => 'required|integer|max:2',
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param array $data
+     * @return string
+     */
+    protected function update(array $data)
+    {
+        // new instance
+        //$contact = new DBUserContact($user_id);
+
+        //$contact->setContactAcceptation($connection, $contact_id, $status);
+
+        //return $user->setContactAcceptation($data['contact_id'], $data['status']);
+    }
+
+
+
+
+
+
+
+
+    /**
     public function __invoke(Request $request, Response $response)
     {
         $verification = RestServer::getRequiredParams($response, ['new_contact_user_id']);
@@ -46,13 +73,6 @@ class RestUserContactCreation
         return RestServer::createJSONResponse($response, 400, $verification['response']);
     }
 
-    /**
-     * @param $data
-     * @param Response $response
-     * @param $user_id
-     *
-     * @return Response
-     */
     public function contactCreation($data, Response $response, $user_id)
     {
         // reading post params
@@ -84,12 +104,7 @@ class RestUserContactCreation
 
 class RestUserContactChange
 {
-    /**
-     * @param Request  $request
-     * @param Response $response
-     *
-     * @return Response
-     */
+
     public function __invoke(Request $request, Response $response)
     {
         $verification = RestServer::getRequiredParams($response, ['contact_id', 'status']);
@@ -109,13 +124,6 @@ class RestUserContactChange
         return RestServer::createJSONResponse($response, 400, $verification['response']);
     }
 
-    /**
-     * @param $data
-     * @param Response $response
-     * @param $user_id
-     *
-     * @return Response
-     */
     public function contactChange($data, Response $response, $user_id)
     {
         // reading post params
@@ -137,13 +145,6 @@ class RestUserContactChange
 
 class RestUserGetContacts
 {
-    /**
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     *
-     * @return Response
-     */
     public function __invoke(Request $request, Response $response, $args = [])
     {
         $authentication = RestServer::authenticate();
@@ -156,12 +157,6 @@ class RestUserGetContacts
         return RestServer::createJSONResponse($response, 400, $authentication);
     }
 
-    /**
-     * @param Response $response
-     * @param Request  $request
-     *
-     * @return Response
-     */
     public function userContactById(Response $response, Request $request)
     {
         $connection = new DBConnection();
@@ -173,5 +168,5 @@ class RestUserGetContacts
         $contact = new DBUserContact($user_id);
 
         return RestServer::createJSONResponse($response, 200, $contact->getUserContacts($connection));
-    }
+    }*/
 }

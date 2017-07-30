@@ -1,32 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Paul
- * Date: 27/07/2017
- * Time: 20:34.
- */
+namespace App\Api\Controllers;
 
-namespace server\rest;
+use App\Http\Controllers\Controller;
 
-require_once __DIR__.'/../vendor/autoload.php';
 
-require_once __DIR__.'/../database/DBConnection.php';
-require_once __DIR__.'/../database/DBEventInvitation.php';
-require_once __DIR__.'/RestServer.php';
-
-use server\database\DBConnection;
-use server\database\DBEventInvitation;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-class RestEventInvitationCreation
+class EventInvitationController  extends Controller
 {
     /**
-     * @param Request  $request
-     * @param Response $response
-     *
-     * @return Response
-     */
     public function __invoke(Request $request, Response $response)
     {
         $verification = RestServer::getRequiredParams($response, ['new_guest_user_id', 'event_id']);
@@ -46,13 +26,6 @@ class RestEventInvitationCreation
         return RestServer::createJSONResponse($response, 400, $verification['response']);
     }
 
-    /**
-     * @param $data
-     * @param Response $response
-     * @param $user_id
-     *
-     * @return Response
-     */
     public function invitationCreation($data, Response $response, $user_id)
     {
         // reading post params
@@ -85,12 +58,6 @@ class RestEventInvitationCreation
 
 class RestEventInvitationChange
 {
-    /**
-     * @param Request  $request
-     * @param Response $response
-     *
-     * @return Response
-     */
     public function __invoke(Request $request, Response $response)
     {
         $verification = RestServer::getRequiredParams($response, ['event_id', 'status']);
@@ -110,13 +77,6 @@ class RestEventInvitationChange
         return RestServer::createJSONResponse($response, 400, $verification['response']);
     }
 
-    /**
-     * @param $data
-     * @param Response $response
-     * @param $user_id
-     *
-     * @return Response
-     */
     public function invitationChange($data, Response $response, $user_id)
     {
         // reading post params
@@ -138,13 +98,6 @@ class RestEventInvitationChange
 
 class RestEventUserGetInvitation
 {
-    /**
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     *
-     * @return Response
-     */
     public function __invoke(Request $request, Response $response, $args = [])
     {
         $authentication = RestServer::authenticate();
@@ -157,12 +110,6 @@ class RestEventUserGetInvitation
         return RestServer::createJSONResponse($response, 400, $authentication);
     }
 
-    /**
-     * @param Response $response
-     * @param Request  $request
-     *
-     * @return Response
-     */
     public function eventInvitationById(Response $response, Request $request)
     {
         $connection = new DBConnection();
@@ -174,5 +121,5 @@ class RestEventUserGetInvitation
         $invitation = new DBEventInvitation($user_id, null);
 
         return RestServer::createJSONResponse($response, 200, $invitation->getUserInvited($connection));
-    }
+    }*/
 }

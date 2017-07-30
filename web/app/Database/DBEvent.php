@@ -1,13 +1,8 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * DBUser: Paul
- * Date: 11/07/2017
- * Time: 17:14.
- */
+namespace App\Database;
 
-namespace server\database;
+use Illuminate\Support\Facades\DB;
 
 class DBEvent
 {
@@ -46,14 +41,11 @@ class DBEvent
     }
 
     /**
-     * @param $db
-     *
      * @return array
      */
-    public function getEventData(DBConnection $db)
+    public function getEventData()
     {
-        $query = $db->getQueryBuilderHandler()->table($this->event_table)->where($this->table_row['event_id'], $this->event_id);
-        $event_data = $query->first();
+        $event_data = DB::table($this->event_table)->where($this->table_row['event_id'], $this->event_id)->first();
 
         if ($event_data != null) {
             $this->event_user_id = $event_data->{$this->table_row['event_user_id']};
@@ -70,40 +62,36 @@ class DBEvent
     }
 
     /**
-     * @param $db
      * @param $eventArray
      *
      * @return int event_id
      */
-    public function eventCreate(DBConnection $db, $eventArray)
+    public function eventCreate($eventArray)
     {
-        $data = [
-            $this->table_row['event_user_id']         => $eventArray['event_user_id'],
-            $this->table_row['event_name']            => $eventArray['event_name'],
-            $this->table_row['event_description']     => $eventArray['event_description'],
-            $this->table_row['event_address']         => $eventArray['event_address'],
-            $this->table_row['event_date']            => $eventArray['event_date'],
-            $this->table_row['event_theme']           => $eventArray['event_theme'],
-            $this->table_row['event_secret']          => $eventArray['event_secret'],
-            $this->table_row['event_creation_time']   => time(),
-        ];
-
         // return new event_id
-        return $db->getQueryBuilderHandler()->table($this->event_table)->insert($data);
+        return DB::table($this->event_table)
+            ->insert([
+                $this->table_row['event_user_id']         => $eventArray['event_user_id'],
+                $this->table_row['event_name']            => $eventArray['event_name'],
+                $this->table_row['event_description']     => $eventArray['event_description'],
+                $this->table_row['event_address']         => $eventArray['event_address'],
+                $this->table_row['event_date']            => $eventArray['event_date'],
+                $this->table_row['event_theme']           => $eventArray['event_theme'],
+                $this->table_row['event_secret']          => $eventArray['event_secret'],
+                $this->table_row['event_creation_time']   => time(),
+            ]);
     }
 
     /**
-     * @param DBConnection $connection
      * @param $user_id
      *
      * @return null|\stdClass
      */
-    public function eventUserList(DBConnection $connection, $user_id)
+    public function eventUserList($user_id)
     {
-        $query = $connection->getQueryBuilderHandler()->table($this->event_table)
-            ->where($this->table_row['event_user_id'], $user_id);
-
-        return $query->get();
+        return DB::table($this->event_table)
+            ->where($this->table_row['event_user_id'], $user_id)
+            ->get();
     }
 
     /**

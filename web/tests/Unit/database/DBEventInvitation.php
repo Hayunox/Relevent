@@ -1,6 +1,6 @@
 <?php
 
-namespace server\tests\units\database;
+namespace web\tests\Unit\Database;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
 require_once __DIR__.'/../../../database/DBConnection.php';

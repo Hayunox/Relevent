@@ -1,11 +1,6 @@
 <?php
 
-namespace server\rest;
-
-require_once __DIR__.'/RestUser.php';
-require_once __DIR__.'/RestUserContact.php';
-require_once __DIR__.'/RestEvent.php';
-require_once __DIR__.'/RestEventInvitation.php';
+namespace App\Http\Controllers\Auth;
 
 use server\database\DBConnection;
 use server\database\DBUser;

@@ -1,6 +1,8 @@
 <?php
 
-namespace server\database;
+namespace App\Database;
+
+use Illuminate\Support\Facades\DB;
 
 class DBEventInvitation
 {
@@ -36,65 +38,57 @@ class DBEventInvitation
     }
 
     /**
-     * @param DBConnection $db
      * @param $guest_user_id
      *
      * @return array|string
      */
-    public function createInvitation(DBConnection $db, $guest_user_id)
+    public function createInvitation($guest_user_id)
     {
-        $data = [
-            $this->table_row['invit_user_id']               => $this->user_id,
-            $this->table_row['invit_event_id']              => $this->event_id,
-            $this->table_row['invit_guest_user_id']         => $guest_user_id,
-            $this->table_row['invit_time']                  => time(),
-            $this->table_row['invit_status_time']           => time(),
-            $this->table_row['invit_status']                => EventInvitationAcceptation::Pending,
-        ];
-
         // return new contact id
-        return $db->getQueryBuilderHandler()->table($this->event_invitation_table)->insert($data);
+        return DB::table($this->event_invitation_table)
+            ->insert([
+                $this->table_row['invit_user_id']               => $this->user_id,
+                $this->table_row['invit_event_id']              => $this->event_id,
+                $this->table_row['invit_guest_user_id']         => $guest_user_id,
+                $this->table_row['invit_time']                  => time(),
+                $this->table_row['invit_status_time']           => time(),
+                $this->table_row['invit_status']                => EventInvitationAcceptation::Pending,
+            ]);
     }
 
     /**
-     * @param DBConnection $db
      * @param $user_id
      *
      * @return bool
      */
-    public function isInvited(DBConnection $db, $user_id)
+    public function isInvited($user_id)
     {
         $this->guest_user_id = $user_id;
-        $query = $db->getQueryBuilderHandler()->table($this->event_invitation_table)
+        $result = DB::table($this->event_invitation_table)
             ->where($this->table_row['invit_guest_user_id'], $this->guest_user_id)
-            ->where($this->table_row['invit_event_id'], $this->event_id);
-
-        $result = $query->first();
+            ->where($this->table_row['invit_event_id'], $this->event_id)
+            ->first();
 
         return ($result == null) ? false : $result->{$this->table_row['invit_status']};
     }
 
     /**
-     * @param DBConnection $db
-     *
      * @return null|\stdClass
      */
-    public function getUserInvited(DBConnection $db)
+    public function getUserInvited()
     {
-        $query = $db->getQueryBuilderHandler()->table($this->event_invitation_table)
+        return DB::table($this->event_invitation_table)
             ->where($this->table_row['invit_status'], EventInvitationAcceptation::Accepted)
-            ->where($this->table_row['invit_guest_user_id'], $this->user_id);
-
-        return $query->get();
+            ->where($this->table_row['invit_guest_user_id'], $this->user_id)
+            ->get();
     }
 
     /**
-     * @param DBConnection $db
      * @param $status
      */
-    public function setInvitationAcceptation(DBConnection $db, $status)
+    public function setInvitationAcceptation($status)
     {
-        $db->getQueryBuilderHandler()->table($this->event_invitation_table)
+        DB::table($this->event_invitation_table)
             ->where($this->table_row['invit_event_id'], $this->event_id)
             ->update([
                 $this->table_row['invit_status']      => $status,

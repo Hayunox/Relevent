@@ -9,7 +9,7 @@
 namespace server\tests\units\rest;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
-require_once __DIR__.'/../../../rest/RestUserContact.php';
+require_once __DIR__.'/../../../rest/UserContactUpdateControllerroller.php';
 
 use server\database\UserContactAcceptation;
 use server\tests\units\UnitTestRestServerSlimTest;

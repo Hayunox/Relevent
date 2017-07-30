@@ -3,7 +3,7 @@
 namespace server\tests\units\rest;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
-require_once __DIR__.'/../../../rest/RestUser.php';
+require_once __DIR__.'/../../../rest/UserDataController.php';
 
 use server\tests\units\UnitTestRestServerSlimTest;
 use server\tests\units\UnitTestRestServerUtil;
