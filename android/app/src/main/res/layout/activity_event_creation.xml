@@ -19,7 +19,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -86,6 +86,7 @@
                         android:fontFamily="sans-serif"
                         android:text="@string/date"
                         android:textAlignment="center"
+                        android:textAllCaps="false"
                         android:textAppearance="@style/TextAppearance.AppCompat"
                         android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
