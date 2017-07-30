@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tt9955" />
+            app:srcCompat="@drawable/party" />
 
         <LinearLayout
             android:layout_width="@dimen/input_text_width"
@@ -53,7 +53,7 @@
                 android:elevation="1dp"
                 android:ems="10"
                 android:hapticFeedbackEnabled="false"
-                android:hint="Pseudo"
+                android:hint="ID"
                 android:singleLine="false"
                 android:soundEffectsEnabled="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
