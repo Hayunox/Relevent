@@ -6,12 +6,77 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
 
-    android:padding="5dp"
     tools:context="com.teamX.projetx.event.EventDescriptionActivity"
 
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp"
+        app:expanded="false">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary"
+            android:elevation="0dp"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            android:theme="?attr/actionBarTheme">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?android:attr/windowBackground"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:contextClickable="false">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:text="Hosted by :"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonUserProfilePic"
+                    style="@android:style/Widget.DeviceDefault.ImageButton"
+                    android:layout_width="33dp"
+                    android:layout_height="35dp"
+                    android:adjustViewBounds="false"
+                    android:background="@color/cardview_shadow_end_color"
+                    android:baselineAlignBottom="false"
+                    android:cropToPadding="true"
+                    android:filterTouchesWhenObscured="false"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@mipmap/ic_launcher_round" />
+
+                <TextView
+                    android:id="@+id/main_activity_user_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="Jean-R0ger78"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +90,13 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="13dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="122dp"
+            app:srcCompat="@drawable/partyhard"
+            android:layout_weight="0.15" />
 
         <TextView
             android:id="@+id/event_description_textView_Name"
