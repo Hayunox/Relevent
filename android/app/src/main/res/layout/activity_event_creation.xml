@@ -152,7 +152,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="Choose your guests"
+                        android:text="Add your guests"
                         android:textAlignment="center" />
 
                     <ImageButton
