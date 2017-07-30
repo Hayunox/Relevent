@@ -3,6 +3,7 @@
 namespace App\Database;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DBUser
 {
@@ -108,18 +109,28 @@ class DBUser
      */
     public function userCreate($userArray)
     {
-        $key = $user->generateToken();;
+        $key = $this->generateUserKey($userArray['nickname'], $userArray['mail']);
         // return new user_id
         DB::table($this->user_table)->insert([
             $this->table_row['user_key']                => $key,
             $this->table_row['user_nickname']           => $userArray['nickname'],
             $this->table_row['user_name']               => '',
             $this->table_row['user_surname']            => '',
-            $this->table_row['user_password']           => $userArray['password'],
+            $this->table_row['user_password']           => Hash::make($userArray['password']),
             $this->table_row['user_mail']               => $userArray['mail'],
             $this->table_row['user_regitration_time']   => time(),
         ]);
         return $key;
+    }
+
+    /**
+     * @param $user
+     * @param $mail
+     * @return mixed
+     * TODO : check if unique
+     */
+    private function generateUserKey($user, $mail){
+        return Hash::make($user + $mail);
     }
 
     /**
@@ -131,11 +142,17 @@ class DBUser
     public function tryLogin($nickname, $password)
     {
         $data = DB::table($this->user_table)
-            ->where($this->table_row['user_password'], $password)
             ->where($this->table_row['user_nickname'], $nickname)
-            ->first();
+            ->get();
 
-        return ($data == null) ? false : $this->getUserData($data);
+        foreach ($data as $user){
+            if (Hash::check($user->{$this->table_row['user_password']}, $password))
+            {
+                return $this->getUserData($user);
+            }
+        }
+
+        return false;
     }
 
     /**

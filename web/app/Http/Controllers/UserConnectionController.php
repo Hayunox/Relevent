@@ -8,8 +8,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Database\DBUser;
 use Illuminate\Contracts\Validation\Validator;
-use web\app\DBUser;
+use Illuminate\Support\Facades\Input;
 
 class UserConnectionController  extends Controller
 {
@@ -38,17 +39,15 @@ class UserConnectionController  extends Controller
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * @param array $data
      * @return string
      */
-    protected function login(array $data)
+    protected function login()
     {
         // User instance
         $user = new DBUser(null);
 
         // Connection successful
-        if (is_array($user_data = $user->tryLogin($data['nickname'], bcrypt($data['password'])))) {
+        if (is_array($user_data = $user->tryLogin(Input::get('nickname'), bcrypt(Input::get('password'))))) {
             return response()->json(([$user_data]), 200);
 
         // Connection failed

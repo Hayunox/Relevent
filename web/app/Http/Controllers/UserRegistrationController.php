@@ -8,8 +8,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Database\DBUser;
 use Illuminate\Contracts\Validation\Validator;
-use web\app\DBUser;
+use Illuminate\Support\Facades\Input;
 
 class UserRegistrationController extends Controller
 {
@@ -39,19 +40,17 @@ class UserRegistrationController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * @param array $data
      * @return string
      */
-    protected function create(array $data)
+    protected function create()
     {
         // User instance
         $user = new DBUser(null);
 
         $res = $user->userCreate([
-            'nickname' => $data['nickname'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'nickname' => Input::get('nickname'),
+            'email' => Input::get('email'),
+            'password' => bcrypt(Input::get('password')),
         ]);
 
         // Registration successful
