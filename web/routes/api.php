@@ -20,14 +20,14 @@ Route::group(['middleware' => ['api']], function () {
     Route::get('/event/listOwn', 'Auth\Event\EventListController@getEventOwnUserList');
 
     // Event Invitation
-    Route::post('/event/invit/create', 'Auth\User\UserController@getDataById');
-    Route::post('/event/invit/update', 'Auth\User\UserController@getDataById');
-    Route::get('/event/getInvit', 'Auth\User\UserController@getDataById');
+    Route::post('/event/invit/create', 'Auth\User\EventInvitationCreationController@create');
+    Route::post('/event/invit/update', 'Auth\User\EventInvitationUpdateController@update');
+    Route::get('/event/getInvit', 'Auth\User\EventInvitationDataController@getUserInvitList');
 
     // User Contact'
-    Route::post('/user/contact/create', 'Auth\User\Contact\UserController@getDataById');
-    Route::post('/user/contact/update', 'Auth\User\Contact\UserController@getDataById');
-    Route::get('/user/contact/getContact', 'Auth\User\Contact\UserContactDataController@getContact');
+    Route::post('/user/contact/create', 'Auth\User\Contact\UserContactCreationController@create');
+    Route::post('/user/contact/update', 'Auth\User\Contact\UserContactUpdateController@update');
+    Route::get('/user/contact/getContact', 'Auth\User\Contact\UserContactDataController@getUserContactList');
 
     // User
     Route::get('/user/getDataById/{id}', 'Auth\User\UserDataController@getDataById');

@@ -145,7 +145,7 @@ class User
             ->where($this->table_row['user_nickname'], $nickname)
             ->first();
 
-        if(Crypt::decrypt($data->{$this->table_row['user_password']}) == $password){
+        if($data != null && Crypt::decrypt($data->{$this->table_row['user_password']}) == $password){
             return $this->getUserData($data);
         }
 

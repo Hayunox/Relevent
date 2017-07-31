@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserContact extends TestCase
+class UserContactTest extends TestCase
 {
     /**
      * A basic test example.

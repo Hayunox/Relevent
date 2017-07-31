@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class EventListController extends TestCase
+class EventCreationControllerTest extends TestCase
 {
     /**
      * A basic test example.

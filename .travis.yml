@@ -29,5 +29,5 @@ before_script:
     - cd server/
     - composer update
 script:
-    - php tests/atoum.phar -c tests/.atoum.php
+    - php phpunit.phar
 repo_token: qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy
