@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['api']], function () {
     // Event
-    Route::post('/event/create', 'Auth\User\UserController@getDataById');
-    Route::get('/event/listOwn', 'Auth\User\UserController@getDataById');
+    Route::post('/event/create', 'Auth\Event\EventCreationController@create');
+    Route::get('/event/listOwn', 'Auth\Event\EventListController@getEventOwnUserList');
 
     // Event Invitation
     Route::post('/event/invit/create', 'Auth\User\UserController@getDataById');
@@ -30,7 +30,7 @@ Route::group(['middleware' => ['api']], function () {
     Route::get('/user/contact/getContact', 'Auth\User\Contact\UserContactDataController@getContact');
 
     // User
-    Route::get('/user/getDataById/{id}', 'UserDataController@getDataById');
+    Route::get('/user/getDataById/{id}', 'Auth\User\UserDataController@getDataById');
 });
 
 Route::group(['middleware' => ['api']], function () {

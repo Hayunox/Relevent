@@ -54,7 +54,7 @@ class UserConnectionController  extends Controller
 
         // Connection successful
         if (is_array($user_data = $user->tryLogin($nickname, $password))) {
-            return response()->json($user_data), 200);
+            return response()->json($user_data, 200);
 
         // Connection failed
         } else {
