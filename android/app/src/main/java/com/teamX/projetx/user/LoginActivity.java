@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     call.enqueue(new retrofit2.Callback<User>() {
                         @Override
                         public void onResponse(Call<User> call, Response<User> response) {
+                            System.out.println(response.body());
                             if(response.isSuccessful()){
                                 User connectedUser = response.body();
 
@@ -92,7 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                                         case "USER_LOGIN_FAILED":
                                             errorText.setText(R.string.rest_user_login_failed);
                                             break;
-                                        default: break;
+                                        default: errorText.setText(R.string.rest_user_login_error);
+                                            break;
                                     }
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -103,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<User> call, Throwable t) {
                             t.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
+                            errorText.setText(R.string.rest_connection_failed);
                         }
                     });
                 }

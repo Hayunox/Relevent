@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-
+                register.setEnabled(false);
                 if(checkUserRegistrationField()){
                     Retrofit restService = DataBase.getRetrofitService();
                     UserService service = restService.create(UserService.class);
@@ -80,7 +80,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         case "USER_MAIL_EXISTS":
                                             errorText.setText(R.string.rest_user_registration_mail_exists);
                                             break;
-                                        default: break;
+                                        default: errorText.setText(R.string.rest_user_registration_error);
+                                            break;
                                     }
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -91,10 +92,11 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<String> call, Throwable t) {
                             t.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
+                            errorText.setText(R.string.rest_connection_failed);
                         }
                     });
                 }
+                register.setEnabled(true);
                 progressBar.setVisibility(View.INVISIBLE);
             }
         });

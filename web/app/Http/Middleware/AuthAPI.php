@@ -16,12 +16,24 @@ class AuthAPI
      */
     public function handle($request, Closure $next)
     {
-        $userDB = new DBUser(null);
-        $user   = $userDB->userKeyExists($request->user_key);
-        if ($user) {
-            return $next($request, $user);
-        }
+        // TODO : improve
+        $authorization = $_SERVER['HTTP_AUTHORIZATION'];
 
-        return response('API_KEY_ACCESS_DENIED', 401);
+        if (isset($authorization)) {
+            $user = new DBUser(null);
+
+            // validating user key
+            $keyExists = $user->userKeyExists($authorization);
+            if ($keyExists) {
+                // user_id
+                return $next($request, $keyExists);
+            } else {
+                // user key is not present in users table
+                return response('API_KEY_ACCESS_DENIED', 401);
+            }
+        } else {
+            // user key is missing in header
+            return response('USER_KEY_NOT_FOUND', 401);
+        }
     }
 }

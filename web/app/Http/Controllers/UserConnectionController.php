@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Database\DBUser;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 
 class UserConnectionController  extends Controller
@@ -48,16 +49,16 @@ class UserConnectionController  extends Controller
 
         // Get params
         $request    = Request::instance();
-        $nickname   = $request->request->get('nickname');
-        $password   = $request->request->get('password');
+        $nickname   = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('nickname'));
+        $password   = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('password'));
 
         // Connection successful
         if (is_array($user_data = $user->tryLogin($nickname, $password))) {
-            return response()->json(([$user_data]), 200);
+            return response()->json($user_data), 200);
 
         // Connection failed
         } else {
-            return response()->json((['USER_LOGIN_FAILED']), 400);
+            return response()->json('USER_LOGIN_FAILED', 400);
         }
     }
 }

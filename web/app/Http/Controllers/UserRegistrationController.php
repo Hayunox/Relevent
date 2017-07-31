@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Database\DBUser;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 
 class UserRegistrationController extends Controller
@@ -49,18 +50,19 @@ class UserRegistrationController extends Controller
 
         // Get params
         $request    = Request::instance();
-        $nickname   = $request->request->get('nickname');
-        $password   = $request->request->get('password');
-        $mail       = $request->request->get('mail');
+        // DB::connection()->getPdo()->quote
+        $nickname   = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('nickname'));
+        $password   = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('password'));
+        $mail       = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('mail'));
 
         // validating email address
         // TODO : use unique
         if ($user->userMailExists($mail)) {
-            return response()->json((['USER_MAIL_EXISTS']), 400);
+            return response()->json('USER_MAIL_EXISTS', 400);
 
         // validating nickname
         } elseif ($user->userNickNameExists($nickname)) {
-            return response()->json((['USER_NICKNAME_EXISTS']), 400);
+            return response()->json('USER_NICKNAME_EXISTS', 400);
 
         // User validated
         } else {
@@ -72,11 +74,11 @@ class UserRegistrationController extends Controller
 
             // Registration successful
             if ($res != null) {
-                return response()->json(([$res]), 200);
+                return response()->json('USER_CREATED_SUCCESSFULLY', 200);
 
                 // Registration failed
             } else {
-                return response()->json((['USER_CREATE_FAILED']), 400);
+                return response()->json('USER_CREATE_FAILED', 400);
             }
         }
     }

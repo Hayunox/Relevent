@@ -12,8 +12,6 @@
 |
 */
 
-
-use App\Http\Middleware\AuthAPI;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['api']], function () {
