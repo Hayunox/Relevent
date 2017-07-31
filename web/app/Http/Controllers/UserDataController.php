@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Database\DBUser;
+use App\Http\Middleware\AuthAPI;
 use Illuminate\Contracts\Validation\Validator;
 
 class UserDataController extends Controller
@@ -11,7 +12,7 @@ class UserDataController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware(AuthAPI::class);
     }
 
     /**

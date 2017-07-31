@@ -8,8 +8,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Database\DBUser;
 use Illuminate\Contracts\Validation\Validator;
-use web\app\DBUser;
+use Illuminate\Support\Facades\Request;
 
 class UserRegistrationController extends Controller
 {
@@ -31,36 +32,52 @@ class UserRegistrationController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nickname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'nickname'  => 'required|string|max:255',
+            'mail'      => 'required|string|email|max:255|unique:user',
+            'password'  => 'required|string|min:6|confirmed',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * @param array $data
      * @return string
      */
-    protected function create(array $data)
+    protected function create()
     {
         // User instance
         $user = new DBUser(null);
 
-        $res = $user->userCreate([
-            'nickname' => $data['nickname'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        // Get params
+        $request    = Request::instance();
+        $nickname   = $request->request->get('nickname');
+        $password   = $request->request->get('password');
+        $mail       = $request->request->get('mail');
 
-        // Registration successful
-        if ($res > -1) {
-            return response()->json((['USER_CREATED_SUCCESSFULLY']), 200);
+        // validating email address
+        // TODO : use unique
+        if ($user->userMailExists($mail)) {
+            return response()->json((['USER_MAIL_EXISTS']), 400);
 
-        // Registration failed
+        // validating nickname
+        } elseif ($user->userNickNameExists($nickname)) {
+            return response()->json((['USER_NICKNAME_EXISTS']), 400);
+
+        // User validated
         } else {
-            return response()->json((['USER_CREATE_FAILED']), 400);
+            $res = $user->userCreate([
+                'nickname' => $nickname,
+                'mail' => $mail,
+                'password' => bcrypt($password),
+            ]);
+
+            // Registration successful
+            if ($res != null) {
+                return response()->json(([$res]), 200);
+
+                // Registration failed
+            } else {
+                return response()->json((['USER_CREATE_FAILED']), 400);
+            }
         }
     }
 }

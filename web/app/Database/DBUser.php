@@ -2,7 +2,9 @@
 
 namespace App\Database;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DBUser
 {
@@ -108,18 +110,27 @@ class DBUser
      */
     public function userCreate($userArray)
     {
-        $key = $user->generateToken();;
+        $key = $this->generateUserKey($userArray['nickname']);
         // return new user_id
         DB::table($this->user_table)->insert([
             $this->table_row['user_key']                => $key,
             $this->table_row['user_nickname']           => $userArray['nickname'],
             $this->table_row['user_name']               => '',
             $this->table_row['user_surname']            => '',
-            $this->table_row['user_password']           => $userArray['password'],
+            $this->table_row['user_password']           => encrypt($userArray['password']),
             $this->table_row['user_mail']               => $userArray['mail'],
             $this->table_row['user_regitration_time']   => time(),
         ]);
         return $key;
+    }
+
+    /**
+     * @param $user
+     * @return mixed
+     * TODO : check if unique
+     */
+    private function generateUserKey($user){
+        return Hash::make($user.time());
     }
 
     /**
@@ -131,11 +142,15 @@ class DBUser
     public function tryLogin($nickname, $password)
     {
         $data = DB::table($this->user_table)
-            ->where($this->table_row['user_password'], $password)
             ->where($this->table_row['user_nickname'], $nickname)
             ->first();
 
-        return ($data == null) ? false : $this->getUserData($data);
+        echo decrypt($data->{$this->table_row['user_password']})." and ".$password;
+        if(decrypt($data->{$this->table_row['user_password']}) == $password){
+            return $this->getUserData($data);
+        }
+
+        return false;
     }
 
     /**
