@@ -10,3 +10,4 @@ server/.idea/server.iml
 server/.idea/workspace.xml
 server/.idea/vcs.xml
 android/.idea/vcs.xml
+*.der

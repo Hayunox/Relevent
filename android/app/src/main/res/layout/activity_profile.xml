@@ -57,7 +57,7 @@
                         android:text="TextView" />
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/imageButton37"
                         style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/textView35"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.80"
@@ -82,7 +82,7 @@
                         android:text="TextView" />
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/imageButton22"
                         style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/textView20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.80"
@@ -107,7 +107,7 @@
                         android:text="TextView" />
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/imageButton89"
                         style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/textView78"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.80"
@@ -132,7 +132,7 @@
                         android:text="TextView" />
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/imageButton54"
                         style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/textView50"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.80"
@@ -157,7 +157,7 @@
                         android:text="TextView" />
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/imageButton2"
                         style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.80"
@@ -182,7 +182,7 @@
                         android:text="TextView" />
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/imageButton5"
                         style="@android:style/Widget.Holo.Light.ImageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -199,7 +199,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/textView10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.80"

@@ -34,7 +34,7 @@ class UserRegistrationController extends Controller
         return Validator::make($data, [
             'nickname'  => 'required|string|max:255',
             'mail'      => 'required|string|email|max:255|unique:user',
-            'password'  => 'required|string|min:6|confirmed',
+            'password'  => 'required|string|min:4',
         ]);
     }
 
@@ -67,7 +67,7 @@ class UserRegistrationController extends Controller
             $res = $user->userCreate([
                 'nickname' => $nickname,
                 'mail' => $mail,
-                'password' => bcrypt($password),
+                'password' => $password,
             ]);
 
             // Registration successful
