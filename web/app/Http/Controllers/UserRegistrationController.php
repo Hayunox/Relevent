@@ -33,7 +33,7 @@ class UserRegistrationController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nickname'  => 'required|string|max:255',
+            'nickname'  => 'required|string|max:255|unique:user',
             'mail'      => 'required|string|email|max:255|unique:user',
             'password'  => 'required|string|min:4',
         ]);

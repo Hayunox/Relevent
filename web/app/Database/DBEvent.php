@@ -63,13 +63,11 @@ class DBEvent
 
     /**
      * @param $eventArray
-     *
-     * @return int event_id
      */
     public function eventCreate($eventArray)
     {
         // return new event_id
-        return DB::table($this->event_table)
+        DB::table($this->event_table)
             ->insert([
                 $this->table_row['event_user_id']         => $eventArray['event_user_id'],
                 $this->table_row['event_name']            => $eventArray['event_name'],

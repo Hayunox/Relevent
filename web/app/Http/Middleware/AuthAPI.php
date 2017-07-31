@@ -26,7 +26,8 @@ class AuthAPI
             $keyExists = $user->userKeyExists($authorization);
             if ($keyExists) {
                 // user_id
-                return $next($request, $keyExists);
+                $request->user_id = $keyExists;
+                return $next($request);
             } else {
                 // user key is not present in users table
                 return response('API_KEY_ACCESS_DENIED', 401);

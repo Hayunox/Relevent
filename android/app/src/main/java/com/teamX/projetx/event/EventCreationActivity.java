@@ -92,7 +92,7 @@ public class EventCreationActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<String> call, Throwable t) {
                             t.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "Connection failed", Toast.LENGTH_SHORT).show();
+                            errorText.setText(R.string.rest_connection_failed);
                         }
                     });
                 }
