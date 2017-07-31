@@ -10,7 +10,6 @@ import android.support.v4.app.ActivityCompat;
 
 import com.teamX.projetx.R;
 import com.teamX.projetx.user.LoginActivity;
-import com.teamX.projetx.utils.AppPreferences;
 
 public class SplashScreenActivity extends Activity {
 
@@ -48,7 +47,8 @@ public class SplashScreenActivity extends Activity {
                 }catch (Exception e){*/
                     Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(i);
-                /*}*/
+            }
+                //}
 
                 // close this activity
                 finish();
