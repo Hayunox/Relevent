@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Auth\Event;
 
 
-use App\Database\DBEvent;
+use App\Database\Event;
 use App\Http\Middleware\AuthAPI;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Routing\Controller;
@@ -46,7 +46,7 @@ class EventListController extends Controller
     protected function getEventOwnUserList()
     {
         // Event instance
-        $event      = new DBEvent(null);
+        $event      = new Event(null);
 
         $request    = Request::instance();
 

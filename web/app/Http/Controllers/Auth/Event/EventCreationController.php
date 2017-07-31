@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Auth\Event;
 
 
-use App\Database\DBEvent;
+use App\Database\Event;
 use App\Http\Middleware\AuthAPI;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Routing\Controller;
@@ -53,7 +53,7 @@ class EventCreationController extends Controller
     {
 
         // Event instance
-        $event = new DBEvent(null);
+        $event = new Event(null);
 
         // Get params
         $request        = Request::instance();

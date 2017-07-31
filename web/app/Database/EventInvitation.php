@@ -4,7 +4,7 @@ namespace App\Database;
 
 use Illuminate\Support\Facades\DB;
 
-class DBEventInvitation
+class EventInvitation
 {
     private $user_id;
     private $guest_user_id;
