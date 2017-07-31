@@ -48,7 +48,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".event.EventDescriptionActivity" />
         <activity android:name=".event.invitation.EventInvitationActivity" />
-        <activity android:name=".user.contact.ContactInvitationActivity"></activity>
+        <activity android:name=".user.contact.ContactInvitationActivity" />
+        <activity android:name=".user.ProfileUserActivity"></activity>
     </application>
 
 </manifest>
