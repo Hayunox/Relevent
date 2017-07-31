@@ -1,8 +1,6 @@
 services:
   - mysql
 language: php
-env:
-  CODECLIMATE_REPO_TOKEN: f5f012a16b4dabfeff9f2e1484baac76ac38b80e3f1c053fbf5517d1da8d246e
 php:
     - '7.0'
 before_install:
@@ -26,8 +24,9 @@ before_install:
   - sudo service apache2 restart
   
 before_script: 
-    - cd server/
+    - cd web/
     - composer update
 script:
-    - php phpunit.phar
-repo_token: qIapEkNDgw3Gjr4Z23S59PHXjUHONoZVy
+    - php phpunit.phar --coverage-clover ./tests/logs/clover.xml
+after_script:
+    - php vendor/bin/coveralls -v
