@@ -1,9 +1,0 @@
-{
-    "require": {
-        "slim/slim": "^3.0",
-        "usmanhalalit/pixie": "^2.0",
-		"atoum/atoum": "^3.1.0",
-		"atoum/stubs": "*",
-		"lonnieezell/codeigniter-forensics": "*"
-    }
-}
