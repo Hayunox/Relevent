@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Database\User;
@@ -33,6 +34,7 @@ class UserDataController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param string $data
+     *
      * @return array|string
      */
     protected function getDataById(String $data)

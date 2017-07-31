@@ -1,12 +1,12 @@
 <?php
+
 namespace App\Api\Controllers;
 
 use App\Http\Controllers\Controller;
 
-
-class EventInvitationController  extends Controller
+class EventInvitationController extends Controller
 {
-    /**
+    /*
     public function __invoke(Request $request, Response $response)
     {
         $verification = RestServer::getRequiredParams($response, ['new_guest_user_id', 'event_id']);

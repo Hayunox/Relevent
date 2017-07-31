@@ -40,7 +40,7 @@ class User
     }
 
     /**
-     * @param null         $user_data
+     * @param null $user_data
      *
      * @return array
      */
@@ -106,6 +106,7 @@ class User
 
     /**
      * @param $userArray
+     *
      * @return string
      */
     public function userCreate($userArray)
@@ -121,15 +122,18 @@ class User
             $this->table_row['user_mail']               => $userArray['mail'],
             $this->table_row['user_regitration_time']   => time(),
         ]);
+
         return $key;
     }
 
     /**
      * @param $user
+     *
      * @return mixed
-     * TODO : check if unique
+     *               TODO : check if unique
      */
-    private function generateUserKey($user){
+    private function generateUserKey($user)
+    {
         return Hash::make($user.time());
     }
 
@@ -145,7 +149,7 @@ class User
             ->where($this->table_row['user_nickname'], $nickname)
             ->first();
 
-        if($data != null && Crypt::decrypt($data->{$this->table_row['user_password']}) == $password){
+        if ($data != null && Crypt::decrypt($data->{$this->table_row['user_password']}) == $password) {
             return $this->getUserData($data);
         }
 

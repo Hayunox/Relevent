@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Api\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -34,6 +35,7 @@ class UserContactUpdateController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param array $data
+     *
      * @return string
      */
     protected function update(array $data)
@@ -46,14 +48,7 @@ class UserContactUpdateController extends Controller
         //return $user->setContactAcceptation($data['contact_id'], $data['status']);
     }
 
-
-
-
-
-
-
-
-    /**
+    /*
     public function __invoke(Request $request, Response $response)
     {
         $verification = RestServer::getRequiredParams($response, ['new_contact_user_id']);

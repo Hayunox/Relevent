@@ -3,14 +3,9 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserConnectionControllerTest extends TestCase
 {
-    /**
-     *
-     */
     public function testUserLoginWithoutCredentials()
     {
         $response = $this->json('POST', '/api/user/login', []);
@@ -19,9 +14,6 @@ class UserConnectionControllerTest extends TestCase
             ->assertJson(['USER_LOGIN_FAILED']);
     }
 
-    /**
-     *
-     */
     public function testUserLoginWithInvalidCredentials()
     {
         $response = $this->json('POST', '/api/user/login', ['nickname' => 'zzzzzzzz', 'password' => 'zzzzzzzz']);
@@ -30,18 +22,15 @@ class UserConnectionControllerTest extends TestCase
             ->assertJson(['USER_LOGIN_FAILED']);
     }
 
-    /**
-     *
-     */
     public function testUserLoginWithValidCredentials()
     {
         $response = $this->json('POST', '/api/user/login', ['nickname' => 'test', 'password' => 'testPwd']);
         $response
             ->assertStatus(200)
             ->assertJson([
-                "nickname"=> "test",
-                "name" => "",
-                "surname" => "",
-                "mail" => "test"]);
+                'nickname'=> 'test',
+                'name'    => '',
+                'surname' => '',
+                'mail'    => 'test', ]);
     }
 }
