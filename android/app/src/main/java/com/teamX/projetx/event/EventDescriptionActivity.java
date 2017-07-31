@@ -2,7 +2,9 @@ package com.teamX.projetx.event;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,11 +31,17 @@ public class EventDescriptionActivity extends AppCompatActivity {
     private Event eventData;
     private User user;
     private User ownerData;
+    private CollapsingToolbarLayout collapsTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_description);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         /**
          * Get event data
@@ -59,6 +67,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
         this.description    = (TextView) findViewById(R.id.event_description_textView_description);
         this.owner          = (TextView) findViewById(R.id.event_description_textView_owner);
         this.theme          = (TextView) findViewById(R.id.event_description_textView_theme);
+        this.collapsTitle   = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar_event);
 
         /**
          * Set date on interface
@@ -69,6 +78,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
         this.date.append(String.valueOf(this.eventData.getDate()));
         this.description.append(this.eventData.getDescription());
         this.theme.append(this.eventData.getTheme());
+        this.collapsTitle.setTitle(this.eventData.getName());
     }
 
     /**

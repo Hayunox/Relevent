@@ -21,69 +21,89 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="vertical">
+                android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/fragment_events_text_view_user_own_events"
+                <android.support.v4.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="false"
-                    android:layout_alignParentTop="false"
-                    android:background="@android:drawable/title_bar"
-                    android:text="My events"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                    android:layout_height="match_parent">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/fragment_events_user_own_events_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="false"
-                    android:layout_alignParentTop="false"
-                    android:animateLayoutChanges="false"
-                    android:animationCache="false"
-                    android:clipToPadding="false" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/fragment_events_text_view_user_participate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fragment_events_user_no_own_events"
-                    android:background="@android:drawable/title_bar"
-                    android:text="Next events"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                        <TextView
+                            android:id="@+id/fragment_events_text_view_user_own_events"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="false"
+                            android:layout_alignParentTop="false"
+                            android:background="@android:drawable/title_bar"
+                            android:text="My events"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/fragment_events_user_participate_events_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/fragment_events_text_view_user_participate"
-                    android:clipChildren="false" />
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/fragment_events_user_own_events_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="false"
+                            android:layout_alignParentTop="false"
+                            android:animateLayoutChanges="false"
+                            android:animationCache="false"
+                            android:clipToPadding="false" />
 
-                <TextView
-                    android:id="@+id/fragment_events_user_no_own_events"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fragment_events_user_own_events_list"
-                    android:layout_centerHorizontal="true"
-                    android:text="No organized events found"
-                    android:visibility="invisible" />
+                    </LinearLayout>
+                </android.support.v4.widget.NestedScrollView>
 
-                <TextView
-                    android:id="@+id/fragment_events_user_no_participate_events"
+                <android.support.v4.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fragment_events_user_participate_events_list"
-                    android:layout_centerHorizontal="true"
-                    android:text="No event participation found :("
-                    android:visibility="invisible" />
+                    android:layout_height="match_parent">
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/fragment_events_text_view_user_participate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/fragment_events_user_no_own_events"
+                            android:background="@android:drawable/title_bar"
+                            android:text="Next events"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/fragment_events_user_participate_events_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/fragment_events_text_view_user_participate"
+                            android:clipChildren="false" />
+
+                        <TextView
+                            android:id="@+id/fragment_events_user_no_own_events"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/fragment_events_user_own_events_list"
+                            android:layout_centerHorizontal="true"
+                            android:text="No organized events found"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:id="@+id/fragment_events_user_no_participate_events"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/fragment_events_user_participate_events_list"
+                            android:layout_centerHorizontal="true"
+                            android:text="No event participation found :("
+                            android:visibility="invisible" />
+
+                    </LinearLayout>
+                </android.support.v4.widget.NestedScrollView>
             </LinearLayout>
         </ScrollView>
 
