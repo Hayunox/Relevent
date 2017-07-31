@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.teamX.projetx.R;
@@ -20,6 +22,7 @@ import com.teamX.projetx.event.EventCreationActivity;
 import com.teamX.projetx.event.invitation.EventInvitationActivity;
 import com.teamX.projetx.event.invitation.InvitationFragment;
 import com.teamX.projetx.event.event_fragment.EventsFragment;
+import com.teamX.projetx.user.ProfileUserActivity;
 import com.teamX.projetx.user.User;
 import com.teamX.projetx.user.contact.ContactInvitationActivity;
 import com.teamX.projetx.user.contact.ContactsFragment;
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent contactFragmentIntent;
     private Intent invitationFragmentIntent;
     private ViewPagerAdapter adapter;
+    private ImageButton profilepic;
 
     enum MainFragmentsList{
         EVENT_LIST(0),
@@ -58,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         /**
          * Data
@@ -75,12 +81,24 @@ public class MainActivity extends AppCompatActivity {
         this.viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(this.viewPager);
 
+        this.profilepic = (ImageButton) findViewById(R.id.imageButtonUserProfilePic);
+
         this.tabLayout = (TabLayout) findViewById(R.id.tabs);
         this.tabLayout.setupWithViewPager(this.viewPager);
         setupTabIcons();
 
         this.textViewUserNickname = (TextView) findViewById(R.id.main_activity_user_nickname);
         this.textViewUserNickname.setText(this.user.getNickname());
+
+        /**
+         * create profile pic button listener
+         */
+        this.profilepic.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(MainActivity.this, ProfileUserActivity.class));
+             }
+         });
 
         /**
          * Bottom floating action button

@@ -11,3 +11,4 @@ server/.idea/workspace.xml
 server/.idea/vcs.xml
 android/.idea/vcs.xml
 *.der
+android/app/src/main/res/layout/activity_profile.xml
