@@ -3,14 +3,9 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EventInvitationCreationControllerTest extends TestCase
 {
-    /**
-     *
-     */
     public function testEventInvitationCreationWithoutParams()
     {
         $response = $this->json('POST', '/api/event/invit/create', []);
@@ -19,9 +14,6 @@ class EventInvitationCreationControllerTest extends TestCase
             ->assertJson(['']);
     }
 
-    /**
-     *
-     */
     public function testEventInvitationCreationWithValidParams()
     {
         $response = $this->json('POST', '/api/event/invit/create', ['new_guest_user_id' => 2, 'event_id' => 1]);
@@ -30,9 +22,6 @@ class EventInvitationCreationControllerTest extends TestCase
             ->assertJson(['EVENT_INVIT_USER_CREATED_SUCCESSFULLY']);
     }
 
-    /**
-     *
-     */
     public function testEventInvitationCreationWithInvalidNewGuestId()
     {
         $response = $this->json('POST', '/api/event/invit/create', ['new_guest_user_id' => 2, 'event_id' => 1]);

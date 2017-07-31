@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 30/07/2017
- * Time: 11:53
+ * Time: 11:53.
  */
 
 namespace App\Http\Controllers;
@@ -41,6 +41,7 @@ class UserRegistrationController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
+     *
      * @return string
      */
     protected function create()
@@ -49,11 +50,11 @@ class UserRegistrationController extends Controller
         $user = new User(null);
 
         // Get params
-        $request    = Request::instance();
+        $request = Request::instance();
         // DB::connection()->getPdo()->quote
-        $nickname   = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('nickname'));
-        $password   = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('password'));
-        $mail       = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('mail'));
+        $nickname = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('nickname'));
+        $password = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('password'));
+        $mail = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('mail'));
 
         // validating email address
         // TODO : use unique
@@ -68,7 +69,7 @@ class UserRegistrationController extends Controller
         } else {
             $res = $user->userCreate([
                 'nickname' => $nickname,
-                'mail' => $mail,
+                'mail'     => $mail,
                 'password' => $password,
             ]);
 

@@ -3,17 +3,16 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 30/07/2017
- * Time: 11:52
+ * Time: 11:52.
  */
 
 namespace App\Http\Controllers;
 
 use App\Database\User;
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 
-class UserConnectionController  extends Controller
+class UserConnectionController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -40,6 +39,7 @@ class UserConnectionController  extends Controller
 
     /**
      * Create a new user instance after a valid registration.
+     *
      * @return string
      */
     protected function login()
@@ -48,9 +48,9 @@ class UserConnectionController  extends Controller
         $user = new User(null);
 
         // Get params
-        $request    = Request::instance();
-        $nickname   = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('nickname'));
-        $password   = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('password'));
+        $request = Request::instance();
+        $nickname = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('nickname'));
+        $password = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('password'));
 
         // Connection successful
         if (is_array($user_data = $user->tryLogin($nickname, $password))) {
