@@ -6,10 +6,11 @@
  * Time: 11:56
  */
 
-namespace App\Api\Controllers\User\Contact;
+namespace App\Http\Controllers\Auth\User\Contact;
 
+use Illuminate\Routing\Controller;
 
-class UserContactCreationController
+class UserContactCreationController extends Controller
 {
 
 }

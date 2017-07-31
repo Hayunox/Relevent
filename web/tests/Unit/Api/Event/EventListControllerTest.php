@@ -9,12 +9,13 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class EventListControllerTest extends TestCase
 {
     /**
-     * A basic test example.
      *
-     * @return void
      */
-    public function testExample()
+    public function testEventListOwnValidParams()
     {
-        $this->assertTrue(true);
+        $response = $this->json('GET', '/api/event/listOwn', ['id' => 1]);
+        $response
+            ->assertStatus(200)
+            ->assertJson(['description']);
     }
 }

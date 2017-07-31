@@ -9,12 +9,29 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class EventCreationControllerTest extends TestCase
 {
     /**
-     * A basic test example.
      *
-     * @return void
      */
-    public function testExample()
+    public function testEventCreationWithoutParams()
     {
-        $this->assertTrue(true);
+        $response = $this->json('POST', '/api/event/create', []);
+        $response
+            ->assertStatus(400)
+            ->assertJson(['USER_CREATION_FAILED']);
+    }
+
+    /**
+     *
+     */
+    public function testEventCreationWithValidParams()
+    {
+        $response = $this->json('POST', '/api/event/create', [
+            'name' => 'event test name',
+            'date' => 1555555,
+            'description' => 'test description',
+            'address' => 'test address',
+            'theme' => 'test theme']);
+        $response
+            ->assertStatus(200)
+            ->assertJson(['EVENT_CREATED_SUCCESSFULLY']);
     }
 }
