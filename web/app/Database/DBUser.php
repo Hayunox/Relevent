@@ -117,7 +117,7 @@ class DBUser
             $this->table_row['user_nickname']           => $userArray['nickname'],
             $this->table_row['user_name']               => '',
             $this->table_row['user_surname']            => '',
-            $this->table_row['user_password']           => encrypt($userArray['password']),
+            $this->table_row['user_password']           => Crypt::encrypt($userArray['password']),
             $this->table_row['user_mail']               => $userArray['mail'],
             $this->table_row['user_regitration_time']   => time(),
         ]);
@@ -145,8 +145,7 @@ class DBUser
             ->where($this->table_row['user_nickname'], $nickname)
             ->first();
 
-        echo decrypt($data->{$this->table_row['user_password']})." and ".$password;
-        if(decrypt($data->{$this->table_row['user_password']}) == $password){
+        if(Crypt::decrypt($data->{$this->table_row['user_password']}) == $password){
             return $this->getUserData($data);
         }
 

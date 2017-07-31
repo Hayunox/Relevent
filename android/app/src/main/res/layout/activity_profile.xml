@@ -36,6 +36,7 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarUserProfile"
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="?attr/actionBarSize"
                 android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
                 android:title="@string/choose_a_theme"
@@ -44,9 +45,90 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             </android.support.v7.widget.Toolbar>
+=======
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.80"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton37"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@android:drawable/ic_menu_edit" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.80"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton22"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@android:drawable/ic_menu_edit" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.80"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton89"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@android:drawable/ic_menu_edit" />
+                </LinearLayout>
+>>>>>>> 3a098f6923cc4d3084b6cc6d85c3c823a6f2f2cf
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
+<<<<<<< HEAD
 
     </android.support.design.widget.AppBarLayout>
 
@@ -55,6 +137,105 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+=======
+                    <TextView
+                        android:id="@+id/textView78"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.80"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton54"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@android:drawable/ic_menu_edit" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.80"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton2"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@android:drawable/ic_menu_edit" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.80"
+                        android:gravity="center"
+                        android:text="TextView" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton5"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@android:drawable/ic_menu_edit" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.80"
+                        android:gravity="center"
+                        android:text="TextView"
+                        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton3"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        app:srcCompat="@android:drawable/ic_menu_edit" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+>>>>>>> 3a098f6923cc4d3084b6cc6d85c3c823a6f2f2cf
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -33,7 +33,7 @@ class UserConnectionController  extends Controller
     {
         return Validator::make($data, [
             'nickname' => 'required|string|max:255',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:4',
         ]);
     }
 
