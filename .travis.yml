@@ -9,7 +9,7 @@ before_install:
   - sudo apt-get update
   
   # database
-  - mysql -u root < server/database/SQL/projetx.sql
+  - mysql -u root < web/database/database/projetx.sql
   
   # apache server 
   - sudo apt-get install apache2 libapache2-mod-fastcgi
