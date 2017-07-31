@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 31/07/2017
- * Time: 21:37
+ * Time: 21:37.
  */
 
 namespace App\Http\Controllers\Auth\Event;
-
 
 use App\Database\Event;
 use App\Http\Middleware\AuthAPI;
@@ -41,14 +40,15 @@ class EventListController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
+     *
      * @return array|string
      */
     protected function getEventOwnUserList()
     {
         // Event instance
-        $event      = new Event(null);
+        $event = new Event(null);
 
-        $request    = Request::instance();
+        $request = Request::instance();
 
         return response()->json(json_encode($event->eventUserList($request->user_id)), 200);
     }

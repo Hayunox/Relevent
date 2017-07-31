@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Paul
  * Date: 30/07/2017
- * Time: 11:57
+ * Time: 11:57.
  */
 
 namespace App\Http\Controllers\Auth\User\Contact;
@@ -25,9 +25,10 @@ class UserContactDataController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param array $data
+     *
      * @return array|string
      */
-    protected function getContact(Array $data)
+    protected function getContact(array $data)
     {
         // UserContact instance
         $contact = new DBUserContact($data);

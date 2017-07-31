@@ -7,11 +7,12 @@ use Closure;
 
 class AuthAPI
 {
-
     /**
      * Handle an incoming request.
+     *
      * @param \Illuminate\Http\Request $request
-     * @param Closure $next
+     * @param Closure                  $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -27,6 +28,7 @@ class AuthAPI
             if ($keyExists) {
                 // user_id
                 $request->user_id = $keyExists;
+
                 return $next($request);
             } else {
                 // user key is not present in users table

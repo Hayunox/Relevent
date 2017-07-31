@@ -7,9 +7,6 @@ use Tests\TestCase;
 
 class UserContactUpdateControllerTest extends TestCase
 {
-    /**
-     *
-     */
     public function testUserContactUpdateAcceptWithValidParams()
     {
         $response = $this->json('POST', '/api/user/contact/update', ['contact_id' => 1, 'status' => UserContactAcceptation::Accepted]);
@@ -18,9 +15,6 @@ class UserContactUpdateControllerTest extends TestCase
             ->assertJson(['USER_CONTACT_CHANGED_SUCCESSFULLY']);
     }
 
-    /**
-     *
-     */
     public function testUserContactUpdateRefuseWithValidParams()
     {
         $response = $this->json('POST', '/api/user/contact/update', ['contact_id' => 1, 'status' => UserContactAcceptation::Refused]);

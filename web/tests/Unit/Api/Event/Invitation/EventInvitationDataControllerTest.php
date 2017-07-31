@@ -3,14 +3,9 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EventInvitationDataControllerTest extends TestCase
 {
-    /**
-     *
-     */
     public function testUserContactUpdateAcceptWithValidParams()
     {
         $response = $this->json('POST', '/api/event/invit/update', ['event_id' => 1, 'status' => EventInvitationAcceptation::Accepted]);
@@ -19,9 +14,6 @@ class EventInvitationDataControllerTest extends TestCase
             ->assertJson(['EVENT_INVIT_USER_CHANGED_SUCCESSFULLY']);
     }
 
-    /**
-     *
-     */
     public function testUserContactUpdateRefuseWithValidParams()
     {
         $response = $this->json('POST', '/api/event/invit/update', ['event_id' => 1, 'status' => EventInvitationAcceptation::Refused]);
