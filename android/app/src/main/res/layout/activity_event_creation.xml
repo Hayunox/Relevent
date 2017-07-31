@@ -54,7 +54,7 @@
                     android:backgroundTintMode="add"
                     android:ems="10"
                     android:hint="Choose a name"
-                    android:inputType="textShortMessage"
+                    android:inputType="textLongMessage"
                     android:singleLine="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:theme="@android:style/Theme.Translucent" />
@@ -128,7 +128,7 @@
                     android:backgroundTint="@android:color/black"
                     android:backgroundTintMode="add"
                     android:hint="Describe your event"
-                    android:inputType="textLongMessage"
+                    android:inputType="textMultiLine"
                     android:paddingBottom="100dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:theme="@android:style/Theme.Translucent" />
