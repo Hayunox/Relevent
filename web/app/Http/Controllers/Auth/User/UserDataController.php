@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Database\DBUser;
+use App\Database\User;
 use App\Http\Middleware\AuthAPI;
 use Illuminate\Contracts\Validation\Validator;
 
@@ -38,7 +38,7 @@ class UserDataController extends Controller
     protected function getDataById(String $data)
     {
         // User instance
-        $user = new DBUser((int) $data);
+        $user = new User((int) $data);
 
         return $user->getUserData();
     }

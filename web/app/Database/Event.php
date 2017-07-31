@@ -4,7 +4,7 @@ namespace App\Database;
 
 use Illuminate\Support\Facades\DB;
 
-class DBEvent
+class Event
 {
     public $event_id;
     private $event_user_id;
@@ -31,7 +31,7 @@ class DBEvent
     ];
 
     /**
-     * DBEvent constructor.
+     * Event constructor.
      *
      * @param $event_id
      */

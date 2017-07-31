@@ -4,13 +4,13 @@ namespace web\tests\Unit\Database;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
 require_once __DIR__.'/../../../database/DBConnection.php';
-require_once __DIR__.'/../../../database/DBEvent.php';
+require_once __DIR__.'/../../../database/Eventhp';
 
 use server\database\DBConnection as ConnectionToDatabase;
 use server\tests\units\UnitTestRestServerSlimTest;
 
 /*
- * Test class for DBEvent
+ * Test class for Event
  */
 
 class DBEvent extends UnitTestRestServerSlimTest

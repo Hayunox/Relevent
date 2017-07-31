@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class DBUser
+class User
 {
     public $user_id;
     private $user_nickname;
@@ -30,7 +30,7 @@ class DBUser
     ];
 
     /**
-     * DBUser constructor.
+     * User constructor.
      *
      * @param $user_id
      */

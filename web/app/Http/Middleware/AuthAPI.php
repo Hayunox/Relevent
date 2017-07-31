@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Database\DBUser;
+use App\Database\User;
 use Closure;
 
 class AuthAPI
@@ -20,7 +20,7 @@ class AuthAPI
         $authorization = $_SERVER['HTTP_AUTHORIZATION'];
 
         if (isset($authorization)) {
-            $user = new DBUser(null);
+            $user = new User(null);
 
             // validating user key
             $keyExists = $user->userKeyExists($authorization);

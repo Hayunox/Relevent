@@ -4,7 +4,7 @@ namespace web\tests\Unit\Database;
 
 require_once __DIR__.'/../UnitTestRestServerUtil.php';
 require_once __DIR__.'/../../../database/DBConnection.php';
-require_once __DIR__.'/../../../database/DBUserContact.php';
+require_once __DIR__.'/../../../database/UserContact.php';
 
 use server\database\DBConnection as ConnectionToDatabase;
 use server\database\UserContactAcceptation;

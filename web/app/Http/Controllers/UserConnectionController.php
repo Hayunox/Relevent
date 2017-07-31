@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Database\DBUser;
+use App\Database\User;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
@@ -45,7 +45,7 @@ class UserConnectionController  extends Controller
     protected function login()
     {
         // User instance
-        $user = new DBUser(null);
+        $user = new User(null);
 
         // Get params
         $request    = Request::instance();

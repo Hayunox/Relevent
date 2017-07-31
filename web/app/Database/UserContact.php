@@ -4,7 +4,7 @@ namespace App\Database;
 
 use Illuminate\Support\Facades\DB;
 
-class DBUserContact
+class UserContact
 {
     private $user_id;
     private $new_contact_user_id;
