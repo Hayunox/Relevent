@@ -59,11 +59,11 @@ class UserRegistrationController extends Controller
         // validating email address
         // TODO : use unique
         if ($user->userMailExists($mail)) {
-            return response()->json('USER_MAIL_EXISTS', 400);
+            return response()->json(['USER_MAIL_EXISTS'], 400);
 
         // validating nickname
         } elseif ($user->userNickNameExists($nickname)) {
-            return response()->json('USER_NICKNAME_EXISTS', 400);
+            return response()->json(['USER_NICKNAME_EXISTS'], 400);
 
         // User validated
         } else {
@@ -75,11 +75,11 @@ class UserRegistrationController extends Controller
 
             // Registration successful
             if ($res != null) {
-                return response()->json('USER_CREATED_SUCCESSFULLY', 200);
+                return response()->json(['USER_CREATED_SUCCESSFULLY'], 200);
 
                 // Registration failed
             } else {
-                return response()->json('USER_CREATE_FAILED', 400);
+                return response()->json(['USER_CREATE_FAILED'], 400);
             }
         }
     }

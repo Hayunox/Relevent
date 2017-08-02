@@ -6,19 +6,11 @@ use Tests\TestCase;
 
 class EventInvitationDataControllerTest extends TestCase
 {
-    public function testUserContactUpdateAcceptWithValidParams()
+    public function testEventInvitationByIdValidParams()
     {
-        $response = $this->json('POST', '/api/event/invit/update', ['event_id' => 1, 'status' => EventInvitationAcceptation::Accepted]);
+        $response = $this->json('GET', '/api/event/getInvit', ['id' => 1], ['HTTP_Authorization' => 1]);
         $response
             ->assertStatus(200)
-            ->assertJson(['EVENT_INVIT_USER_CHANGED_SUCCESSFULLY']);
-    }
-
-    public function testUserContactUpdateRefuseWithValidParams()
-    {
-        $response = $this->json('POST', '/api/event/invit/update', ['event_id' => 1, 'status' => EventInvitationAcceptation::Refused]);
-        $response
-            ->assertStatus(400)
-            ->assertJson(['EVENT_INVIT_USER_CHANGED_SUCCESSFULLY']);
+            ->assertJson(['description']);
     }
 }

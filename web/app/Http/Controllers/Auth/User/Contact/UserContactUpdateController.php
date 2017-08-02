@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\Controllers;
+namespace App\Http\Controllers\Auth\User\Contact;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Validation\Validator;

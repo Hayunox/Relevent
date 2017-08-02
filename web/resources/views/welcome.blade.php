@@ -71,8 +71,10 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <!--{{ route('login') }}-->
+                        <a href="">Login</a>
+                        <!--{{ route('register') }}-->
+                        <a href="">Register</a>
                     @endauth
                 </div>
             @endif
@@ -83,7 +85,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="">In development...</a>
+                    <a href="">Alpha en développement...</a>
+                    <a href="https://github.com/Herklos/ProjetX">Accès anticipé</a>
                     <a href="https://github.com/Herklos/ProjetX">GitHub</a>
                 </div>
             </div>

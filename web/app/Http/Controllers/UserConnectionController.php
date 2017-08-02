@@ -58,7 +58,7 @@ class UserConnectionController extends Controller
 
         // Connection failed
         } else {
-            return response()->json('USER_LOGIN_FAILED', 400);
+            return response()->json(['USER_LOGIN_FAILED'], 400);
         }
     }
 }

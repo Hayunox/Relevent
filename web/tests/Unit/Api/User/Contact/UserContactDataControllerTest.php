@@ -6,13 +6,11 @@ use Tests\TestCase;
 
 class UserContactDataControllerTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function testUserContactByIdValidParams()
     {
-        $this->assertTrue(true);
+        $response = $this->json('GET', '/api/user/contact/getContact', ['id' => 1], ['HTTP_Authorization' => 1]);
+        $response
+            ->assertStatus(200)
+            ->assertJson(['description']);
     }
 }

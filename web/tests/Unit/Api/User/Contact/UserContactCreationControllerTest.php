@@ -8,7 +8,7 @@ class UserContactCreationControllerTest extends TestCase
 {
     public function testUserContactCreationWithoutParams()
     {
-        $response = $this->json('POST', '/api/user/contact/create', []);
+        $response = $this->json('POST', '/api/user/contact/create', [], ['HTTP_Authorization' => 1]);
         $response
             ->assertStatus(400)
             ->assertJson(['']);
@@ -16,7 +16,7 @@ class UserContactCreationControllerTest extends TestCase
 
     public function testUserContactCreationWithValidParams()
     {
-        $response = $this->json('POST', '/api/user/contact/create', ['new_contact_user_id' => 10]);
+        $response = $this->json('POST', '/api/user/contact/create', ['new_contact_user_id' => 10], ['HTTP_Authorization' => 1]);
         $response
             ->assertStatus(200)
             ->assertJson(['USER_CONTACT_CREATED_SUCCESSFULLY']);
@@ -24,7 +24,7 @@ class UserContactCreationControllerTest extends TestCase
 
     public function testUserContactCreationWithInvalidNewContactId()
     {
-        $response = $this->json('POST', '/api/user/contact/create', ['new_contact_user_id' => 10]);
+        $response = $this->json('POST', '/api/user/contact/create', ['new_contact_user_id' => 10], ['HTTP_Authorization' => 1]);
         $response
             ->assertStatus(400)
             ->assertJson(['USER_CONTACT_EXISTS']);
