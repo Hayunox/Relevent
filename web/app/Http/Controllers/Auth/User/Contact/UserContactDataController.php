@@ -26,7 +26,7 @@ class UserContactDataController extends Controller
      * Create a new user instance after a valid registration.
      * @return array|string
      */
-    protected function getContact()
+    protected function getUserContactList()
     {
         // Get params
         $request = Request::instance();

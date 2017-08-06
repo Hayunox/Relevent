@@ -33,12 +33,9 @@ class UserContactUpdateController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * @param array $data
-     *
      * @return string
      */
-    protected function update(array $data)
+    protected function update()
     {
         // Get params
         $request = Request::instance();

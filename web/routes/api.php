@@ -20,8 +20,8 @@ Route::group(['middleware' => ['api']], function () {
     Route::get('/event/listOwn', 'Auth\Event\EventListController@getEventOwnUserList');
 
     // Event Invitation
-    Route::post('/event/invit/create', 'Auth\User\EventInvitationCreationController@create');
-    Route::post('/event/invit/update', 'Auth\User\EventInvitationUpdateController@update');
+    Route::post('/event/invit/create', 'Auth\Event\EventInvitationCreationController@create');
+    Route::post('/event/invit/update', 'Auth\Event\EventInvitationUpdateController@update');
     Route::get('/event/getInvit', 'Auth\User\EventInvitationDataController@getUserInvitList');
 
     // User Contact'
@@ -30,11 +30,7 @@ Route::group(['middleware' => ['api']], function () {
     Route::get('/user/contact/getContact', 'Auth\User\Contact\UserContactDataController@getUserContactList');
 
     // User
-    Route::get('/user/getDataById/{id}', 'Auth\User\UserDataController@getDataById');
-});
-
-Route::group(['middleware' => ['api']], function () {
-    // User
     Route::post('/user/register', 'UserRegistrationController@create');
     Route::post('/user/login', 'UserConnectionController@login');
+    Route::get('/user/getDataById/{id}', 'Auth\User\UserDataController@getDataById');
 });
