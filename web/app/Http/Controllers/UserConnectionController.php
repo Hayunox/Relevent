@@ -9,11 +9,11 @@
 namespace App\Http\Controllers;
 
 use App\Database\User;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Request;
 
 class UserConnectionController extends Controller
 {
+
     /**
      * Create a new controller instance.
      */
@@ -26,12 +26,11 @@ class UserConnectionController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param array $data
-     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return $this->getValidationFactory()->make($data, [
             'nickname' => 'required|string|max:255',
             'password' => 'required|string|min:4',
         ]);
@@ -44,21 +43,22 @@ class UserConnectionController extends Controller
      */
     protected function login()
     {
-        // User instance
-        $user = new User(null);
-
         // Get params
         $request = Request::instance();
-        $nickname = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('nickname'));
-        $password = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('password'));
 
-        // Connection successful
-        if (is_array($user_data = $user->tryLogin($nickname, $password))) {
-            return response()->json($user_data, 200);
+        if(!$this->validator($request->all())->fails()) {
+            // User instance
+            $user = new User(null);
 
-        // Connection failed
-        } else {
-            return response()->json(['USER_LOGIN_FAILED'], 400);
+            $nickname = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('nickname'));
+            $password = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('password'));
+
+            // Connection successful
+            if (is_array($user_data = $user->tryLogin($nickname, $password))) {
+                return response()->json($user_data, 200);
+            }
         }
+        // Connection failed
+        return response()->json(['USER_LOGIN_FAILED'], 400);
     }
 }

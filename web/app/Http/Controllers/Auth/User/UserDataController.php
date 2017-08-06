@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Database\User;
 use App\Http\Middleware\AuthAPI;
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Request;
 
 class UserDataController extends Controller
 {
@@ -17,31 +17,17 @@ class UserDataController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'id' => 'required|integer|max:12',
-        ]);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
-     *
-     * @param string $data
-     *
      * @return array|string
      */
-    protected function getDataById(String $data)
+    protected function getUserInvitList()
     {
-        // User instance
-        $user = new User((int) $data);
+        // Get params
+        $request = Request::instance();
 
-        return $user->getUserData();
+        // User instance
+        $user = new User($request->user_id);
+
+        return response()->json($user->getUserData(), 200);
     }
 }

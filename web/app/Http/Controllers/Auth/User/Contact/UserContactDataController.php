@@ -8,8 +8,9 @@
 
 namespace App\Http\Controllers\Auth\User\Contact;
 
-use App\Database\DBUserContact;
+use App\Database\UserContact;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 
 class UserContactDataController extends Controller
 {
@@ -23,16 +24,16 @@ class UserContactDataController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * @param array $data
-     *
      * @return array|string
      */
-    protected function getContact(array $data)
+    protected function getContact()
     {
-        // UserContact instance
-        $contact = new DBUserContact($data);
+        // Get params
+        $request = Request::instance();
 
-        return $contact->getUserContacts();
+        // User instance
+        $contact = new UserContact($request->user_id);
+
+        return response()->json($contact->getUserContacts(), 200);
     }
 }

@@ -25,7 +25,7 @@ class UserContactUpdateController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return $this->getValidationFactory()->make($data, [
             'contact_id'    => 'required|integer|max:12',
             'status'        => 'required|integer|max:2',
         ]);

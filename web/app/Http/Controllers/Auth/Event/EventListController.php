@@ -33,7 +33,7 @@ class EventListController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return $this->getValidationFactory()->make($data, [
             'id' => 'required|integer|max:12',
         ]);
     }
@@ -50,6 +50,10 @@ class EventListController extends Controller
 
         $request = Request::instance();
 
-        return response()->json(json_encode($event->eventUserList($request->user_id)), 200);
+        if(!$this->validator($request->all())->fails()) {
+            return response()->json(json_encode($event->eventUserList($request->user_id)), 200);
+        }
+
+        return response()->json('EVENT_LIST_FAILED', 400);
     }
 }

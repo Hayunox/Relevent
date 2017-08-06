@@ -33,7 +33,7 @@ class EventCreationController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return $this->getValidationFactory()->make($data, [
             'name'            => 'required|string|max:255',
             'description'     => 'required|string|max:512',
             'date'            => 'required|integer',
@@ -57,24 +57,28 @@ class EventCreationController extends Controller
 
         // Get params
         $request = Request::instance();
-        // DB::connection()->getPdo()->quote
-        $name = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('name'));
-        $date = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('date'));
-        $description = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('description'));
-        $address = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('address'));
-        $theme = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('theme'));
 
-        $event->eventCreate([
-            'event_user_id'             => $request->user_id,
-            'event_name'                => $name,
-            'event_description'         => $description,
-            'event_date'                => $date,
-            'event_address'             => $address,
-            'event_theme'               => $theme,
-            'event_secret'              => 0,
-        ]);
+        if(!$this->validator($request->all())->fails()) {
+            // DB::connection()->getPdo()->quote
+            $name = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('name'));
+            $date = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('date'));
+            $description = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('description'));
+            $address = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('address'));
+            $theme = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('theme'));
 
-        return response()->json('EVENT_CREATED_SUCCESSFULLY', 200);
-        //return response()->json('EVENT_CREATE_FAILED', 400);
+            $event->eventCreate([
+                'event_user_id' => $request->user_id,
+                'event_name' => $name,
+                'event_description' => $description,
+                'event_date' => $date,
+                'event_address' => $address,
+                'event_theme' => $theme,
+                'event_secret' => 0,
+            ]);
+
+            return response()->json('EVENT_CREATED_SUCCESSFULLY', 200);
+        }
+
+        return response()->json('EVENT_CREATE_FAILED', 400);
     }
 }
