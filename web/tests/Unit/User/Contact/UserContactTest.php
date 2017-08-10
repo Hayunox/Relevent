@@ -20,10 +20,10 @@ class UserContactTest extends TestCase
         $this->test_new_contact_user_id = 2;
 
         // creation of a new instance of the tested class
-        $this->contact = new UserContact($this->test_contact_user_id;
+        $this->contact = new UserContact($this->test_contact_user_id);
 
         // test contact not exists
-        $this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id));
+        $this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id);
         $this->assertInternalType("bool", $this->test_contact_result);
         $this->assertEquals(false, $this->test_contact_result);
 
@@ -41,21 +41,21 @@ class UserContactTest extends TestCase
         $this->contact->setContactAcceptation($this->test_new_contact_user_id, UserContactAcceptation::Accepted);
 
         // test contact status
-        ->given($this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id))
-        ->integer((int) $this->test_contact_result)
-        ->isEqualTo(UserContactAcceptation::Accepted)
+        $this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id);
+        $this->assertInternalType("int", $this->test_contact_result);
+        $this->assertEquals(UserContactAcceptation::Accepted, $this->test_contact_result);
 
         // get user contacts
-        ->array($this->contact->getUserContacts())
-        ->hasSize(1)
-        ->hasKey(0)
+        $this->test_contact_result = $this->contact->getUserContacts();
+        $this->assertInternalType("array", $this->test_contact_result);
+        $this->assertArrayHasKey("0", $this->test_contact_result);
 
         // set invitation refused
-        ->given($this->contact->setContactAcceptation($this->test_new_contact_user_id, UserContactAcceptation::Refused))
+        $this->test_new_contact_user_id =  $this->contact->setContactAcceptation($this->test_new_contact_user_id, UserContactAcceptation::Refused);
 
         // test contact status
-        ->given($this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id))
-        ->integer((int) $this->test_contact_result)
-        ->isEqualTo(UserContactAcceptation::Refused);
+        $this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id);
+        $this->assertInternalType("int", $this->test_contact_result);
+        $this->assertEquals(UserContactAcceptation::Refused, $this->test_contact_result);
     }
 }
