@@ -89,10 +89,10 @@ class UserContact
         foreach ($data as $contact){
             // set data
             $this->id                   = $contact->{$this->table_row['contact_id']};
-            $this->new_contact_user_id  = $contact->{$this->table_row['new_contact_user_id']};
-            $this->time                 = $contact->{$this->table_row['time']};
-            $this->status_time          = $contact->{$this->table_row['status_time']};
-            $this->status               = $contact->{$this->table_row['status']};
+            $this->new_contact_user_id  = $contact->{$this->table_row['contact_new_contact_user_id']};
+            $this->time                 = $contact->{$this->table_row['contact_time']};
+            $this->status_time          = $contact->{$this->table_row['contact_status_time']};
+            $this->status               = $contact->{$this->table_row['contact_status']};
 
             array_push($contactArray, $this->userContactDbToArray());
         }

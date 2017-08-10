@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 class EventInvitation
 {
     private $id;
+    private $user_id;
     private $guest_user_id;
     private $time;
     private $status_time;
@@ -86,7 +87,8 @@ class EventInvitation
         foreach ($data as $invitation){
             // set data
             $this->id                   = $invitation->{$this->table_row['invit_id']};
-            $this->guest_user_id        = $invitation->{$this->table_row['guest_user_id']};
+            $this->user_id              = $invitation->{$this->table_row['invit_user_id']};
+            $this->guest_user_id        = $invitation->{$this->table_row['invit_guest_user_id']};
             $this->time                 = $invitation->{$this->table_row['time']};
             $this->status_time          = $invitation->{$this->table_row['status_time']};
             $this->status               = $invitation->{$this->table_row['status']};
@@ -118,6 +120,7 @@ class EventInvitation
     {
         return [
             'id'                    => $this->id,
+            'user_id'               => $this->user_id,
             'guest_user_id'         => $this->guest_user_id,
             'time'                  => $this->time,
             'status_time'           => $this->status_time,
