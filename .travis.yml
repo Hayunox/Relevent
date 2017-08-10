@@ -27,6 +27,6 @@ before_script:
     - cd web/
     - composer update
 script:
-    - php phpunit.phar --coverage-clover ./tests/logs/clover.xml
+    - php phpunit.phar --coverage-clover build/logs/clover.xml
 after_script:
     - php vendor/bin/coveralls -v
