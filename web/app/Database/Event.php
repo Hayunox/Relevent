@@ -56,9 +56,8 @@ class Event
             $this->event_date = $event_data->{$this->table_row['event_date']};
             $this->event_theme = $event_data->{$this->table_row['event_theme']};
             $this->event_secret = $event_data->{$this->table_row['event_secret']};
-
-            return $this->eventDbToArray();
         }
+        return $this->eventDbToArray();
     }
 
     /**
@@ -67,7 +66,7 @@ class Event
     public function eventCreate($eventArray)
     {
         // return new event_id
-        $event = DB::table($this->event_table)
+        DB::table($this->event_table)
             ->insert([
                 $this->table_row['event_user_id']         => $eventArray['event_user_id'],
                 $this->table_row['event_name']            => $eventArray['event_name'],
@@ -78,8 +77,6 @@ class Event
                 $this->table_row['event_secret']          => $eventArray['event_secret'],
                 $this->table_row['event_creation_time']   => time(),
             ]);
-
-        return $event->{$this->table_row['event_id']};
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserContact
 {
-    private $user_id;
+    private $id;
     private $new_contact_user_id;
     private $time;
     private $status_time;
@@ -86,7 +86,7 @@ class UserContact
             ->get();
 
         // set data
-        $this->user_id              = $data->{$this->table_row['user_id']};
+        $this->id                   = $data->{$this->table_row['contact_id']};
         $this->new_contact_user_id  = $data->{$this->table_row['new_contact_user_id']};
         $this->time                 = $data->{$this->table_row['time']};
         $this->status_time          = $data->{$this->table_row['status_time']};
@@ -123,7 +123,7 @@ class UserContact
     public function userContactDbToArray()
     {
         return [
-            'user_id'               => $this->user_id,
+            'id'                    => $this->id,
             'new_contact_user_id'   => $this->new_contact_user_id,
             'time'                  => $this->time,
             'status_time'           => $this->status_time,

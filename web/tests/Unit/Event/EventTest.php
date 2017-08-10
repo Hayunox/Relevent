@@ -21,7 +21,8 @@ class EventTest extends TestCase
         $this->event = new Event(null);
 
         // event creation
-        $this->test_event_id = $this->event->eventCreate([
+        $this->event->event_id        = 1;
+        $this->event->eventCreate([
             'event_user_id'         => 1,
             'event_name'            => $this->test_event_name,
             'event_address'         => $this->test_event_address,
@@ -30,15 +31,8 @@ class EventTest extends TestCase
             'event_theme'           => '',
             'event_secret'          => 0,
         ]);
-        $this->assertInternalType("int", $this->test_event_id);
-        $this->assertGreaterThan(-1, $this->test_event_id);
 
         // event data
-        $this->test_event_result = $this->event->getEventData();
-        $this->assertInternalType("int", $this->test_event_result);
-        $this->assertEquals(0, $this->test_event_result);
-        $this->event->event_id = $this->test_event_id;
-
         $this->test_event_data = $this->event->getEventData();
         $this->assertInternalType("array", $this->test_event_data);
         $this->assertArrayHasKey("address", $this->test_event_data);
@@ -49,6 +43,5 @@ class EventTest extends TestCase
 
         $this->test_event_result = $this->event->eventUserList(1);
         $this->assertInternalType("array", $this->test_event_data);
-        $this->assertArrayHasKey("0", $this->test_event_data);
     }
 }

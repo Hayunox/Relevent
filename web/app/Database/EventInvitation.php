@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class EventInvitation
 {
-    private $user_id;
+    private $id;
     private $guest_user_id;
     private $time;
     private $status_time;
@@ -83,7 +83,7 @@ class EventInvitation
             ->get();
 
         // set data
-        $this->user_id              = $data->{$this->table_row['user_id']};
+        $this->id                   = $data->{$this->table_row['invit_id']};
         $this->guest_user_id        = $data->{$this->table_row['guest_user_id']};
         $this->time                 = $data->{$this->table_row['time']};
         $this->status_time          = $data->{$this->table_row['status_time']};
@@ -112,7 +112,7 @@ class EventInvitation
     public function eventInvitationDbToArray()
     {
         return [
-            'user_id'               => $this->user_id,
+            'id'                    => $this->id,
             'guest_user_id'         => $this->guest_user_id,
             'time'                  => $this->time,
             'status_time'           => $this->status_time,
