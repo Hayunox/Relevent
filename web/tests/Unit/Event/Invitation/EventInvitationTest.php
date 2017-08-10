@@ -31,8 +31,8 @@ class EventInvitationTest extends TestCase
 
         // contact creation
         $this->invit_id = $this->eventInvitation->createInvitation($this->test_guest_user_id);
-        $this->assertInternalType("int", $this->invit_id);
-        $this->assertGreaterThan(-1, $this->invit_id);
+        $this->assertInternalType("boolean", $this->invit_id);
+        $this->assertEquals(true, $this->invit_id);
 
         // test invited exists
         $this->test_invit_result = $this->eventInvitation->isInvited($this->test_guest_user_id);

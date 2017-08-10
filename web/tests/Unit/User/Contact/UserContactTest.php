@@ -29,8 +29,8 @@ class UserContactTest extends TestCase
 
         // contact creation
         $this->test_contact_id = $this->contact->createContact($this->test_new_contact_user_id);
-        $this->assertInternalType("int", $this->test_contact_id);
-        $this->assertGreaterThan(-1, $this->test_contact_id);
+        $this->assertInternalType("boolean", $this->test_contact_id);
+        $this->assertEquals(true, $this->test_contact_id);
 
         // test contact exists
         $this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id);

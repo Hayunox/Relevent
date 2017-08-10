@@ -73,14 +73,24 @@ class EventInvitation
     }
 
     /**
-     * @return null|\stdClass
+     * @return array
      */
     public function getUserInvited()
     {
-        return DB::table($this->event_invitation_table)
+        $data = DB::table($this->event_invitation_table)
             ->where($this->table_row['invit_status'], EventInvitationAcceptation::Accepted)
             ->where($this->table_row['invit_guest_user_id'], $this->user_id)
             ->get();
+
+        // set data
+        $this->user_id              = $data->{$this->table_row['user_id']};
+        $this->guest_user_id        = $data->{$this->table_row['guest_user_id']};
+        $this->time                 = $data->{$this->table_row['time']};
+        $this->status_time          = $data->{$this->table_row['status_time']};
+        $this->status               = $data->{$this->table_row['status']};
+        $this->event_id             = $data->{$this->table_row['event_id']};
+
+        return $this->eventInvitationDbToArray();
     }
 
     /**
@@ -94,6 +104,21 @@ class EventInvitation
                 $this->table_row['invit_status']      => $status,
                 $this->table_row['invit_status_time'] => time(),
             ]);
+    }
+
+    /**
+     * @return array
+     */
+    public function eventInvitationDbToArray()
+    {
+        return [
+            'user_id'               => $this->user_id,
+            'guest_user_id'         => $this->guest_user_id,
+            'time'                  => $this->time,
+            'status_time'           => $this->status_time,
+            'status'                => $this->status,
+            'event_id'              => $this->event_id,
+        ];
     }
 }
 

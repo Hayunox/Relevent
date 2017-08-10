@@ -67,7 +67,7 @@ class Event
     public function eventCreate($eventArray)
     {
         // return new event_id
-        DB::table($this->event_table)
+        $event = DB::table($this->event_table)
             ->insert([
                 $this->table_row['event_user_id']         => $eventArray['event_user_id'],
                 $this->table_row['event_name']            => $eventArray['event_name'],
@@ -78,6 +78,8 @@ class Event
                 $this->table_row['event_secret']          => $eventArray['event_secret'],
                 $this->table_row['event_creation_time']   => time(),
             ]);
+
+        return $event->{$this->table_row['event_id']};
     }
 
     /**
