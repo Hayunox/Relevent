@@ -79,20 +79,25 @@ class UserContact
      */
     public function getUserContacts()
     {
+        $contactArray = array();
         $data = DB::table($this->user_contact_table)
             ->where($this->table_row['contact_status'], UserContactAcceptation::Accepted)
             ->where($this->table_row['contact_user_id'], $this->user_id)
             ->orWhere($this->table_row['contact_new_contact_user_id'], $this->user_id)
             ->get();
 
-        // set data
-        $this->id                   = $data->{$this->table_row['contact_id']};
-        $this->new_contact_user_id  = $data->{$this->table_row['new_contact_user_id']};
-        $this->time                 = $data->{$this->table_row['time']};
-        $this->status_time          = $data->{$this->table_row['status_time']};
-        $this->status               = $data->{$this->table_row['status']};
+        foreach ($data as $contact){
+            // set data
+            $this->id                   = $contact->{$this->table_row['contact_id']};
+            $this->new_contact_user_id  = $contact->{$this->table_row['new_contact_user_id']};
+            $this->time                 = $contact->{$this->table_row['time']};
+            $this->status_time          = $contact->{$this->table_row['status_time']};
+            $this->status               = $contact->{$this->table_row['status']};
 
-        return $this->userContactDbToArray();
+            array_push($contactArray, $this->userContactDbToArray());
+        }
+
+        return $contactArray;
     }
 
     /**
