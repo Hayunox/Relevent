@@ -25,11 +25,11 @@
             <directory suffix="Test.php">./tests/Api/Unit/Event/Invitation</directory>
         </testsuite>
     </testsuites>
-    <filter>
+    <!--<filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
         </whitelist>
-    </filter>
+    </filter>-->
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
