@@ -71,7 +71,7 @@ class UserContact
             })
             ->first();
 
-        return ($result == null) ? false : $result->{$this->table_row['contact_status']};
+        return ($result === null) ? false : $result->{$this->table_row['contact_status']};
     }
 
     /**

@@ -70,7 +70,7 @@ class EventInvitation
             ->where($this->table_row['invit_event_id'], $this->event_id)
             ->first();
 
-        return ($result == null) ? false : $result->{$this->table_row['invit_status']};
+        return ($result === null) ? false : $result->{$this->table_row['invit_status']};
     }
 
     /**

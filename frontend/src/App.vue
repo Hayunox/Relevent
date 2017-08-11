@@ -1,33 +1,26 @@
 <template>
   <div id="app">
-    <div class="ui huge menu">
-      <a class="active item">
+    <div class="ui labeled icon menu">
+      <router-link to="home" tag="a" class="item">
+        <i class="home icon"></i>
         Home
-      </a>
-      <div class="ui dropdown item">
-        Events <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item">My Events</a>
-        </div>
-      </div>
-      <div class="ui dropdown item">
-        Friends <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item">English</a>
-          <a class="item">Russian</a>
-          <a class="item">Spanish</a>
-        </div>
-      </div>
-      <div class="right menu">
-        <div class="item">
-          <router-link to="register"><div class="ui primary button">Sign Up</div></router-link>
-        </div>
-        <div class="item">
-          <router-link to="login"><div class="ui primary button">Login</div></router-link>
-        </div>
-      </div>
+      </router-link>
+      <router-link to="events" tag="a" class="item">
+        <i class="users icon"></i>
+        Events
+      </router-link>
+      <router-link to="contact" tag="a" class="item">
+        <i class="talk icon"></i>
+        Contacts
+      </router-link>
+      <router-link to="profile" tag="a" class="item">
+        <i class="user icon"></i>
+        Profile
+      </router-link>
+      <router-link to="register" tag="a" class="item"><i class="sign in icon"></i>Sign Up</router-link>
+      <router-link to="login" tag="a" class="item"><i class="unlock alternate icon"></i>Login</router-link>
     </div>
-    <router-view></router-view>
+  <router-view></router-view>
   </div>
 </template>
 

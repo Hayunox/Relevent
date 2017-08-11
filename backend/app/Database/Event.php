@@ -47,7 +47,7 @@ class Event
     {
         $event_data = DB::table($this->event_table)->where($this->table_row['event_id'], $this->event_id)->first();
 
-        if ($event_data != null) {
+        if ($event_data !== null) {
             $this->event_user_id = $event_data->{$this->table_row['event_user_id']};
             $this->event_name = $event_data->{$this->table_row['event_name']};
             $this->event_description = $event_data->{$this->table_row['event_description']};

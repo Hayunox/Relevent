@@ -18,7 +18,6 @@ class UserRegistrationController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('guest');
     }
 
     /**
@@ -74,7 +73,7 @@ class UserRegistrationController extends Controller
                 ]);
 
                 // Registration successful
-                if ($res != null) {
+                if ($res !== null) {
                     return response()->json('USER_CREATED_SUCCESSFULLY', 200);
                 }
             }

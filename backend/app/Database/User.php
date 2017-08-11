@@ -12,7 +12,6 @@ class User
     private $user_nickname;
     private $user_name;
     private $user_surname;
-    private $user_password;
     private $user_mail;
     private $user_key;
 
@@ -46,13 +45,13 @@ class User
      */
     public function getUserData($user_data = null)
     {
-        if ($user_data == null) {
+        if ($user_data === null) {
             $user_data = DB::table($this->user_table)
                 ->where($this->table_row['user_id'], $this->user_id)
                 ->first();
         }
 
-        if ($user_data != null) {
+        if ($user_data !== null) {
             $this->user_nickname = $user_data->{$this->table_row['user_nickname']};
             $this->user_name = $user_data->{$this->table_row['user_name']};
             $this->user_surname = $user_data->{$this->table_row['user_surname']};
@@ -74,7 +73,7 @@ class User
         $query = DB::table($this->user_table)
             ->where($this->table_row['user_nickname'], $nickname);
 
-        return ($query->first() == null) ? false : true;
+        return ($query->first() === null) ? false : true;
     }
 
     /**
@@ -87,7 +86,7 @@ class User
         $query = DB::table($this->user_table)
             ->where($this->table_row['user_mail'], $mail);
 
-        return ($query->first() == null) ? false : true;
+        return ($query->first() === null) ? false : true;
     }
 
     /**
@@ -101,7 +100,7 @@ class User
             ->where($this->table_row['user_key'], $key)
             ->first();
 
-        return ($result == null) ? false : $result->{$this->table_row['user_id']};
+        return ($result === null) ? false : $result->{$this->table_row['user_id']};
     }
 
     /**
@@ -149,7 +148,7 @@ class User
             ->where($this->table_row['user_nickname'], $nickname)
             ->first();
 
-        if ($data != null && Crypt::decrypt($data->{$this->table_row['user_password']}) == $password) {
+        if ($data !== null && Crypt::decrypt($data->{$this->table_row['user_password']}) == $password) {
             return $this->getUserData($data);
         }
 
