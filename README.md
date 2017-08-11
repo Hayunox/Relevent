@@ -1,5 +1,12 @@
 ProjetX [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/ProjetX?utm_source=github.com&utm_medium=referral&utm_content=Herklos/ProjetX&utm_campaign=badger) [![Build Status](https://travis-ci.org/Herklos/ProjetX.png)](https://travis-ci.org/Herklos/ProjetX) [![StyleCI](https://styleci.io/repos/96699711/shield?branch=master)](https://styleci.io/repos/96699711) [![Coverage Status](https://coveralls.io/repos/github/Herklos/ProjetX/badge.svg?branch=master)](https://coveralls.io/github/Herklos/ProjetX?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/7fb64c6d-d71e-4e1c-a289-3aaaa565d219/mini.png)](https://insight.sensiolabs.com/projects/7fb64c6d-d71e-4e1c-a289-3aaaa565d219)
 ============================
+### Description
+... <br>
+
+### Technologies
+Server : PHP ([Laravel Framework](https://laravel.com))<br>
+Application : Java ([Android](https://developer.android.com))<br>
+Website : Javascript ([VueJS](https://vuejs.org))<br>
 
 Version
 ------------
@@ -19,11 +26,14 @@ Known bugs  :<br>
 
 Code Quality
 PHP server : [StyleCI](https://styleci.io/repos/96699711)<br>
-Android APP : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
+Android app : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
+Website : ... <br>
 
 Testing
 ------------
-PHP server : [Travis-CI](https://travis-ci.org/Herklos/ProjetX)
+PHP server (PHP Unit) : [Travis-CI](https://travis-ci.org/Herklos/ProjetX) <br>
+Android app : ... <br>
+Website : ...
 
 Contact
 ------------
