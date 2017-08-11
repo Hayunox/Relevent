@@ -58,7 +58,7 @@ class EventCreationController extends Controller
         // Get params
         $request = Request::instance();
 
-        if(!$this->validator($request->all())->fails()) {
+        if (!$this->validator($request->all())->fails()) {
             // DB::connection()->getPdo()->quote
             $name = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('name'));
             $date = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('date'));
@@ -67,13 +67,13 @@ class EventCreationController extends Controller
             $theme = preg_replace('/[^A-Za-z0-9\-@\.\-]/', '', $request->request->get('theme'));
 
             $event->eventCreate([
-                'event_user_id' => $request->user_id,
-                'event_name' => $name,
+                'event_user_id'     => $request->user_id,
+                'event_name'        => $name,
                 'event_description' => $description,
-                'event_date' => $date,
-                'event_address' => $address,
-                'event_theme' => $theme,
-                'event_secret' => 0,
+                'event_date'        => $date,
+                'event_address'     => $address,
+                'event_theme'       => $theme,
+                'event_secret'      => 0,
             ]);
 
             return response()->json('EVENT_CREATED_SUCCESSFULLY', 200);

@@ -23,6 +23,7 @@ class EventInvitationDataController
 
     /**
      * Create a new user instance after a valid registration.
+     *
      * @return array|string
      */
     protected function getUserInvitList()

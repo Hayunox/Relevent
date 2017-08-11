@@ -33,6 +33,7 @@ class UserContactUpdateController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
+     *
      * @return string
      */
     protected function update()
@@ -41,14 +42,14 @@ class UserContactUpdateController extends Controller
         $request = Request::instance();
 
         if (!$this->validator($request->all())->fails()) {
-
-            $contact_id     = $request->request->get('contact_id');
-            $status          = $request->request->get('status');
+            $contact_id = $request->request->get('contact_id');
+            $status = $request->request->get('status');
 
             // User instance
             $contact = new UserContact($request->user_id);
 
             $contact->setContactAcceptation($contact_id, $status);
+
             return response()->json(json_encode(['USER_CONTACT_CHANGED_SUCCESSFULLY']), 200);
         }
 

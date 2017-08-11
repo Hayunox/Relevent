@@ -50,7 +50,7 @@ class EventListController extends Controller
 
         $request = Request::instance();
 
-        if(!$this->validator($request->all())->fails()) {
+        if (!$this->validator($request->all())->fails()) {
             return response()->json(json_encode($event->eventUserList($request->user_id)), 200);
         }
 
