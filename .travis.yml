@@ -7,7 +7,7 @@ before_install:
   - sudo apt-get update
   
   # database
-  - mysql -u root < web/database/database/projetx.sql
+  - mysql -u root < backend/database/database/projetx.sql
   
   # apache server 
   - sudo apt-get install apache2 libapache2-mod-fastcgi
@@ -24,7 +24,7 @@ before_install:
   - sudo service apache2 restart
   
 before_script: 
-    - cd web/
+    - cd backend/
     - mkdir -p build/logs
     - composer update
 script:
