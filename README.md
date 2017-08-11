@@ -8,9 +8,9 @@ Backend : PHP ([Laravel Framework](https://laravel.com))<br>
 AndroidAPP : Java ([Android](https://developer.android.com))<br>
 Frontend : Javascript ([VueJS](https://vuejs.org))<br>
 
-Version
+Versions
 ------------
-Version : 0.1.0
+Global version : 0.1.0.3
 
 ### Modules
 Backend : 0.7.0 <br>
@@ -23,7 +23,7 @@ Agility
 ------------
 
 ### Sprint
-Current sprint  : [1.0.2](https://zube.io/herklos/projectx/w/workspace-1/sprintboard?where%5Bsprint_id%5D=17485)<br>
+Current sprint  : [1.0.3](https://zube.io/herklos/projectx/w/workspace-1/sprintboard?where%5Bsprint_id%5D=17485)<br>
 
 
 ### Issues
