@@ -53,7 +53,7 @@ class EventInvitation
                 $this->table_row['invit_guest_user_id']         => $guest_user_id,
                 $this->table_row['invit_time']                  => time(),
                 $this->table_row['invit_status_time']           => time(),
-                $this->table_row['invit_status']                => EventInvitationAcceptation::Pending,
+                $this->table_row['invit_status']                => EventInvitationAcceptation::PENDING,
             ]);
     }
 
@@ -80,7 +80,7 @@ class EventInvitation
     {
         $invitationArray = array();
         $data = DB::table($this->event_invitation_table)
-            ->where($this->table_row['invit_status'], EventInvitationAcceptation::Accepted)
+            ->where($this->table_row['invit_status'], EventInvitationAcceptation::ACCEPTED)
             ->where($this->table_row['invit_guest_user_id'], $this->user_id)
             ->get();
 
@@ -132,7 +132,7 @@ class EventInvitation
 
 abstract class EventInvitationAcceptation
 {
-    const Pending = 2;
-    const Accepted = 3;
-    const Refused = 4;
+    const PENDING = 2;
+    const ACCEPTED = 3;
+    const REFUSED = 4;
 }

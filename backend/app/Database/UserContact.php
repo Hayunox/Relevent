@@ -45,7 +45,7 @@ class UserContact
             $this->table_row['contact_new_contact_user_id']   => $new_contact_user_id,
             $this->table_row['contact_time']                  => time(),
             $this->table_row['contact_status_time']           => time(),
-            $this->table_row['contact_status']                => UserContactAcceptation::Pending,
+            $this->table_row['contact_status']                => UserContactAcceptation::PENDING,
         ];
 
         // return new contact id
@@ -81,7 +81,7 @@ class UserContact
     {
         $contactArray = array();
         $data = DB::table($this->user_contact_table)
-            ->where($this->table_row['contact_status'], UserContactAcceptation::Accepted)
+            ->where($this->table_row['contact_status'], UserContactAcceptation::ACCEPTED)
             ->where($this->table_row['contact_user_id'], $this->user_id)
             ->orWhere($this->table_row['contact_new_contact_user_id'], $this->user_id)
             ->get();
@@ -139,7 +139,7 @@ class UserContact
 
 abstract class UserContactAcceptation
 {
-    const Pending = 2;
-    const Accepted = 3;
-    const Refused = 4;
+    const PENDING = 2;
+    const ACCEPTED = 3;
+    const REFUSED = 4;
 }
