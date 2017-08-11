@@ -31,9 +31,9 @@ Website : ... <br>
 
 Testing
 ------------
-PHP server (PHP Unit) : [Travis-CI](https://travis-ci.org/Herklos/ProjetX) <br>
-Android app : ... <br>
-Website : ...
+PHP server : PHP Unit on [Travis-CI](https://travis-ci.org/Herklos/ProjetX) <br>
+Android app : Local & Instrumented Android Tests on [Travis-CI](https://travis-ci.org/Herklos/ProjetX) // TO BE DONE <br>
+Website : Karma & e2e [Travis-CI](https://travis-ci.org/Herklos/ProjetX) // Implementing...
 
 Contact
 ------------
