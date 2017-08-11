@@ -20,12 +20,12 @@ Known bugs  :<br>
 Code Quality
 PHP server : [StyleCI](https://styleci.io/repos/96699711)<br>
 Android app : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
-Website : ...
+Website : ... <br>
 
 Testing
 ------------
-PHP server (Laravel) : [Travis-CI](https://travis-ci.org/Herklos/ProjetX)
-Android app : ...
+PHP server (Laravel) : [Travis-CI](https://travis-ci.org/Herklos/ProjetX) <br>
+Android app : ... <br>
 Website : ...
 
 Contact
