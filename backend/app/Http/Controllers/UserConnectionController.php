@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Request;
 
 class UserConnectionController extends Controller
 {
-
     /**
      * Create a new controller instance.
      */
@@ -25,6 +24,7 @@ class UserConnectionController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -45,7 +45,7 @@ class UserConnectionController extends Controller
         // Get params
         $request = Request::instance();
 
-        if(!$this->validator($request->all())->fails()) {
+        if (!$this->validator($request->all())->fails()) {
             // User instance
             $user = new User(null);
 

@@ -78,21 +78,21 @@ class EventInvitation
      */
     public function getUserInvited()
     {
-        $invitationArray = array();
+        $invitationArray = [];
         $data = DB::table($this->event_invitation_table)
             ->where($this->table_row['invit_status'], EventInvitationAcceptation::Accepted)
             ->where($this->table_row['invit_guest_user_id'], $this->user_id)
             ->get();
 
-        foreach ($data as $invitation){
+        foreach ($data as $invitation) {
             // set data
-            $this->id                   = $invitation->{$this->table_row['invit_id']};
-            $this->user_id              = $invitation->{$this->table_row['invit_user_id']};
-            $this->guest_user_id        = $invitation->{$this->table_row['invit_guest_user_id']};
-            $this->time                 = $invitation->{$this->table_row['time']};
-            $this->status_time          = $invitation->{$this->table_row['status_time']};
-            $this->status               = $invitation->{$this->table_row['status']};
-            $this->event_id             = $invitation->{$this->table_row['event_id']};
+            $this->id = $invitation->{$this->table_row['invit_id']};
+            $this->user_id = $invitation->{$this->table_row['invit_user_id']};
+            $this->guest_user_id = $invitation->{$this->table_row['invit_guest_user_id']};
+            $this->time = $invitation->{$this->table_row['time']};
+            $this->status_time = $invitation->{$this->table_row['status_time']};
+            $this->status = $invitation->{$this->table_row['status']};
+            $this->event_id = $invitation->{$this->table_row['event_id']};
 
             array_push($invitationArray, $this->eventInvitationDbToArray());
         }

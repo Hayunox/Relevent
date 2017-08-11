@@ -57,6 +57,7 @@ class Event
             $this->event_theme = $event_data->{$this->table_row['event_theme']};
             $this->event_secret = $event_data->{$this->table_row['event_secret']};
         }
+
         return $this->eventDbToArray();
     }
 

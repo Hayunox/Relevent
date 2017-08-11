@@ -37,7 +37,7 @@ class UserContactCreationController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration
+     * Create a new user instance after a valid registration.
      *
      * @return array|string
      */
@@ -47,13 +47,12 @@ class UserContactCreationController extends Controller
         $request = Request::instance();
 
         if (!$this->validator($request->all())->fails()) {
-
-            $new_contact_user_id  = $request->request->get('new_contact_user_id');
+            $new_contact_user_id = $request->request->get('new_contact_user_id');
 
             // User instance
             $contact = new UserContact($request->user_id);
 
-            if ($contact->createContact($new_contact_user_id) > 1){
+            if ($contact->createContact($new_contact_user_id) > 1) {
                 return response()->json(json_encode(['USER_CONTACT_CREATED_SUCCESSFULLY']), 200);
             }
         }

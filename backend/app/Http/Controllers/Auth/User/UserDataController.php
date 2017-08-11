@@ -18,6 +18,7 @@ class UserDataController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
+     *
      * @return array|string
      */
     protected function getUserInvitList()

@@ -37,7 +37,7 @@ class EventInvitationCreationController
     }
 
     /**
-     * Create a new user instance after a valid registration
+     * Create a new user instance after a valid registration.
      *
      * @return array|string
      */
@@ -47,14 +47,13 @@ class EventInvitationCreationController
         $request = Request::instance();
 
         if (!$this->validator($request->all())->fails()) {
-
-            $new_guest_user_id  = $request->request->get('new_guest_user_id');
-            $event_id           = $request->request->get('event_id');
+            $new_guest_user_id = $request->request->get('new_guest_user_id');
+            $event_id = $request->request->get('event_id');
 
             // User instance
             $invitation = new EventInvitation($request->user_id, $event_id);
 
-            if ($invitation->createInvitation($new_guest_user_id) > 1){
+            if ($invitation->createInvitation($new_guest_user_id) > 1) {
                 return response()->json(json_encode(['EVENT_INVIT_USER_CREATED_SUCCESSFULLY']), 200);
             }
         }
