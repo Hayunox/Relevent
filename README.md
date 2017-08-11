@@ -12,6 +12,11 @@ Version
 ------------
 Version : 0.1.0
 
+### Modules
+Server : 0.7.0 <br>
+Application : 0.2.1 <br>
+Website : 0.0.2 <br>
+
 ### Changelog
 
 Agility
