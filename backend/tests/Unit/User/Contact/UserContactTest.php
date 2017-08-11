@@ -35,15 +35,15 @@ class UserContactTest extends TestCase
         // test contact exists
         $this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id);
         $this->assertInternalType('int', $this->test_contact_result);
-        $this->assertEquals(UserContactAcceptation::Pending, $this->test_contact_result);
+        $this->assertEquals(UserContactAcceptation::PENDING, $this->test_contact_result);
 
         // set invitation accepted
-        $this->contact->setContactAcceptation($this->test_new_contact_user_id, UserContactAcceptation::Accepted);
+        $this->contact->setContactAcceptation($this->test_new_contact_user_id, UserContactAcceptation::ACCEPTED);
 
         // test contact status
         $this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id);
         $this->assertInternalType('int', $this->test_contact_result);
-        $this->assertEquals(UserContactAcceptation::Accepted, $this->test_contact_result);
+        $this->assertEquals(UserContactAcceptation::ACCEPTED, $this->test_contact_result);
 
         // get user contacts
         $this->test_contact_result = $this->contact->getUserContacts();
@@ -51,11 +51,11 @@ class UserContactTest extends TestCase
         $this->assertArrayHasKey('0', $this->test_contact_result);
 
         // set invitation refused
-        $this->test_new_contact_user_id = $this->contact->setContactAcceptation($this->test_new_contact_user_id, UserContactAcceptation::Refused);
+        $this->test_new_contact_user_id = $this->contact->setContactAcceptation($this->test_new_contact_user_id, UserContactAcceptation::REFUSED);
 
         // test contact status
         $this->test_contact_result = $this->contact->isContact($this->test_new_contact_user_id);
         $this->assertInternalType('int', $this->test_contact_result);
-        $this->assertEquals(UserContactAcceptation::Refused, $this->test_contact_result);
+        $this->assertEquals(UserContactAcceptation::REFUSED, $this->test_contact_result);
     }
 }

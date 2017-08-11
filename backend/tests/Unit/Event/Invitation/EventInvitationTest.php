@@ -36,26 +36,26 @@ class EventInvitationTest extends TestCase
         // test invited exists
         $this->test_invit_result = $this->eventInvitation->isInvited($this->test_guest_user_id);
         $this->assertInternalType('int', $this->test_invit_result);
-        $this->assertEquals(EventInvitationAcceptation::Pending, $this->test_invit_result);
+        $this->assertEquals(EventInvitationAcceptation::PENDING, $this->test_invit_result);
 
         // set invitation accepted
-        $this->eventInvitation->setInvitationAcceptation(EventInvitationAcceptation::Accepted);
+        $this->eventInvitation->setInvitationAcceptation(EventInvitationAcceptation::ACCEPTED);
 
         // test contact status
         $this->test_invit_result = $this->eventInvitation->isInvited($this->test_guest_user_id);
         $this->assertInternalType('int', $this->test_invit_result);
-        $this->assertEquals(EventInvitationAcceptation::Accepted, $this->test_invit_result);
+        $this->assertEquals(EventInvitationAcceptation::ACCEPTED, $this->test_invit_result);
 
         // get user invitations
         $this->test_invit_result = $this->eventInvitation->getUserInvited();
         $this->assertInternalType('array', $this->test_invit_result);
 
         // set invitation refused
-        $this->eventInvitation->setInvitationAcceptation(EventInvitationAcceptation::Refused);
+        $this->eventInvitation->setInvitationAcceptation(EventInvitationAcceptation::REFUSED);
 
         // test invited status
         $this->test_invit_result = $this->eventInvitation->isInvited($this->test_guest_user_id);
         $this->assertInternalType('int', $this->test_invit_result);
-        $this->assertEquals(EventInvitationAcceptation::Refused, $this->test_invit_result);
+        $this->assertEquals(EventInvitationAcceptation::REFUSED, $this->test_invit_result);
     }
 }
