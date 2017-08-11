@@ -4,18 +4,18 @@ ProjetX [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb0
 ... <br>
 
 ### Technologies
-Server : PHP ([Laravel Framework](https://laravel.com))<br>
-Application : Java ([Android](https://developer.android.com))<br>
-Website : Javascript ([VueJS](https://vuejs.org))<br>
+Backend : PHP ([Laravel Framework](https://laravel.com))<br>
+AndroidAPP : Java ([Android](https://developer.android.com))<br>
+Frontend : Javascript ([VueJS](https://vuejs.org))<br>
 
 Version
 ------------
 Version : 0.1.0
 
 ### Modules
-Server : 0.7.0 <br>
-Application : 0.2.1 <br>
-Website : 0.0.2 <br>
+Backend : 0.7.0 <br>
+AndroidAPP : 0.2.1 <br>
+Frontend : 0.0.2 <br>
 
 ### Changelog
 
