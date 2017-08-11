@@ -30,9 +30,9 @@ Current sprint  : [1.0.3](https://zube.io/herklos/projectx/w/workspace-1/sprintb
 Known bugs  :<br>
 
 Code Quality
-PHP server : [StyleCI](https://styleci.io/repos/96699711)<br>
-Android app : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
-Website : ... <br>
+Backend : [StyleCI](https://styleci.io/repos/96699711) & [SensioLabsInsight](https://insight.sensiolabs.com/projects/7fb64c6d-d71e-4e1c-a289-3aaaa565d219)<br>
+AndroidAPP : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
+Frontend : ...<br>
 
 Testing
 ------------
