@@ -1,12 +1,12 @@
 <template>
   <form class="ui form">
     <div class="field">
-      <label>First Name</label>
-      <input name="first-name" placeholder="First Name" type="text">
+      <label>Nickname</label>
+      <input name="nickname" placeholder="Nickname" type="text">
     </div>
     <div class="field">
-      <label>Last Name</label>
-      <input name="last-name" placeholder="Last Name" type="text">
+      <label>Password</label>
+      <input name="password" placeholder="Password" type="password">
     </div>
     <div class="field">
       <div class="ui checkbox">
