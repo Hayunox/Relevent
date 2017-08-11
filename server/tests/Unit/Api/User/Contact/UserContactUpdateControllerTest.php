@@ -9,7 +9,8 @@ class UserContactUpdateControllerTest extends TestCase
 {
     public function testUserContactUpdateAcceptWithValidParams()
     {
-        $response = $this->json('POST', '/api/user/contact/update', ['contact_id' => 1, 'status' => UserContactAcceptation::Accepted], ['HTTP_Authorization' => 1]);
+        $this->transformHeadersToServerVars([ 'Authorization' => 1]);
+        $response = $this->json('POST', '/api/user/contact/update', ['contact_id' => 1, 'status' => UserContactAcceptation::Accepted]);
         $response
             ->assertStatus(200)
             ->assertJson(['USER_CONTACT_CHANGED_SUCCESSFULLY']);
@@ -17,7 +18,8 @@ class UserContactUpdateControllerTest extends TestCase
 
     public function testUserContactUpdateRefuseWithValidParams()
     {
-        $response = $this->json('POST', '/api/user/contact/update', ['contact_id' => 1, 'status' => UserContactAcceptation::Refused], ['HTTP_Authorization' => 1]);
+        $this->transformHeadersToServerVars([ 'Authorization' => 1]);
+        $response = $this->json('POST', '/api/user/contact/update', ['contact_id' => 1, 'status' => UserContactAcceptation::Refused]);
         $response
             ->assertStatus(200)
             ->assertJson(['USER_CONTACT_CHANGED_SUCCESSFULLY']);

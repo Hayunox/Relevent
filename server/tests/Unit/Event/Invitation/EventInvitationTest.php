@@ -22,8 +22,7 @@ class EventInvitationTest extends TestCase
         $this->test_invit_id = 1;
 
         $this->eventInvitation = new EventInvitation($this->test_sender_user_id, $this->test_invit_id);
-
-
+        
         // test invited not exists
         $this->test_invit_result = $this->eventInvitation->isInvited($this->test_guest_user_id);
         $this->assertInternalType("bool", $this->test_invit_result);

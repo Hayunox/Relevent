@@ -10,8 +10,8 @@ class UserRegistrationControllerTest extends TestCase
     {
         $response = $this->json('POST', '/api/user/register', []);
         $response
-            ->assertStatus(500)
-            ->assertJson(['USER_REGISTRATION_FAILED']);
+            ->assertStatus(400)
+            ->assertJson(['USER_CREATE_FAILED']);
     }
 
     public function testUserRegisterWithValidCredentials()
@@ -26,7 +26,7 @@ class UserRegistrationControllerTest extends TestCase
     {
         $response = $this->json('POST', '/api/user/register', ['nickname' => 'zzzzzz', 'mail' => 'test@mail.fr', 'password' => 'zzzzzzzz']);
         $response
-            ->assertStatus(500)
+            ->assertStatus(400)
             ->assertJson(['USER_MAIL_EXISTS']);
     }
 
@@ -34,7 +34,7 @@ class UserRegistrationControllerTest extends TestCase
     {
         $response = $this->json('POST', '/api/user/register', ['nickname' => 'test', 'mail' => 'zzzzzzz', 'password' => 'zzzzzzzz']);
         $response
-            ->assertStatus(500)
+            ->assertStatus(400)
             ->assertJson(['USER_NICKNAME_EXISTS']);
     }
 }
