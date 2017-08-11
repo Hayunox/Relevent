@@ -1,6 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <div class="ui inverted segment">
+      <div class="ui inverted secondary pointing menu">
+        <a class="active item">
+          Home
+        </a>
+        <a class="item">
+          Messages
+        </a>
+        <a class="item">
+          Friends
+        </a>
+      </div>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -21,3 +33,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+

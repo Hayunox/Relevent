@@ -13,7 +13,7 @@ public class DataBase {
     // http://192.168.2.82/projetX/index.php/
     // http://192.168.2.97/projetXWebsite/index.php/api/
     // http://projetx.rf.gd//index.php/
-    private static final String serverUrl = "http://192.168.2.97/projetXWebsite/index.php/api/";
+    private static final String serverUrl = "http://192.168.2.97/projetX/index.php/api/";
 
     public static Retrofit getRetrofitService(){
         return new Retrofit.Builder()

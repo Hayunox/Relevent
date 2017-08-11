@@ -27,11 +27,12 @@ class UserRegistrationController extends Controller
      * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    // email|
     protected function validator(array $data)
     {
         return $this->getValidationFactory()->make($data, [
             'nickname'  => 'required|string|max:255|unique:user',
-            'mail'      => 'required|string|email|max:255|unique:user',
+            'mail'      => 'required|string|max:255|unique:user',
             'password'  => 'required|string|min:4',
         ]);
     }
@@ -74,10 +75,10 @@ class UserRegistrationController extends Controller
 
                 // Registration successful
                 if ($res != null) {
-                    return response()->json(['USER_CREATED_SUCCESSFULLY'], 200);
+                    return response()->json('USER_CREATED_SUCCESSFULLY', 200);
                 }
             }
         }
-        return response()->json(['USER_CREATE_FAILED'], 400);
+        return response()->json('USER_CREATE_FAILED', 400);
     }
 }
