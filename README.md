@@ -4,9 +4,9 @@ ProjetX [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb0
 ... <br>
 
 ### Technologies
-Server : PHP (Laravel Framework)
-Application : Java (Android)
-Website : Javascript (VueJS)
+Server : PHP (Laravel Framework)<br>
+Application : Java (Android)<br>
+Website : Javascript (VueJS)<br>
 
 Version
 ------------
