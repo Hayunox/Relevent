@@ -38,6 +38,7 @@ class EventInvitationUpdateController
 
     /**
      * Create a new user instance after a valid registration.
+     *
      * @return string
      */
     protected function update()
@@ -46,14 +47,14 @@ class EventInvitationUpdateController
         $request = Request::instance();
 
         if (!$this->validator($request->all())->fails()) {
-
-            $event_id     = $request->request->get('event_id');
-            $status          = $request->request->get('status');
+            $event_id = $request->request->get('event_id');
+            $status = $request->request->get('status');
 
             // User instance
             $contact = new EventInvitation($request->user_id, $event_id);
 
             $contact->setInvitationAcceptation($status);
+
             return response()->json(json_encode(['EVENT_INVIT_CHANGED_SUCCESSFULLY']), 200);
         }
 

@@ -24,6 +24,7 @@ class UserRegistrationController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     // email|
@@ -46,7 +47,7 @@ class UserRegistrationController extends Controller
         // Get params
         $request = Request::instance();
 
-        if(!$this->validator($request->all())->fails()) {
+        if (!$this->validator($request->all())->fails()) {
             // User instance
             $user = new User(null);
 
@@ -68,7 +69,7 @@ class UserRegistrationController extends Controller
             } else {
                 $res = $user->userCreate([
                     'nickname' => $nickname,
-                    'mail' => $mail,
+                    'mail'     => $mail,
                     'password' => $password,
                 ]);
 
@@ -78,6 +79,7 @@ class UserRegistrationController extends Controller
                 }
             }
         }
+
         return response()->json('USER_CREATE_FAILED', 400);
     }
 }

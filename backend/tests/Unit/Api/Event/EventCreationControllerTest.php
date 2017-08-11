@@ -8,7 +8,7 @@ class EventCreationControllerTest extends TestCase
 {
     public function testEventCreationWithoutParams()
     {
-        $this->transformHeadersToServerVars([ 'Authorization' => '$2y$10$sgUKGd6c/U8FKrYXI4sNDukK71ChZYDHi0Y.tAJLSi/9u2lYjY2ya']);
+        $this->transformHeadersToServerVars(['Authorization' => '$2y$10$sgUKGd6c/U8FKrYXI4sNDukK71ChZYDHi0Y.tAJLSi/9u2lYjY2ya']);
         $response = $this->json('POST', '/api/event/create', [], ['HTTP_Authorization' => '$2y$10$sgUKGd6c/U8FKrYXI4sNDukK71ChZYDHi0Y.tAJLSi/9u2lYjY2ya']);
         $response
             ->assertStatus(400)
@@ -17,7 +17,7 @@ class EventCreationControllerTest extends TestCase
 
     public function testEventCreationWithValidParams()
     {
-        $this->transformHeadersToServerVars([ 'Authorization' => '$2y$10$sgUKGd6c/U8FKrYXI4sNDukK71ChZYDHi0Y.tAJLSi/9u2lYjY2ya']);
+        $this->transformHeadersToServerVars(['Authorization' => '$2y$10$sgUKGd6c/U8FKrYXI4sNDukK71ChZYDHi0Y.tAJLSi/9u2lYjY2ya']);
         $response = $this->json('POST', '/api/event/create', [
             'name'        => 'event test name',
             'date'        => 1555555,
