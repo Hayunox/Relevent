@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2bd502e-85ce-4236-83fa-6201ebed3a3d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/actions/auth/index.js" afterPath="$PROJECT_DIR$/src/common/actions/auth/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/actions/index.js" afterPath="$PROJECT_DIR$/src/common/actions/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/api/index.js" afterPath="$PROJECT_DIR$/src/common/api/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/components/views/Footer/index.jsx" afterPath="$PROJECT_DIR$/src/common/components/views/Footer/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/components/views/Header/index.jsx" afterPath="$PROJECT_DIR$/src/common/components/views/Header/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/components/views/Sidebar/index.jsx" afterPath="$PROJECT_DIR$/src/common/components/views/Sidebar/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/Login/components/index.jsx" afterPath="$PROJECT_DIR$/src/common/containers/Login/components/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/Users/components/UsersItemComponent.jsx" afterPath="$PROJECT_DIR$/src/common/containers/Users/components/UsersItemComponent.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/Users/components/index.jsx" afterPath="$PROJECT_DIR$/src/common/containers/Users/components/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/index.js" afterPath="$PROJECT_DIR$/src/common/containers/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/pwa/index.js" afterPath="$PROJECT_DIR$/src/common/pwa/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/routing/index.jsx" afterPath="$PROJECT_DIR$/src/common/routing/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/styles/theme.jsx" afterPath="$PROJECT_DIR$/src/common/styles/theme.jsx" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../backend/resources/assets/js/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../backend/resources/assets/js/components/Example.vue" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/Register/components/index.jsx" afterPath="$PROJECT_DIR$/src/common/containers/Register/components/index.jsx" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -61,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/common/containers/Register/components/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+            <state relative-caret-position="674">
+              <caret line="58" column="69" lean-forward="false" selection-start-line="58" selection-start-column="69" selection-end-line="58" selection-end-column="69" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -73,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/common/routing/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="901">
@@ -171,9 +160,9 @@
         <option value="$PROJECT_DIR$/src/common/api/index.js" />
         <option value="$PROJECT_DIR$/src/common/containers/index.js" />
         <option value="$PROJECT_DIR$/src/common/containers/Register/index.jsx" />
-        <option value="$PROJECT_DIR$/src/common/containers/Register/components/index.jsx" />
         <option value="$PROJECT_DIR$/src/common/containers/Login/components/index.jsx" />
         <option value="$PROJECT_DIR$/src/common/routing/index.jsx" />
+        <option value="$PROJECT_DIR$/src/common/containers/Register/components/index.jsx" />
       </list>
     </option>
   </component>
@@ -534,7 +523,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39072000" />
+    <option name="totallyTimeSpent" value="39565000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -988,16 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/containers/Register/components/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1036,6 +1015,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="53" column="6" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/containers/Register/components/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="58" column="69" lean-forward="false" selection-start-line="58" selection-start-column="69" selection-end-line="58" selection-end-column="69" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

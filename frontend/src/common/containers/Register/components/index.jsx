@@ -56,45 +56,50 @@ export default class RegisterComponent extends Component {
 					<title>Relevent: Registration</title>
 				</Helmet>
 				<Grid.Row>
-					<Grid.Column tablet={10} mobile={16} computer={6}>
+					<Grid.Column tablet={10} mobile={16} computer={12}>
 						<Form onSubmit={::this.handleSubmit} {...registerFormProps}>
 							{errors &&
-								<Message
-									error
-									header={'Invalid credentials'}
-									content={'Your credentials are invalid.'}
-								/>}
-							<Form.Input
-								placeholder="Username"
-								name="username"
-								label="Username"
-								value={username}
-								onChange={::this.handleChange}
-							/>
-							<Form.Input
-								placeholder="Mail address"
-								type="mail"
-								name="mail"
-								label="Mail"
-								value={mail}
-								onChange={::this.handleChange}
-							/>
-							<Form.Input
-								placeholder="Password"
-								type="password"
-								name="password"
-								label="Password"
-								value={password}
-								onChange={::this.handleChange}
-							/>
-							<Form.Input
-								placeholder="Password Confirmation"
-								type="password"
-								name="password-confirm"
-								label="Password"
-								value={passwordConfirm}
-								onChange={::this.handleChange}
-							/>
+							<Message
+								error
+								header={'Invalid credentials'}
+								content={'Your credentials are invalid.'}
+							/>}
+							<Form.Group unstackable widths={2}>
+								<Form.Input
+									placeholder="Nickname"
+									name="nickname"
+									label="Username"
+									value={username}
+									onChange={::this.handleChange}
+								/>
+								<Form.Input
+									placeholder="Mail address"
+									type="mail"
+									name="mail"
+									label="Mail"
+									value={mail}
+									onChange={::this.handleChange}
+								/>
+							</Form.Group>
+							<Form.Group widths={2}>
+								<Form.Input
+									placeholder="Password"
+									type="password"
+									name="password"
+									label="Password"
+									value={password}
+									onChange={::this.handleChange}
+								/>
+								<Form.Input
+									placeholder="Password Confirmation"
+									type="password"
+									name="password-confirm"
+									label="Password"
+									value={passwordConfirm}
+									onChange={::this.handleChange}
+								/>
+							</Form.Group>
+							<Form.Checkbox label='I agree to the Terms and Conditions' />
 							<TextCenter>
 								<RegisterButton {...registerBtnProps} />
 							</TextCenter>
