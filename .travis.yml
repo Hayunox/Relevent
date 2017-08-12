@@ -1,8 +1,17 @@
+dist: trusty
+sudo: required
+addons:
+  sonarcloud:
+    organization: "your_organization_key"
+    token:
+      secure: "your_token_encrypted_with_travis_encrypt_tool"
 services:
   - mysql
 language: php
 php:
-    - '7.0'
+  - '7.0'
+jdk:
+  - oraclejdk8
 before_install:
   - sudo apt-get update
   
@@ -12,11 +21,6 @@ before_install:
   # apache server 
   - sudo apt-get install apache2 libapache2-mod-fastcgi
   
-  # enable php-fpm
-  #- sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
-  #- sudo a2enmod rewrite actions fastcgi alias
-  #- echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  #- ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
   
   # configure apache virtual hosts
   - sudo cp -f .travis-ci-apache /etc/apache2/sites-available/default
@@ -29,5 +33,9 @@ before_script:
     - composer update
 script:
     - php phpunit.phar
+    - sonar-scanner
 after_script:
     - php vendor/bin/coveralls -v
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
