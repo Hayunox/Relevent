@@ -21,6 +21,6 @@ runtime.install({
 	},
 
 	onUpdateFailed: () => {
-		console.log('SW Event:', 'onUpdateFailed')
+		console.log('SW Events:', 'onUpdateFailed')
 	}
 })

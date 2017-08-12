@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import {Form, Message, Grid} from 'semantic-ui-react'
 import {Helmet} from 'react-helmet'
 import _ from 'lodash'
-import {LoginButton} from './style'
-import {TextCenter} from 'styles/base'
+import {RegisterButton} from './style'
+import {TextCenter} from '../../../styles/base'
 
-export default class LoginComponent extends Component {
+export default class RegisterComponent extends Component {
 	constructor (props) {
 		super(props)
 		this.state = {
@@ -16,15 +16,15 @@ export default class LoginComponent extends Component {
 	}
 
 	static propTypes = {
-		login: PropTypes.func,
+		register: PropTypes.func,
 		errors: PropTypes.object
 	}
 
 	handleSubmit (e) {
 		e.preventDefault()
-		const {login} = this.props
-		const {username, password} = this.state
-		login({username, password})
+		const {register} = this.props
+		const {username, mail, password} = this.state
+		register({username, mail, password})
 	}
 
 	handleChange (e, {name, value}) {
@@ -34,14 +34,14 @@ export default class LoginComponent extends Component {
 	}
 
 	render () {
-		const {username, password} = this.state
+		const {username, mail, password, passwordConfirm} = this.state
 		// Error from server
 		const {errors} = this.props
-		const loginFormProps = {error: !_.isEmpty(errors)}
-		// Login btn props
-		const loginBtnProps = {
-			content: 'Login',
-			icon: 'sign in'
+		const registerFormProps = {error: !_.isEmpty(errors)}
+		// register btn props
+		const registerBtnProps = {
+			content: 'Register',
+			icon: 'signup'
 		}
 
 		return (
@@ -53,11 +53,11 @@ export default class LoginComponent extends Component {
 				relaxed
 			>
 				<Helmet>
-					<title>Relevent: Login</title>
+					<title>Relevent: Registration</title>
 				</Helmet>
 				<Grid.Row>
 					<Grid.Column tablet={10} mobile={16} computer={6}>
-						<Form onSubmit={::this.handleSubmit} {...loginFormProps}>
+						<Form onSubmit={::this.handleSubmit} {...registerFormProps}>
 							{errors &&
 								<Message
 									error
@@ -72,6 +72,14 @@ export default class LoginComponent extends Component {
 								onChange={::this.handleChange}
 							/>
 							<Form.Input
+								placeholder="Mail address"
+								type="mail"
+								name="mail"
+								label="Mail"
+								value={mail}
+								onChange={::this.handleChange}
+							/>
+							<Form.Input
 								placeholder="Password"
 								type="password"
 								name="password"
@@ -79,11 +87,18 @@ export default class LoginComponent extends Component {
 								value={password}
 								onChange={::this.handleChange}
 							/>
+							<Form.Input
+								placeholder="Password Confirmation"
+								type="password"
+								name="password-confirm"
+								label="Password"
+								value={passwordConfirm}
+								onChange={::this.handleChange}
+							/>
 							<TextCenter>
-								<LoginButton {...loginBtnProps} />
+								<RegisterButton {...registerBtnProps} />
 							</TextCenter>
 						</Form>
-						New here ? <a href="/register">register</a>
 					</Grid.Column>
 				</Grid.Row>
 			</Grid>

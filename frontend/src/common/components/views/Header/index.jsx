@@ -38,23 +38,6 @@ export default class Header extends Component {
 						{title}
 					</PageTitle>
 					<Spacer />
-					<Popup
-						trigger={
-							<HeaderButton
-								id="header-button"
-								icon
-								as={'a'}
-								aria-label="github-header-link-button"
-								href="https://github.com/Metnew/react-semantic.ui-starter"
-								basic
-								circular
-							>
-								<Icon name="github" size="large" link fitted />
-							</HeaderButton>
-						}
-						content={`${i18n('RSUIS on @Github')}`}
-						inverted
-					/>
 				</HeaderInner>
 			</StyledHeader>
 		)

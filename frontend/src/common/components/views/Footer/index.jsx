@@ -15,13 +15,12 @@ export default class Footer extends Component {
 					<Grid relaxed>
 						<Grid.Row verticalAlign="middle">
 							<Grid.Column width={12} mobile={16}>
-								<a href="https://github.com/Metnew/react-semantic.ui-starter">
+								<a href="">
 									<Header as="h3" inverted>
-										<Icon name="github" />
 										<Header.Content>
-											React-Semantic.UI-Starter
+
 											<Header.Subheader>
-												Semantic.UI is cool, really.
+
 											</Header.Subheader>
 										</Header.Content>
 									</Header>

@@ -20,26 +20,23 @@ export default class UsersItemComponent extends Component {
 		const {name, username, address, email, website, phone, id} = this.props
 
 		return (
-			<Card raised>
-				<Image alt="Dummy image" src={require('images/dummy.png')} />
+			<Card>
 				<Card.Content>
+					<Image floated='right' size='mini' src='/assets/images/avatar/large/steve.jpg' />
 					<Card.Header>
-						{`${name} "${username}"`}
+						Steve Sanders
 					</Card.Header>
 					<Card.Meta>
-						<span className="date">
-							Since 2017
-						</span>
+						Friends of Elliot
 					</Card.Meta>
 					<Card.Description>
-						{address.city} {address.street}
+						Steve wants to add you to the group <strong>best friends</strong>
 					</Card.Description>
 				</Card.Content>
 				<Card.Content extra>
-					<div className="ui buttons">
-						<Button basic color="green">
-							Send message
-						</Button>
+					<div className='ui two buttons'>
+						<Button basic color='green'>Approve</Button>
+						<Button basic color='red'>Decline</Button>
 					</div>
 				</Card.Content>
 			</Card>
