@@ -996,13 +996,13 @@ $.fn.popup = function(parameters) {
             }
           },
           closeOnScroll: function() {
-            module.verbose('Binding scroll close event to document');
+            module.verbose('Binding scroll close Event to document');
             $scrollContext
               .one(module.get.scrollEvent() + elementNamespace, module.event.hideGracefully)
             ;
           },
           touchClose: function() {
-            module.verbose('Binding popup touchclose event to document');
+            module.verbose('Binding popup touchclose Event to document');
             $document
               .on('touchstart' + elementNamespace, function(event) {
                 module.verbose('Touched away from popup');
@@ -1011,7 +1011,7 @@ $.fn.popup = function(parameters) {
             ;
           },
           clickaway: function() {
-            module.verbose('Binding popup close event to document');
+            module.verbose('Binding popup close Event to document');
             $document
               .on('click' + elementNamespace, function(event) {
                 module.verbose('Clicked away from popup');
@@ -1380,7 +1380,7 @@ $.fn.popup.settings = {
   // specify position to appear even if it doesn't fit
   lastResort     : false,
 
-  // delay used to prevent accidental refiring of animations due to user error
+  // delay used to prevent accidental refiring of animations due to User error
   delay        : {
     show : 50,
     hide : 70

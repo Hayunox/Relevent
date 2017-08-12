@@ -106,7 +106,7 @@ $.fn.shape = function(parameters) {
         },
 
         repaint: function() {
-          module.verbose('Forcing repaint event');
+          module.verbose('Forcing repaint Event');
           var
             shape          = $sides[0] || document.createElement('div'),
             fakeAssignment = shape.offsetWidth
@@ -876,7 +876,7 @@ $.fn.shape.settings = {
   // performance data output
   performance: true,
 
-  // event namespace
+  // Event namespace
   namespace  : 'shape',
 
   // width during animation, can be set to 'auto', initial', 'next' or pixel amount

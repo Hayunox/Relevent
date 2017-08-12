@@ -1031,7 +1031,7 @@ $.fn.transition.settings = {
   // performance data output
   performance   : true,
 
-  // event namespace
+  // Event namespace
   namespace     : 'transition',
 
   // delay between animations in group
@@ -1040,7 +1040,7 @@ $.fn.transition.settings = {
   // whether group animations should be reversed
   reverse       : 'auto',
 
-  // animation callback event
+  // animation callback Event
   onStart       : function() {},
   onComplete    : function() {},
   onShow        : function() {},

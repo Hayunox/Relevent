@@ -39,7 +39,7 @@ var
   // install config
   install        = require('./config/project/install'),
 
-  // user config
+  // User config
   config         = require('./config/user'),
 
   // release config (name/title/etc)
@@ -75,9 +75,9 @@ manager = {
 */
 
 
-/* Don't do end user config if SUI is a sub-module */
+/* Don't do end User config if SUI is a sub-module */
 if( install.isSubModule() ) {
-  console.info('SUI is a sub-module, skipping end-user install');
+  console.info('SUI is a sub-module, skipping end-User install');
   return;
 }
 
@@ -217,7 +217,7 @@ gulp.task('create install files', function(callback) {
    Exit Conditions
   ---------------*/
 
-  // if config exists and user specifies not to proceed
+  // if config exists and User specifies not to proceed
   if(answers.overwrite !== undefined && answers.overwrite == 'no') {
     return;
   }

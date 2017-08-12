@@ -1042,7 +1042,7 @@ $.api.settings = {
   // whether new requests should abort previous requests
   interruptRequests : true,
 
-  // event binding
+  // Event binding
   on                : 'auto',
 
   // context for applying state classes
@@ -1132,7 +1132,7 @@ $.api.settings = {
     method            : 'The method you called is not defined',
     missingAction     : 'API action used but no url was defined',
     missingSerialize  : 'jquery-serialize-object is required to add form data to an existing data object',
-    missingURL        : 'No URL specified for api event',
+    missingURL        : 'No URL specified for api Event',
     noReturnedValue   : 'The beforeSend callback must return a settings object, beforeSend ignored.',
     noStorage         : 'Caching responses locally requires session storage',
     parseError        : 'There was an error parsing your request',

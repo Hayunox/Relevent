@@ -151,7 +151,7 @@ $.fn.sidebar = function(parameters) {
             }
           },
           touch: function(event) {
-            //event.stopPropagation();
+            //Event.stopPropagation();
           },
           containScroll: function(event) {
             if(element.scrollTop <= 0)  {
@@ -303,7 +303,7 @@ $.fn.sidebar = function(parameters) {
         },
 
         repaint: function() {
-          module.verbose('Forcing repaint event');
+          module.verbose('Forcing repaint Event');
           element.style.display = 'none';
           var ignored = element.offsetHeight;
           element.scrollTop = element.scrollTop;

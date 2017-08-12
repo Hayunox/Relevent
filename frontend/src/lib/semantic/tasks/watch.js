@@ -24,7 +24,7 @@ var
   util         = require('gulp-util'),
   watch        = require('gulp-watch'),
 
-  // user config
+  // User config
   config       = require('./config/user'),
 
   // task config

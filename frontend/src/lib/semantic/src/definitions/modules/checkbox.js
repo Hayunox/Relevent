@@ -517,7 +517,7 @@ $.fn.checkbox = function(parameters) {
               inputElement = $input[0]
             ;
             if(inputElement) {
-              module.verbose('Triggering native change event');
+              module.verbose('Triggering native change Event');
               events.initEvent('change', true, false);
               inputElement.dispatchEvent(events);
             }
@@ -782,7 +782,7 @@ $.fn.checkbox.settings = {
   verbose             : true,
   performance         : true,
 
-  // delegated event context
+  // delegated Event context
   uncheckable         : 'auto',
   fireOnInit          : false,
 

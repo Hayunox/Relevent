@@ -63,7 +63,7 @@ var when = {
         Response Filters
 *******************************/
 
-/* Filters to user input from install questions */
+/* Filters to User input from install questions */
 
 var filter = {
   removeTrailingSlash: function(path) {

@@ -229,7 +229,7 @@ $.fn.tab = function(parameters) {
                 pageTitle = settings.templates.determineTitle(tabPath) || false
               ;
               module.performance.display();
-              module.debug('History change event', tabPath, event);
+              module.debug('History change Event', tabPath, event);
               historyEvent = event;
               if(tabPath !== undefined) {
                 module.changeTab(tabPath);

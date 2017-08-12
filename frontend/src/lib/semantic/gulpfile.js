@@ -5,7 +5,7 @@
 var
   gulp         = require('gulp-help')(require('gulp')),
 
-  // read user config to know what task to load
+  // read User config to know what task to load
   config       = require('./tasks/config/user'),
 
   // watch changes

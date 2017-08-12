@@ -562,7 +562,7 @@ $.fn.accordion.settings = {
   verbose         : false,
   performance     : true,
 
-  on              : 'click', // event on title that opens accordion
+  on              : 'click', // Event on title that opens accordion
 
   observeChanges  : true,  // whether accordion should automatically refresh on DOM insertion
 

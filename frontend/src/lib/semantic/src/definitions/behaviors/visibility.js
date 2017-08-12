@@ -208,7 +208,7 @@ $.fn.visibility = function(parameters) {
             module.debug('Page finished loading');
             requestAnimationFrame(module.refresh);
           },
-          // publishes scrollchange event on one scroll
+          // publishes scrollchange Event on one scroll
           scroll: function() {
             if(settings.throttle) {
               clearTimeout(module.timer);
@@ -1021,7 +1021,7 @@ $.fn.visibility = function(parameters) {
           },
           lastScroll: function() {
             if(module.cache.screen === undefined) {
-              module.debug('First scroll event, no last scroll could be found');
+              module.debug('First scroll Event, no last scroll could be found');
               return false;
             }
             return module.cache.screen.top;
@@ -1226,10 +1226,10 @@ $.fn.visibility.settings = {
   // whether to refresh calculations after all page images load
   refreshOnLoad          : true,
 
-  // whether to refresh calculations after page resize event
+  // whether to refresh calculations after page resize Event
   refreshOnResize        : true,
 
-  // should call callbacks on refresh event (resize, etc)
+  // should call callbacks on refresh Event (resize, etc)
   checkOnRefresh         : true,
 
   // callback should only occur one time

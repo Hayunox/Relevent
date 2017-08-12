@@ -23,7 +23,7 @@ var
   rtlcss       = require('gulp-rtlcss'),
   uglify       = require('gulp-uglify'),
 
-  // user config
+  // User config
   config       = require('../config/user'),
 
   // install config

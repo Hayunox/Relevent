@@ -3,7 +3,7 @@
 *******************************/
 
 /* These tasks create packaged files from **dist** components
-   Not intended to be called directly by a user because
+   Not intended to be called directly by a User because
    these do not build fresh from **src**
 */
 
@@ -27,7 +27,7 @@ module.exports = function(gulp) {
     replace    = require('gulp-replace'),
     uglify     = require('gulp-uglify'),
 
-    // user config
+    // User config
     config     = require('./../config/user'),
     docsConfig = require('./../config/docs'),
 

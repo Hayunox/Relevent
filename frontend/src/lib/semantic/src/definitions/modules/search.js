@@ -179,7 +179,7 @@ $.fn.search = function(parameters) {
             }
             resultsDismissed = false;
             if(module.resultsClicked) {
-              module.debug('Determining if user action caused search to close');
+              module.debug('Determining if User action caused search to close');
               $module
                 .one('click.close' + eventNamespace, selector.results, function(event) {
                   if(module.is.inMessage(event) || disabledBubbled) {
@@ -194,7 +194,7 @@ $.fn.search = function(parameters) {
               ;
             }
             else {
-              module.debug('Input blurred without user action, closing results');
+              module.debug('Input blurred without User action, closing results');
               callback();
             }
           },

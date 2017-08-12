@@ -222,7 +222,7 @@ $.fn.dropdown = function(parameters) {
                   ? $userChoice
                   : $userChoices.add($userChoice)
                 ;
-                module.verbose('Creating user choices for value', value, $userChoice);
+                module.verbose('Creating User choices for value', value, $userChoice);
               }
             });
             return $userChoices;
@@ -232,9 +232,9 @@ $.fn.dropdown = function(parameters) {
               userValues = module.get.userValues()
             ;
             if(userValues) {
-              module.debug('Adding user labels', userValues);
+              module.debug('Adding User labels', userValues);
               $.each(userValues, function(index, value) {
-                module.verbose('Adding custom user value');
+                module.verbose('Adding custom User value');
                 module.add.label(value, value);
               });
             }
@@ -643,7 +643,7 @@ $.fn.dropdown = function(parameters) {
             ;
           },
           intent: function() {
-            module.verbose('Binding hide intent event to document');
+            module.verbose('Binding hide intent Event to document');
             if(hasTouch) {
               $document
                 .on('touchstart' + elementNamespace, module.event.test.touch)
@@ -658,7 +658,7 @@ $.fn.dropdown = function(parameters) {
 
         unbind: {
           intent: function() {
-            module.verbose('Removing hide intent event from document');
+            module.verbose('Removing hide intent Event from document');
             if(hasTouch) {
               $document
                 .off('touchstart' + elementNamespace)
@@ -1525,7 +1525,7 @@ $.fn.dropdown = function(parameters) {
               inputElement = $input[0]
             ;
             if(inputElement) {
-              module.verbose('Triggering native change event');
+              module.verbose('Triggering native change Event');
               events.initEvent('change', true, false);
               inputElement.dispatchEvent(events);
             }
@@ -1540,7 +1540,7 @@ $.fn.dropdown = function(parameters) {
               module.action[ settings.action ].call(element, text, value, this);
             }
             else if( $.isFunction(settings.action) ) {
-              module.verbose('Triggering user action', settings.action, text, value);
+              module.verbose('Triggering User action', settings.action, text, value);
               settings.action.call(element, text, value, this);
             }
             else {
@@ -1558,7 +1558,7 @@ $.fn.dropdown = function(parameters) {
               : function(){}
             ;
             if(inDocument && !inModule) {
-              module.verbose('Triggering event', callback);
+              module.verbose('Triggering Event', callback);
               callback();
               return true;
             }
@@ -1580,7 +1580,7 @@ $.fn.dropdown = function(parameters) {
               : function(){}
             ;
             if(inVisibleDOM && notOnLabel && notInMenu) {
-              module.verbose('Triggering event', callback);
+              module.verbose('Triggering Event', callback);
               callback();
               return true;
             }
@@ -2361,7 +2361,7 @@ $.fn.dropdown = function(parameters) {
               searchText = module.get.choiceText($item, false),
               text       = module.get.choiceText($item, true)
             ;
-            module.debug('Setting user selection to item', $item);
+            module.debug('Setting User selection to item', $item);
             module.remove.activeItem();
             module.set.partialSearch(searchText);
             module.set.activeItem($item);
@@ -2451,7 +2451,7 @@ $.fn.dropdown = function(parameters) {
               }
 
               if( module.is.single() && module.has.selectInput() && module.can.extendSelect() ) {
-                module.debug('Adding user option', value);
+                module.debug('Adding User option', value);
                 module.add.optionValue(value);
               }
               module.debug('Updating input value', escapedValue, currentValue);
@@ -2460,7 +2460,7 @@ $.fn.dropdown = function(parameters) {
                 .val(escapedValue)
               ;
               if(settings.fireOnInit === false && module.is.initialLoad()) {
-                module.debug('Input native change event ignored on initial load');
+                module.debug('Input native change Event ignored on initial load');
               }
               else {
                 module.trigger.change();
@@ -2639,7 +2639,7 @@ $.fn.dropdown = function(parameters) {
             // temporarily disconnect observer
             module.disconnect.selectObserver();
             if( module.is.single() ) {
-              module.verbose('Removing previous user addition');
+              module.verbose('Removing previous User addition');
               $input.find('option.' + className.addition).remove();
             }
             $('<option/>')
@@ -2648,7 +2648,7 @@ $.fn.dropdown = function(parameters) {
               .html(value)
               .appendTo($input)
             ;
-            module.verbose('Adding user addition as an <option>', value);
+            module.verbose('Adding User addition as an <option>', value);
             module.observe.select();
           },
           userSuggestion: function(value) {
@@ -2680,14 +2680,14 @@ $.fn.dropdown = function(parameters) {
                   .html(html)
                 ;
               }
-              module.verbose('Replacing user suggestion with new value', $addition);
+              module.verbose('Replacing User suggestion with new value', $addition);
             }
             else {
               $addition = module.create.userChoice(value);
               $addition
                 .prependTo($menu)
               ;
-              module.verbose('Adding item choice to menu corresponding with user choice addition', $addition);
+              module.verbose('Adding item choice to menu corresponding with User choice addition', $addition);
             }
             if(!settings.hideAdditions || module.is.allFiltered()) {
               $addition
@@ -2819,7 +2819,7 @@ $.fn.dropdown = function(parameters) {
               module.verbose('Temporarily disconnecting mutation observer');
             }
             $option.remove();
-            module.verbose('Removing user addition as an <option>', escapedValue);
+            module.verbose('Removing User addition as an <option>', escapedValue);
             if(selectObserver) {
               selectObserver.observe($input[0], {
                 childList : true,
@@ -3401,12 +3401,12 @@ $.fn.dropdown = function(parameters) {
 
         delay: {
           show: function() {
-            module.verbose('Delaying show event to ensure user intent');
+            module.verbose('Delaying show Event to ensure User intent');
             clearTimeout(module.timer);
             module.timer = setTimeout(module.show, settings.delay.show);
           },
           hide: function() {
-            module.verbose('Delaying hide event to ensure user intent');
+            module.verbose('Delaying hide Event to ensure User intent');
             clearTimeout(module.timer);
             module.timer = setTimeout(module.hide, settings.delay.hide);
           }
@@ -3629,7 +3629,7 @@ $.fn.dropdown.settings = {
   verbose                : false,
   performance            : true,
 
-  on                     : 'click',    // what event should show menu action on item selection
+  on                     : 'click',    // what Event should show menu action on item selection
   action                 : 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
 
   values                 : false,      // specify values to use for dropdown
@@ -3641,7 +3641,7 @@ $.fn.dropdown.settings = {
   filterRemoteData       : false,      // Whether API results should be filtered after being returned for query term
   saveRemoteData         : true,       // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
 
-  throttle               : 200,        // How long to wait after last user input to search remotely
+  throttle               : 200,        // How long to wait after last User input to search remotely
 
   context                : window,     // Context to use when determining if on screen
   direction              : 'auto',     // Whether dropdown should always open in one direction
@@ -3656,8 +3656,8 @@ $.fn.dropdown.settings = {
 
   forceSelection         : true,       // force a choice on blur with search selection
 
-  allowAdditions         : false,      // whether multiple select should allow user added values
-  hideAdditions          : true,      // whether or not to hide special message prompting a user they can enter a value
+  allowAdditions         : false,      // whether multiple select should allow User added values
+  hideAdditions          : true,      // whether or not to hide special message prompting a User they can enter a value
 
   maxSelections          : false,      // When set to a number limits the number of selections to this count
   useLabels              : true,       // whether multiple select should filter currently active selections from choices
@@ -3682,7 +3682,7 @@ $.fn.dropdown.settings = {
     variation  : false
   },
 
-  // delay before event
+  // delay before Event
   delay : {
     hide   : 300,
     show   : 200,
@@ -3717,7 +3717,7 @@ $.fn.dropdown.settings = {
   error : {
     action          : 'You called a dropdown action that was not defined',
     alreadySetup    : 'Once a select has been initialized behaviors must be called on the created ui dropdown',
-    labels          : 'Allowing user additions currently requires the use of labels.',
+    labels          : 'Allowing User additions currently requires the use of labels.',
     missingMultiple : '<select> requires multiple property to be set to correctly preserve multiple values',
     method          : 'The method you called is not defined.',
     noAPI           : 'The API module is required to load resources remotely',
@@ -3869,7 +3869,7 @@ $.fn.dropdown.settings.templates = {
     return message;
   },
 
-  // generates user addition to selection menu
+  // generates User addition to selection menu
   addition: function(choice) {
     return choice;
   }

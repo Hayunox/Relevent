@@ -25,7 +25,7 @@ var
   replace      = require('gulp-replace'),
   uglify       = require('gulp-uglify'),
 
-  // user config
+  // User config
   config       = require('../config/docs'),
 
   // install config
