@@ -4,7 +4,7 @@ Relevent [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb
 ... <br>
 
 ### Technologies
-Backend : PHP ([Laravel Framework](https://laravel.com)) -> Migration to Javascript([ReactJS](https://facebook.github.io/react/))<br>
+Backend : PHP ([Laravel Framework](https://laravel.com))<br>
 AndroidAPP : Java ([Android](https://developer.android.com))<br>
 Frontend : Javascript ([ReactJS](https://facebook.github.io/react/))<br>
 
@@ -36,7 +36,7 @@ Frontend : [Codacy](https://www.codacy.com/app/paul.bouquet/ProjetX)<br>
 
 Testing
 ------------
-Backend : PHP Unit on [Travis-CI](https://travis-ci.org/Herklos/ProjetX) -> migration to Jest [Travis-CI](https://travis-ci.org/Herklos/ProjetX) // TO BE DONE <br>
+Backend : PHP Unit on [Travis-CI](https://travis-ci.org/Herklos/ProjetX)<br>
 AndroidAPP : Local & Instrumented Android Tests on [Travis-CI](https://travis-ci.org/Herklos/ProjetX) // TO BE DONE <br>
 Frontend : Jest [Travis-CI](https://travis-ci.org/Herklos/ProjetX) // Implementing...
 
