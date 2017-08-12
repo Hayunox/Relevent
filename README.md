@@ -4,7 +4,7 @@ Relevent [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb
 ... <br>
 
 ### Technologies
-Backend : PHP ([Laravel Framework](https://laravel.com)) -> Migration to ([ReactJS](https://facebook.github.io/react/))<br>
+Backend : PHP ([Laravel Framework](https://laravel.com)) -> Migration to Javascript([ReactJS](https://facebook.github.io/react/))<br>
 AndroidAPP : Java ([Android](https://developer.android.com))<br>
 Frontend : Javascript ([ReactJS](https://facebook.github.io/react/))<br>
 
