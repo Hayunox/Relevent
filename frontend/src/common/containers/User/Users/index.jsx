@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import {Loader} from 'semantic-ui-react'
-import {GET_USERS} from 'actions/users'
 import UsersComponent from './components'
+import {GET_USERS} from '../../../actions/user/users/index'
 
 class Users extends Component {
 	static propTypes = {

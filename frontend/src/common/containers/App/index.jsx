@@ -9,7 +9,6 @@ import Footer from 'components/views/Footer'
 import Header from 'components/views/Header'
 // Import actions
 import {CLOSE_SIDEBAR, OPEN_SIDEBAR, WINDOW_RESIZE} from 'actions/layout'
-import {LOGOUT_AUTH} from 'actions/auth'
 // Import styled components
 import {
 	PageLayout,
@@ -20,6 +19,7 @@ import {
 	MainContainer,
 	StyledDimmer
 } from './style'
+import {LOGOUT_AUTH} from '../../actions/user/auth/index'
 
 class App extends Component {
 	static propTypes = {

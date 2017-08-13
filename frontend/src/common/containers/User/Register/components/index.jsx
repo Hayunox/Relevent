@@ -4,7 +4,7 @@ import {Form, Message, Grid} from 'semantic-ui-react'
 import {Helmet} from 'react-helmet'
 import _ from 'lodash'
 import {RegisterButton} from './style'
-import {TextCenter} from '../../../styles/base'
+import {TextCenter} from '../../../../styles/base'
 
 export default class RegisterComponent extends Component {
 	constructor (props) {

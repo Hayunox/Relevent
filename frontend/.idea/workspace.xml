@@ -2,9 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2bd502e-85ce-4236-83fa-6201ebed3a3d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../backend/resources/assets/js/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../backend/resources/assets/js/components/Example.vue" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/Register/components/index.jsx" afterPath="$PROJECT_DIR$/src/common/containers/Register/components/index.jsx" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Login/components/index.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Login/components/style.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Login/index.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Register/components/index.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Register/components/style.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Register/index.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/UserItem/components/index.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/UserItem/index.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Users/components/NewUsersItemComponent.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Users/components/UsersItemComponent.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Users/components/index.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Users/components/style.jsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/containers/Users/index.jsx" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/actions/index.js" afterPath="$PROJECT_DIR$/src/common/actions/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/api/index.js" afterPath="$PROJECT_DIR$/src/common/api/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/App/index.jsx" afterPath="$PROJECT_DIR$/src/common/containers/App/index.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/Events/index.jsx" afterPath="$PROJECT_DIR$/src/common/containers/Events/index.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/containers/index.js" afterPath="$PROJECT_DIR$/src/common/containers/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/routing/index.jsx" afterPath="$PROJECT_DIR$/src/common/routing/index.jsx" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/actions/auth/index.js" afterPath="$PROJECT_DIR$/src/common/actions/user/auth/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/actions/auth/index.test.js" afterPath="$PROJECT_DIR$/src/common/actions/user/auth/index.test.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/actions/register/index.js" afterPath="$PROJECT_DIR$/src/common/actions/user/register/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/actions/users/index.js" afterPath="$PROJECT_DIR$/src/common/actions/user/users/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/actions/users/index.test.js" afterPath="$PROJECT_DIR$/src/common/actions/user/users/index.test.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/api/AuthSvc/index.js" afterPath="$PROJECT_DIR$/src/common/api/User/AuthSvc/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/api/RegisterSvc/index.js" afterPath="$PROJECT_DIR$/src/common/api/User/RegisterSvc/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/common/api/UsersSvc/index.js" afterPath="$PROJECT_DIR$/src/common/api/User/UsersSvc/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,67 +43,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/index.jsx">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/common/containers/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+            <state relative-caret-position="136">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/actions/posts/index.js">
+        <entry file="file://$PROJECT_DIR$/src/common/api/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="68">
+              <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/containers/Register/index.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/common/containers/Register/components/index.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="66" column="63" lean-forward="true" selection-start-line="66" selection-start-column="63" selection-end-line="66" selection-end-column="63" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/common/routing/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="6" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/containers/Login/components/index.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="84" column="31" lean-forward="true" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
+            <state relative-caret-position="731">
+              <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -104,6 +93,7 @@
       <find>log</find>
       <find>logi</find>
       <find>redirect</find>
+      <find>logout</find>
     </findStrings>
     <dirStrings>
       <dir>E:\Dev\Java\Relevent\frontend</dir>
@@ -116,7 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/assets/custom.scss" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/components/User/router.js" />
         <option value="$PROJECT_DIR$/src/components/Hello.vue" />
@@ -158,11 +147,16 @@
         <option value="$PROJECT_DIR$/src/common/actions/register/index.js" />
         <option value="$PROJECT_DIR$/src/common/actions/index.js" />
         <option value="$PROJECT_DIR$/src/common/api/index.js" />
-        <option value="$PROJECT_DIR$/src/common/containers/index.js" />
         <option value="$PROJECT_DIR$/src/common/containers/Register/index.jsx" />
         <option value="$PROJECT_DIR$/src/common/containers/Login/components/index.jsx" />
-        <option value="$PROJECT_DIR$/src/common/routing/index.jsx" />
         <option value="$PROJECT_DIR$/src/common/containers/Register/components/index.jsx" />
+        <option value="$PROJECT_DIR$/src/common/containers/index.js" />
+        <option value="$PROJECT_DIR$/src/common/containers/User/Users/index.jsx" />
+        <option value="$PROJECT_DIR$/src/common/containers/Events/index.jsx" />
+        <option value="$PROJECT_DIR$/src/common/containers/User/UserItem/index.jsx" />
+        <option value="$PROJECT_DIR$/src/common/containers/App/index.jsx" />
+        <option value="$PROJECT_DIR$/src/common/containers/User/Register/components/index.jsx" />
+        <option value="$PROJECT_DIR$/src/common/routing/index.jsx" />
       </list>
     </option>
   </component>
@@ -178,6 +172,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="79" />
@@ -203,6 +200,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,12 +244,6 @@
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="frontend" type="cbb8eebc:String" user="frontend" />
               <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="client" type="cbb8eebc:String" user="client" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
               <item name="common" type="cbb8eebc:String" user="common" />
             </path>
             <path>
@@ -267,186 +259,7 @@
               <item name="src" type="cbb8eebc:String" user="src" />
               <item name="common" type="cbb8eebc:String" user="common" />
               <item name="actions" type="cbb8eebc:String" user="actions" />
-              <item name="auth" type="cbb8eebc:String" user="auth" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="actions" type="cbb8eebc:String" user="actions" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="actions" type="cbb8eebc:String" user="actions" />
-              <item name="layout" type="cbb8eebc:String" user="layout" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="actions" type="cbb8eebc:String" user="actions" />
-              <item name="posts" type="cbb8eebc:String" user="posts" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="actions" type="cbb8eebc:String" user="actions" />
-              <item name="register" type="cbb8eebc:String" user="register" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="actions" type="cbb8eebc:String" user="actions" />
-              <item name="users" type="cbb8eebc:String" user="users" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="api" type="cbb8eebc:String" user="api" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="api" type="cbb8eebc:String" user="api" />
-              <item name="AuthSvc" type="cbb8eebc:String" user="AuthSvc" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="api" type="cbb8eebc:String" user="api" />
-              <item name="PostsSvc" type="cbb8eebc:String" user="PostsSvc" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="api" type="cbb8eebc:String" user="api" />
-              <item name="RegisterSvc" type="cbb8eebc:String" user="RegisterSvc" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="api" type="cbb8eebc:String" user="api" />
-              <item name="UsersSvc" type="cbb8eebc:String" user="UsersSvc" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="App" type="cbb8eebc:String" user="App" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="Dashboard" type="cbb8eebc:String" user="Dashboard" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="Dashboard" type="cbb8eebc:String" user="Dashboard" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="Login" type="cbb8eebc:String" user="Login" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="Login" type="cbb8eebc:String" user="Login" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="Register" type="cbb8eebc:String" user="Register" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="Register" type="cbb8eebc:String" user="Register" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="UserItem" type="cbb8eebc:String" user="UserItem" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="UserItem" type="cbb8eebc:String" user="UserItem" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="Users" type="cbb8eebc:String" user="Users" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="frontend" type="cbb8eebc:String" user="frontend" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="common" type="cbb8eebc:String" user="common" />
-              <item name="containers" type="cbb8eebc:String" user="containers" />
-              <item name="Users" type="cbb8eebc:String" user="Users" />
-              <item name="components" type="cbb8eebc:String" user="components" />
+              <item name="user" type="cbb8eebc:String" user="user" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
@@ -459,7 +272,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -475,21 +287,22 @@
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Dev\Java\Relevent\frontend\src\common\containers\User" />
+      <recent name="E:\Dev\Java\Relevent\frontend\src\common\containers\Users" />
+      <recent name="E:\Dev\Java\Relevent\frontend\src\common\api\User" />
+      <recent name="E:\Dev\Java\Relevent\frontend\src\common\actions\user" />
+      <recent name="E:\Dev\Java\Relevent\frontend\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Dev\Java\Relevent\frontend\src\common\api\RegisterSvc" />
       <recent name="E:\Dev\Java\Relevent\frontend\src\common\actions\register" />
       <recent name="E:\Dev\Java\Relevent\frontend\src\common\containers\Users\components" />
       <recent name="E:\Dev\Java\Relevent\frontend\src\Components\User" />
       <recent name="E:\Dev\Java\Relevent\frontend\src\user" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Dev\Java\Relevent\frontend\src" />
-      <recent name="E:\Dev\Java\Relevent\frontend\src\assets" />
-      <recent name="E:\Dev\Java\Relevent\frontend\src\Components" />
-      <recent name="E:\Dev\Java\Relevent\frontend" />
-      <recent name="E:\Dev\Java\Relevent\frontend\src\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -503,6 +316,49 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="npm.Unnamed">
+    <configuration name="Unnamed" type="js.build_tools.npm" factoryName="npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="frontend_dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <configuration name="index.jsx" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" application-parameters="npm run frontend_dev" working-dir="$PROJECT_DIR$/">
+      <EXTENSION ID="com.jetbrains.nodejs.remote.docker.NodeJSDockerRunConfigurationExtension">
+        <option name="envVars">
+          <list />
+        </option>
+        <option name="extraHosts">
+          <list />
+        </option>
+        <option name="links">
+          <list />
+        </option>
+        <option name="networkDisabled" value="false" />
+        <option name="networkMode" value="bridge" />
+        <option name="portBindings">
+          <list />
+        </option>
+        <option name="publishAllPorts" value="false" />
+        <option name="version" value="1" />
+        <option name="volumeBindings">
+          <list />
+        </option>
+      </EXTENSION>
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="npm.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.index.jsx" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.index.jsx" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -519,11 +375,12 @@
       <workItem from="1502544627662" duration="2067000" />
       <workItem from="1502546990818" duration="3859000" />
       <workItem from="1502564654034" duration="3252000" />
+      <workItem from="1502615590695" duration="1480000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40159000" />
+    <option name="totallyTimeSpent" value="41639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -534,28 +391,18 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,81 +413,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/common/actions/layout/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/containers/Dashboard/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/components/addons/RouteAuth/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/components/views/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/components/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/containers/UserItem/components/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/containers/App/style.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/containers/App/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3060">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -649,7 +432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -713,17 +495,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
           <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#99#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/pwa/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -731,7 +502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="41" lean-forward="false" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -769,9 +539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="35" column="59" lean-forward="true" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -779,9 +546,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -789,9 +553,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="39" lean-forward="true" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -799,7 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="38" lean-forward="true" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,13 +567,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/api/UsersSvc/index.js">
+    <entry file="file://$PROJECT_DIR$/src/common/api/User/UsersSvc/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="81" lean-forward="true" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="81" />
@@ -825,27 +583,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="43" lean-forward="false" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#27#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -853,15 +591,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="0">
           <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
           <folding />
         </state>
@@ -871,29 +606,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/actions/auth/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#76#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/actions/register/index.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/api/AuthSvc/index.js">
+    <entry file="file://$PROJECT_DIR$/src/common/actions/register/index.test.js" />
+    <entry file="file://$PROJECT_DIR$/src/common/api/User/AuthSvc/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -905,11 +622,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/actions/users/index.js">
+    <entry file="file://$PROJECT_DIR$/src/common/actions/user/users/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -917,7 +633,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/api/RegisterSvc/index.js">
+    <entry file="file://$PROJECT_DIR$/src/common/api/User/RegisterSvc/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="33" />
@@ -925,7 +641,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/actions/register/index.js">
+    <entry file="file://$PROJECT_DIR$/src/common/actions/user/register/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
@@ -933,51 +649,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/api/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/containers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/containers/Register/components/style.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/containers/Register/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1003,28 +675,171 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/containers/Login/components/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="84" column="31" lean-forward="true" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1326">
+          <caret line="84" column="31" lean-forward="false" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/routing/index.jsx">
+    <entry file="file://$PROJECT_DIR$/src/common/containers/Register/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="6" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="21" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/containers/Register/components/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="66" column="63" lean-forward="true" selection-start-line="66" selection-start-column="63" selection-end-line="66" selection-end-column="63" />
+        <state relative-caret-position="504">
+          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/pwa/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/actions/user/auth/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#76#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#164#196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/express/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="23" column="6" lean-forward="false" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/containers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/containers/User/Register/components/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/containers/App/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="155" column="0" lean-forward="true" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#222#268#0" expanded="true" />
+            <element signature="e#479#636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/containers/User/UserItem/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#230#274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/containers/User/Users/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/containers/Events/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="28" lean-forward="false" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/containers/User/Users/components/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/routing/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
