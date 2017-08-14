@@ -1,4 +1,4 @@
-Relevent [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/Relevent?utm_source=github.com&utm_medium=referral&utm_content=Herklos/Relevent&utm_campaign=badger) [![Build Status](https://travis-ci.org/Herklos/Relevent.png)](https://travis-ci.org/Herklos/Relevent) [![Coverage Status](https://coveralls.io/repos/github/Herklos/Relevent/badge.svg?branch=master)](https://coveralls.io/github/Herklos/Relevent?branch=master)
+RelEvent [![Codacy Badge](https://api.codacy.com/project/badge/Grade/464039e29eb04025aa5495982e0f0165)](https://www.codacy.com/app/paul.bouquet/Relevent?utm_source=github.com&utm_medium=referral&utm_content=Herklos/Relevent&utm_campaign=badger) [![Build Status](https://travis-ci.org/Herklos/Relevent.png)](https://travis-ci.org/Herklos/Relevent) [![Coverage Status](https://coveralls.io/repos/github/Herklos/Relevent/badge.svg?branch=master)](https://coveralls.io/github/Herklos/Relevent?branch=master)
 ============================
 ### Description
 Social Android App that allow users to create and manage events organization. <br>
